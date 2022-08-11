@@ -25,3 +25,34 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
+ng g m modules/auth --routing=true
+ng g m modules/admin --routing=true
+ng g m modules/communication --routing=true
+ng g m modules/maintenance --routing=true
+ng g m modules/user --routing=true
+
+
+ng g m modules/layout
+ng g c modules/layout/auth --module=layout
+ng g c modules/layout/main --module=layout
+ng g c modules/layout/main/left-navigation --module=layout
+
+
+ng generate @angular/material:navigation modules/layout/main/left-navigation --module=layout
+
+
+
+
+ng g m modules/form-builder --routing=true
+ng g c modules/form-builder/form --module=form-builder
+ng g c modules/form-builder/builder --module=form-builder
+ng g c modules/form-builder/field/field-file --module=field
+
+
+ng g m modules/form-builder/builder --routing=true
+ng g m modules/form-builder/field --routing=true
+ng g c modules/form-builder/field/field-file --module=field
+ng g c modules/form-builder/field/field-input --module=field
