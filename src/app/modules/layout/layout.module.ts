@@ -4,6 +4,7 @@ import { LayoutModule as _LayoutModule } from '@angular/cdk/layout';
 import { MainComponent } from './main/main.component';
 import { MaterialModule } from 'src/app/material.module';
 import { LeftNavigationComponent } from './main/left-navigation/left-navigation.component';
+import { LayoutRoutingModule } from './layout-routing.module';
 
 
 
@@ -11,7 +12,8 @@ import { LeftNavigationComponent } from './main/left-navigation/left-navigation.
   declarations: [MainComponent, LeftNavigationComponent],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    LayoutRoutingModule
   ],
   exports: [
     MainComponent,

@@ -29,13 +29,29 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 ng g m modules/auth --routing=true
+ng g c modules/auth/login --module=auth
+ng g c modules/auth/registration --module=auth
+
+
+
 ng g m modules/admin --routing=true
-ng g m modules/communication --routing=true
 ng g m modules/maintenance --routing=true
 ng g m modules/user --routing=true
 
+ng g m modules/communication --routing=true
+ng g c modules/communication/notification --module=communication
+ng g c modules/communication/sms --module=communication
+ng g c modules/communication/email --module=communication
+ng g c modules/communication/chat --module=communication
+ng g c modules/communication/group-chat --module=communication
+ng g c modules/communication/opinion-poll --module=communication
+ng g c modules/communication/discussion-forum --module=communication
+
+ng g m modules/tracker --routing=true
+ng g c modules/tracker/visitor --module=tracker
 
 ng g m modules/layout
+ng generate module modules/layout/layout-routing --flat --module=layout
 ng g c modules/layout/auth --module=layout
 ng g c modules/layout/main --module=layout
 ng g c modules/layout/main/left-navigation --module=layout

@@ -13,7 +13,7 @@
               </mat-panel-title>
             </mat-expansion-panel-header>
             <span *ngFor="let child of item.children">
-              <mat-list-item routerLink="[child.route]">
+              <mat-list-item routerLink="{{getMenuUrl(child.url)}}">
                 <!-- Entradas de cada submenú  -->
                 <div fxLayout="row" fxLayoutAlign="space-between center" > 
                   <mat-icon>{{child.icon}}</mat-icon>

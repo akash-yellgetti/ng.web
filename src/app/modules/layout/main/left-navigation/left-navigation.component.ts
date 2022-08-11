@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import * as _ from 'lodash';
 import * as menus from '../../core/json/menus.json';
 
@@ -12,12 +13,12 @@ export class LeftNavigationComponent implements OnInit {
     {
       name: 'Escritorio',
       icon: 'desktop_windows',
-      route: 'escritorio',
+      url: 'escritorio',
     },        
     {
       name: 'Entradas GADE',
       icon: 'ballot',
-      route: 'entradasGADE',
+      url: 'entradasGADE',
     },
     {
       name: 'Expedientes',
@@ -26,12 +27,12 @@ export class LeftNavigationComponent implements OnInit {
         {
           name: 'Mis Expedientes',
           icon: 'how_to_reg',
-          route: '/misexpedientes'
+          url: '/misexpedientes'
         },
         { 
           name: 'Todos',
           icon: 'waves',
-          route: '/todos'
+          url: '/todos'
         }
       ]
     },
@@ -42,12 +43,14 @@ export class LeftNavigationComponent implements OnInit {
           {
             name: 'Búsqueda Perfil',
             icon: 'search',
-            route: '/busquedaperfiles'
+            url: '/busquedaperfiles'
           }
         ]
       }
   ];
-  constructor() { 
+  constructor(
+    private router: Router
+  ) {
     this.menu = _.get(menus, 'default');
     console.log(this.menu);
     
@@ -56,5 +59,28 @@ export class LeftNavigationComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
+  redirect = (route: any) => {
+    const navigationExtras: NavigationExtras = {
+      state: {
+        name: '',
+        refresh: Date.now()
+      }
+    }
+    const url = this.getMenuUrl(route.url);
+    // navigationExtras.state.name = _.last(_.split(url, '/'));
+    _.set(navigationExtras, 'state.name', _.last(_.split(url, '/')));
+    console.log(this.router.url);
+    console.log(url);
+    console.log(navigationExtras.state);
+    
+    // this.router.onSameUrlNavigation = 'reload';
+    // this.router.navigate([url], navigationExtras)
+    this.router.navigateByUrl('/main', {skipLocationChange: true}).then(()=>
+    this.router.navigate([url], navigationExtras));
+  }
 
+  getMenuUrl = (url: string) => {
+    return _.replace(_.replace(_.replace(_.replace(url, '#!/', '/'), 'common', 'main'), '/admin/role', '/main/admin/role'), '/admin/field', '/main/admin/field');
+  }
 }
