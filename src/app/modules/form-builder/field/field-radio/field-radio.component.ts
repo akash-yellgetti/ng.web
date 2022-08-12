@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-field-radio',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./field-radio.component.scss']
 })
 export class FieldRadioComponent implements OnInit {
-
+  @Input() field:any = {};
   constructor() { }
 
   ngOnInit(): void {

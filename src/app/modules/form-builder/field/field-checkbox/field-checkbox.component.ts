@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-field-checkbox',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./field-checkbox.component.scss']
 })
 export class FieldCheckboxComponent implements OnInit {
-
+  @Input() field:any = {};
   constructor() { }
 
   ngOnInit(): void {
