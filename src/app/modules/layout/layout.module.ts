@@ -8,11 +8,13 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { CardComponent } from './main/view/card/card.component';
 import { DatatableComponent } from './main/view/datatable/datatable.component';
 import { PaginatorComponent } from './main/view/paginator/paginator.component';
+import { FormsModule } from '@angular/forms';
+import { AuthComponent } from './auth/auth.component';
 
 
 
 @NgModule({
-  declarations: [MainComponent, LeftNavigationComponent, CardComponent, DatatableComponent, PaginatorComponent],
+  declarations: [MainComponent, LeftNavigationComponent, CardComponent, DatatableComponent, PaginatorComponent, AuthComponent],
   imports: [
     CommonModule,
     MaterialModule,

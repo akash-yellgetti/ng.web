@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="row align-items-center p-2">
+      <div class="col-4">
+        <div class="form-control-layout">
+          <h2>Vehicle</h2>
+        </div>
+      </div>
+      <div class="col-8 d-flex justify-content-end">
+        <div class="form-control-layout">
+          <mat-form-field  appearance="outline" class="mr-2">
+            <input matInput type="text" placeholder="search" >
+            <button  matSuffix mat-icon-button aria-label="Clear" >
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div class="form-control-layout">
+        <mat-form-field  appearance="outline" class="mr-2">
+          <input matInput type="text" placeholder="Filter" >
+          <button  matSuffix mat-icon-button aria-label="Clear" >
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div class="form-control-layout">
+        <mat-form-field  appearance="outline" class="mr-2">
+          <mat-label>Sort By</mat-label>
+          <mat-select >
+            <mat-option>None</mat-option>
+            <mat-option value="option1">Option 1</mat-option>
+            <mat-option value="option2">Option 2</mat-option>
+            <mat-option value="option3">Option 3</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      
+        <div class="form-control-layout toggle-layout">
+          <button mat-raised-button  color="primary" class="mr-2 vehicle-btn">+ Add Vehicle</button>
+        </div>
+        <div class="form-control-layout toggle-layout">
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="mr-2">
+          <mat-button-toggle value="bold">
+            <mat-icon>menu</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle value="italic">Italic</mat-button-toggle>
+        </mat-button-toggle-group>
+        </div>
+      </div>
+    </div>
+    <app-card></app-card>
+</div>

@@ -35,6 +35,12 @@ ng g c modules/auth/registration --module=auth
 
 
 ng g m modules/admin --routing=true
+ng g c modules/admin/user --module=admin
+ng g c modules/admin/menu --module=admin
+ng g c modules/admin/constant --module=admin
+
+
+
 ng g m modules/maintenance --routing=true
 ng g m modules/user --routing=true
 

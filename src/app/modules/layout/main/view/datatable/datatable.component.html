@@ -1,5 +1,5 @@
 <div class="m-3">
-    <div class="mat-elevation-z8 table-responsive">
+    <div>
        <table mat-table [dataSource]="items" matSort class="w-100"
        (matSortChange)="sortData($event)">
        <ng-container matColumnDef="{{field.datatable_data}}" *ngFor="let field of getTableField()">
