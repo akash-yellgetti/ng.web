@@ -75,10 +75,15 @@ ng generate @angular/material:navigation modules/layout/main/left-navigation --m
 ng g m modules/form-builder --routing=true
 ng g c modules/form-builder/form --module=form-builder
 ng g c modules/form-builder/builder --module=form-builder
+
+
+<!-- https://stackblitz.com/edit/angular-dynamic-form-builder?file=app%2Fdynamic-form-builder%2Fatoms%2Ffile.ts -->
+ng g m modules/form-builder/field
+ng g c modules/form-builder/field/field-input --module=field
 ng g c modules/form-builder/field/field-file --module=field
 
 
 ng g m modules/form-builder/builder --routing=true
-ng g m modules/form-builder/field --routing=true
+ng g m modules/form-builder/field
 ng g c modules/form-builder/field/field-file --module=field
 ng g c modules/form-builder/field/field-input --module=field

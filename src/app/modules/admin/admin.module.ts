@@ -5,6 +5,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { UserComponent } from './user/user.component';
 import { LayoutModule } from '../layout/layout.module';
 import { MaterialModule } from 'src/app/material.module';
+import { FormBuilderModule } from '../form-builder/form-builder.module';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { MaterialModule } from 'src/app/material.module';
   imports: [
     CommonModule,
     MaterialModule,
+    FormBuilderModule,
     LayoutModule,
     AdminRoutingModule
   ]

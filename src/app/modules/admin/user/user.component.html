@@ -6,23 +6,42 @@
         </div>
       </div>
       <div class="col-8 d-flex justify-content-end">
-        <div class="form-control-layout">
+        <!-- <div class="form-control-layout">
           <mat-form-field  appearance="outline" class="mr-2">
             <input matInput type="text" placeholder="search" >
             <button  matSuffix mat-icon-button aria-label="Clear" >
               <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>
-        </div>
+        </div> -->
         <div class="form-control-layout">
-        <mat-form-field  appearance="outline" class="mr-2">
+        <!-- <mat-form-field  appearance="outline" class="mr-2">
           <input matInput type="text" placeholder="Filter" >
           <button  matSuffix mat-icon-button aria-label="Clear" >
             <mat-icon>close</mat-icon>
           </button>
-        </mat-form-field>
+        </mat-form-field> -->
+        <button mat-fab color="primary" class="mr-2"  aria-label="Example icon button with a delete icon" (click)="action('create', null)">
+          <mat-icon>add</mat-icon>
+        </button>
+
+        <button mat-fab color="warn"  class="mr-2" aria-label="Example icon button with a filter list icon">
+          <mat-icon>filter_list</mat-icon>
+        </button>
+
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="mr-2" [(ngModel)]="data.view">
+          <mat-button-toggle value="datatable">
+            <mat-icon>menu</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle value="card">
+            <mat-icon>grid_on</mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+
+       
+
       </div>
-      <div class="form-control-layout">
+      <!-- <div class="form-control-layout">
         <mat-form-field  appearance="outline" class="mr-2">
           <mat-label>Sort By</mat-label>
           <mat-select >
@@ -32,9 +51,9 @@
             <mat-option value="option3">Option 3</mat-option>
           </mat-select>
         </mat-form-field>
-      </div>
+      </div> -->
       
-        <div class="form-control-layout toggle-layout">
+        <!-- <div class="form-control-layout toggle-layout">
           <button mat-raised-button  color="primary" class="mr-2 vehicle-btn">+ Add Vehicle</button>
         </div>
         <div class="form-control-layout toggle-layout">
@@ -46,7 +65,7 @@
             <mat-icon>grid_on</mat-icon>
           </mat-button-toggle>
         </mat-button-toggle-group>
-        </div>
+        </div> -->
       </div>
     </div>
     <div *ngIf="data.view === 'card'">
@@ -54,6 +73,9 @@
     </div>
     <div *ngIf="data.view === 'datatable'">
       <app-datatable></app-datatable>
+    </div>
+    <div *ngIf="data.view === 'create'">
+      <app-form [fields]="getFields()"></app-form>
     </div>
     
     
