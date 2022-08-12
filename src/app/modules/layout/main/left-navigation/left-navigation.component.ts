@@ -52,9 +52,6 @@ export class LeftNavigationComponent implements OnInit {
     private router: Router
   ) {
     this.menu = _.get(menus, 'default');
-    console.log(this.menu);
-    
-    // this.menu = menus.default;
   }
 
   ngOnInit(): void {

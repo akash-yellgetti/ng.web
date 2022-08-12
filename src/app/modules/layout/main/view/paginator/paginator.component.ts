@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./paginator.component.css']
 })
 export class PaginatorComponent implements OnInit {
-  data: any = {
+  paginator: any = {
     draw: 0,
     length: 100,
     pageSize: 10,
@@ -20,6 +20,13 @@ export class PaginatorComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  handlePageEvent = (event: any) => {
+    this.paginator.pageSize = event.pageSize;
+    this.paginator.pageIndex = event.pageIndex;
+    this.paginator.sort = {};
+    // this.list()
   }
 
 }
