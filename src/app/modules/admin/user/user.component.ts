@@ -28,6 +28,7 @@ export class UserComponent extends MainLayout implements OnInit {
       label: 'First Name',
       value: '',
       required: true,
+      col: 3,
     },
     {
       type: 'text',
@@ -35,6 +36,7 @@ export class UserComponent extends MainLayout implements OnInit {
       label: 'Last Name',
       value: '',
       required: true,
+      col: 3,
     },
     {
       type: 'text',
@@ -42,6 +44,7 @@ export class UserComponent extends MainLayout implements OnInit {
       label: 'Email',
       value: '',
       required: true,
+      col: 3,
     },
 
     {
@@ -49,6 +52,7 @@ export class UserComponent extends MainLayout implements OnInit {
       name: 'picture',
       label: 'Picture',
       required: true,
+      col: 3,
       onUpload: this.onUpload.bind(this)
     },
     {
@@ -57,9 +61,10 @@ export class UserComponent extends MainLayout implements OnInit {
       label: 'Country',
       value: 'in',
       required: true,
+      col: 3,
       options: [
-        { key: 'in', label: 'India' },
-        { key: 'us', label: 'USA' }
+        { key: 'in', value: 'India' },
+        { key: 'us', value: 'USA' }
       ]
     },
     {
@@ -68,6 +73,7 @@ export class UserComponent extends MainLayout implements OnInit {
       label: 'Country',
       value: 'in',
       required: true,
+      col: 3,
       options: [
         { key: 'm', label: 'Male' },
         { key: 'f', label: 'Female' }
@@ -78,6 +84,7 @@ export class UserComponent extends MainLayout implements OnInit {
       name: 'hobby',
       label: 'Hobby',
       required: true,
+      col: 3,
       options: [
         { key: 'f', label: 'Fishing' },
         { key: 'c', label: 'Cooking' }

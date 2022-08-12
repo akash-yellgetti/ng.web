@@ -6,11 +6,17 @@ import { UserComponent } from './user/user.component';
 import { LayoutModule } from '../layout/layout.module';
 import { MaterialModule } from 'src/app/material.module';
 import { FormBuilderModule } from '../form-builder/form-builder.module';
+import { RoleComponent } from './role/role.component';
+import { MenuComponent } from './menu/menu.component';
+import { ConstantComponent } from './constant/constant.component';
 
 
 @NgModule({
   declarations: [
-    UserComponent
+    UserComponent,
+    RoleComponent,
+    MenuComponent,
+    ConstantComponent
   ],
   imports: [
     CommonModule,

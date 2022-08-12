@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import * as _ from 'lodash';
 import * as menus from '../../core/json/menus.json';
+import { replacementmenus } from './menu-replace';
 
 @Component({
   selector: 'app-left-navigation',
@@ -78,6 +79,10 @@ export class LeftNavigationComponent implements OnInit {
   }
 
   getMenuUrl = (url: string) => {
-    return _.replace(_.replace(_.replace(_.replace(url, '#!/', '/'), 'common', 'main'), '/admin/role', '/main/admin/role'), '/admin/field', '/main/admin/field');
+    let str = _.cloneDeep(url);
+    for(let i in replacementmenus) {
+      str = _.replace(str, replacementmenus[i].old, replacementmenus[i].new);
+    }
+    return str;
   }
 }

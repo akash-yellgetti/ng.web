@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BuilderComponent } from './builder.component';
+import { FieldAutocompleteComponent } from './field-autocomplete.component';
 
-describe('BuilderComponent', () => {
-  let component: BuilderComponent;
-  let fixture: ComponentFixture<BuilderComponent>;
+describe('FieldAutocompleteComponent', () => {
+  let component: FieldAutocompleteComponent;
+  let fixture: ComponentFixture<FieldAutocompleteComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BuilderComponent ]
+      declarations: [ FieldAutocompleteComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BuilderComponent);
+    fixture = TestBed.createComponent(FieldAutocompleteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

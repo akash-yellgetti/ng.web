@@ -1,13 +1,15 @@
-import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-field-radio',
   templateUrl: './field-radio.component.html',
-  styleUrls: ['./field-radio.component.css']
+  styleUrls: ['./field-radio.component.scss']
 })
-export class FieldRadioComponent {
-  @Input() field:any = {};
-  @Input() form:any;
+export class FieldRadioComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }

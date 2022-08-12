@@ -1,24 +1,26 @@
-import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-
-
+import { Component, OnInit, Input } from '@angular/core';
+import * as _ from 'lodash';
 @Component({
   selector: 'app-field-file',
   templateUrl: './field-file.component.html',
-  styleUrls: ['./field-file.component.css']
+  styleUrls: ['./field-file.component.scss']
 })
-export class FieldFileComponent {
-  @Input() field:any = {};
-  @Input() form:any;
-  get isValid() { return this.form.controls[this.field.name].valid; }
-  get isDirty() { return this.form.controls[this.field.name].dirty; }
+export class FieldFileComponent implements OnInit {
+  @Input() field: any;
+  constructor() { }
 
-  constructor() {
-
+  ngOnInit(): void {
   }
 
-  ngOnChange(){
-    console.log(this.field.value);
-    // this.field.value.
+  onFileChange(event: any) {
+
+    if (event.target.files.length > 0) {
+      const files = event.target.files;
+      this.field.value = this.field && this.field.multiple ? files : _.last(files);
+      // this.myForm.patchValue({
+      //   fileSource: file
+      // });
+    }
   }
+
 }

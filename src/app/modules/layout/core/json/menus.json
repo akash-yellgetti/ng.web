@@ -111,38 +111,6 @@
           }
         },
         {
-          "menu_id": 6,
-          "parent_id": 1,
-          "parent_code": "admin",
-          "code": "field",
-          "name": "Field",
-          "desc": "",
-          "icon": "desktop_windows",
-          "url": "/main/field/builder",
-          "seq": "4",
-          "active": 1,
-          "deleted": 0,
-          "deleted_by": null,
-          "deleted_at": null,
-          "permission": {
-            "access_id": 0,
-            "role": "SU",
-            "active": "1",
-            "deleted": 0,
-            "menu_id": 6,
-            "form": 1,
-            "datatable": 1,
-            "create": 1,
-            "read": 1,
-            "update": 1,
-            "delete": 1,
-            "import": 1,
-            "export": 1,
-            "deleted_by": null,
-            "deleted_at": "2020-12-04 08:38:56"
-          }
-        },
-        {
           "menu_id": 7,
           "parent_id": 1,
           "parent_code": "admin",
@@ -174,6 +142,56 @@
             "deleted_at": "2020-12-04 08:38:56"
           }
         }
+      ]
+    },
+    {
+      "menu_id": 1,
+      "parent_id": 0,
+      "parent_code": "form-builder",
+      "code": "form-builder",
+      "name": "Form Builder",
+      "desc": "",
+      "icon": "desktop_windows",
+      "url": "",
+      "seq": "1",
+      "active": 1,
+      "deleted": 0,
+      "deleted_by": null,
+      "deleted_at": null,
+      "children": [
+        {
+          "menu_id": 2,
+          "parent_id": 1,
+          "parent_code": "form",
+          "code": "form",
+          "name": "Form",
+          "desc": "",
+          "icon": "desktop_windows",
+          "url": "/main/form-builder/form",
+          "seq": "1",
+          "active": 1,
+          "deleted": 0,
+          "deleted_by": null,
+          "deleted_at": null,
+          "permission": {
+            "access_id": 0,
+            "role": "SU",
+            "active": "1",
+            "deleted": 0,
+            "menu_id": 2,
+            "form": 1,
+            "datatable": 1,
+            "create": 1,
+            "read": 1,
+            "update": 1,
+            "delete": 1,
+            "import": 1,
+            "export": 1,
+            "deleted_by": null,
+            "deleted_at": "2020-12-04 08:38:56"
+          }
+        }
+        
       ]
     },
     {

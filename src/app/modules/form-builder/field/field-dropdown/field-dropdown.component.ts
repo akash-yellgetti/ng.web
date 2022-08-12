@@ -8,7 +8,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class FieldDropdownComponent {
   @Input() field:any = {};
-  @Input() form:any;
+  // @Input() form:any;
 
   constructor() {
 

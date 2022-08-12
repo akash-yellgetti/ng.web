@@ -3,21 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
-  template:`
-    <form (ngSubmit)="onSubmit.emit(this.form.value)" [formGroup]="form" class="form-horizontal">
-      <div *ngFor="let field of fields">
-          <app-builder [field]="field" [form]="form"></app-builder>
-      </div>
-      <div class="form-row"></div>
-      <div class="form-group row">
-        <div class="col-md-3"></div>
-        <div class="col-md-9">
-          <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Save</button>
-          <strong >Saved all values</strong>
-        </div>
-      </div>
-    </form>
-  `,
+  templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
