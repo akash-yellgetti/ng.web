@@ -9,6 +9,7 @@ import { ChatComponent } from './chat/chat.component';
 import { GroupChatComponent } from './group-chat/group-chat.component';
 import { OpinionPollComponent } from './opinion-poll/opinion-poll.component';
 import { DiscussionForumComponent } from './discussion-forum/discussion-forum.component';
+import { LayoutModule } from '../layout/layout.module';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { DiscussionForumComponent } from './discussion-forum/discussion-forum.co
   ],
   imports: [
     CommonModule,
+    LayoutModule,
     CommunicationRoutingModule
   ]
 })

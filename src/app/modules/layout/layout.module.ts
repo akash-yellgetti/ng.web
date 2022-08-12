@@ -5,11 +5,14 @@ import { MainComponent } from './main/main.component';
 import { MaterialModule } from 'src/app/material.module';
 import { LeftNavigationComponent } from './main/left-navigation/left-navigation.component';
 import { LayoutRoutingModule } from './layout-routing.module';
+import { CardComponent } from './main/view/card/card.component';
+import { DatatableComponent } from './main/view/datatable/datatable.component';
+import { PaginatorComponent } from './main/view/paginator/paginator.component';
 
 
 
 @NgModule({
-  declarations: [MainComponent, LeftNavigationComponent],
+  declarations: [MainComponent, LeftNavigationComponent, CardComponent, DatatableComponent, PaginatorComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -17,7 +20,9 @@ import { LayoutRoutingModule } from './layout-routing.module';
   ],
   exports: [
     MainComponent,
-    LeftNavigationComponent
+    LeftNavigationComponent,
+    CardComponent,
+    DatatableComponent
   ]
 })
 export class LayoutModule { }
