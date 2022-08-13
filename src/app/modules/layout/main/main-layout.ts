@@ -6,7 +6,8 @@ export abstract class MainLayout {
     action = (type: string, data?: any) => {
         switch (type) {
           case 'create':
-            this.data.view = 'create';
+            // this.route.
+            // this.data.view = 'create';
             break;
           case 'read':
             break;

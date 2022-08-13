@@ -46,6 +46,7 @@ ng g c modules/layout/main/left-navigation --module=layout
 ng g c modules/layout/main/view/card --module=layout
 ng g c modules/layout/main/view/datatable --module=layout
 ng g c modules/layout/main/view/paginator --module=layout
+ng g c modules/layout/main/view/form --module=layout
 
 ng generate @angular/material:navigation modules/layout/main/left-navigation --module=layout
 

@@ -10,21 +10,25 @@ import { DatatableComponent } from './main/view/datatable/datatable.component';
 import { PaginatorComponent } from './main/view/paginator/paginator.component';
 import { FormsModule } from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
+import { FormComponent } from './main/view/form/form.component';
+import { FormBuilderModule } from '../form-builder/form-builder.module';
 
 
 
 @NgModule({
-  declarations: [MainComponent, LeftNavigationComponent, CardComponent, DatatableComponent, PaginatorComponent, AuthComponent],
+  declarations: [MainComponent, LeftNavigationComponent, CardComponent, DatatableComponent, PaginatorComponent, AuthComponent, FormComponent],
   imports: [
     CommonModule,
     MaterialModule,
+    FormBuilderModule,
     LayoutRoutingModule
   ],
   exports: [
     MainComponent,
     LeftNavigationComponent,
     CardComponent,
-    DatatableComponent
+    DatatableComponent,
+    FormComponent
   ]
 })
 export class LayoutModule { }
