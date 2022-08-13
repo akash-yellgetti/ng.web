@@ -1,42 +1,15 @@
 import { AfterViewInit, Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import * as _ from 'lodash';
-import { ActivatedRoute, Router } from '@angular/router';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
 import * as data from '../../../core/json/data.json';
+import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
   selector: 'app-datatable',
   templateUrl: './datatable.component.html',
   styleUrls: ['./datatable.component.css']
 })
-export class DatatableComponent implements AfterViewInit {
-
-  @Output() public mainHeader = new EventEmitter<string>();
-  form: any = {
-    name: '',
-    action: 'list'
-  };
-  
-  fields: any =  [ {
-    name: 'name',
-    datatable_data: 'name',
-  },
-  {
-    name: 'position',
-    datatable_data: 'position',
-  },
-  {
-    name: 'salary',
-    datatable_data: 'salary',
-  },
-  
-];
-  // items: any = [];
-  items = new MatTableDataSource(_.get(data, 'default.data'));
-  perPage = '25';
-  @ViewChild(MatPaginator) paginator: any = {
+export class DatatableComponent implements OnInit {
+  paginator: any = {
     draw: 0,
     length: 100,
     pageSize: 10,
@@ -47,22 +20,29 @@ export class DatatableComponent implements AfterViewInit {
     sort: {},
     displayedColumns: []
   };
-  @ViewChild(MatSort) sort!: MatSort;
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute) {
-    
-    
-    
+  fields: any =  [ 
+    {
+      name: 'Name',
+      datatable_data: 'name',
+    },
+    {
+      name: 'Position',
+      datatable_data: 'position',
+    },
+    {
+      name: 'Salary',
+      datatable_data: 'salary',
+    },
+  
+  ];
+  items: any = [];
+  config: PaginationInstance = { itemsPerPage: 12, currentPage: 1 };
+  constructor() { 
+    this.items = _.get(data, 'default.data');
+    // console.log(this.items);
   }
 
   ngOnInit(): void {
-  }
-
-  ngAfterViewInit(): void {
-    this.items = new MatTableDataSource(_.get(data, 'default.data'));
-    this.paginator.displayedColumns = _.union(_.values(_.mapValues(this.fields, 'datatable_data')), ['more']);
-    this.items.paginator = this.paginator;
   }
 
   action = (type: string, data?: any) => {
@@ -71,12 +51,9 @@ export class DatatableComponent implements AfterViewInit {
   getTableField = () => {
     return this.fields;
   }
-  
-  handlePageEvent = (event: any) => {
-    this.paginator.pageSize = event.pageSize;
-    this.paginator.pageIndex = event.pageIndex;
-    this.paginator.sort = {};
-    // this.list()
+
+  handlePageChange = (evt: any) => {
+    this.config.currentPage = evt;
   }
 
   search = () => {
@@ -99,5 +76,5 @@ export class DatatableComponent implements AfterViewInit {
     this.paginator.pageIndex = 0;
     // this.list();
   }
-
 }
+

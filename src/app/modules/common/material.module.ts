@@ -36,6 +36,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgxModule } from './ngx.module';
 
 
 
@@ -76,7 +77,8 @@ const modules = [
   PortalModule,
   MatBadgeModule,
   MatGridListModule,
-  MatTooltipModule
+  MatTooltipModule,
+  NgxModule
 ];
 @NgModule({
   imports: modules,

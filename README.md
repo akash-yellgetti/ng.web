@@ -38,6 +38,9 @@ ng g m modules/user --routing=true
 ng g m modules/tracker --routing=true
 ng g c modules/tracker/visitor --module=tracker
 
+ng g m modules/common/ngx 
+
+
 ng g m modules/layout
 ng generate module modules/layout/layout-routing --flat --module=layout
 ng g c modules/layout/auth --module=layout
