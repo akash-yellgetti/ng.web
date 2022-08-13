@@ -44,6 +44,7 @@ export class DatatableComponent implements OnInit {
   
 ];
   items: any = [];
+  perPage = '25';
   @ViewChild(MatPaginator) any: MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
   constructor(

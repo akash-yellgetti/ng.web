@@ -14,4 +14,10 @@
   position: sticky;
   top: 0;
   z-index: 1;
+  background-color: #00b0fb;
+}
+
+
+::ng-deep .mat-flat-button.mat-primary, ::ng-deep .mat-raised-button.mat-primary, ::ng-deep .mat-fab.mat-primary, ::ng-deep .mat-mini-fab.mat-primary {
+  background-color: #00b0fb;
 }

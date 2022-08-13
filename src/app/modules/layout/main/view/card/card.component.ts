@@ -10,6 +10,7 @@ import * as data from '../../../core/json/data.json';
 export class CardComponent implements OnInit {
   
   items: any = [];
+  perPage = '25';
   constructor() { 
     this.items = _.get(data, 'default.data');
     // console.log(this.items);
