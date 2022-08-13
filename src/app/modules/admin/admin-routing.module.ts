@@ -23,15 +23,27 @@ const routes: Routes = [
         component: CardComponent,
       },
     ],
+    data: {
+      module: "admin",
+      subModule: "user",
+    }
     
   },
   {
     path: 'user/create',
-    component: FormComponent
+    component: FormComponent,
+    data: {
+      module: "admin",
+      subModule: "user",
+    }
   },
   {
     path: 'user/update',
-    component: FormComponent
+    component: FormComponent,
+    data: {
+      module: "admin",
+      subModule: "user",
+    }
   },
   {
     path: 'role',

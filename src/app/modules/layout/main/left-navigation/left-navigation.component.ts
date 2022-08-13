@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import * as _ from 'lodash';
-import * as menus from '../../core/json/menus.json';
+import * as master from '../../core/json/master.json';
 import { replacementmenus } from './menu-replace';
 
 @Component({
@@ -52,7 +52,7 @@ export class LeftNavigationComponent implements OnInit {
   constructor(
     private router: Router
   ) {
-    this.menu = _.get(menus, 'default');
+    this.menu = _.get(master, 'default');
   }
 
   ngOnInit(): void {
@@ -66,11 +66,14 @@ export class LeftNavigationComponent implements OnInit {
       }
     }
     const url = this.getMenuUrl(route.url);
-    // navigationExtras.state.name = _.last(_.split(url, '/'));
+    _.set(route, 'url', url);
     _.set(navigationExtras, 'state.name', _.last(_.split(url, '/')));
-    console.log(this.router.url);
-    console.log(url);
-    console.log(navigationExtras.state);
+    _.set(navigationExtras, 'state.data', route);
+
+    // navigationExtras.state.name = _.last(_.split(url, '/'));
+    // console.log(this.router.url);
+    // console.log(url);
+    // console.log(navigationExtras.state);
     
     // this.router.onSameUrlNavigation = 'reload';
     // this.router.navigate([url], navigationExtras)

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ModuleService } from '../../services/module.service';
 
 @Component({
   selector: 'layout-form',
@@ -7,95 +8,26 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  public form: any;
-  unsubcribe: any
-  public fields: any[] = [
-    {
-      type: 'text',
-      name: 'firstName',
-      label: 'First Name',
-      value: '',
-      required: true,
-      col: 3,
-    },
-    {
-      type: 'text',
-      name: 'lastName',
-      label: 'Last Name',
-      value: '',
-      required: true,
-      col: 3,
-    },
-    {
-      type: 'text',
-      name: 'email',
-      label: 'Email',
-      value: '',
-      required: true,
-      col: 3,
-    },
-
-    {
-      type: 'file',
-      name: 'picture',
-      label: 'Picture',
-      required: true,
-      col: 3,
-      onUpload: this.onUpload.bind(this)
-    },
-    {
-      type: 'dropdown',
-      name: 'country',
-      label: 'Country',
-      value: 'in',
-      required: true,
-      col: 3,
-      options: [
-        { key: 'in', value: 'India' },
-        { key: 'us', value: 'USA' }
-      ]
-    },
-    {
-      type: 'radio',
-      name: 'country',
-      label: 'Country',
-      value: 'in',
-      required: true,
-      col: 3,
-      options: [
-        { key: 'm', label: 'Male' },
-        { key: 'f', label: 'Female' }
-      ]
-    },
-    {
-      type: 'checkbox',
-      name: 'hobby',
-      label: 'Hobby',
-      required: true,
-      col: 3,
-      options: [
-        { key: 'f', label: 'Fishing' },
-        { key: 'c', label: 'Cooking' }
-      ]
-    }
-  ];
-  constructor() { }
+  fields: any = []
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private moduleService: ModuleService
+  ) {
+     this.moduleService.setCurrentRoute(this.route.snapshot.data.module, this.route.snapshot.data.subModule);
+     const data = this.moduleService.getSubModule();
+    //  console.log(data.fields)
+     this.fields = data.fields;
+  }
 
   ngOnInit(): void {
   }
 
-  
-  onUpload(e: any) {
-    console.log(e);
 
-  }
 
   getFields() {
     return this.fields;
   }
 
-  ngDistroy() {
-    this.unsubcribe();
-  }
 
 }
