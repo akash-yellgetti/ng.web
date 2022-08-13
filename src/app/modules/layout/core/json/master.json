@@ -1,0 +1,61 @@
+[
+    {
+      "parent_code": null,
+      "name": "admin",
+      "label": "Admin",
+      "children": [
+        {
+          "parent_code": "admin",
+          "name": "user",
+          "label": "User"
+        }
+      ]
+    },
+    {
+      "parent_code": null,
+      "name": "form-builder",
+      "label": "Form Builder"
+    },
+    {
+      "parent_code": null,
+      "name": "society",
+      "label": "society",
+      "children": [
+        {
+          "parent_code": "society",
+          "name": "upsert-society",
+          "label": "Upsert"
+        },
+        {
+          "parent_code": "society",
+          "name": "flat",
+          "label": "Flat"
+        },
+        {
+          "parent_code": "society",
+          "name": "tenant",
+          "label": "Tenant"
+        }
+      ]
+    },
+    {
+      "parent_code": null,
+      "name": "service",
+      "label": "Service"
+    },
+    {
+      "parent_code": null,
+      "name": "accounts",
+      "label": "Accounts"
+    },
+    {
+      "parent_code": null,
+      "name": "tracker",
+      "label": "Tracker"
+    },
+    {
+      "parent_code": null,
+      "name": "communication",
+      "label": "Communication"
+    }
+]
