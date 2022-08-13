@@ -12,11 +12,13 @@ import { FormsModule } from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
 import { FormComponent } from './main/view/form/form.component';
 import { FormBuilderModule } from '../form-builder/form-builder.module';
+import { FilterComponent } from './core/shared/filter/filter.component';
+import { BreadcrumbComponent } from './core/shared/breadcrumb/breadcrumb.component';
 
 
 
 @NgModule({
-  declarations: [MainComponent, LeftNavigationComponent, CardComponent, DatatableComponent, PaginatorComponent, AuthComponent, FormComponent],
+  declarations: [MainComponent, LeftNavigationComponent, CardComponent, DatatableComponent, PaginatorComponent, AuthComponent, FormComponent, FilterComponent, BreadcrumbComponent],
   imports: [
     CommonModule,
     MaterialModule,

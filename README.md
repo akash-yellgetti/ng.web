@@ -42,6 +42,10 @@ ng g m modules/layout
 ng generate module modules/layout/layout-routing --flat --module=layout
 ng g c modules/layout/auth --module=layout
 ng g c modules/layout/main --module=layout
+ng g c modules/layout/core/shared/filter --module=layout
+ng g c modules/layout/core/shared/breadcrumb --module=layout
+
+
 ng g c modules/layout/main/left-navigation --module=layout
 ng g c modules/layout/main/view/card --module=layout
 ng g c modules/layout/main/view/datatable --module=layout
