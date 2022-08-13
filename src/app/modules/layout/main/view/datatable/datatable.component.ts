@@ -11,24 +11,14 @@ import * as data from '../../../core/json/data.json';
   templateUrl: './datatable.component.html',
   styleUrls: ['./datatable.component.css']
 })
-export class DatatableComponent implements OnInit {
+export class DatatableComponent implements AfterViewInit {
 
   @Output() public mainHeader = new EventEmitter<string>();
   form: any = {
     name: '',
     action: 'list'
   };
-  paginator: any = {
-    draw: 0,
-    length: 100,
-    pageSize: 10,
-    pageSizeOptions: [10, 25, 50, 100],
-    pageIndex: 1,
-    showFirstLastButtons: true,
-    search: "",
-    sort: {},
-    displayedColumns: []
-  }
+  
   fields: any =  [ {
     name: 'name',
     datatable_data: 'name',
@@ -43,19 +33,36 @@ export class DatatableComponent implements OnInit {
   },
   
 ];
-  items: any = [];
+  // items: any = [];
+  items = new MatTableDataSource(_.get(data, 'default.data'));
   perPage = '25';
-  @ViewChild(MatPaginator) any: MatPaginator | undefined;
-  @ViewChild(MatSort) sort: MatSort | undefined;
+  @ViewChild(MatPaginator) paginator: any = {
+    draw: 0,
+    length: 100,
+    pageSize: 10,
+    pageSizeOptions: [10, 25, 50, 100],
+    pageIndex: 1,
+    showFirstLastButtons: true,
+    search: "",
+    sort: {},
+    displayedColumns: []
+  };
+  @ViewChild(MatSort) sort!: MatSort;
   constructor(
     private router: Router,
     private route: ActivatedRoute) {
-    this.items = _.get(data, 'default.data');
-    this.paginator.displayedColumns = _.union(_.values(_.mapValues(this.fields, 'datatable_data')), ['more']);
-
+    
+    
+    
   }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this.items = new MatTableDataSource(_.get(data, 'default.data'));
+    this.paginator.displayedColumns = _.union(_.values(_.mapValues(this.fields, 'datatable_data')), ['more']);
+    this.items.paginator = this.paginator;
   }
 
   action = (type: string, data?: any) => {

@@ -6,6 +6,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angu
   styleUrls: ['./paginator.component.css']
 })
 export class PaginatorComponent implements OnChanges {
+  @Input() paginator = 0;  
   @Input() totalRecords = 0;  
   @Input() recordsPerPage = 0;  
 
