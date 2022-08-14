@@ -21,6 +21,6 @@ import { FieldDropdownComponent } from './field-dropdown/field-dropdown.componen
     CommonModule,
     MaterialModule
   ],
-  exports: [FieldInputComponent, FieldDropdownComponent, FieldTextareaComponent, FieldAutocompleteComponent, FieldRadioComponent, FieldCheckboxComponent, FieldSelectComponent, FieldFileComponent],
+  exports: [FieldInputComponent, FieldDropdownComponent, FieldTextareaComponent, FieldAutocompleteComponent, FieldRadioComponent, FieldCheckboxComponent, FieldSelectComponent, FieldFileComponent, FieldDatetimeComponent],
 })
 export class FieldModule { }

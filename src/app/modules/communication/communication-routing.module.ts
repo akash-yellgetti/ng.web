@@ -12,31 +12,59 @@ import { SmsComponent } from './sms/sms.component';
 const routes: Routes = [
   {
     path: 'notification',
-    component: NotificationComponent
+    component: NotificationComponent,
+    data: {
+      module: "communication",
+      subModule: "notification",
+    }
   },
   {
     path: 'sms',
-    component: SmsComponent
+    component: SmsComponent,
+    data: {
+      module: "communication",
+      subModule: "sms",
+    }
   },
   {
     path: 'email',
-    component: EmailComponent
+    component: EmailComponent,
+    data: {
+      module: "communication",
+      subModule: "email",
+    }
   },
   {
     path: 'chat',
-    component: ChatComponent
+    component: ChatComponent,
+    data: {
+      module: "communication",
+      subModule: "chat",
+    }
   },
   {
     path: 'group-chat',
-    component: GroupChatComponent
+    component: GroupChatComponent,
+    data: {
+      module: "communication",
+      subModule: "group-chat",
+    }
   },
   {
     path: 'opinion-poll',
-    component: OpinionPollComponent
+    component: OpinionPollComponent,
+    data: {
+      module: "communication",
+      subModule: "opinion-poll",
+    }
   },
   {
     path: 'discussion-forum',
-    component: DiscussionForumComponent
+    component: DiscussionForumComponent,
+    data: {
+      module: "communication",
+      subModule: "discussion-forum",
+    }
   }
 ];
 

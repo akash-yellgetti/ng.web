@@ -47,16 +47,106 @@ const routes: Routes = [
   },
   {
     path: 'role',
-    component: RoleComponent
+    component: RoleComponent,
+    data: {
+      module: "admin",
+      subModule: "role",
+    },
+    children: [
+      {
+        path: 'list',
+        component: DatatableComponent,
+      },
+      {
+        path: 'card',
+        component: CardComponent,
+      },
+    ],
+  },
+  {
+    path: 'role/create',
+    component: FormComponent,
+    data: {
+      module: "admin",
+      subModule: "role",
+    }
+  },
+  {
+    path: 'role/update',
+    component: FormComponent,
+    data: {
+      module: "admin",
+      subModule: "role",
+    }
   },
   {
     path: 'menu',
-    component: MenuComponent
+    component: MenuComponent,
+    data: {
+      module: "admin",
+      subModule: "menu",
+    },
+    children: [
+      {
+        path: 'list',
+        component: DatatableComponent,
+      },
+      {
+        path: 'card',
+        component: CardComponent,
+      },
+    ],
+  },
+  {
+    path: 'menu/create',
+    component: FormComponent,
+    data: {
+      module: "admin",
+      subModule: "menu",
+    }
+  },
+  {
+    path: 'menu/update',
+    component: FormComponent,
+    data: {
+      module: "admin",
+      subModule: "menu",
+    }
   },
   {
     path: 'constant',
-    component: ConstantComponent
-  }
+    component: ConstantComponent,
+    data: {
+      module: "admin",
+      subModule: "constant",
+    },
+    children: [
+      {
+        path: 'list',
+        component: DatatableComponent,
+      },
+      {
+        path: 'card',
+        component: CardComponent,
+      },
+    ],
+  },
+  {
+    path: 'constant/create',
+    component: FormComponent,
+    data: {
+      module: "admin",
+      subModule: "constant",
+    }
+  },
+  {
+    path: 'constant/update',
+    component: FormComponent,
+    data: {
+      module: "admin",
+      subModule: "constant",
+    }
+  },
 ]
 
 @NgModule({

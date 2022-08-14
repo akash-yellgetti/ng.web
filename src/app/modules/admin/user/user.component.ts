@@ -8,7 +8,7 @@ import { ModuleService } from '../../layout/core/services/module.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  private routeData: any = null
+  public data: any = null
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -16,7 +16,8 @@ export class UserComponent implements OnInit {
   ) {
      this.moduleService.setCurrentRoute(this.route.snapshot.data.module, this.route.snapshot.data.subModule);
      const data = this.moduleService.getSubModule();
-     console.log(data);
+    //  console.log(data);
+    this.data = data;
   }
 
   ngOnInit(): void {

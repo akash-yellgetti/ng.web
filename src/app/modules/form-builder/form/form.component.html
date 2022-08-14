@@ -4,8 +4,11 @@
     <div *ngSwitchCase="'text'" class="col-{{field.col}}">
       <app-field-input  [field]="field"></app-field-input>
     </div>
-    <div *ngSwitchCase="'dropdown'" class="col-{{field.col}}">
-      <app-field-dropdown [field]="field"></app-field-dropdown>
+    <div *ngSwitchCase="'select'" class="col-{{field.col}}">
+      <app-field-select  [field]="field"></app-field-select>
+    </div>
+    <div *ngSwitchCase="'date'" class="col-{{field.col}}">
+      <app-field-datetime  [field]="field"></app-field-datetime>
     </div>
     <div *ngSwitchCase="'radio'" class="col-{{field.col}}">
       <app-field-radio  [field]="field"></app-field-radio>
@@ -15,6 +18,9 @@
     </div>
     <div *ngSwitchCase="'file'" class="col-{{field.col}}">
       <app-field-file  [field]="field"></app-field-file>
+    </div>
+    <div *ngSwitchCase="'textbox'" class="col-{{field.col}}">
+      <app-field-textarea  [field]="field"></app-field-textarea>
     </div>
   </ng-container>
 </div>

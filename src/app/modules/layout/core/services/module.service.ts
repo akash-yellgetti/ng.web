@@ -12,7 +12,7 @@ export class ModuleService {
 
   setCurrentRoute = (module: string, subModule: string) => {
     const data =  _.get(master, 'default');
-    console.log(data)
+    // console.log(data)
     this.module = _.find(data, { name: module });
     this.subModule = _.find(this.module?.children, { name: subModule });
   }

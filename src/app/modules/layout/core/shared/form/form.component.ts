@@ -8,7 +8,8 @@ import { ModuleService } from '../../services/module.service';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  fields: any = []
+  data: any = null;
+  // fields: any = [];
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -17,7 +18,7 @@ export class FormComponent implements OnInit {
      this.moduleService.setCurrentRoute(this.route.snapshot.data.module, this.route.snapshot.data.subModule);
      const data = this.moduleService.getSubModule();
     //  console.log(data.fields)
-     this.fields = data.fields;
+     this.data = data;
   }
 
   ngOnInit(): void {
@@ -26,7 +27,7 @@ export class FormComponent implements OnInit {
 
 
   getFields() {
-    return this.fields;
+    return this.data.fields;
   }
 
 
