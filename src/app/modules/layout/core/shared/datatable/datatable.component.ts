@@ -1,7 +1,10 @@
 import { AfterViewInit, Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { PaginationInstance } from 'ngx-pagination';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ModuleService } from '../../services/module.service';
 import * as _ from 'lodash';
 import * as data from '../../json/data.json';
-import { PaginationInstance } from 'ngx-pagination';
+
 
 @Component({
   selector: 'app-datatable',
@@ -20,26 +23,20 @@ export class DatatableComponent implements OnInit {
     sort: {},
     displayedColumns: []
   };
-  fields: any =  [ 
-    {
-      name: 'Name',
-      datatable_data: 'name',
-    },
-    {
-      name: 'Position',
-      datatable_data: 'position',
-    },
-    {
-      name: 'Salary',
-      datatable_data: 'salary',
-    },
-  
-  ];
+  fields: any =  [];
+  data: any = null;
   items: any = [];
   config: PaginationInstance = { itemsPerPage: 15, currentPage: 1 };
-  constructor() { 
-    this.items = _.get(data, 'default.data');
-    // console.log(this.items);
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private moduleService: ModuleService
+  ) {
+     this.moduleService.setCurrentRoute(this.route.snapshot.data.module, this.route.snapshot.data.subModule);
+     const data = this.moduleService.getSubModule();
+    //  console.log(data.fields)
+     this.data = data;
+     this.fields = data.fields;
   }
 
   ngOnInit(): void {

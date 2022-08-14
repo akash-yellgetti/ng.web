@@ -17,10 +17,18 @@ const routes: Routes = [
       {
         path: 'list',
         component: DatatableComponent,
+        data: {
+          module: "admin",
+          subModule: "user",
+        }
       },
       {
         path: 'card',
         component: CardComponent,
+        data: {
+          module: "admin",
+          subModule: "user",
+        }
       },
     ],
     data: {
@@ -90,10 +98,18 @@ const routes: Routes = [
       {
         path: 'list',
         component: DatatableComponent,
+        data: {
+          module: "admin",
+          subModule: "menu",
+        }
       },
       {
         path: 'card',
         component: CardComponent,
+        data: {
+          module: "admin",
+          subModule: "menu",
+        }
       },
     ],
   },
