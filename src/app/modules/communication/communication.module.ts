@@ -10,6 +10,7 @@ import { GroupChatComponent } from './group-chat/group-chat.component';
 import { OpinionPollComponent } from './opinion-poll/opinion-poll.component';
 import { DiscussionForumComponent } from './discussion-forum/discussion-forum.component';
 import { LayoutModule } from '../layout/layout.module';
+import { MaterialModule } from '../common/material.module';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { LayoutModule } from '../layout/layout.module';
   ],
   imports: [
     CommonModule,
+    MaterialModule,
     LayoutModule,
     CommunicationRoutingModule
   ]
