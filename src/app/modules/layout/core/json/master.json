@@ -320,12 +320,120 @@
         "name": "role",
         "label": "Role",
         "url": "/main/admin/role",
+        "fields": [
+          
+          {
+            "field_id": 1497,
+            "form_code": "role",
+            "name": "code",
+            "label": "Code",
+            "data_type": "string",
+            "size": "255",
+            "default": null,
+            "nullable": 1,
+            "unsigned": 0,
+            "index": null,
+            "dependent": null,
+            "foreign_table": null,
+            "foreign_key": null,
+            "foreign_value": null,
+            "type": "text",
+            "col": 4,
+            "order": 4,
+            "options": null,
+            "form": 1,
+            "datatable": 1,
+            "import": 1,
+            "export": 1,
+            "validations": null,
+            "active": 1,
+            "deleted": 0,
+            "datatable_data": "middle_name",
+            "datatable_name": "user.middle_name",
+            "select": "user.middle_name as middle_name",
+            "table": "user",
+            "data": "user.middle_name"
+          },
+          {
+            "field_id": 1498,
+            "form_code": "role",
+            "name": "Label",
+            "label": "label",
+            "data_type": "string",
+            "size": "255",
+            "default": null,
+            "nullable": 0,
+            "unsigned": 0,
+            "index": null,
+            "dependent": null,
+            "foreign_table": null,
+            "foreign_key": null,
+            "foreign_value": null,
+            "type": "text",
+            "col": 4,
+            "order": 5,
+            "options": null,
+            "form": 1,
+            "datatable": 1,
+            "import": 1,
+            "export": 1,
+            "validations": "required|alpha",
+            "active": 1,
+            "deleted": 0,
+            "datatable_data": "last_name",
+            "datatable_name": "user.last_name",
+            "select": "user.last_name as last_name",
+            "table": "user",
+            "data": "user.last_name"
+          },
+          {
+            "field_id": 1501,
+            "form_code": "role",
+            "name": "active",
+            "label": "Active",
+            "data_type": "string",
+            "size": "255",
+            "default": null,
+            "nullable": 1,
+            "unsigned": 0,
+            "index": null,
+            "dependent": null,
+            "foreign_table": null,
+            "foreign_key": null,
+            "foreign_value": null,
+            "type": "select",
+            "col": 4,
+            "order": 8,
+            "options": [
+              {
+                "key": 1,
+                "value": "Yes"
+              },
+              {
+                "key": 0,
+                "value": "No"
+              }
+            ],
+            "form": 1,
+            "datatable": 1,
+            "import": 1,
+            "export": 1,
+            "validations": "required",
+            "active": 1,
+            "deleted": 0,
+            "datatable_data": "email",
+            "datatable_name": "user.email",
+            "select": "user.email as email",
+            "table": "user",
+            "data": "user.email"
+          }
+        ],
         "urls": {
-          "datatable": "/main/admin/user/list",
-          "card": "/main/admin/user/card",
-          "create": "/main/admin/user/create",
-          "update": "/main/admin/user/create",
-          "delete": "/main/admin/user/delete"
+          "datatable": "/main/admin/role/list",
+          "card": "/main/admin/role/card",
+          "create": "/main/admin/role/create",
+          "update": "/main/admin/role/create",
+          "delete": "/main/admin/role/delete"
         }
       },
       {
@@ -548,12 +656,184 @@
         "name": "constant",
         "label": "constant",
         "url": "/main/admin/constant",
+        "fields": [
+          
+          {
+            "field_id": 1497,
+            "form_code": "constant",
+            "name": "column",
+            "label": "Column",
+            "data_type": "string",
+            "size": "255",
+            "default": null,
+            "nullable": 1,
+            "unsigned": 0,
+            "index": null,
+            "dependent": null,
+            "foreign_table": null,
+            "foreign_key": null,
+            "foreign_value": null,
+            "type": "text",
+            "col": 3,
+            "order": 4,
+            "options": null,
+            "form": 1,
+            "datatable": 1,
+            "import": 1,
+            "export": 1,
+            "validations": null,
+            "active": 1,
+            "deleted": 0,
+            "datatable_data": "middle_name",
+            "datatable_name": "user.middle_name",
+            "select": "user.middle_name as middle_name",
+            "table": "user",
+            "data": "user.middle_name"
+          },
+          {
+            "field_id": 1497,
+            "form_code": "constant",
+            "name": "code",
+            "label": "Code",
+            "data_type": "string",
+            "size": "255",
+            "default": null,
+            "nullable": 1,
+            "unsigned": 0,
+            "index": null,
+            "dependent": null,
+            "foreign_table": null,
+            "foreign_key": null,
+            "foreign_value": null,
+            "type": "text",
+            "col": 3,
+            "order": 4,
+            "options": null,
+            "form": 1,
+            "datatable": 1,
+            "import": 1,
+            "export": 1,
+            "validations": null,
+            "active": 1,
+            "deleted": 0,
+            "datatable_data": "middle_name",
+            "datatable_name": "user.middle_name",
+            "select": "user.middle_name as middle_name",
+            "table": "user",
+            "data": "user.middle_name"
+          },
+          {
+            "field_id": 1498,
+            "form_code": "constant",
+            "name": "Label",
+            "label": "label",
+            "data_type": "string",
+            "size": "255",
+            "default": null,
+            "nullable": 0,
+            "unsigned": 0,
+            "index": null,
+            "dependent": null,
+            "foreign_table": null,
+            "foreign_key": null,
+            "foreign_value": null,
+            "type": "text",
+            "col": 3,
+            "order": 5,
+            "options": null,
+            "form": 1,
+            "datatable": 1,
+            "import": 1,
+            "export": 1,
+            "validations": "required|alpha",
+            "active": 1,
+            "deleted": 0,
+            "datatable_data": "last_name",
+            "datatable_name": "user.last_name",
+            "select": "user.last_name as last_name",
+            "table": "user",
+            "data": "user.last_name"
+          },
+          {
+            "field_id": 1501,
+            "form_code": "constant",
+            "name": "active",
+            "label": "Active",
+            "data_type": "string",
+            "size": "255",
+            "default": null,
+            "nullable": 1,
+            "unsigned": 0,
+            "index": null,
+            "dependent": null,
+            "foreign_table": null,
+            "foreign_key": null,
+            "foreign_value": null,
+            "type": "select",
+            "col": 3,
+            "order": 8,
+            "options": [
+              {
+                "key": 1,
+                "value": "Yes"
+              },
+              {
+                "key": 0,
+                "value": "No"
+              }
+            ],
+            "form": 1,
+            "datatable": 1,
+            "import": 1,
+            "export": 1,
+            "validations": "required",
+            "active": 1,
+            "deleted": 0,
+            "datatable_data": "email",
+            "datatable_name": "user.email",
+            "select": "user.email as email",
+            "table": "user",
+            "data": "user.email"
+          },
+          {
+            "field_id": 1498,
+            "form_code": "constant",
+            "name": "description",
+            "label": "Description",
+            "data_type": "string",
+            "size": "255",
+            "default": null,
+            "nullable": 0,
+            "unsigned": 0,
+            "index": null,
+            "dependent": null,
+            "foreign_table": null,
+            "foreign_key": null,
+            "foreign_value": null,
+            "type": "text",
+            "col": 12,
+            "order": 5,
+            "options": null,
+            "form": 1,
+            "datatable": 1,
+            "import": 1,
+            "export": 1,
+            "validations": "required|alpha",
+            "active": 1,
+            "deleted": 0,
+            "datatable_data": "last_name",
+            "datatable_name": "user.last_name",
+            "select": "user.last_name as last_name",
+            "table": "user",
+            "data": "user.last_name"
+          }
+        ],
         "urls": {
-          "datatable": "/main/admin/user/list",
-          "card": "/main/admin/user/card",
-          "create": "/main/admin/user/create",
-          "update": "/main/admin/user/create",
-          "delete": "/main/admin/user/delete"
+          "datatable": "/main/admin/constant/list",
+          "card": "/main/admin/constant/card",
+          "create": "/main/admin/constant/create",
+          "update": "/main/admin/constant/create",
+          "delete": "/main/admin/constant/delete"
         }
       }
     ]
@@ -561,25 +841,32 @@
   {
     "parent_code": null,
     "name": "form-builder",
-    "label": "Form Builder"
+    "label": "Form Builder",
+    "children": [
+      {
+        "parent_code": "form-builder",
+        "name": "create",
+        "label": "create"
+      }
+    ]
   },
   {
     "parent_code": null,
-    "name": "society",
-    "label": "society",
+    "name": "socio-safety",
+    "label": "socio-safety",
     "children": [
       {
-        "parent_code": "society",
-        "name": "upsert-society",
-        "label": "Upsert"
+        "parent_code": "socio-safety",
+        "name": "society",
+        "label": "society"
       },
       {
-        "parent_code": "society",
+        "parent_code": "socio-safety",
         "name": "flat",
         "label": "Flat"
       },
       {
-        "parent_code": "society",
+        "parent_code": "socio-safety",
         "name": "tenant",
         "label": "Tenant"
       },
@@ -605,17 +892,66 @@
   {
     "parent_code": null,
     "name": "service",
-    "label": "Service"
+    "label": "Service",
+    "children": [
+      {
+        "parent_code": "service",
+        "name": "event",
+        "label": "Event",
+        "url": "/main/communication/Event"
+      },
+      {
+        "parent_code": "service",
+        "name": "complaint",
+        "label": "Complaints",
+        "url": "/main/communication/Event"
+      }
+    ]
   },
   {
     "parent_code": null,
     "name": "accounts",
-    "label": "Accounts"
+    "label": "Accounts",
+    "children": [
+      {
+        "parent_code": "accounts",
+        "name": "ledger",
+        "label": "Ledger",
+        "url": "/main/accounts/ledger"
+      },
+      {
+        "parent_code": "accounts",
+        "name": "voucher",
+        "label": "Voucher",
+        "url": "/main/accounts/voucher"
+      }
+      
+    ]
   },
   {
     "parent_code": null,
     "name": "tracker",
-    "label": "Tracker"
+    "label": "Tracker",
+    "children": [
+      {
+        "parent_code": "tracker",
+        "name": "vehicle",
+        "label": "Vehicle",
+        "url": "/main/tracker/vehicle"
+      },
+      {
+        "parent_code": "tracker",
+        "name": "vendor",
+        "label": "Vendor",
+        "url": "/main/tracker/vendor"
+      },
+      {
+        "parent_code": "tracker",
+        "name": "visitor",
+        "label": "Visitor",
+        "url": "/main/tracker/visitor"
+      }
+    ]
   },
   {
     "parent_code": null,

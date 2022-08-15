@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-field-textarea',
   templateUrl: './field-textarea.component.html',
-  styleUrls: ['./field-textarea.component.scss']
+  styleUrls: ['./field-textarea.component.css']
 })
 export class FieldTextareaComponent implements OnInit {
   @Input() field: any;

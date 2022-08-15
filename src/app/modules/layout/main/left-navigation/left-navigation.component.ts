@@ -13,25 +13,30 @@ export class LeftNavigationComponent implements OnInit {
   menu = [
     {
       name: 'Escritorio',
+      label: 'Escritorio',
       icon: 'desktop_windows',
       url: 'escritorio',
     },        
     {
       name: 'Entradas GADE',
+      label: 'Entradas GADE',
       icon: 'ballot',
       url: 'entradasGADE',
     },
     {
       name: 'Expedientes',
+      label: 'Expedientes',
       icon: 'description',          
       children: [
         {
           name: 'Mis Expedientes',
+          label: 'Mis Expedientes',
           icon: 'how_to_reg',
           url: '/misexpedientes'
         },
         { 
           name: 'Todos',
+          label: 'Todos',
           icon: 'waves',
           url: '/todos'
         }
@@ -39,10 +44,12 @@ export class LeftNavigationComponent implements OnInit {
     },
     {
       name: 'Perfiles',
+      label: 'Perfiles',
       icon: 'group',
       children: [
           {
             name: 'Búsqueda Perfil',
+            label: 'Búsqueda Perfil',
             icon: 'search',
             url: '/busquedaperfiles'
           }
