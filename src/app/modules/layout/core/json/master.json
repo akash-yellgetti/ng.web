@@ -17,6 +17,7 @@
             "type": "text",
             "data_type": "string",
             "size": "255",
+            "col": 3,
             "datatable": 1
           },
           {
@@ -26,6 +27,7 @@
             "type": "text",
             "data_type": "string",
             "size": "255",
+            "col": 3,
             "datatable": 1
           }
         ],

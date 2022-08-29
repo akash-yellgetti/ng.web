@@ -33,32 +33,31 @@ const routes: Routes = [
           subModule: "user",
         }
       },
-      {
-        path: 'create',
-        component: FormComponent,
-        outlet: 'main',
-        data: {
-          module: "admin",
-          subModule: "user",
-        }
-      },
-      {
-        path: 'update',
-        component: FormComponent,
-        outlet: 'main',
-        data: {
-          module: "admin",
-          subModule: "user",
-        }
-      }
+      
     ],
     data: {
       module: "admin",
       subModule: "user",
-    }
+    },
+    
     
   },
-  
+  {
+    path: 'user/create',
+    component: FormComponent,
+    data: {
+      module: "admin",
+      subModule: "user",
+    }
+  },
+  {
+    path: 'user/update',
+    component: FormComponent,
+    data: {
+      module: "admin",
+      subModule: "user",
+    }
+  },
   {
     path: 'role',
     component: RoleComponent,
