@@ -7,21 +7,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalFinanceComponent implements OnInit {
   public tabs = [
-    
+
     {
       key: "needs",
       value: "Needs",
       children: [
         {
-          key: "bills",
-          value: "Bills",
-        },
-        {
-          key: "loan",
-          value: "Loans",
-        },
-        
-        
+          "key": "rent",
+          "value": "Rent",
+        }, {
+          "key": "food",
+          "value": "Food",
+        }, {
+          "key": "electricity",
+          "value": "Electricity",
+        }, {
+          "key": "mobile",
+          "value": "Mobile",
+        }, {
+          "key": "clothes",
+          "value": "Clothes",
+        }, {
+          "key": "transport",
+          "value": "Transport",
+        }, {
+          "key": "internet",
+          "value": "Internet",
+        }
+
+
       ]
     },
     {
@@ -29,8 +43,20 @@ export class PersonalFinanceComponent implements OnInit {
       value: "Wants",
       children: [
         {
-          key: "vacation",
-          value: "Vacation",
+          "key": "car-bike",
+          "value": "Car/Bike"
+        }, {
+          "key": "phone",
+          "value": "Phone"
+        }, {
+          "key": "vacation",
+          "value": "Vacation"
+        }, {
+          "key": "clothes",
+          "value": "Clothes"
+        }, {
+          "key": "dining out",
+          "value": "Dining Out"
         }
       ]
     },
@@ -38,6 +64,14 @@ export class PersonalFinanceComponent implements OnInit {
       key: "investment",
       value: "Investment",
       children: [
+        {
+          key: "insurance",
+          value: "Insurance",
+        },
+        {
+          key: "emergency",
+          value: "Emergency",
+        },
         {
           key: "fd",
           value: "Fixed Deposit",
@@ -78,10 +112,11 @@ export class PersonalFinanceComponent implements OnInit {
           key: "real-estate",
           value: "Real Estate",
         }
+
       ]
     }
-   
-    
+
+
   ]
   constructor() { }
 
