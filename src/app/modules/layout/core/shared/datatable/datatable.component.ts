@@ -33,10 +33,13 @@ export class DatatableComponent implements OnInit {
     private moduleService: ModuleService
   ) {
      this.moduleService.setCurrentRoute(this.route.snapshot.data.module, this.route.snapshot.data.subModule);
-     const data = this.moduleService.getSubModule();
+     this.items = _.get(data, 'default.data');
+     const moduleData = this.moduleService.getSubModule();
     //  console.log(data.fields)
-     this.data = data;
-     this.fields = data.fields;
+     this.data = moduleData;
+     this.fields = moduleData.fields;
+    //  console.log(this.items)
+    
   }
 
   ngOnInit(): void {

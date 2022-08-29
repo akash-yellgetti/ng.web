@@ -2,7 +2,7 @@
   <div *ngFor="let item of items | paginate: config" class="col-4 mb-4">
     <mat-card class="card">
       <mat-card-header>
-        <mat-card-title> {{item.name}} </mat-card-title>
+        <mat-card-title> {{ item.name }} </mat-card-title>
         <mat-card-subtitle>{{ item.position }}</mat-card-subtitle>
         <!-- <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
           <mat-icon>more_vert</mat-icon>
@@ -25,5 +25,4 @@
     </mat-card>
   </div>
   <pagination-controls (pageChange)="handlePageChange($event)"></pagination-controls>
- 
 </div>
