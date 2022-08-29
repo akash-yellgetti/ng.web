@@ -13,10 +13,12 @@ const routes: Routes = [
   {
     path: 'user',
     component: UserComponent,
+    
     children: [
       {
         path: 'list',
         component: DatatableComponent,
+        
         data: {
           module: "admin",
           subModule: "user",
@@ -25,11 +27,30 @@ const routes: Routes = [
       {
         path: 'card',
         component: CardComponent,
+        
         data: {
           module: "admin",
           subModule: "user",
         }
       },
+      {
+        path: 'create',
+        component: FormComponent,
+        outlet: 'main',
+        data: {
+          module: "admin",
+          subModule: "user",
+        }
+      },
+      {
+        path: 'update',
+        component: FormComponent,
+        outlet: 'main',
+        data: {
+          module: "admin",
+          subModule: "user",
+        }
+      }
     ],
     data: {
       module: "admin",
@@ -37,22 +58,7 @@ const routes: Routes = [
     }
     
   },
-  {
-    path: 'user/create',
-    component: FormComponent,
-    data: {
-      module: "admin",
-      subModule: "user",
-    }
-  },
-  {
-    path: 'user/update',
-    component: FormComponent,
-    data: {
-      module: "admin",
-      subModule: "user",
-    }
-  },
+  
   {
     path: 'role',
     component: RoleComponent,

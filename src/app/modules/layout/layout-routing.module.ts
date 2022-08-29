@@ -15,6 +15,10 @@ const routes: Routes = [
       {
           path: 'communication',
           loadChildren: () => import('../communication/communication.module').then(m => m.CommunicationModule)
+      },
+      {
+          path: 'user',
+          loadChildren: () => import('../user/user.module').then(m => m.UserModule)
       }
     ]
   },

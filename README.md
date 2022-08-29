@@ -31,7 +31,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 ng g m modules/maintenance --routing=true
-ng g m modules/user --routing=true
 
 
 
@@ -61,7 +60,8 @@ ng generate @angular/material:navigation modules/layout/main/left-navigation --m
 
 
 
-
+ng g m modules/personal-finance --routing=true
+ng g c modules/personal-financehome --module=personal-finance
 
 
 ng g m modules/auth --routing=true
@@ -75,6 +75,10 @@ ng g c modules/admin/user --module=admin
 ng g c modules/admin/role --module=admin
 ng g c modules/admin/menu --module=admin
 ng g c modules/admin/constant --module=admin
+
+
+ng g m modules/user --routing=true
+ng g c modules/user/personal-finance --module=user
 
 
 
