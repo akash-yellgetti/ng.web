@@ -1,37 +1,16 @@
 <mat-nav-list>
-    <span *ngFor="let item of menu">
-      <span *ngIf="item.children && item.children.length > 0">
-        <mat-accordion>
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <!-- Cabeceras del submenu -->
-                <div fxLayout="row" fxLayoutAlign="space-between center" > 
-                  <mat-icon>{{item.icon}}</mat-icon>
-                  {{item.label}}
-                </div>
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <span *ngFor="let child of item.children">
-              <mat-list-item (click)="redirect(child)">
-                <!-- Entradas de cada submenú  -->
-                <div fxLayout="row" fxLayoutAlign="space-between center" > 
-                  <mat-icon>{{child.icon}}</mat-icon>
-                  {{child.label}}
-                </div>
-              </mat-list-item>
-            </span>
-          </mat-expansion-panel>
-        </mat-accordion>
-      </span>
-      <span *ngIf="!item.children || item.children.length === 0">
-        <mat-list-item routerLink="[item.route]">
-          <!-- Entradas principales -->
-          <div fxLayout="row" fxLayoutAlign="space-between center">
-            <mat-icon>{{item.icon}}</mat-icon>
+  <mat-nav-list>
+    <mat-accordion>
+      <mat-expansion-panel  *ngFor="let item of menu; let menuIndex = index" class="remove-accordion-spacing" >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
             {{item.label}}
-          </div>
-        </mat-list-item>
-      </span>
-    </span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list >
+          <mat-list-item *ngFor="let child of item.children; let childIndex = index"> {{ child.label }} </mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
   </mat-nav-list>
+</mat-nav-list>

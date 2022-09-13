@@ -33,3 +33,11 @@
   table {
     width: 100%;
   }
+
+  .mat-list-base{
+    padding-top: 0;
+  }
+  
+.remove-accordion-spacing {
+  margin: 0px;
+}
