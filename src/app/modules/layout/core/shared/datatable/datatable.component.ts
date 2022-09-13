@@ -71,10 +71,16 @@ export class DatatableComponent implements OnInit {
     // this.list();
   }
 
-  sortData = (event: any) => {
-    this.paginator.sort = event;
-    this.paginator.pageIndex = 0;
+  sortData = (evt: any) => {
+    // this.paginator.sort = event;
+    // this.paginator.pageIndex = 0;
     // this.list();
+    console.log(evt)
+    evt.direction = evt.direction || 'asc';
+    const items = _.orderBy(_.cloneDeep(this.items), [evt.active], [evt.direction]);
+    console.log(items)
+    this.items = items;
+    
   }
 }
 

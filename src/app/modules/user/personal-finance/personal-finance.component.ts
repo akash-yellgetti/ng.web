@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./personal-finance.component.css']
 })
 export class PersonalFinanceComponent implements OnInit {
+  panelOpenState = false;
   public tabs = [
 
     {
