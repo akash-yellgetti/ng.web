@@ -15,7 +15,7 @@ export class NotificationComponent implements OnInit {
     private moduleService: ModuleService
   ) {
     this.moduleService.set(this.route.snapshot.data);
-    this.router.navigate(['card'], {relativeTo: this.route});
+    // this.router.navigate(['card'], {relativeTo: this.route});
   }
 
   ngOnInit(): void {

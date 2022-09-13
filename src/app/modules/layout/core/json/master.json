@@ -378,7 +378,7 @@
       {
         "parent_code": "admin",
         "name": "constant",
-        "label": "constant",
+        "label": "Constant",
         "url": "/main/admin/constant",
         "fields": [
           
@@ -756,17 +756,20 @@
       {
         "parent_code": "socio-safety",
         "name": "society",
-        "label": "Society"
+        "label": "Society",
+        "url": "/main/socio-safety/society"
       },
       {
         "parent_code": "socio-safety",
         "name": "flat",
-        "label": "Flat"
+        "label": "Flat",
+        "url": "/main/socio-safety/flat"
       },
       {
         "parent_code": "socio-safety",
         "name": "members",
-        "label": "Members"
+        "label": "Members",
+        "url": "/main/socio-safety/members"
       },
       {
         "parent_code": "society",
@@ -776,12 +779,14 @@
           {
             "parent_code": "maintenance",
             "name": "template",
-            "label": "Template"
+            "label": "Template",
+            "url": "/main/socio-safety/maintenance/template"
           },
           {
             "parent_code": "maintenance",
             "name": "generate",
-            "label": "Generate"
+            "label": "Generate",
+            "url": "/main/socio-safety/maintenance/generate "
           }
         ]
       }
@@ -802,7 +807,7 @@
         "parent_code": "service",
         "name": "complaints",
         "label": "Complaints",
-        "url": "/main/service/Event"
+        "url": "/main/service/complaints"
       },
       {
         "parent_code": "service",
@@ -998,15 +1003,15 @@
       },
       {
         "parent_code": "communication",
-        "name": "poll",
+        "name": "opinion-poll",
         "label": "Opinion polls",
-        "url": "/main/communication/email"
+        "url": "/main/communication/opinion-poll"
       },
       {
         "parent_code": "communication",
-        "name": "forum",
+        "name": "discussion-forum",
         "label": "Discussion Forum",
-        "url": "/main/communication/forum"
+        "url": "/main/communication/discussion-forum"
       },
       {
         "parent_code": "communication",
@@ -1016,9 +1021,9 @@
       },
       {
         "parent_code": "communication",
-        "name": "groups",
+        "name": "groups-chat",
         "label": "Groups Chat",
-        "url": "/main/communication/groups"
+        "url": "/main/communication/groups-chat"
       }
       
     ]

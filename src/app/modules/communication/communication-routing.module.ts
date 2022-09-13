@@ -43,11 +43,11 @@ const routes: Routes = [
     }
   },
   {
-    path: 'group-chat',
+    path: 'groups-chat',
     component: GroupChatComponent,
     data: {
       module: "communication",
-      subModule: "group-chat",
+      subModule: "groups-chat",
     }
   },
   {

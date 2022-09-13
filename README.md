@@ -35,9 +35,29 @@ ng g m modules/maintenance --routing=true
 
 
 ng g m modules/tracker --routing=true
+ng g c modules/tracker/vendor --module=tracker
+ng g c modules/tracker/vehicle --module=tracker
 ng g c modules/tracker/visitor --module=tracker
 
-ng g m modules/common/ngx 
+
+ng g m modules/accounts --routing=true
+ng g c modules/accounts/voucher --module=accounts
+ng g c modules/accounts/ledger --module=accounts
+
+
+ng g m modules/service --routing=true
+ng g c modules/service/meetings --module=service
+ng g c modules/service/events --module=service
+ng g c modules/service/complaints --module=service
+
+
+ng g m modules/socio-safety --routing=true
+ng g c modules/socio-safety/society --module=socio-safety
+ng g c modules/socio-safety/flat --module=socio-safety
+ng g c modules/socio-safety/members --module=socio-safety
+
+
+
 
 
 ng g m modules/layout
