@@ -11,14 +11,9 @@ export class FormComponent implements OnInit {
   data: any = null;
   // fields: any = [];
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
     private moduleService: ModuleService
   ) {
-     this.moduleService.setCurrentRoute(this.route.snapshot.data.module, this.route.snapshot.data.subModule);
-     const data = this.moduleService.getSubModule();
-    //  console.log(data.fields)
-     this.data = data;
+    this.data = this.moduleService.getSubModule();
   }
 
   ngOnInit(): void {

@@ -14,12 +14,11 @@ export class UserComponent implements OnInit {
     private route: ActivatedRoute,
     private moduleService: ModuleService
   ) {
-     this.moduleService.setCurrentRoute(this.route.snapshot.data.module, this.route.snapshot.data.subModule);
-     const data = this.moduleService.getSubModule();
-    //  console.log(data);
-    this.data = data;
+    this.moduleService.set(this.route.snapshot.data);
+    this.router.navigate(['card'], {relativeTo: this.route});
   }
 
   ngOnInit(): void {
+    this.data = this.moduleService.getSubModule();
   }
 }

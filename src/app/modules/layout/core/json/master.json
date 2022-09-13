@@ -559,30 +559,204 @@
           "update": "/main/admin/constant/create",
           "delete": "/main/admin/constant/delete"
         }
-      }
-    ]
-  },
-  {
-    "parent_code": null,
-    "name": "form-builder",
-    "label": "Form Builder",
-    "children": [
+      },
       {
-        "parent_code": "form-builder",
-        "name": "create",
-        "label": "create"
+        "parent_code": "admin",
+        "name": "form",
+        "label": "Form",
+        "url": "/main/admin/form",
+        "fields": [
+          
+          {
+            "field_id": 1497,
+            "form_code": "constant",
+            "name": "column",
+            "label": "Column",
+            "data_type": "string",
+            "size": "255",
+            "default": null,
+            "nullable": 1,
+            "unsigned": 0,
+            "index": null,
+            "dependent": null,
+            "foreign_table": null,
+            "foreign_key": null,
+            "foreign_value": null,
+            "type": "text",
+            "col": 3,
+            "order": 4,
+            "options": null,
+            "form": 1,
+            "datatable": 1,
+            "import": 1,
+            "export": 1,
+            "validations": null,
+            "active": 1,
+            "deleted": 0,
+            "datatable_data": "middle_name",
+            "datatable_name": "user.middle_name",
+            "select": "user.middle_name as middle_name",
+            "table": "user",
+            "data": "user.middle_name"
+          },
+          {
+            "field_id": 1497,
+            "form_code": "constant",
+            "name": "code",
+            "label": "Code",
+            "data_type": "string",
+            "size": "255",
+            "default": null,
+            "nullable": 1,
+            "unsigned": 0,
+            "index": null,
+            "dependent": null,
+            "foreign_table": null,
+            "foreign_key": null,
+            "foreign_value": null,
+            "type": "text",
+            "col": 3,
+            "order": 4,
+            "options": null,
+            "form": 1,
+            "datatable": 1,
+            "import": 1,
+            "export": 1,
+            "validations": null,
+            "active": 1,
+            "deleted": 0,
+            "datatable_data": "middle_name",
+            "datatable_name": "user.middle_name",
+            "select": "user.middle_name as middle_name",
+            "table": "user",
+            "data": "user.middle_name"
+          },
+          {
+            "field_id": 1498,
+            "form_code": "constant",
+            "name": "Label",
+            "label": "label",
+            "data_type": "string",
+            "size": "255",
+            "default": null,
+            "nullable": 0,
+            "unsigned": 0,
+            "index": null,
+            "dependent": null,
+            "foreign_table": null,
+            "foreign_key": null,
+            "foreign_value": null,
+            "type": "text",
+            "col": 3,
+            "order": 5,
+            "options": null,
+            "form": 1,
+            "datatable": 1,
+            "import": 1,
+            "export": 1,
+            "validations": "required|alpha",
+            "active": 1,
+            "deleted": 0,
+            "datatable_data": "last_name",
+            "datatable_name": "user.last_name",
+            "select": "user.last_name as last_name",
+            "table": "user",
+            "data": "user.last_name"
+          },
+          {
+            "field_id": 1501,
+            "form_code": "constant",
+            "name": "active",
+            "label": "Active",
+            "data_type": "string",
+            "size": "255",
+            "default": null,
+            "nullable": 1,
+            "unsigned": 0,
+            "index": null,
+            "dependent": null,
+            "foreign_table": null,
+            "foreign_key": null,
+            "foreign_value": null,
+            "type": "select",
+            "col": 3,
+            "order": 8,
+            "options": [
+              {
+                "key": 1,
+                "value": "Yes"
+              },
+              {
+                "key": 0,
+                "value": "No"
+              }
+            ],
+            "form": 1,
+            "datatable": 1,
+            "import": 1,
+            "export": 1,
+            "validations": "required",
+            "active": 1,
+            "deleted": 0,
+            "datatable_data": "email",
+            "datatable_name": "user.email",
+            "select": "user.email as email",
+            "table": "user",
+            "data": "user.email"
+          },
+          {
+            "field_id": 1498,
+            "form_code": "constant",
+            "name": "description",
+            "label": "Description",
+            "data_type": "string",
+            "size": "255",
+            "default": null,
+            "nullable": 0,
+            "unsigned": 0,
+            "index": null,
+            "dependent": null,
+            "foreign_table": null,
+            "foreign_key": null,
+            "foreign_value": null,
+            "type": "text",
+            "col": 12,
+            "order": 5,
+            "options": null,
+            "form": 1,
+            "datatable": 1,
+            "import": 1,
+            "export": 1,
+            "validations": "required|alpha",
+            "active": 1,
+            "deleted": 0,
+            "datatable_data": "last_name",
+            "datatable_name": "user.last_name",
+            "select": "user.last_name as last_name",
+            "table": "user",
+            "data": "user.last_name"
+          }
+        ],
+        "urls": {
+          "datatable": "/main/admin/constant/list",
+          "card": "/main/admin/constant/card",
+          "create": "/main/admin/constant/create",
+          "update": "/main/admin/constant/create",
+          "delete": "/main/admin/constant/delete"
+        }
       }
     ]
   },
+  
   {
     "parent_code": null,
     "name": "socio-safety",
-    "label": "socio-safety",
+    "label": "Socio-safety",
     "children": [
       {
         "parent_code": "socio-safety",
         "name": "society",
-        "label": "society"
+        "label": "Society"
       },
       {
         "parent_code": "socio-safety",
@@ -591,8 +765,8 @@
       },
       {
         "parent_code": "socio-safety",
-        "name": "tenant",
-        "label": "Tenant"
+        "name": "members",
+        "label": "Members"
       },
       {
         "parent_code": "society",
@@ -620,15 +794,21 @@
     "children": [
       {
         "parent_code": "service",
-        "name": "event",
-        "label": "Event",
-        "url": "/main/communication/Event"
+        "name": "meetings",
+        "label": "Meetings",
+        "url": "/main/service/meetings"
       },
       {
         "parent_code": "service",
-        "name": "complaint",
+        "name": "complaints",
         "label": "Complaints",
-        "url": "/main/communication/Event"
+        "url": "/main/service/Event"
+      },
+      {
+        "parent_code": "service",
+        "name": "events",
+        "label": "Events",
+        "url": "/main/service/events"
       }
     ]
   },
@@ -818,10 +998,29 @@
       },
       {
         "parent_code": "communication",
-        "name": "email",
-        "label": "Email",
+        "name": "poll",
+        "label": "Opinion polls",
         "url": "/main/communication/email"
+      },
+      {
+        "parent_code": "communication",
+        "name": "forum",
+        "label": "Discussion Forum",
+        "url": "/main/communication/forum"
+      },
+      {
+        "parent_code": "communication",
+        "name": "chat",
+        "label": "Chat",
+        "url": "/main/communication/chat"
+      },
+      {
+        "parent_code": "communication",
+        "name": "groups",
+        "label": "Groups Chat",
+        "url": "/main/communication/groups"
       }
+      
     ]
   },
   {
@@ -832,7 +1031,7 @@
       {
         "parent_code": "user",
         "name": "personal-finance",
-        "label": "personal-finance",
+        "label": "Personal-Finance",
         "url": "/main/user/personal-finance",
         "fields": [
           

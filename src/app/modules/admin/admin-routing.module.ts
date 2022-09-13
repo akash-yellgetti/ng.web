@@ -13,50 +13,28 @@ const routes: Routes = [
   {
     path: 'user',
     component: UserComponent,
-    
-    children: [
-      {
-        path: 'list',
-        component: DatatableComponent,
-        
-        data: {
-          module: "admin",
-          subModule: "user",
-        }
-      },
-      {
-        path: 'card',
-        component: CardComponent,
-        
-        data: {
-          module: "admin",
-          subModule: "user",
-        }
-      },
-      
-    ],
     data: {
       module: "admin",
       subModule: "user",
     },
-    
-    
-  },
-  {
-    path: 'user/create',
-    component: FormComponent,
-    data: {
-      module: "admin",
-      subModule: "user",
-    }
-  },
-  {
-    path: 'user/update',
-    component: FormComponent,
-    data: {
-      module: "admin",
-      subModule: "user",
-    }
+    children: [
+      {
+        path: 'list',
+        component: DatatableComponent
+      },
+      {
+        path: 'card',
+        component: CardComponent,
+      },
+      {
+        path: 'create',
+        component: FormComponent,
+      },
+      {
+        path: 'update/:id',
+        component: FormComponent,
+      }
+    ]
   },
   {
     path: 'role',
@@ -68,38 +46,23 @@ const routes: Routes = [
     children: [
       {
         path: 'list',
-        component: DatatableComponent,
-        data: {
-          module: "admin",
-          subModule: "role",
-        },
+        component: DatatableComponent
       },
       {
         path: 'card',
         component: CardComponent,
-        data: {
-          module: "admin",
-          subModule: "role",
-        },
       },
-    ],
+      {
+        path: 'create',
+        component: FormComponent,
+      },
+      {
+        path: 'update/:id',
+        component: FormComponent,
+      }
+    ]
   },
-  {
-    path: 'role/create',
-    component: FormComponent,
-    data: {
-      module: "admin",
-      subModule: "role",
-    }
-  },
-  {
-    path: 'role/update',
-    component: FormComponent,
-    data: {
-      module: "admin",
-      subModule: "role",
-    }
-  },
+  
   {
     path: 'menu',
     component: MenuComponent,
@@ -110,38 +73,23 @@ const routes: Routes = [
     children: [
       {
         path: 'list',
-        component: DatatableComponent,
-        data: {
-          module: "admin",
-          subModule: "menu",
-        }
+        component: DatatableComponent
       },
       {
         path: 'card',
         component: CardComponent,
-        data: {
-          module: "admin",
-          subModule: "menu",
-        }
       },
-    ],
+      {
+        path: 'create',
+        component: FormComponent,
+      },
+      {
+        path: 'update/:id',
+        component: FormComponent,
+      }
+    ]
   },
-  {
-    path: 'menu/create',
-    component: FormComponent,
-    data: {
-      module: "admin",
-      subModule: "menu",
-    }
-  },
-  {
-    path: 'menu/update',
-    component: FormComponent,
-    data: {
-      module: "admin",
-      subModule: "menu",
-    }
-  },
+  
   {
     path: 'constant',
     component: ConstantComponent,
@@ -152,38 +100,50 @@ const routes: Routes = [
     children: [
       {
         path: 'list',
-        component: DatatableComponent,
-        data: {
-          module: "admin",
-          subModule: "constant",
-        }
+        component: DatatableComponent
       },
       {
         path: 'card',
         component: CardComponent,
-        data: {
-          module: "admin",
-          subModule: "constant",
-        }
       },
-    ],
+      {
+        path: 'create',
+        component: FormComponent,
+      },
+      {
+        path: 'update/:id',
+        component: FormComponent,
+      }
+    ]
   },
+
   {
-    path: 'constant/create',
-    component: FormComponent,
+    path: 'form',
+    component: ConstantComponent,
     data: {
       module: "admin",
-      subModule: "constant",
-    }
-  },
-  {
-    path: 'constant/update',
-    component: FormComponent,
-    data: {
-      module: "admin",
-      subModule: "constant",
-    }
-  },
+      subModule: "form",
+    },
+    children: [
+      {
+        path: 'list',
+        component: DatatableComponent
+      },
+      {
+        path: 'card',
+        component: CardComponent,
+      },
+      {
+        path: 'create',
+        component: FormComponent,
+      },
+      {
+        path: 'update/:id',
+        component: FormComponent,
+      }
+    ]
+  }
+ 
 ]
 
 @NgModule({

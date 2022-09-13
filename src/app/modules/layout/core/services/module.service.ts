@@ -6,20 +6,32 @@ import * as master from '../json/master.json';
   providedIn: 'root'
 })
 export class ModuleService {
+  data: any = null;
   private module: any = '';
   private subModule: any = '';
   constructor() { }
 
-  setCurrentRoute = (module: string, subModule: string) => {
-    const data =  _.get(master, 'default');
-    // console.log(data)
-    this.module = _.find(data, { name: module });
-    this.subModule = _.find(this.module?.children, { name: subModule });
+  set = (data: any) => {
+    this.data = data;
+    this.setCurrentRoute(data.module, data.subModule);
   }
 
+  get = () => {
+    return this.data;
+  }
 
+  getModule = () => {
+    return  this.module;
+  }
 
   getSubModule = () => {
     return  this.subModule;
   }
+
+  setCurrentRoute = (module: string, subModule: string) => {
+    const data =  _.get(master, 'default');
+    this.module = _.find(data, { name: module });
+    this.subModule = _.find(this.module?.children, { name: subModule });
+  }
+
 }
