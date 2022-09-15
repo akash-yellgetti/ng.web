@@ -1,10 +1,35 @@
 <div class="row">
-  <div *ngFor="let item of items | paginate: config" class="col-4 mb-4">
+  <div *ngFor="let item of items | paginate: config" class="col-xl-4 col-sm-12 mb-3">
     <mat-card class="card">
+      
+      <mat-card-header>
+        <mat-icon mat-card-avatar [style.font-size.px]="24" style="border: 1px solid black" ></mat-icon>
+        <mat-card-title> {{ item.name }}  </mat-card-title>
+        <mat-card-subtitle>  {{ item.position }} </mat-card-subtitle>
+        <div fxFlex></div>
+        <div style="flex-grow: 1"></div>
+        <button mat-icon-button><mat-icon>qr_code</mat-icon></button>
+        <button mat-icon-button><mat-icon>check_circle</mat-icon></button>
+        <button mat-icon-button><mat-icon>more_vert</mat-icon></button>
+      </mat-card-header>
+      <mat-card-content>
+        <p>This card indeterminates progress bar.</p>
+        <p> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
+      </mat-card-content>
+      <mat-divider inset></mat-divider>
+      <mat-card-actions>
+        <button mat-raised-button> Edit </button>
+        <button mat-raised-button> Delete </button>
+      </mat-card-actions>
+      <!-- <mat-card-footer>
+        
+      </mat-card-footer> -->
+    </mat-card>
+    <!-- <mat-card class="card">
       <mat-card-header>
         <mat-card-title> {{ item.name }} </mat-card-title>
         <mat-card-subtitle>{{ item.position }}</mat-card-subtitle>
-        <!-- <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
           <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #menu="matMenu" xPosition="before">
@@ -16,13 +41,13 @@
               <mat-icon>delete</mat-icon>
               Delete
           </button>
-          </mat-menu> -->
+          </mat-menu>
       </mat-card-header>
       <mat-card-actions align="end">
         <button mat-button>Edit</button>
         <button mat-button>Delete</button>
       </mat-card-actions>
-    </mat-card>
+    </mat-card> -->
   </div>
   <pagination-controls (pageChange)="handlePageChange($event)"></pagination-controls>
 </div>
