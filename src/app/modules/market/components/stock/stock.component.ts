@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import {Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map, startWith, switchMap} from 'rxjs/operators';
 import { MoneyControlService } from '../../services/money-control/money-control.service';
@@ -19,7 +20,7 @@ export class StockComponent implements OnInit {
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: any;
 
-  constructor(private moneyControl: MoneyControlService) { }
+  constructor(public router:Router, public activatedRoute: ActivatedRoute, private moneyControl: MoneyControlService) { }
 
   ngOnInit() {
     const control = this.data.search.text;
@@ -56,6 +57,8 @@ export class StockComponent implements OnInit {
     
     this.moneyControl.info(stock).subscribe((res) => {
       this.data.share = res.data;
+      const symbol = res.data.symbol;
+      this.router.navigate([symbol, 'detail'], {relativeTo: this.activatedRoute});
     })
   }
 
