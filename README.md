@@ -34,6 +34,12 @@ ng serve -o --port 6001
 ng g m modules/maintenance --routing=true
 
 
+ng g m modules/market --routing=true
+ng g c modules/market/stock --module=market
+ng g c modules/market/vehicle --module=market
+ng g c modules/market/visitor --module=market
+
+
 
 ng g m modules/tracker --routing=true
 ng g c modules/tracker/vendor --module=tracker

@@ -115,6 +115,92 @@ export class PersonalFinanceComponent implements OnInit {
         }
 
       ]
+    },
+    {
+      key: "card",
+      value: "Card",
+      children: [
+        {
+          key: "icici-platinum",
+          value: "icici-platinum",
+        },
+        {
+          key: "icici-amazon",
+          value: "icici-amazon",
+        },
+        {
+          key: "axis-neo",
+          value: "axis-neo",
+        },
+        {
+          key: "axis-vistara",
+          value: "axis-vistara",
+        },
+        {
+          key: "hdfc-millennia",
+          value: "hdfc-millennia",
+        },
+        {
+          key: "slice",
+          value: "slice",
+        },
+        {
+          key: "uni",
+          value: "uni",
+        },
+        {
+          key: "one-card",
+          value: "one-card",
+        },
+        {
+          key: "rbl-super-card",
+          value: "rbl-super-card",
+        },
+        {
+          key: "indusInd-legend",
+          value: "indusInd-legend",
+        },
+        {
+          key: "sbi-fbb",
+          value: "sbi-fbb",
+        },
+        {
+          key: "sbi-simple",
+          value: "sbi-simple",
+        },
+        {
+          key: "sbi-yatra",
+          value: "sbi-yatra",
+        }
+      ]
+    },
+    {
+      key: "loan",
+      value: "Loan",
+      children: [
+        {
+          key: "home-loan",
+          value: "home-loan",
+        },
+        {
+          key: "home-loan-addon",
+          value: "home-loan-addon",
+        },
+        {
+          key: "axis-akash-personal-loan-6L",
+          value: "axis-akash-personal-loan-6L",
+        },
+        {
+          key: "axis-panu-personal-loan-2.80L",
+          value: "axis-panu-personal-loan-2.80L",
+        },
+        
+        {
+          key: "indusInd-personal-loan-2.35L",
+          value: "indusInd-personal-loan-2.35L",
+        },
+        
+      ]
     }
 
 
