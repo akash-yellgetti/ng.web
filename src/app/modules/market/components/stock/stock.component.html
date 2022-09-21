@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="row align-items-center p-2">
+    <div class="col-4">
+      <div class="form-control-layout">
+        <h2>Stock</h2>
+
+      </div>
+
+    </div>
+    <div class="col-8 d-flex justify-content-end">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="data.search.text"
+          [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)='getOption($event.option.value)'>
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option.sc_id">
+            <div [innerHTML]="option.pdt_dis_nm"></div>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Library</li>
+    </ol>
+  </nav>
+
+  
+  <router-outlet></router-outlet>
+
+</div>

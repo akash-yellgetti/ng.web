@@ -35,9 +35,16 @@ ng g m modules/maintenance --routing=true
 
 
 ng g m modules/market --routing=true
-ng g c modules/market/stock --module=market
-ng g c modules/market/vehicle --module=market
-ng g c modules/market/visitor --module=market
+ng g c modules/market/components/index --module=market
+ng g c modules/market/components/stock --module=market
+ng g c modules/market/components/currency --module=market
+ng g c modules/market/components/mutual-fund --module=market
+
+ng g c modules/market/components/details --module=market
+
+
+ng g s modules/market/services/money-control/money-control
+ng g s modules/market/resolver/stock-resolver/stock-resolver
 
 
 
