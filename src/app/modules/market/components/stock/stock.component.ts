@@ -58,7 +58,8 @@ export class StockComponent implements OnInit {
     this.moneyControl.info(stock).subscribe((res) => {
       this.data.share = res.data;
       const symbol = res.data.symbol;
-      this.router.navigate([symbol, 'detail'], {relativeTo: this.activatedRoute});
+      // this.router.navigate([symbol, 'detail'], {relativeTo: this.activatedRoute,  state: {refresh: new Date().getTime()}});
+      this.router.navigateByUrl('/main/market/stock/'+symbol+'/detail')
     })
   }
 
