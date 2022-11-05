@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TrackerRoutingModule } from './tracker-routing.module';
-import { VisitorComponent } from './visitor/visitor.component';
-import { VehicleComponent } from './vehicle/vehicle.component';
-import { VendorComponent } from './vendor/vendor.component';
+import { VisitorComponent } from './components/visitor/visitor.component';
+import { VehicleComponent } from './components/vehicle/vehicle.component';
+import { VendorComponent } from './components/vendor/vendor.component';
 
 
 @NgModule({

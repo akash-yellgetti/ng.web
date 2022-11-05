@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ComplaintsComponent } from './complaints/complaints.component';
-import { EventsComponent } from './events/events.component';
-import { MeetingsComponent } from './meetings/meetings.component';
+import { ComplaintsComponent } from './components/complaints/complaints.component';
+import { EventsComponent } from './components/events/events.component';
+import { MeetingsComponent } from './components/meetings/meetings.component';
 
 const routes: Routes = [
   {

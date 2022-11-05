@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FlatComponent } from './flat/flat.component';
-import { MembersComponent } from './members/members.component';
-import { SocietyComponent } from './society/society.component';
+import { FlatComponent } from './components/flat/flat.component';
+import { MembersComponent } from './components/members/members.component';
+import { SocietyComponent } from './components/society/society.component';
 
 const routes: Routes = [
   {

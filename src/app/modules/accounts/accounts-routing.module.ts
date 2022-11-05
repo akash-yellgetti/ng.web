@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LedgerComponent } from './ledger/ledger.component';
-import { VoucherComponent } from './voucher/voucher.component';
+import { LedgerComponent } from './components/ledger/ledger.component';
+import { VoucherComponent } from './components/voucher/voucher.component';
 
 
 const routes: Routes = [
