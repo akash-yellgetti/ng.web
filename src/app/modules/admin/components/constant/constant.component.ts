@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModuleService } from '../../layout/core/services/module.service';
+import { ModuleService } from '../../../layout/core/services/module.service';
+
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  selector: 'app-constant',
+  templateUrl: './constant.component.html',
+  styleUrls: ['./constant.component.css']
 })
-export class UserComponent implements OnInit {
+export class ConstantComponent implements OnInit {
   public data: any = null
   constructor(
     private router: Router,

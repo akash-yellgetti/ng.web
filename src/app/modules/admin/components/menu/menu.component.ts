@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModuleService } from '../../layout/core/services/module.service';
-
+import { ModuleService } from '../../../layout/core/services/module.service';
 
 @Component({
-  selector: 'app-constant',
-  templateUrl: './constant.component.html',
-  styleUrls: ['./constant.component.css']
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.css']
 })
-export class ConstantComponent implements OnInit {
+export class MenuComponent implements OnInit {
   public data: any = null
   constructor(
     private router: Router,

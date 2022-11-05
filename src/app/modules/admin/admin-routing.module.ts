@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { CardComponent } from '../../shared/components/card/card.component';
 import { DatatableComponent } from '../../shared/components/datatable/datatable.component';
 import { FormComponent } from '../../shared/components/form/form.component';
-import { ConstantComponent } from './constant/constant.component';
-import { MenuComponent } from './menu/menu.component';
-import { RoleComponent } from './role/role.component';
-import { UserComponent } from './user/user.component';
+import { ConstantComponent } from './components/constant/constant.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { RoleComponent } from './components/role/role.component';
+import { UserComponent } from './components/user/user.component';
 
 
 const routes: Routes = [

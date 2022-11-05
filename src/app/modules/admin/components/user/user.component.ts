@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModuleService } from '../../layout/core/services/module.service';
+import { ModuleService } from '../../../layout/core/services/module.service';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
-export class MenuComponent implements OnInit {
+export class UserComponent implements OnInit {
   public data: any = null
   constructor(
     private router: Router,
