@@ -100,7 +100,14 @@ ng g c modules/personal-financehome --module=personal-finance
 
 ng g m modules/auth --routing=true
 ng g c modules/auth/login --module=auth
-ng g c modules/auth/registration --module=auth
+ng g c modules/auth/components/registration --module=auth
+ng g guard modules/auth/guards/auth/auth
+ng g guard modules/auth/guards/route/route
+
+
+ng g m shared
+
+
 
 
 
