@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from 'src/app/modules/common/material.module';
+import { MaterialModule } from 'src/app/shared/modules/material.module';
 
 import { FieldInputComponent } from './field-input/field-input.component';
 import { FieldTextareaComponent } from './field-textarea/field-textarea.component';

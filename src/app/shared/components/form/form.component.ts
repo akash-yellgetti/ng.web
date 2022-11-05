@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModuleService } from '../../services/module.service';
+import { ModuleService } from '../../../modules/layout/core/services/module.service';
 
 @Component({
   selector: 'layout-form',

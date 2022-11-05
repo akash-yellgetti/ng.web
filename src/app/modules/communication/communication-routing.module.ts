@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ChatComponent } from './chat/chat.component';
-import { DiscussionForumComponent } from './discussion-forum/discussion-forum.component';
-import { EmailComponent } from './email/email.component';
-import { GroupChatComponent } from './group-chat/group-chat.component';
-import { NotificationComponent } from './notification/notification.component';
-import { OpinionPollComponent } from './opinion-poll/opinion-poll.component';
-import { SmsComponent } from './sms/sms.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { DiscussionForumComponent } from './components/discussion-forum/discussion-forum.component';
+import { EmailComponent } from './components/email/email.component';
+import { GroupChatComponent } from './components/group-chat/group-chat.component';
+import { NotificationComponent } from './components/notification/notification.component';
+import { OpinionPollComponent } from './components/opinion-poll/opinion-poll.component';
+import { SmsComponent } from './components/sms/sms.component';
 
 
 const routes: Routes = [

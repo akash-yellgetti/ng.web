@@ -6,7 +6,7 @@ import { StockComponent } from './components/stock/stock.component';
 import { IndexComponent } from './components/index/index.component';
 import { CurrencyComponent } from './components/currency/currency.component';
 import { MutualFundComponent } from './components/mutual-fund/mutual-fund.component';
-import { MaterialModule } from '../common/material.module';
+import { MaterialModule } from '../../shared/modules/material.module';
 import { FormsModule } from '@angular/forms';
 import { DetailComponent } from './components/detail/detail.component';
 

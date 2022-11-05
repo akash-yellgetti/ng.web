@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CardComponent } from '../layout/core/shared/card/card.component';
-import { DatatableComponent } from '../layout/core/shared/datatable/datatable.component';
-import { FormComponent } from '../layout/core/shared/form/form.component';
+import { CardComponent } from '../../shared/components/card/card.component';
+import { DatatableComponent } from '../../shared/components/datatable/datatable.component';
+import { FormComponent } from '../../shared/components/form/form.component';
 import { ConstantComponent } from './constant/constant.component';
 import { MenuComponent } from './menu/menu.component';
 import { RoleComponent } from './role/role.component';

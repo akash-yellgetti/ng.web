@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CommunicationRoutingModule } from './communication-routing.module';
-import { SmsComponent } from './sms/sms.component';
-import { NotificationComponent } from './notification/notification.component';
-import { EmailComponent } from './email/email.component';
-import { ChatComponent } from './chat/chat.component';
-import { GroupChatComponent } from './group-chat/group-chat.component';
-import { OpinionPollComponent } from './opinion-poll/opinion-poll.component';
-import { DiscussionForumComponent } from './discussion-forum/discussion-forum.component';
+import { SmsComponent } from './components/sms/sms.component';
+import { NotificationComponent } from './components/notification/notification.component';
+import { EmailComponent } from './components/email/email.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { GroupChatComponent } from './components/group-chat/group-chat.component';
+import { OpinionPollComponent } from './components/opinion-poll/opinion-poll.component';
+import { DiscussionForumComponent } from './components/discussion-forum/discussion-forum.component';
 import { LayoutModule } from '../layout/layout.module';
-import { MaterialModule } from '../common/material.module';
+import { MaterialModule } from '../../shared/modules/material.module';
 
 
 @NgModule({

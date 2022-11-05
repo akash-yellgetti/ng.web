@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { PaginationInstance } from 'ngx-pagination';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModuleService } from '../../services/module.service';
+import { ModuleService } from '../../../modules/layout/core/services/module.service';
 import * as _ from 'lodash';
-import * as data from '../../json/data.json';
+import * as data from '../../../modules/layout/core/json/data.json';
 
 
 @Component({

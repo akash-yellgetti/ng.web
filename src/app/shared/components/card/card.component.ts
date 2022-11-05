@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { PaginationInstance } from 'ngx-pagination';
-import * as data from '../../json/data.json';
+import * as data from '../../../modules/layout/core/json/data.json';
 
 @Component({
   selector: 'app-card',
