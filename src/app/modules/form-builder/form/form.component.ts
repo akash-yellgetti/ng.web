@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -16,15 +16,15 @@ export class FormComponent implements OnInit {
     let fieldsCtrls: any = {};
     for (let f of this.fields) {
       if (f.type != 'checkbox') {
-        fieldsCtrls[f.name] = new FormControl(f.value || '', Validators.required)
+        fieldsCtrls[f.name] = new UntypedFormControl(f.value || '', Validators.required)
       } else {
         let opts: any = {};
         for (let opt of f.options) {
-          opts[opt.key] = new FormControl(opt.value);
+          opts[opt.key] = new UntypedFormControl(opt.value);
         }
-        fieldsCtrls[f.name] = new FormGroup(opts)
+        fieldsCtrls[f.name] = new UntypedFormGroup(opts)
       }
     }
-    this.form = new FormGroup(fieldsCtrls);
+    this.form = new UntypedFormGroup(fieldsCtrls);
   }
 }

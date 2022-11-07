@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map, startWith, switchMap} from 'rxjs/operators';
@@ -14,7 +14,7 @@ export class StockComponent implements OnInit {
   public data = {
     share: {},
     search: {
-      text: new FormControl('')
+      text: new UntypedFormControl('')
     }
   }
   options: string[] = ['One', 'Two', 'Three'];
