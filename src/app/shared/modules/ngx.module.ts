@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2WebStorage } from 'ngx-webstorage';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
   ], 
   exports: [
     NgxPaginationModule
+    
   ]
 })
 export class NgxModule { }
