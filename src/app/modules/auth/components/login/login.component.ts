@@ -9,7 +9,18 @@ import { Router, Routes } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  public field = {
+    email: {
+      label: 'Email',
+      name: 'email',
+      value: null
+    },
+    password: {
+      label: 'Passowrd',
+      name: 'password',
+      value: null
+    }
+  }
   constructor(private authService: AuthService, private storageService: LocalStorageService, private route: Router) { }
 
   ngOnInit(): void {
@@ -17,8 +28,8 @@ export class LoginComponent implements OnInit {
 
   login = () => {
     const params: any = {
-      "email": "aakash5792@gmail.com",
-      "password": "AAbb12"
+      "email": this.field.email.value,
+      "password": this.field.password.value,
     };
 
     const myObserver = {

@@ -110,7 +110,8 @@ ng g s modules/auth/services/auth/auth
 
 ng g m shared
 
-
+aakash5792@gmail.com
+AAbb12
 
 
 
