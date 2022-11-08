@@ -3,6 +3,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import * as menus from '../core/json/menus.json';
+import { LocalStorageService } from 'ngx-webstorage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -18,6 +20,10 @@ export class MainComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
-
+  constructor(private breakpointObserver: BreakpointObserver, private localStorageService: LocalStorageService, private route: Router) {}
+  
+  logout = () => {
+    this.localStorageService.clear();
+    this.route.navigate(['auth/login']);
+  }
 }

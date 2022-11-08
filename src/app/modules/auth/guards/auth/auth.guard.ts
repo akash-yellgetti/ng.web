@@ -13,7 +13,7 @@ export class AuthGuard implements  CanActivate, CanActivateChild {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if(!this.localStorageService.retrieve('tokens')|| (this.localStorageService.retrieve('tokens')  && Object.keys(this.localStorageService.retrieve('tokens')).length < 0)){
-      alert("not logged in");
+      // alert("not logged in");
       // redirect to not authorized page o
       this.route.navigate(['/auth/login']);
       return false
@@ -25,7 +25,7 @@ export class AuthGuard implements  CanActivate, CanActivateChild {
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     
     if(!this.localStorageService.retrieve('tokens')|| (this.localStorageService.retrieve('tokens')  && Object.keys(this.localStorageService.retrieve('tokens')).length < 0)){
-      alert("not logged in");
+      // alert("not logged in");
       // redirect to not authorized page o
       this.route.navigate(['/auth/login']);
       return false
