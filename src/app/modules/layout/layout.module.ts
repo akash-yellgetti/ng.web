@@ -9,7 +9,7 @@ import { CardComponent } from '../../shared/components/card/card.component';
 import { DatatableComponent } from '../../shared/components/datatable/datatable.component';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 import { FormsModule } from '@angular/forms';
-import { AuthComponent } from './auth/auth.component';
+
 import { FormComponent } from '../../shared/components/form/form.component';
 import { FormBuilderModule } from '../form-builder/form-builder.module';
 import { FilterComponent } from '../../shared/components/filter/filter.component';
@@ -19,7 +19,7 @@ import { NgxModule } from '../../shared/modules/ngx.module';
 
 
 @NgModule({
-  declarations: [MainComponent, LeftNavigationComponent, CardComponent, DatatableComponent, PaginatorComponent, AuthComponent, FormComponent, FilterComponent, BreadcrumbComponent],
+  declarations: [MainComponent, LeftNavigationComponent, CardComponent, DatatableComponent, PaginatorComponent,  FormComponent, FilterComponent, BreadcrumbComponent],
   imports: [
     CommonModule,
     MaterialModule,

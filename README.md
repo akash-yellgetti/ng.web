@@ -105,6 +105,8 @@ ng g guard modules/auth/guards/auth/auth
 ng g guard modules/auth/guards/route/route
 ng g s modules/auth/services/auth/auth
 
+ng g s modules/auth/services/auth/auth
+
 
 ng g m shared
 

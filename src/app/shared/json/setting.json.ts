@@ -1,3 +1,4 @@
 export const setting = {
-    uri: 'localhost:5001'
+    uri: 'http://api.dicezen.com'
+    // uri: 'http://localhost:5001'
 }

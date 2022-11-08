@@ -10,7 +10,7 @@ import { replacementmenus } from './menu-replace';
   styleUrls: ['./left-navigation.component.css']
 })
 export class LeftNavigationComponent implements OnInit {
-  menu = [
+  menu: any = [
     {
       name: 'Escritorio',
       label: 'Escritorio',
@@ -59,7 +59,7 @@ export class LeftNavigationComponent implements OnInit {
   constructor(
     private router: Router
   ) {
-    this.menu = _.get(master, 'default');
+    this.menu = _.get(master, 'default', null);
   }
 
   ngOnInit(): void {

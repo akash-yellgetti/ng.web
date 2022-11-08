@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { Ng2WebStorage } from 'ngx-webstorage';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 
 
 @NgModule({
   declarations: [],
   imports: [
     NgxPaginationModule,
+    NgxWebstorageModule.forRoot({ prefix: '', separator: '', caseSensitive:true }),
     CommonModule
   ], 
   exports: [
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxWebstorageModule
     
   ]
 })
