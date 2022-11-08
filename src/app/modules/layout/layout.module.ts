@@ -15,6 +15,7 @@ import { FormBuilderModule } from '../form-builder/form-builder.module';
 import { FilterComponent } from '../../shared/components/filter/filter.component';
 import { BreadcrumbComponent } from '../../shared/components/breadcrumb/breadcrumb.component';
 import { NgxModule } from '../../shared/modules/ngx.module';
+import { AuthGuard } from '../auth/guards/auth/auth.guard';
 
 
 
@@ -32,6 +33,9 @@ import { NgxModule } from '../../shared/modules/ngx.module';
     CardComponent,
     DatatableComponent,
     FormComponent
+  ],
+  providers: [
+    AuthGuard
   ]
 })
 export class LayoutModule { }
