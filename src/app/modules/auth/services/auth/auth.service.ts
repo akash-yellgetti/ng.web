@@ -12,8 +12,8 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login = (data: any) => {
-    // const url = this.notificationService + 'master/get-publish-notification';
-    const url = 'http://localhost:5001/auth/login';
+    const url = setting['uri'] + '/auth/login';
+    // const url = 'http://localhost:5001/auth/login';
 
     const headers = new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
