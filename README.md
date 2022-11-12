@@ -107,6 +107,11 @@ ng g s modules/auth/services/auth/auth
 
 ng g s modules/auth/services/auth/auth
 
+ng g s shared/services/socket/socket
+
+
+ng g s modules/comm/socket/socket
+
 
 ng g m shared
 
@@ -136,6 +141,8 @@ ng g c modules/communication/group-chat --module=communication
 ng g c modules/communication/opinion-poll --module=communication
 ng g c modules/communication/discussion-forum --module=communication
 
+
+ng g s modules/communication/services/chat/chat 
 
 
 <!-- https://stackblitz.com/edit/angular-dynamic-form-builder?file=app%2Fdynamic-form-builder%2Fatoms%2Ffile.ts -->
