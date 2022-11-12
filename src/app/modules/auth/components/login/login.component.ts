@@ -46,7 +46,9 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(params).subscribe((res: any) => {
       if(res && res.status) {
-        this.storageService.store('tokens', res.data);
+        const data = res.data;
+        this.storageService.store('tokens', data.tokens);
+        this.storageService.store('user', data.user);
         this.route.navigate(['main']);
       }
     })

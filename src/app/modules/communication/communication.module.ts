@@ -10,7 +10,8 @@ import { GroupChatComponent } from './components/group-chat/group-chat.component
 import { OpinionPollComponent } from './components/opinion-poll/opinion-poll.component';
 import { DiscussionForumComponent } from './components/discussion-forum/discussion-forum.component';
 import { LayoutModule } from '../layout/layout.module';
-import { MaterialModule } from '../../shared/modules/material.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { MaterialModule } from '../../shared/modules/material.module';
   ],
   imports: [
     CommonModule,
-    MaterialModule,
+    SharedModule,
     LayoutModule,
     CommunicationRoutingModule
   ]

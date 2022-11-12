@@ -4,7 +4,6 @@ import { MaterialModule } from './modules/material.module';
 import { NgxModule } from './modules/ngx.module';
 
 
-
 @NgModule({
   declarations: [],
   imports: [
