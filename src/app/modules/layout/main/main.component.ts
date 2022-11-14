@@ -26,4 +26,8 @@ export class MainComponent {
     this.localStorageService.clear();
     this.route.navigate(['auth/login']);
   }
+
+  redirectProfile = () => {
+    this.route.navigate(['main/user/profile']);
+  }
 }

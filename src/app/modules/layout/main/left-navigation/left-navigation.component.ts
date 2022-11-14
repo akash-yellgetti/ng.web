@@ -10,56 +10,57 @@ import { replacementmenus } from './menu-replace';
   styleUrls: ['./left-navigation.component.css']
 })
 export class LeftNavigationComponent implements OnInit {
-  menu: any = [
-    {
-      name: 'Escritorio',
-      label: 'Escritorio',
-      icon: 'desktop_windows',
-      url: 'escritorio',
-    },        
-    {
-      name: 'Entradas GADE',
-      label: 'Entradas GADE',
-      icon: 'ballot',
-      url: 'entradasGADE',
-    },
-    {
-      name: 'Expedientes',
-      label: 'Expedientes',
-      icon: 'description',          
-      children: [
-        {
-          name: 'Mis Expedientes',
-          label: 'Mis Expedientes',
-          icon: 'how_to_reg',
-          url: '/misexpedientes'
-        },
-        { 
-          name: 'Todos',
-          label: 'Todos',
-          icon: 'waves',
-          url: '/todos'
-        }
-      ]
-    },
-    {
-      name: 'Perfiles',
-      label: 'Perfiles',
-      icon: 'group',
-      children: [
-          {
-            name: 'Búsqueda Perfil',
-            label: 'Búsqueda Perfil',
-            icon: 'search',
-            url: '/busquedaperfiles'
-          }
-        ]
-      }
-  ];
+  menu: any = [];
+  // menu: any = [
+  //   {
+  //     name: 'Escritorio',
+  //     label: 'Escritorio',
+  //     icon: 'desktop_windows',
+  //     url: 'escritorio',
+  //   },        
+  //   {
+  //     name: 'Entradas GADE',
+  //     label: 'Entradas GADE',
+  //     icon: 'ballot',
+  //     url: 'entradasGADE',
+  //   },
+  //   {
+  //     name: 'Expedientes',
+  //     label: 'Expedientes',
+  //     icon: 'description',          
+  //     children: [
+  //       {
+  //         name: 'Mis Expedientes',
+  //         label: 'Mis Expedientes',
+  //         icon: 'how_to_reg',
+  //         url: '/misexpedientes'
+  //       },
+  //       { 
+  //         name: 'Todos',
+  //         label: 'Todos',
+  //         icon: 'waves',
+  //         url: '/todos'
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     name: 'Perfiles',
+  //     label: 'Perfiles',
+  //     icon: 'group',
+  //     children: [
+  //         {
+  //           name: 'Búsqueda Perfil',
+  //           label: 'Búsqueda Perfil',
+  //           icon: 'search',
+  //           url: '/busquedaperfiles'
+  //         }
+  //       ]
+  //     }
+  // ];
   constructor(
     private router: Router
   ) {
-    this.menu = _.get(master, 'default', null);
+    // this.menu = _.get(master, 'default', null);
   }
 
   ngOnInit(): void {

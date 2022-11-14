@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from 'ngx-webstorage';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { setting } from 'src/app/shared/json/setting.json';
@@ -9,7 +10,7 @@ import { setting } from 'src/app/shared/json/setting.json';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private storage: LocalStorageService) { }
 
   login = (data: any) => {
     const url = setting['uri'] + '/auth/login';
@@ -28,9 +29,31 @@ export class AuthService {
       .pipe(map((data) => data));
   }
 
+  getAuthToken = () => {
+    const tokens = this.storage.retrieve('tokens');
+    return `Bearer ${tokens.accessToken}`;
+  }
+
+  check = () => { 
+    const url = setting['uri'] + '/auth/check';
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getAuthToken()
+    });
+    const options = { headers: headers };
+    
+    return this.http.get(url, options)
+      .pipe(map((data) => data),
+      catchError(this.handleError));
+  }
+
   
 
-  handleError = (e: any, m: any) => {
-
+  handleError = (e: any, m: any): any => {
+    const error = e.error;
+    if (e.status === 401) {
+      return throwError(error);
+    }
   }
 }

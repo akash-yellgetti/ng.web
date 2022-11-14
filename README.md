@@ -129,6 +129,7 @@ ng g c modules/admin/constant --module=admin
 
 ng g m modules/user --routing=true
 ng g c modules/user/personal-finance --module=user
+ng g c modules/user/components/profile --module=user
 
 
 
