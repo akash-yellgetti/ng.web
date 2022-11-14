@@ -33,10 +33,10 @@ export class MainComponent {
         this.route.navigate(['main/user/profile']);    
         break;
       case 'chat':
-        this.route.navigate(['main/communication/chat']);
+        this.route.navigate(['main/user/chat']);
         break;
       case 'notification':
-        this.route.navigate(['main/communication/notification']);
+        this.route.navigate(['main/user/notification']);
         break;
     
       default:
