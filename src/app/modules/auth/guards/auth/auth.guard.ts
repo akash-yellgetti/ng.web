@@ -12,7 +12,14 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return this.checkAuthenication();
+  }
 
+  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    return this.checkAuthenication();
+  }
+
+  checkAuthenication = () => {
     const tokens = this.localStorageService.retrieve('tokens');
 
     if (!tokens) {
@@ -28,24 +35,11 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     if (tokens && tokens.accessToken) {
       this.authService.check().subscribe((res) => {
         // this.route.navigate(['/auth/login']);
+        return true;
       }, error => {
         this.route.navigate(['/auth/login']);
         return false;
       })
-
-      
-    }
-
-    return true;
-  }
-
-  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-
-    if (!this.localStorageService.retrieve('tokens') || (this.localStorageService.retrieve('tokens') && Object.keys(this.localStorageService.retrieve('tokens')).length < 0)) {
-      // alert("not logged in");
-      // redirect to not authorized page o
-      this.route.navigate(['/auth/login']);
-      return false
     }
 
     return true;
