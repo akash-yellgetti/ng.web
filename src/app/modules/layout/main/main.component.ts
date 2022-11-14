@@ -27,7 +27,21 @@ export class MainComponent {
     this.route.navigate(['auth/login']);
   }
 
-  redirectProfile = () => {
-    this.route.navigate(['main/user/profile']);
+  redirect = (key: string) => {
+    switch (key) {
+      case 'profile':
+        this.route.navigate(['main/user/profile']);    
+        break;
+      case 'chat':
+        this.route.navigate(['main/communication/chat']);
+        break;
+      case 'notification':
+        this.route.navigate(['main/communication/notification']);
+        break;
+    
+      default:
+        break;
+    }
+    
   }
 }
