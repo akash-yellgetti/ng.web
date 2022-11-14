@@ -32,6 +32,9 @@ export class MainComponent {
       case 'profile':
         this.route.navigate(['main/user/profile']);    
         break;
+      case 'family':
+        this.route.navigate(['main/user/family']);
+        break;
       case 'chat':
         this.route.navigate(['main/user/chat']);
         break;
