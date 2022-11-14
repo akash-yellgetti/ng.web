@@ -6,7 +6,7 @@ import { ModuleService } from '../../../layout/core/services/module.service';
 @Component({
   selector: 'app-constant',
   templateUrl: './constant.component.html',
-  styleUrls: ['./constant.component.css']
+  styleUrls: ['./constant.component.scss']
 })
 export class ConstantComponent implements OnInit {
   public data: any = null

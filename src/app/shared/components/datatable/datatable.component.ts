@@ -9,7 +9,7 @@ import * as data from '../../../modules/layout/core/json/data.json';
 @Component({
   selector: 'app-datatable',
   templateUrl: './datatable.component.html',
-  styleUrls: ['./datatable.component.css']
+  styleUrls: ['./datatable.component.scss']
 })
 export class DatatableComponent implements OnInit {
   paginator: any = {

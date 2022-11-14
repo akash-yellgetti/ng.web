@@ -5,7 +5,7 @@ import { ModuleService } from '../../../layout/core/services/module.service';
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.css']
+  styleUrls: ['./notification.component.scss']
 })
 export class NotificationComponent implements OnInit {
   public data: any = null

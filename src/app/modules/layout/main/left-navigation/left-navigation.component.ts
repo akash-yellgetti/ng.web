@@ -7,7 +7,7 @@ import { replacementmenus } from './menu-replace';
 @Component({
   selector: 'app-left-navigation',
   templateUrl: './left-navigation.component.html',
-  styleUrls: ['./left-navigation.component.css']
+  styleUrls: ['./left-navigation.component.scss']
 })
 export class LeftNavigationComponent implements OnInit {
   menu: any = [];

@@ -5,7 +5,7 @@ import { ModuleService } from '../../../modules/layout/core/services/module.serv
 @Component({
   selector: 'layout-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
   data: any = null;
