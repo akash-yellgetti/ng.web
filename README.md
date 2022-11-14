@@ -132,6 +132,7 @@ ng g c modules/user/components/personal-finance --module=user
 ng g c modules/user/components/profile --module=user
 ng g c modules/user/components/chat --module=user
 ng g c modules/user/components/notification --module=user
+ng g c modules/user/components/family --module=user
 
 
 

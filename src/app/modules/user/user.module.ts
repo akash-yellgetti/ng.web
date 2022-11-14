@@ -7,6 +7,7 @@ import { MaterialModule } from '../../shared/modules/material.module';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { FamilyComponent } from './components/family/family.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { NotificationComponent } from './components/notification/notification.co
     PersonalFinanceComponent,
     ProfileComponent,
     ChatComponent,
-    NotificationComponent
+    NotificationComponent,
+    FamilyComponent
   ],
   imports: [
     CommonModule,
