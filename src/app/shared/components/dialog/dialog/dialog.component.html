@@ -1,0 +1,10 @@
+<h1 mat-dialog-title> {{ 'Create ' + data.name }} </h1>
+<div mat-dialog-content>
+    <div class="col-{{field.col}}" *ngFor="let field of data.fields">
+        <mat-form-field appearance="outline" >
+            <mat-label>{{ field.label }}</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+    </div>
+    
+</div>

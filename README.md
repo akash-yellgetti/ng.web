@@ -78,6 +78,10 @@ ng g m modules/layout
 ng generate module modules/layout/layout-routing --flat --module=layout
 ng g c modules/layout/auth --module=layout
 ng g c modules/layout/main --module=layout
+
+ng g c modules/layout/components/home --module=layout
+
+
 ng g c modules/layout/core/shared/filter --module=layout
 ng g c modules/layout/core/shared/breadcrumb --module=layout
 
@@ -109,11 +113,14 @@ ng g s modules/auth/services/auth/auth
 
 ng g s shared/services/socket/socket
 
+ng g s shared/services/emi-calculator/emi-calculator
+
 
 ng g s modules/comm/socket/socket
 
 
 ng g m shared
+ng g c shared/components/dialog/dialog --module=shared
 
 aakash5792@gmail.com
 AAbb12

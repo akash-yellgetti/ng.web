@@ -16,14 +16,16 @@ import { FilterComponent } from '../../shared/components/filter/filter.component
 import { BreadcrumbComponent } from '../../shared/components/breadcrumb/breadcrumb.component';
 import { NgxModule } from '../../shared/modules/ngx.module';
 import { AuthGuard } from '../auth/guards/auth/auth.guard';
+import { HomeComponent } from './components/home/home.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
 @NgModule({
-  declarations: [MainComponent, LeftNavigationComponent, CardComponent, DatatableComponent, PaginatorComponent,  FormComponent, FilterComponent, BreadcrumbComponent],
+  declarations: [MainComponent, LeftNavigationComponent, CardComponent, DatatableComponent, PaginatorComponent,  FormComponent, FilterComponent, BreadcrumbComponent, HomeComponent],
   imports: [
     CommonModule,
-    MaterialModule,
+    SharedModule,
     FormBuilderModule,
     LayoutRoutingModule
   ],

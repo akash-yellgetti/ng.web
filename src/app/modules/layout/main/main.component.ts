@@ -29,6 +29,9 @@ export class MainComponent {
 
   redirect = (key: string) => {
     switch (key) {
+      case 'home':
+        this.route.navigate(['main/home']);    
+        break;
       case 'profile':
         this.route.navigate(['main/user/profile']);    
         break;

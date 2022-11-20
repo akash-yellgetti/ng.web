@@ -33,10 +33,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { NgxModule } from './ngx.module';
 
 
 
@@ -78,7 +78,7 @@ const modules = [
   MatBadgeModule,
   MatGridListModule,
   MatTooltipModule,
-  NgxModule
+  MatDialogModule
 ];
 @NgModule({
   imports: modules,
