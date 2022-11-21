@@ -111,16 +111,18 @@ ng g s modules/auth/services/auth/auth
 
 ng g s modules/auth/services/auth/auth
 
-ng g s shared/services/socket/socket
-
-ng g s shared/services/emi-calculator/emi-calculator
-
 
 ng g s modules/comm/socket/socket
 
 
+
 ng g m shared
-ng g c shared/components/dialog/dialog --module=shared
+ng g c shared/components/dialog --module=shared
+
+ng g s shared/services/field/field
+ng g s shared/services/socket/socket
+ng g s shared/services/emi-calculator/emi-calculator
+
 
 aakash5792@gmail.com
 AAbb12
