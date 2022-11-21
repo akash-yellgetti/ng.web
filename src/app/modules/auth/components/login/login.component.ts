@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         const data = res.data;
         this.storageService.store('tokens', data.tokens);
         this.storageService.store('user', data.user);
-        this.route.navigate(['main']);
+        this.route.navigate(['main/user/finance/dashboard']);
       }
     })
   }

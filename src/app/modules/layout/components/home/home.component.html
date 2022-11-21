@@ -1,25 +1,24 @@
-
 <div class="content">
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
     <div [fxFlex]="'100%'">
-      <mat-card >
+      <mat-card>
         <mat-card-header>
           <mat-card-title> EMI Calculator </mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <div class="row" >
+          <div class="row">
             <div class="col-{{field.col}}" *ngFor="let field of form.fields">
-                <mat-form-field appearance="outline">
-                    <mat-label>{{ field.label }}</mat-label>
-                    <input matInput [(ngModel)]="field.value">
-                </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>{{ field.label }}</mat-label>
+                <input matInput [(ngModel)]="field.value">
+              </mat-form-field>
             </div>
-        </div>
+          </div>
         </mat-card-content>
         <mat-card-actions>
           <button mat-stroked-button color="primary" (click)="calculate()"> Calculator </button>
-          
-       </mat-card-actions>
+
+        </mat-card-actions>
       </mat-card>
     </div>
     <div [fxFlex]="'70%'">
@@ -28,8 +27,8 @@
       </ngx-datatable>
     </div>
     <div [fxFlex]="'30%'" fxLayoutGap="16px grid">
-      <div >
-        <mat-card >
+      <div>
+        <mat-card>
           <mat-card-header>
             <mat-card-title>Mountains </mat-card-title>
           </mat-card-header>
@@ -39,8 +38,8 @@
           </mat-card-content>
         </mat-card>
       </div>
-      <div >
-        <mat-card >
+      <div>
+        <mat-card>
           <mat-card-header>
             <mat-card-title>Mountains </mat-card-title>
           </mat-card-header>
@@ -50,7 +49,6 @@
           </mat-card-content>
         </mat-card>
       </div>
-    
     </div>
   </div>
 </div>

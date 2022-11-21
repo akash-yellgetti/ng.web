@@ -3,10 +3,15 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-list>
+      <mat-list-item (click)="redirect('finance')">
+        <mat-icon>dashboard</mat-icon>
+        <div matListItemTitle> Dashboard </div>
+    </mat-list-item>
       <mat-list-item (click)="redirect('home')">
           <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
           <div matListItemTitle> Home </div>
       </mat-list-item>
+      
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>

@@ -33,7 +33,7 @@ export class MainComponent {
         this.route.navigate(['main/home']);
         break;
       case 'finance':
-        this.route.navigate(['main/user/personal-finance']);
+        this.route.navigate(['main/user/finance/dashboard']);
         break;
       case 'profile':
         this.route.navigate(['main/user/profile']);    

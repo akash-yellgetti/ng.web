@@ -24,6 +24,10 @@ const routes: Routes = [
     component: FamilyComponent
   },
   {
+    path: 'finance',
+    loadChildren: () => import('../finance/finance.module').then(m => m.FinanceModule)
+  },
+  {
     path: 'personal-finance',
     component: PersonalFinanceComponent
   }

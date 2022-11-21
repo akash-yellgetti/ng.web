@@ -48,7 +48,9 @@ const routes: Routes = [
       {
           path: 'market',
           loadChildren: () => import('../market/market.module').then(m => m.MarketModule)
-      }
+      },
+      // { path: '',   redirectTo: '/user/finance/dashboard', pathMatch: 'full' }, // redirect to `first-component`
+      // { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
     ]
   }
 ];

@@ -115,6 +115,9 @@ ng g s modules/auth/services/auth/auth
 ng g s modules/comm/socket/socket
 
 
+ng g m modules/finance --routing=true
+ng g c modules/finance/components/dashboard --module=finance
+
 
 ng g m shared
 ng g c shared/components/dialog --module=shared
@@ -180,4 +183,6 @@ ng g c modules/form-builder/field/field-dropdown --module=field
 https://www.youtube.com/watch?v=jGbP620NahE&t=1s
 <!-- ---------------- -->
 https://zoaibkhan.com/blog/create-a-responsive-card-grid-in-angular-using-flex-layout-part-1/
+<!-- ---------------- -->
+https://www.youtube.com/watch?v=iWYP3NtKQjs&list=RDCMUCKn7xwxBKZ_H1i6nilMsRQg&index=5
 <!-- ---------------- -->

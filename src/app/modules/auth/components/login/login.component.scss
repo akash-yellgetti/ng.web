@@ -1,9 +1,7 @@
-mat-card {
-    max-width: 400px;
-    margin: 2em auto;
-    text-align: center;
-  }
-  
-  mat-form-field {
-    display: block;
-  }
+.login mat-card {
+    padding: 0px;
+}
+
+.login .login-form {
+    padding: 20px;
+}
