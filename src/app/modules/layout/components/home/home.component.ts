@@ -76,7 +76,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     const data = this.emiCalculatorService.calculate(1000000, 10.5, 120)
       this.rows = data.iterationOfEmis;
-      console.log(this.rows);
+      // console.log(this.rows);
       // console.log(data);
 
       this.single = [
@@ -93,7 +93,7 @@ export class HomeComponent implements OnInit {
 
   calculate = () => {
     const result = this.fieldService.json(this.form.fields);
-    console.log(result)
+    // console.log(result)
     const data = this.emiCalculatorService.calculate(result.amount, result.rateOfInterest, result.noOfMonths)
       this.rows = data.iterationOfEmis;
       // console.log(this.rows);
@@ -119,7 +119,7 @@ export class HomeComponent implements OnInit {
       // console.log(result)
       const data = this.emiCalculatorService.calculate(result.amount, result.rateOfInterest, result.noOfMonths)
       this.rows = data.iterationOfEmis;
-      console.log(this.rows);
+      // console.log(this.rows);
       // console.log(data);
 
       this.single = [
