@@ -124,6 +124,8 @@ ng g s shared/services/socket/socket
 ng g s shared/services/emi-calculator/emi-calculator
 
 
+ng generate @angular/material:dashboard modules/layout/components/dashboard
+
 aakash5792@gmail.com
 AAbb12
 
@@ -168,3 +170,14 @@ ng g c modules/form-builder/field/field-file --module=field
 ng g c modules/form-builder/field/field-radio --module=field
 ng g c modules/form-builder/field/field-checkbox --module=field
 ng g c modules/form-builder/field/field-dropdown --module=field
+
+
+
+
+<!-- Reference -->
+
+<!-- ---------------- -->
+https://www.youtube.com/watch?v=jGbP620NahE&t=1s
+<!-- ---------------- -->
+https://zoaibkhan.com/blog/create-a-responsive-card-grid-in-angular-using-flex-layout-part-1/
+<!-- ---------------- -->

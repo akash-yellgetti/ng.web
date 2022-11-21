@@ -32,8 +32,10 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -53,6 +55,7 @@ const modules = [
   MatProgressSpinnerModule,
   MatInputModule,
   MatSlideToggleModule,
+  MatSliderModule,
   MatSelectModule,
   MatCheckboxModule,
   MatFormFieldModule,
@@ -78,7 +81,8 @@ const modules = [
   MatBadgeModule,
   MatGridListModule,
   MatTooltipModule,
-  MatDialogModule
+  MatDialogModule,
+  FlexLayoutModule
 ];
 @NgModule({
   imports: modules,
