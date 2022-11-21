@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxWebstorageModule } from 'ngx-webstorage';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { setting } from '../json/setting.json'
 const config: SocketIoConfig = { url: setting.uri, options: { transports: ['polling']  } };
@@ -13,13 +14,15 @@ const config: SocketIoConfig = { url: setting.uri, options: { transports: ['poll
   declarations: [],
   imports: [
     NgxPaginationModule,
+    NgxDatatableModule,
     NgxWebstorageModule.forRoot({ prefix: '', separator: '', caseSensitive:true }),
     SocketIoModule.forRoot(config),
     CommonModule
   ], 
   exports: [
     NgxPaginationModule,
-    NgxWebstorageModule
+    NgxWebstorageModule,
+    NgxDatatableModule
     
   ]
 })

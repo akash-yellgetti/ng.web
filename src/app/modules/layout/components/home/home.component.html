@@ -5,3 +5,19 @@
     <mat-icon>add</mat-icon>
   </button>
 </mat-toolbar>
+
+<!-- <ngx-datatable class="material" [rows]="rows" [columns]="columns"> </ngx-datatable> -->
+
+<ngx-datatable
+class="material"
+[rows]="rows"
+[columns]="columns"
+[sortType]="SortType.multi"
+[columnMode]="ColumnMode.force"
+[headerHeight]="50"
+[footerHeight]="50"
+[rowHeight]="50"
+[limit]="10"
+
+>
+</ngx-datatable>
