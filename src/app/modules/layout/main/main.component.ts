@@ -30,7 +30,10 @@ export class MainComponent {
   redirect = (key: string) => {
     switch (key) {
       case 'home':
-        this.route.navigate(['main/home']);    
+        this.route.navigate(['main/home']);
+        break;
+      case 'finance':
+        this.route.navigate(['main/user/personal-finance']);
         break;
       case 'profile':
         this.route.navigate(['main/user/profile']);    

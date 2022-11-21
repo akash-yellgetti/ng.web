@@ -68,6 +68,21 @@ export class HomeComponent implements OnInit {
   constructor(public dialog: MatDialog, public emiCalculatorService: EmiCalculatorService) {}
 
   ngOnInit(): void {
+    const data = this.emiCalculatorService.calculate(1000000, 10.5, 120)
+      this.rows = data.iterationOfEmis;
+      console.log(this.rows);
+      // console.log(data);
+
+      this.single = [
+        {
+          "name": "Principal",
+          "value": data.principalAmount
+        },
+        {
+          "name": "Interest",
+          "value": data.totalInterestAmount
+        },
+      ]
   }
 
 
