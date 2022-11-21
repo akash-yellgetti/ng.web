@@ -7,6 +7,7 @@ import { countries } from 'src/app/shared/json/charts.json';
 import { emiCalculator } from 'src/app/shared/json/emi-calculator.json';
 import { user } from 'src/app/shared/json/user.json';
 import { EmiCalculatorService } from 'src/app/shared/services/emi-calculator/emi-calculator.service';
+import { FieldService } from 'src/app/shared/services/field/field.service';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ import { EmiCalculatorService } from 'src/app/shared/services/emi-calculator/emi
 })
 export class HomeComponent implements OnInit {
   title = 'Card View Demo';
+  form = emiCalculator;
 
   gridColumns = 4;
 
@@ -65,12 +67,36 @@ export class HomeComponent implements OnInit {
       name: 'remainingAmount',
     }
   ];
-  constructor(public dialog: MatDialog, public emiCalculatorService: EmiCalculatorService) {}
+  constructor(
+    public dialog: MatDialog,
+    private fieldService: FieldService,
+    public emiCalculatorService: EmiCalculatorService
+  ) {}
 
   ngOnInit(): void {
     const data = this.emiCalculatorService.calculate(1000000, 10.5, 120)
       this.rows = data.iterationOfEmis;
       console.log(this.rows);
+      // console.log(data);
+
+      this.single = [
+        {
+          "name": "Principal",
+          "value": data.principalAmount
+        },
+        {
+          "name": "Interest",
+          "value": data.totalInterestAmount
+        },
+      ]
+  }
+
+  calculate = () => {
+    const result = this.fieldService.json(this.form.fields);
+    console.log(result)
+    const data = this.emiCalculatorService.calculate(result.amount, result.rateOfInterest, result.noOfMonths)
+      this.rows = data.iterationOfEmis;
+      // console.log(this.rows);
       // console.log(data);
 
       this.single = [

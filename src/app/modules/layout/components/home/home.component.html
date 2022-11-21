@@ -1,36 +1,56 @@
-<mat-toolbar style="background-color: #ebebeb;">
-  <span> EMI Calculator </span>
-  <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon" aria-label="Create" (click)="createDialog()">
-    <mat-icon>add</mat-icon>
-  </button>
-</mat-toolbar>
+
 <div class="content">
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div [fxFlex]="'100%'">
+      <mat-card >
+        <mat-card-header>
+          <mat-card-title> EMI Calculator </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row" >
+            <div class="col-{{field.col}}" *ngFor="let field of form.fields">
+                <mat-form-field appearance="outline">
+                    <mat-label>{{ field.label }}</mat-label>
+                    <input matInput [(ngModel)]="field.value">
+                </mat-form-field>
+            </div>
+        </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-stroked-button color="primary" (click)="calculate()"> Calculator </button>
+          
+       </mat-card-actions>
+      </mat-card>
+    </div>
     <div [fxFlex]="'70%'">
       <ngx-datatable class="material" [rows]="rows" [columns]="columns" [sortType]="SortType.multi"
         [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [limit]="15">
       </ngx-datatable>
     </div>
-    <div [fxFlex]="'30%'" >
-      <mat-card class="mat-elevation-z4">
-        <mat-card-header>
-          <mat-card-title>Mountains </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <!-- <ngx-charts-pie-chart [results]="single" [animations]="true">
-          </ngx-charts-pie-chart> -->
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="mat-elevation-z4">
-        <mat-card-header>
-          <mat-card-title>Mountains </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <!-- <ngx-charts-pie-chart [results]="single" [animations]="true">
-          </ngx-charts-pie-chart> -->
-        </mat-card-content>
-      </mat-card>
+    <div [fxFlex]="'30%'" fxLayoutGap="16px grid">
+      <div >
+        <mat-card >
+          <mat-card-header>
+            <mat-card-title>Mountains </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <!-- <ngx-charts-pie-chart [results]="single" [animations]="true">
+            </ngx-charts-pie-chart> -->
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div >
+        <mat-card >
+          <mat-card-header>
+            <mat-card-title>Mountains </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <!-- <ngx-charts-pie-chart [results]="single" [animations]="true">
+            </ngx-charts-pie-chart> -->
+          </mat-card-content>
+        </mat-card>
+      </div>
+    
     </div>
   </div>
 </div>
