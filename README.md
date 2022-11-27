@@ -117,6 +117,27 @@ ng g s modules/comm/socket/socket
 
 ng g m modules/finance --routing=true
 ng g c modules/finance/components/dashboard --module=finance
+ng g c modules/finance/components/budget --module=finance
+
+ng g c modules/finance/components/income --module=finance
+ng g c modules/finance/components/expense --module=finance
+ng g c modules/finance/components/expense-common --module=finance
+
+
+ng g c modules/finance/components/house-hold --module=finance
+ng g c modules/finance/components/transportation --module=finance
+ng g c modules/finance/components/insurance --module=finance
+ng g c modules/finance/components/food --module=finance
+ng g c modules/finance/components/pets --module=finance
+ng g c modules/finance/components/personal-care --module=finance
+ng g c modules/finance/components/entertainment --module=finance
+ng g c modules/finance/components/loan --module=finance
+ng g c modules/finance/components/taxes --module=finance
+ng g c modules/finance/components/saving --module=finance
+ng g c modules/finance/components/investment --module=finance
+ng g c modules/finance/components/gift --module=finance
+ng g c modules/finance/components/donation --module=finance
+ng g c modules/finance/components/legal --module=finance
 
 
 ng g m shared

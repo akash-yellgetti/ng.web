@@ -1,0 +1,18 @@
+<div class="content">
+    <div class="content-row" fxLayout="column " fxLayoutGap="15px" >
+        <div *ngFor="let item of data">
+            <div [fxFlex]="'100%'" >
+                <mat-card class="expense-common-card">
+                    <mat-card-header>
+                        <mat-icon mat-card-avatar [style.font-size.px]="24" style="border: 1px solid black" ></mat-icon>
+                        <mat-card-title> {{ item.title }}  </mat-card-title>
+                        <mat-card-subtitle>   {{ item.description || 'description' }}   </mat-card-subtitle>
+                        <div fxFlex></div>
+                        <div style="flex-grow: 1"></div>
+                        <span style="font-weight:bold;">{{ item.amount | currency:"&#8377; "}}</span>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
