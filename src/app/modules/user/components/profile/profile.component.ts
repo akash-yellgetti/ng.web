@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModuleService } from '../../../layout/core/services/module.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(public moduleService: ModuleService) { 
+    this.moduleService.mainTitle.next("Profile");
+  }
 
   ngOnInit(): void {
   }

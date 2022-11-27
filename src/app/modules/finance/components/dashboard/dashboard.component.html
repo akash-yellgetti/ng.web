@@ -1,5 +1,55 @@
 <div class="content">
     <div class="content-row" fxLayout="row " fxLayoutGap="15px">
+        <div [fxFlex]="'50%'">
+            <mat-card class="dashboard-medium-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        <a routerLink="/main/user/finance/budget/income">
+                            Income
+                        </a>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="dashboard-card-content">
+                    <ngx-charts-pie-chart 
+                        [view]="[500, 500]" 
+                        [results]="data.assets" 
+                        [labels]="true" 
+                        [scheme]="'vivid'" 
+                        [legend]="true" 
+                        [legendPosition]="legendPosition" 
+                        [doughnut]="false"
+
+                    >
+                    </ngx-charts-pie-chart>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div [fxFlex]="'50%'">
+            <mat-card class="dashboard-medium-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        <a routerLink="/main/user/finance/budget/expense">
+                            Expense
+                        </a>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="dashboard-card-content">
+                    <ngx-charts-pie-chart 
+                        [view]="[500, 500]" 
+                        [results]="data.assets" 
+                        [labels]="true" 
+                        [scheme]="'vivid'" 
+                        [legend]="true" 
+                        [legendPosition]="legendPosition" 
+                        [doughnut]="false"
+
+                    >
+                    </ngx-charts-pie-chart>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <div class="content-row" fxLayout="row " fxLayoutGap="15px">
         <div [fxFlex]="'33%'">
             <mat-card class="dashboard-medium-card">
                 <mat-card-header>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
+import { Subject } from 'rxjs';
 import * as master from '../json/master.json';
 
 @Injectable({
@@ -7,10 +8,19 @@ import * as master from '../json/master.json';
 })
 export class ModuleService {
   data: any = null;
+  private title: any = 'Home';
+  public mainTitle: any = new Subject();
   private module: any = '';
   private subModule: any = '';
   constructor() { }
 
+  setTitle = (title: string) => {
+    this.title = title;
+  }
+
+  getTitle = (data: any) => {
+    return this.title;
+  }
   set = (data: any) => {
     this.data = data;
     this.setCurrentRoute(data.module, data.subModule);

@@ -5,6 +5,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import * as menus from '../core/json/menus.json';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Router } from '@angular/router';
+import { ModuleService } from '../core/services/module.service';
 
 @Component({
   selector: 'app-main',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-  
+  public mainTitle: string = 'Dashboard';
   // mobileQuery: MediaQueryList;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -20,7 +21,12 @@ export class MainComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private localStorageService: LocalStorageService, private route: Router) {}
+  constructor(private breakpointObserver: BreakpointObserver, private localStorageService: LocalStorageService, private route: Router, public moduleService: ModuleService) {
+    this.moduleService.mainTitle.subscribe((r: any) => {
+      console.log(r)
+      this.mainTitle = r;
+    })
+  }
   
   logout = () => {
     this.localStorageService.clear();

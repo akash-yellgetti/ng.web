@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { ModuleService } from '../../../layout/core/services/module.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -112,7 +113,9 @@ export class DashboardComponent implements OnInit {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, public moduleService: ModuleService) {
+    this.moduleService.mainTitle.next("Dashboard");
+  }
 
   ngOnInit(): void {
   }

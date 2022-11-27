@@ -93,7 +93,7 @@ export const financeDashboard = [
         "title": "ePF",
         "description": "Employer Provident Fund"
     },
-    
+
     {
         "type": "investment",
         "amount": 0,
@@ -124,14 +124,14 @@ export const financeDashboard = [
         "title": "Debt",
         "description": "Debt Mutual Fund"
     },
-    
+
     {
         "type": "investment",
         "amount": 0,
         "title": "Gold",
         "description": "Gold Ornaments "
     },
-    
+
     {
         "type": "investment",
         "amount": 0,
@@ -368,6 +368,37 @@ export const financeDashboard = [
         "description": "Charity 1",
         "amount": 0,
         "type": "donation",
+    },
+    {
+        "title": "ICICI Bank",
+        "description": "Platinum",
+        "amount": 75000,
+        "type": "credit-card",
+    },
+    {
+        "title": "ICICI Bank",
+        "description": "Amazon",
+        "amount": 1000,
+        "type": "credit-card",
+    },
+    
+    {
+        "title": "Bullet 2-Wheeler",
+        "description": "MH 12 MJ 5500",
+        "amount": 0,
+        "type": "vehicle",
+    },
+    {
+        "title": "Activa 2-Wheeler",
+        "description": "MH 04 FY 1285 ",
+        "amount": 0,
+        "type": "vehicle",
+    },
+    {
+        "title": "Activa 2-Wheeler",
+        "description": "MH 02 J 1285 ",
+        "amount": 0,
+        "type": "vehicle",
     },
 
 ]
