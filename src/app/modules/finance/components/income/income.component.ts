@@ -6,7 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./income.component.scss']
 })
 export class IncomeComponent implements OnInit {
-
+  public tabs: any = [
+    {
+      label: 'Salary',
+      link: './salary',
+    },
+    {
+      label: 'Business',
+      link: './business',
+    },
+    {
+      label: 'Rental',
+      link: './rental',
+    }
+  ];
   constructor() { }
 
   ngOnInit(): void {

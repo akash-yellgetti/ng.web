@@ -8,6 +8,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { FamilyComponent } from './components/family/family.component';
+import { HabitsComponent } from './components/habits/habits.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -16,11 +18,12 @@ import { FamilyComponent } from './components/family/family.component';
     ProfileComponent,
     ChatComponent,
     NotificationComponent,
-    FamilyComponent
+    FamilyComponent,
+    HabitsComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule,
+    SharedModule,
     UserRoutingModule
   ]
 })

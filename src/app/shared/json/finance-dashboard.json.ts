@@ -1,5 +1,29 @@
 export const financeDashboard = [
     {
+        "type": "salary",
+        "amount": 0,
+        "title": "Self",
+        "description": "Salary",
+    },
+    {
+        "type": "salary",
+        "amount": 0,
+        "title": "Spouse",
+        "description": "Salary",
+    },
+    {
+        "type": "business",
+        "amount": 0,
+        "title": "Business 1",
+        "description": "business",
+    },
+    {
+        "type": "rental",
+        "amount": 0,
+        "title": "Rental 1",
+        "description": "Rental 704",
+    },
+    {
         "type": "house-hold",
         "amount": 10000,
         "title": "Amma",

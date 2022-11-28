@@ -19,7 +19,22 @@ const routes: Routes = [
     children: [
       {
         path: 'income',
-        component: IncomeComponent
+        component: IncomeComponent,
+        children:  [
+
+          {
+            path: 'salary',
+            component: ExpenseCommonComponent
+          },
+          {
+            path: 'business',
+            component: ExpenseCommonComponent
+          },
+          {
+            path: 'rental',
+            component: ExpenseCommonComponent
+          },
+        ]
       },
       {
         path: 'expense',
