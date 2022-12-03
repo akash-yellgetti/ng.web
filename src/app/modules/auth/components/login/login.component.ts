@@ -9,6 +9,20 @@ import { Router, Routes } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  public hide: boolean = true;
+  public fields: any = [
+    {
+      "name": "email",
+      "label": "Email",
+      "value": "akash@sociosafety.com"
+    },
+    {
+      "name": "password",
+      "label": "password",
+      "value": "12345"
+    }
+  ];
+  public isCollapsed: any = true;
   public field = {
     email: {
       label: 'Email',

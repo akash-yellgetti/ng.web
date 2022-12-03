@@ -145,6 +145,7 @@ ng g c shared/components/dialog --module=shared
 
 ng g s shared/services/field/field
 ng g s shared/services/socket/socket
+ng g s shared/services/loader/loader
 ng g s shared/services/emi-calculator/emi-calculator
 
 
@@ -207,4 +208,10 @@ https://www.youtube.com/watch?v=jGbP620NahE&t=1s
 https://zoaibkhan.com/blog/create-a-responsive-card-grid-in-angular-using-flex-layout-part-1/
 <!-- ---------------- -->
 https://www.youtube.com/watch?v=iWYP3NtKQjs&list=RDCMUCKn7xwxBKZ_H1i6nilMsRQg&index=5
+<!-- ---------------- -->
+How to Build a Native App from Angular Projects with Capacitor
+https://www.youtube.com/watch?v=V2Wn2JROUEo
+<!-- ---------------- -->
+Angular Material Mobile App with Capacitor
+https://www.youtube.com/watch?v=UUiHB8VC_to
 <!-- ---------------- -->

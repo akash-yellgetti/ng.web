@@ -12,6 +12,30 @@ export class AuthService {
 
   constructor(private http: HttpClient, private storage: LocalStorageService) { }
 
+  generateOTP = (data: any): any => {
+
+  }
+
+  verifyOTP = (data: any): any => {
+
+  }
+  register = (data: any): any => {
+    const url = setting['uri'] + '/auth/login';
+    // const url = 'http://localhost:5001/auth/login';
+
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json'
+      // 'Authorization': this.authToken,
+      // 'api-build-version': '1.0.0',
+    });
+    const options = { headers: headers };
+    const params = JSON.stringify(data);
+
+    return this.http.post(url, params, options)
+      .pipe(map((data) => data));
+  }
+
   login = (data: any) => {
     const url = setting['uri'] + '/auth/login';
     // const url = 'http://localhost:5001/auth/login';
@@ -29,10 +53,7 @@ export class AuthService {
       .pipe(map((data) => data));
   }
 
-  getAuthToken = () => {
-    const tokens = this.storage.retrieve('tokens');
-    return `Bearer ${tokens.accessToken}`;
-  }
+  
 
   check = () => { 
     const url = setting['uri'] + '/auth/check';
@@ -48,7 +69,10 @@ export class AuthService {
       catchError(this.handleError));
   }
 
-  
+  getAuthToken = () => {
+    const tokens = this.storage.retrieve('tokens');
+    return `Bearer ${tokens.accessToken}`;
+  }
 
   handleError = (e: any, m: any): any => {
     const error = e.error;

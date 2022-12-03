@@ -1,19 +1,114 @@
-<div fxLayout="row" fxLayoutAlign="center center" fxFlexFill class="login">
-  <mat-card [fxFlex]="'25%'" fxFlex.sm="100%" fxFlex.xs="100%">
-    <mat-toolbar color="primary">Login</mat-toolbar>
-    
+<nav class="navbar  navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <!---->
+  <a class="navbar-brand" [routerLink]="'.'">
+    <img src="" alt="Sociosafety"> <strong>Socio</strong> Safety
 
-    <mat-card-content fxLayoutAlign="stretch" fxLayout="column" class="login-form" >
-      <mat-form-field >
-        <input matInput placeholder="Username"  name="username" [(ngModel)]="field.email.value" required>
-      </mat-form-field>
-      <mat-form-field >
-        <input matInput placeholder="Password"  type="password" [(ngModel)]="field.password.value" name="password" required>
-      </mat-form-field>
+  </a>
 
-      <button mat-raised-button color="primary" (click)="login()">Login</button>
-    </mat-card-content>
-    
+  <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->
+  <button class="navbar-toggler" type="button" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+    aria-controls="collapseExample">
+    <i class="bi bi-filter-right"></i>
+  </button>
+</nav>
 
-  </mat-card>
+
+<div class="container-fluid">
+  <div class="row ">
+    <!-- style="background: url(../../../../assets/images/00.jpg);" -->
+    <div class="col-xl-5 col-xs-12 p-0 ">
+      <section class="welcome space-lg vh-100 bg-primary inverse" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <div class="contain header pt-lg-xs">
+          <h1 class="title"><strong>Welcome Back!</strong></h1>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta molestiae asperiores modi incidunt
+            dolorem deserunt nihil eius error, accusamus ipsam id facere nemo possimus corrupti quas quo, nostrum
+            iusto expedita.</p>
+        </div>
+
+        <div class="contain mt-5">
+          <h5 class="text-semibold">Download our app</h5>
+          <div class="app-links">
+            <a href="#"> <i class="icon-play-store"></i> <span>Google Play</span> </a>
+            <a href="#"> <i class="icon-apple-icon"></i> <span>App Store</span> </a>
+          </div>
+        </div>
+        <div class="auth-bg-img inverse"></div>
+      </section>
+    </div>
+    <div class="col-lg-7 col-xs-12 p-0 ">
+
+      <section class="login bg-white space-lg vh-100 ">
+        <div class="contain header pt-lg-xs">
+          <h1 class="title">Login to <strong>Socio Safety</strong></h1>
+          <p class="sub-title">Dont have an account? <a href="javascript:void(0)"
+              routerLink="/auth/registration">Register</a></p>
+          <div class="social-media">
+            <button type="button" class="btn btn-icon"> <i class="bi bi-google"></i> </button>
+            <button type="button" class="btn btn-icon"> <i class="bi bi-facebook"></i> </button>
+          </div>
+        </div>
+
+        <div class="contain mt-5 form">
+          <form>
+            <div class="form-row">
+
+              <div class="form-group  col-12">
+                <!-- <label>Mobile number or Email</label> -->
+                <input type="text" class="form-control form-control-lg form-control-fill"
+                  placeholder="Mobile number or Email" name="email" [(ngModel)]="fields[0].value">
+                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+              </div>
+
+              <div class="form-group col-12">
+                <label>Password</label>
+                <div class="input-group input-group-lg input-group-fill">
+                  <input [type]="hide ? 'password' : 'text'" [(ngModel)]="fields[1].value" class="form-control"
+                    placeholder="Password">
+                  <div class="input-group-append">
+                    <button class="input-group-text" type="button" (click)="hide = !hide"
+                      [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"
+                      [ngClass]="hide ? 'icon-eye' : 'icon-eye-close'"></button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <mat-form-field appearance="fill">
+           <mat-label>Password</mat-label>
+           <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="fields[1].value">
+           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+           </button>
+        </mat-form-field> -->
+            </div>
+
+            <div class="form-row form-action">
+              <div class="col">
+                <a href="javascript:void(0)" class="text-secondary" routerLink="/auth/forgot-password">Forgot your
+                  password?</a>
+
+              </div>
+              <div class="col text-right">
+                <button type="submit" class="btn btn-lg btn-primary rounded-0" (click)="login()">Login</button>
+              </div>
+            </div>
+          </form>
+
+
+
+
+        </div>
+
+        <div class="auth-bg-img"></div>
+      </section>
+    </div>
+  </div>
+
 </div>
+
+
+<!-- 
+       <a mat-button routerLink="/auth/register">Register</a>
+      <a mat-button routerLink="/auth/login">Login</a>
+      <a mat-button routerLink="/auth/forgot-password">Forgot Password</a>
+     -->
