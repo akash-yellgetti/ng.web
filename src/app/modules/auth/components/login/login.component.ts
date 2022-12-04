@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Router, Routes } from '@angular/router';
+import { FieldService } from 'src/app/shared/services/field/field.service';
 
 @Component({
   selector: 'app-login',
@@ -10,19 +12,11 @@ import { Router, Routes } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public hide: boolean = true;
-  public fields: any = [
-    {
-      "name": "email",
-      "label": "Email",
-      "value": "akash@sociosafety.com"
-    },
-    {
-      "name": "password",
-      "label": "password",
-      "value": "12345"
-    }
-  ];
   public isCollapsed: any = true;
+  public loginForm = this.fb.group({
+    email: [null, Validators.required],
+    password: [null, Validators.required],
+  });
   public field = {
     email: {
       label: 'Email',
@@ -35,20 +29,21 @@ export class LoginComponent implements OnInit {
       value: null
     }
   }
-  constructor(private authService: AuthService, private storageService: LocalStorageService, private route: Router) { }
+  constructor(private fb: FormBuilder, 
+    private fieldService: FieldService,
+    private authService: AuthService, 
+    private storageService: LocalStorageService, 
+    private route: Router) { }
 
   ngOnInit(): void {
   }
 
   login = () => {
-    const params: any = {
-      "email": this.field.email.value,
-      "password": this.field.password.value,
-    };
-
+    const controls = this.loginForm.controls;
+    const params: any = this.fieldService.json(controls);
     params['email'] = "aakash5792@gmail.com";
     params['password'] = "AAbb12";
-
+    
     const myObserver = {
       next: (res: number) => {
         console.log('Observer got a next value: ' + res);

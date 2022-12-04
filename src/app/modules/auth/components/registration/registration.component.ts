@@ -22,9 +22,11 @@ export class RegistrationComponent implements OnInit {
     lastName: ['B', Validators.required],
     gender: ['m', Validators.required],
     mobileNo: ['9920021073', Validators.required],
+    no: [null, Validators.required],
     dob: ['1992/12/08', Validators.required],
     email: [null, Validators.required],
     password: [null, Validators.required],
+    confirmPassword: [null, Validators.required],
   });
   
   public flag = {
@@ -48,25 +50,13 @@ export class RegistrationComponent implements OnInit {
     // this.fields = _.get(form, 'default.fields');
   }
 
-  generateOTP =  (type: any) => {
-    console.log(type)
+  generateOTP =  () => {
     const controls = this.registrationForm.controls;
-    console.log(controls)
     const params: any = this.fieldService.json(controls);
     params.type = this.flag.otpFlag;
-    // console.log(params)
-    // var otpParams = {
-    //   email: _.get(_.find(this.fields, { name: 'email' }), 'value'),
-    //   mobile_no: _.get(_.find(this.fields, { name: 'mobile_no' }), 'value'),
-    //   flag: 'reg'
-    // };
-
 
     this.authService.generateOTP(params).subscribe((res: any) => {
-    //   // var res = data.data;
-      // console.log(res);
-    //   // return $window.open('/login', '_self');
-      if (res  ) {
+      if (res && res.status ) {
         this.flag.requestOtp = false;
         this.flag.verifyOtp = true;
         this.flag.mobileNo = true;
@@ -74,46 +64,32 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  verify = (otp: any) => {
-
-    // var otpParams = {
-    //   email: _.get(_.find(this.fields, { name: 'email' }), 'value'),
-    //   mobile_no: _.get(_.find(this.fields, { name: 'mobile_no' }), 'value'),
-    //   flag: 'reg',
-    //   otp: otp
-    // };
-
-    // console.log(otpParams);
-
-    // this.authService.verifyOTP(otpParams).subscribe((res) => {
-    //   if (res.status == 1) {
-    //     this.flag.requestOtp = false;
-    //     this.flag.verifyOtp = false;
-    //     this.flag.register = true;
-    //   }
-    //   // return $window.open('/login', '_self');
-    // });
+  verify = () => {
+    const controls = this.registrationForm.controls;
+    const params: any = this.fieldService.json(controls);
+    params.type = this.flag.otpFlag;
+    
+    this.authService.verifyOTP(params).subscribe((res: any) => {
+      if (res && res.status ) {
+        this.flag.requestOtp = false;
+        this.flag.verifyOtp = false;
+        this.flag.register = true;
+      }
+    });
   }
 
   register = () => {
-    // const fields = this.fields;
-
-    // const errors = this.fieldService.setFields(this.fields).validate().getErrors();
-
-    // if (this.fieldService.getErrorsCount()) {
-    //   this.fieldService.setToastr();
-    // }
-    // const params = this.fieldService.getJsonData();
-    // params.password = this.password;
-    // params.confirm_password = this.confirm_password;
-    // this.authService.register(params).subscribe((res) => {
-    //   if (res.status == 1) {
-    //     this.flag.requestOtp = false;
-    //     this.flag.verifyOtp = false;
-    //     this.flag.register = true;
-    //     this.router.navigate(['auth/login']);
-    //   }
-    // });
+    const controls = this.registrationForm.controls;
+    const params: any = this.fieldService.json(controls);
+    params.type = this.flag.otpFlag;
+    
+    this.authService.register(params).subscribe((res: any) => {
+      if (res && res.status ) {
+        this.flag.requestOtp = false;
+        this.flag.verifyOtp = false;
+        this.flag.register = true;
+      }
+    });
   }
 }
 

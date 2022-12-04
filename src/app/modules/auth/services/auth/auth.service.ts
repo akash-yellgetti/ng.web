@@ -14,13 +14,9 @@ export class AuthService {
 
   generateOTP = (data: any): any => {
     const url = setting['uri'] + '/auth/otp/generate';
-    // const url = 'http://localhost:5001/auth/login';
-
+    
     const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json'
-      // 'Authorization': this.authToken,
-      // 'api-build-version': '1.0.0',
     });
     const options = { headers: headers };
     const params = JSON.stringify(data);
@@ -30,17 +26,22 @@ export class AuthService {
   }
 
   verifyOTP = (data: any): any => {
+    const url = setting['uri'] + '/auth/otp/verify';
+    
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    const options = { headers: headers };
+    const params = JSON.stringify(data);
 
+    return this.http.post(url, params, options)
+      .pipe(map((data) => data));
   }
   register = (data: any): any => {
-    const url = setting['uri'] + '/auth/login';
-    // const url = 'http://localhost:5001/auth/login';
-
+    const url = setting['uri'] + '/auth/register';
+    
     const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json'
-      // 'Authorization': this.authToken,
-      // 'api-build-version': '1.0.0',
     });
     const options = { headers: headers };
     const params = JSON.stringify(data);
@@ -51,13 +52,9 @@ export class AuthService {
 
   login = (data: any) => {
     const url = setting['uri'] + '/auth/login';
-    // const url = 'http://localhost:5001/auth/login';
-
+    
     const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json'
-      // 'Authorization': this.authToken,
-      // 'api-build-version': '1.0.0',
     });
     const options = { headers: headers };
     const params = JSON.stringify(data);
@@ -65,8 +62,6 @@ export class AuthService {
     return this.http.post(url, params, options)
       .pipe(map((data) => data));
   }
-
-  
 
   check = () => { 
     const url = setting['uri'] + '/auth/check';
