@@ -8,6 +8,7 @@ import {
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { AuthState } from '../../store/auth.state';
+import { AuthService } from 'src/app/modules/auth/services/auth/auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -27,7 +28,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return request.clone({
       setHeaders: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `JWT ${token}`,
       },
     });
   }

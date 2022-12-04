@@ -84,7 +84,7 @@ export class AuthService {
 
   getAuthToken = () => {
     const tokens = this.storage.retrieve('tokens');
-    return `Bearer ${tokens.accessToken}`;
+    return `JWT ${tokens.accessToken}`;
   }
 
   handleError = (e: any, m: any): any => {
