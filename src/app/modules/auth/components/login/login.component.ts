@@ -46,6 +46,9 @@ export class LoginComponent implements OnInit {
       "password": this.field.password.value,
     };
 
+    params['email'] = "aakash5792@gmail.com";
+    params['password'] = "AAbb12";
+
     const myObserver = {
       next: (res: number) => {
         console.log('Observer got a next value: ' + res);
@@ -63,7 +66,7 @@ export class LoginComponent implements OnInit {
         const data = res.data;
         this.storageService.store('tokens', data.tokens);
         this.storageService.store('user', data.user);
-        this.route.navigate(['main/user/finance/dashboard']);
+        this.route.navigate(['main/dashboard']);
       }
     })
   }

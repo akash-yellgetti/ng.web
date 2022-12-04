@@ -14,6 +14,7 @@ import { ModuleService } from '../core/services/module.service';
 })
 export class MainComponent {
   public mainTitle: string = 'Dashboard';
+  public isCollapsed: any = false;
   // mobileQuery: MediaQueryList;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -58,5 +59,10 @@ export class MainComponent {
         break;
     }
     
+  }
+
+  sideNavToggle = ($event: any) => {
+    console.log('sideNavToggle');
+    this.isCollapsed = !this.isCollapsed;
   }
 }

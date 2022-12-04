@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
 import { FieldService } from 'src/app/shared/services/field/field.service';
@@ -16,18 +16,15 @@ export class RegistrationComponent implements OnInit {
   public hide: boolean = true;
   
   public isCollapsed: any = true;
-  addressForm = this.fb.group({
-    company: null,
-    firstName: [null, Validators.required],
-    lastName: [null, Validators.required],
-    address: [null, Validators.required],
-    address2: null,
-    city: [null, Validators.required],
-    state: [null, Validators.required],
-    postalCode: [null, Validators.compose([
-      Validators.required, Validators.minLength(5), Validators.maxLength(5)])
-    ],
-    shipping: ['free', Validators.required]
+  // emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  public registrationForm = this.fb.group({
+    firstName: ['A', Validators.required],
+    lastName: ['B', Validators.required],
+    gender: ['m', Validators.required],
+    mobileNo: ['9920021073', Validators.required],
+    dob: ['1992/12/08', Validators.required],
+    email: [null, Validators.required],
+    password: [null, Validators.required],
   });
   
   public flag = {
@@ -35,7 +32,7 @@ export class RegistrationComponent implements OnInit {
     verifyOtp: false,
     mobileNo: false,
     register: false,
-    otpFlag: 'Request'
+    otpFlag: 'requestRegister'
   };
   public input: any = {
     otp: ''
@@ -51,7 +48,13 @@ export class RegistrationComponent implements OnInit {
     // this.fields = _.get(form, 'default.fields');
   }
 
-  request = function (type: any) {
+  generateOTP =  (type: any) => {
+    console.log(type)
+    const controls = this.registrationForm.controls;
+    console.log(controls)
+    const params: any = this.fieldService.json(controls);
+    params.type = this.flag.otpFlag;
+    // console.log(params)
     // var otpParams = {
     //   email: _.get(_.find(this.fields, { name: 'email' }), 'value'),
     //   mobile_no: _.get(_.find(this.fields, { name: 'mobile_no' }), 'value'),
@@ -59,16 +62,16 @@ export class RegistrationComponent implements OnInit {
     // };
 
 
-    // this.authService.generateOTP(otpParams).subscribe((res) => {
+    this.authService.generateOTP(params).subscribe((res: any) => {
     //   // var res = data.data;
-    //   console.log(res);
+      // console.log(res);
     //   // return $window.open('/login', '_self');
-    //   if (res && res.status && res.status === 1) {
-    //     this.flag.requestOtp = false;
-    //     this.flag.verifyOtp = true;
-    //     this.flag.mobileNo = true;
-    //   }
-    // });
+      if (res  ) {
+        this.flag.requestOtp = false;
+        this.flag.verifyOtp = true;
+        this.flag.mobileNo = true;
+      }
+    });
   }
 
   verify = (otp: any) => {

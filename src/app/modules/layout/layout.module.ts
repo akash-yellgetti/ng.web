@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { LayoutModule as _LayoutModule } from '@angular/cdk/layout';
 import { MainComponent } from './main/main.component';
 import { MaterialModule } from 'src/app/shared/modules/material.module';
-import { LeftNavigationComponent } from './main/left-navigation/left-navigation.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { CardComponent } from '../../shared/components/card/card.component';
 import { DatatableComponent } from '../../shared/components/datatable/datatable.component';
@@ -18,11 +17,14 @@ import { NgxModule } from '../../shared/modules/ngx.module';
 import { AuthGuard } from '../auth/guards/auth/auth.guard';
 import { HomeComponent } from './components/home/home.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 
 @NgModule({
-  declarations: [MainComponent, LeftNavigationComponent, CardComponent, DatatableComponent, PaginatorComponent,  FormComponent, FilterComponent, BreadcrumbComponent, HomeComponent],
+  declarations: [MainComponent, CardComponent, DatatableComponent, PaginatorComponent,  FormComponent, FilterComponent, BreadcrumbComponent, HomeComponent, HeaderComponent, FooterComponent, DashboardComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -31,7 +33,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ],
   exports: [
     MainComponent,
-    LeftNavigationComponent,
     CardComponent,
     DatatableComponent,
     FormComponent

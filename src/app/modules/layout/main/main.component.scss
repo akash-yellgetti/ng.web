@@ -1,44 +1,27 @@
-:host {
-  .mat-icon {
-    vertical-align: middle;
-    margin-right: 20px;
-  }
-  .profile-card {
-    text-align: center;
-    padding: 0 20px 20px 20px;
-    img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-  }
-}
+@import "../../../../../assets/styles/index.scss";
 
 .sidenav-container {
   height: 100%;
+  background-color: $color-gray;
+  // padding-top: 64px;
 }
 
 .sidenav {
-  width: 250px;
+  background-color: $color-secondary;
+  color: $color-white;
+  min-width: 250px;
+  // background: url(../../../../assets/images/06.jpg) left top no-repeat;
+
+  .mat-toolbar {
+    background-color: $color-secondary;
+    color: $color-white;
+  }
 }
 
-.example-spacer {
-  flex: 1 1 auto;
-}
-
-
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background-color: #02b1fd;
-}
-
-.mat-drawer-content {
-  // background-color: #eff1f7;
-}
-
-::ng-deep .mat-flat-button.mat-primary, ::ng-deep .mat-raised-button.mat-primary, ::ng-deep .mat-fab.mat-primary, ::ng-deep .mat-mini-fab.mat-primary {
-  background-color: #00b0fb;
+.footer {
+  // position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  background-color: $color-gray;
 }

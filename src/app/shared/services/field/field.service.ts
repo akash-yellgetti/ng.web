@@ -11,7 +11,7 @@ export class FieldService {
 
   json = (data: any) => {
     return _.chain(data)
-    .keyBy('name')
+    // .keyBy('name')
     .reduce((a: any, v, k) => {
       a[k] = v['value'];
       return a;

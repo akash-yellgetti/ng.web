@@ -80,6 +80,9 @@ ng g c modules/layout/auth --module=layout
 ng g c modules/layout/main --module=layout
 
 ng g c modules/layout/components/home --module=layout
+ng g c modules/layout/components/header --module=layout
+ng g c modules/layout/components/dashboard --module=layout
+ng g c modules/layout/components/footer --module=layout
 
 
 ng g c modules/layout/core/shared/filter --module=layout
@@ -214,4 +217,6 @@ https://www.youtube.com/watch?v=V2Wn2JROUEo
 <!-- ---------------- -->
 Angular Material Mobile App with Capacitor
 https://www.youtube.com/watch?v=UUiHB8VC_to
+<!-- ---------------- -->
+https://github.com/angular/flex-layout/tree/master/projects/apps/demo-app/src/app/layout
 <!-- ---------------- -->
