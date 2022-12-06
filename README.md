@@ -27,6 +27,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 
+#232F34 - Darkest
+#344955 - 700
+#4A6572 - 600
+#F9AA33
+
+
 ng serve -o --port 6001
 
 

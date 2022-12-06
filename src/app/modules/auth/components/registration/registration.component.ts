@@ -15,7 +15,7 @@ import { LoaderService } from 'src/app/shared/services/loader/loader.service';
 export class RegistrationComponent implements OnInit {
   public hide: boolean = true;
 
-  public isCollapsed: any = true;
+  public isCollapsed: any = false;
   // emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   public registrationForm = this.fb.group({
     firstName: [null, Validators.required],

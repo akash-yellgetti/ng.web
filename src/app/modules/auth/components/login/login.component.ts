@@ -16,8 +16,8 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  public hide: boolean = true;
-  public isCollapsed: any = true;
+  public hide: boolean = false;
+  public isCollapsed: any = false;
   public fields: any = [];
   public loginForm: any;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -41,8 +41,8 @@ export class LoginComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<any> {
-    this.isCollapsed = await this.breakpointObserver.observe(Breakpoints.Handset);
-    console.log('isCollapse', this.isCollapsed)
+    // this.isCollapsed = await this.breakpointObserver.observe(Breakpoints.Handset);
+    // console.log('isCollapse', this.isCollapsed)
   }
 
   login = (): any => {
