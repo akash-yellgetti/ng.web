@@ -39,7 +39,8 @@ export class FamilyComponent implements OnInit {
       name: 'Payment',
       link: '/main/user/payment'
     }
-  ]
+  ];
+  sortBy = 'sort';
 
   constructor(private router: Router, public moduleService: ModuleService) { 
     this.moduleService.mainTitle.next("Profile");
