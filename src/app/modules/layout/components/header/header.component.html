@@ -6,6 +6,10 @@
     <span> App </span>
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+      (click)="redirect('dashboard')">
+      <mat-icon> dashboard</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
       (click)="redirect('chat')">
       <mat-icon> chat</mat-icon>
     </button>

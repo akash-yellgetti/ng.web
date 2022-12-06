@@ -1,18 +1,11 @@
-<nav class="navbar  navbar-expand-lg navbar-dark bg-primary fixed-top">
-  <!---->
-  <a class="navbar-brand" [routerLink]="'.'">
-    <img src="" alt="Sociosafety"> <strong>Socio</strong> Safety
-
-  </a>
-
-  <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->
-  <button class="navbar-toggler" type="button" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
-    aria-controls="collapseExample">
-    <i class="bi bi-filter-right"></i>
+<mat-toolbar color="primary">
+  <span> Socio Safety </span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" (click)="collapse.toggle()"
+    [attr.aria-expanded]="!isCollapsed">
+    <mat-icon> menu</mat-icon>
   </button>
-</nav>
-
-
+</mat-toolbar>
 <div class="container-fluid">
   <div class="row ">
     <!-- style="background: url(../../../../assets/images/00.jpg);" -->
@@ -36,7 +29,6 @@
       </section>
     </div>
     <div class="col-lg-7 col-xs-12 p-0 ">
-
       <section class="login bg-white space-lg vh-100 ">
         <div class="contain header pt-lg-xs">
           <h1 class="title">Login to <strong>Socio Safety</strong></h1>
@@ -47,13 +39,11 @@
             <button type="button" class="btn btn-icon"> <i class="bi bi-facebook"></i> </button>
           </div>
         </div>
-
         <div class="contain mt-5 form">
-          <form [formGroup]="loginForm" novalidate  >
+          <form [formGroup]="loginForm" novalidate>
             <div class="form-row">
-
-              <div class="col-12"  >
-                <mat-form-field appearance="outline"  class="w-100">
+              <div class="col-12">
+                <mat-form-field appearance="outline" class="w-100">
                   <mat-label>Email</mat-label>
                   <input matInput placeholder="Email" formControlName="email">
                   <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
@@ -62,20 +52,20 @@
                   </mat-error>
                   <!-- <mat-hint>Hint</mat-hint> -->
                 </mat-form-field>
-                </div>
-
-              <div class="col-12"  >
-                <mat-form-field appearance="outline"  class="w-100">
-                <mat-label>Password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
-                  Password is <strong>required</strong>
-                </mat-error>
-                </button>
-              </mat-form-field>
-            </div>
+              </div>
+              <div class="col-12">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Password</mat-label>
+                  <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                      Password is <strong>required</strong>
+                    </mat-error>
+                  </button>
+                </mat-form-field>
+              </div>
 
               <!-- <mat-form-field appearance="fill">
            <mat-label>Password</mat-label>
@@ -98,22 +88,9 @@
               </div>
             </div>
           </form>
-
-
-
-
         </div>
-
         <div class="auth-bg-img"></div>
       </section>
     </div>
   </div>
-
 </div>
-
-
-<!-- 
-       <a mat-button routerLink="/auth/register">Register</a>
-      <a mat-button routerLink="/auth/login">Login</a>
-      <a mat-button routerLink="/auth/forgot-password">Forgot Password</a>
-     -->
