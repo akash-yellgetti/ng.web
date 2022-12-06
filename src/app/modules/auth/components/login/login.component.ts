@@ -4,6 +4,11 @@ import { AuthService } from '../../services/auth/auth.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Router, Routes } from '@angular/router';
 import { FieldService } from 'src/app/shared/services/field/field.service';
+import { forms } from 'src/app/shared/json/forms.json';
+import * as _ from 'lodash';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -13,37 +18,40 @@ import { FieldService } from 'src/app/shared/services/field/field.service';
 export class LoginComponent implements OnInit {
   public hide: boolean = true;
   public isCollapsed: any = true;
-  public loginForm = this.fb.group({
-    email: [null, Validators.required],
-    password: [null, Validators.required],
-  });
-  public field = {
-    email: {
-      label: 'Email',
-      name: 'email',
-      value: null
-    },
-    password: {
-      label: 'Passowrd',
-      name: 'password',
-      value: null
-    }
-  }
-  constructor(private fb: FormBuilder, 
+  public fields: any = [];
+  public loginForm: any;
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
+
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private fb: FormBuilder,
     private fieldService: FieldService,
-    private authService: AuthService, 
-    private storageService: LocalStorageService, 
-    private route: Router) { }
+    private authService: AuthService,
+    private storageService: LocalStorageService,
+    private route: Router) {
+    // this.fields = forms.login;
+    this.fields = forms.login;
+    this.loginForm = this.fb.group(this.fieldService.getFormGroupFields(this.fields))
 
-  ngOnInit(): void {
+
   }
 
-  login = () => {
+  async ngOnInit(): Promise<any> {
+    this.isCollapsed = await this.breakpointObserver.observe(Breakpoints.Handset);
+    console.log('isCollapse', this.isCollapsed)
+  }
+
+  login = (): any => {
     const controls = this.loginForm.controls;
-    const params: any = this.fieldService.json(controls);
-    params['email'] = "aakash5792@gmail.com";
-    params['password'] = "AAbb12";
-    
+    const errors = this.fieldService.validate(controls, this.fields);
+    if (errors.length > 0) {
+      return false;
+    }
+    const params = this.fieldService.json(controls);
     const myObserver = {
       next: (res: number) => {
         console.log('Observer got a next value: ' + res);
@@ -57,7 +65,7 @@ export class LoginComponent implements OnInit {
     };
 
     this.authService.login(params).subscribe((res: any) => {
-      if(res && res.status) {
+      if (res && res.status) {
         const data = res.data;
         this.storageService.store('tokens', data.tokens);
         this.storageService.store('user', data.user);

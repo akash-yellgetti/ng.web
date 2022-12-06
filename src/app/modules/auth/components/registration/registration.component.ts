@@ -14,21 +14,21 @@ import { LoaderService } from 'src/app/shared/services/loader/loader.service';
 })
 export class RegistrationComponent implements OnInit {
   public hide: boolean = true;
-  
+
   public isCollapsed: any = true;
   // emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   public registrationForm = this.fb.group({
-    firstName: ['A', Validators.required],
-    lastName: ['B', Validators.required],
-    gender: ['m', Validators.required],
-    mobileNo: ['9920021073', Validators.required],
-    no: [null, Validators.required],
-    dob: ['1992/12/08', Validators.required],
-    email: [null, Validators.required],
-    password: [null, Validators.required],
-    confirmPassword: [null, Validators.required],
+    firstName: [null, Validators.required],
+    lastName: [null, Validators.required],
+    gender: [null, Validators.required],
+    mobileNo: [null, Validators.required],
+    no: [null, []],
+    dob: [null, []],
+    email: [null, []],
+    password: [null, []],
+    confirmPassword: [null, []],
   });
-  
+
   public flag = {
     requestOtp: true,
     verifyOtp: false,
@@ -39,24 +39,28 @@ export class RegistrationComponent implements OnInit {
   public input: any = {
     otp: ''
   };
-  public otp: string= '';
-  public password: string= '';
+  public otp: string = '';
+  public password: string = '';
   public confirm_password: string = '';
   public fields: any;
-  constructor(private fb: FormBuilder, private router: Router, private storageService: LocalStorageService, 
+  constructor(private fb: FormBuilder, private route: Router, private storageService: LocalStorageService,
     private fieldService: FieldService, private loaderService: LoaderService, private authService: AuthService) { }
 
   ngOnInit(): void {
     // this.fields = _.get(form, 'default.fields');
   }
 
-  generateOTP =  () => {
+  generateOTP = (): any => {
     const controls = this.registrationForm.controls;
+    const errors = this.fieldService.validate(controls, this.fields);
+    if (errors.length > 0) {
+      return false;
+    }
     const params: any = this.fieldService.json(controls);
     params.type = this.flag.otpFlag;
 
     this.authService.generateOTP(params).subscribe((res: any) => {
-      if (res && res.status ) {
+      if (res && res.status) {
         this.flag.requestOtp = false;
         this.flag.verifyOtp = true;
         this.flag.mobileNo = true;
@@ -64,13 +68,17 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  verify = () => {
+  verify = (): any => {
     const controls = this.registrationForm.controls;
+    const errors = this.fieldService.validate(controls, this.fields);
+    if (errors.length > 0) {
+      return false;
+    }
     const params: any = this.fieldService.json(controls);
     params.type = this.flag.otpFlag;
-    
+
     this.authService.verifyOTP(params).subscribe((res: any) => {
-      if (res && res.status ) {
+      if (res && res.status) {
         this.flag.requestOtp = false;
         this.flag.verifyOtp = false;
         this.flag.register = true;
@@ -82,12 +90,13 @@ export class RegistrationComponent implements OnInit {
     const controls = this.registrationForm.controls;
     const params: any = this.fieldService.json(controls);
     params.type = this.flag.otpFlag;
-    
+
     this.authService.register(params).subscribe((res: any) => {
-      if (res && res.status ) {
+      if (res && res.status) {
         this.flag.requestOtp = false;
         this.flag.verifyOtp = false;
         this.flag.register = true;
+        this.route.navigate(['auth/login']);
       }
     });
   }

@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="col-xl-5 col-xs-12 ">
   <span> Socio Safety </span>
   <span class="example-spacer"></span>
   <button mat-icon-button class="example-icon favorite-icon" (click)="collapse.toggle()"
@@ -50,6 +50,9 @@
                   <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
                     Email is <strong>required</strong>
                   </mat-error>
+                  <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+                    Email is <strong>invalid</strong>
+                  </mat-error>
                   <!-- <mat-hint>Hint</mat-hint> -->
                 </mat-form-field>
               </div>
@@ -60,28 +63,17 @@
                   <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
-                      Password is <strong>required</strong>
-                    </mat-error>
                   </button>
+                  <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                    Password is <strong>required</strong>
+                  </mat-error>
                 </mat-form-field>
               </div>
-
-              <!-- <mat-form-field appearance="fill">
-           <mat-label>Password</mat-label>
-           <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="fields[1].value">
-           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-           </button>
-        </mat-form-field> -->
             </div>
-
             <div class="form-row form-action">
               <div class="col">
                 <a href="javascript:void(0)" class="text-secondary" routerLink="/auth/forgot-password">Forgot your
                   password?</a>
-
               </div>
               <div class="col text-right">
                 <button type="submit" class="btn btn-lg btn-primary rounded-0" (click)="login()">Login</button>
