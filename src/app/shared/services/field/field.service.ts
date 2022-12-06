@@ -9,7 +9,7 @@ export class FieldService {
   constructor() { }
 
   validate = () => {
-    return _.chain(data).
+    return _.chain([]).value();
   }
 
   json = (data: any) => {
