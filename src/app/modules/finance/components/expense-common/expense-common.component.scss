@@ -1,7 +1,26 @@
+@import "../../../../../assets/styles/variables";
+
 .content {
     padding: 15px;
 }
 
 .expense-common-card {
     padding-bottom: 0px;
+    margin-bottom: 0px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    font-family: "Open Sans", sans-serif !important;
+    .expense-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: $color-primary;
+        color: #ffffff;
+        line-height: 40px;
+        text-align: center;
+    }
+    .currency-amount {
+        font-weight: 600;
+        color: #4BB543;
+    }
 }
