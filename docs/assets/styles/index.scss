@@ -515,6 +515,11 @@ section {
 	}
 }
 
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus
+{
+	box-shadow:rgba($color: #4A6572, $alpha: 0.03)
+}
+
 // MODALS
 .modal {
 	.modal-content {

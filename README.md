@@ -33,6 +33,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 #F9AA33
 
 
+
+
+-------------------------------------------------------------------------
+
+npx cap open android
+npx cap run android
+
+-------------------------------------------------------------------------
 ng serve -o --port 6001
 
 
