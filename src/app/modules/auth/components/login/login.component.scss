@@ -11,3 +11,56 @@
   background-color: $color-primary;
   color: $color-white;
 }
+
+h5 {
+  color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+}
+
+.login-sidebar {
+  width: 40%;
+}
+
+.login-container {
+  width: 60%;
+  
+  .social-media {
+    text-align: center;
+    p {
+      font-size: 18px;
+      text-transform: uppercase;
+      justify-content: center;
+      align-items: center;
+      span {
+        width: calc(50% - 40px);
+        height: 2px;
+        background-color: $color-light-gray;
+        margin-right: auto;
+        &:nth-child(3) {
+          margin-left: auto;
+          margin-right: 0;
+        }
+      }
+      i {
+        font-style: normal;
+        width: 80px;
+        text-align: center;
+      }
+    }
+    .btn {
+      font-size: $text-lg;
+      line-height: 1;
+      border: 1px solid $color-border;
+      color: $color-primary;
+      border-radius: 50%;
+      padding: $space-sm;
+      position: relative;
+      z-index: 5;
+      background: #ffffff;
+      & + .btn {
+        margin-left: $space-sm;
+      }
+    }
+  }
+}
