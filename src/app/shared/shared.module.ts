@@ -16,7 +16,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     NgxModule,
     NgbModule,
     CommonModule,
-    SlickCarouselModule
+    SlickCarouselModule,
   ],
   exports: [
     MaterialModule,
