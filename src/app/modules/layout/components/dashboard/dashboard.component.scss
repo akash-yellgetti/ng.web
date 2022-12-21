@@ -1,5 +1,8 @@
 @import '../../../../../assets/styles/index.scss';
 
+.mat-card-actions, .mat-card-subtitle, .mat-card-content{
+    margin-bottom: 0;
+}
 .content {
     padding: 15px 25px;
     @media (max-width: 767px) {

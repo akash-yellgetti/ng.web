@@ -18,7 +18,7 @@ body {
 .container-fluid{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    // height: 100vh;
   }
   
   .row{
@@ -50,6 +50,12 @@ body {
   .col-30 {
     flex-basis: 25%;
     flex-grow: 1;
+
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+    flex-direction: column;
+
   }
   
   .col-70 {

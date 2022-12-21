@@ -1,0 +1,48 @@
+.d-flex {
+    display: flex;
+}
+
+.d-wrap {
+    flex-wrap: wrap;
+}
+
+.d-nowrap {
+    flex-wrap: nowrap;
+}
+
+.d-row {
+    flex-direction: row;
+}
+
+.d-column {
+    flex-direction: column;
+}
+
+.d-grow {
+    flex-grow: 1;
+}
+
+.d-gap-15 {
+    gap: 15px;
+}
+
+.row {
+    padding: 15px;
+    // width: 100%;
+}
+
+
+
+.col-70 {
+    flex: 1 1 69%;
+}
+
+.col-50 {
+    width: 50%;
+}
+
+
+
+.col-25 {
+    flex: 1 1 24%;
+}
