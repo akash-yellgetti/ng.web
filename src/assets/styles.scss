@@ -1,103 +1,80 @@
-/* You can add global styles to this file, and also import other style files */
-
-/*style.css*/
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
-@import "./../../node_modules/bootstrap/scss/bootstrap.scss";
 @import "./styles/index.scss";
-// p {
-//    color: $font-color;
-//    background-color: $background-color;
-//    @include hover-effect
-// }
 
-html, body { height: 100%; }
-body { margin: 0; padding: 0; }
+body { 
+    margin: 0;
+    padding: 0;
+    background-color: #f3f3f4;
 
-div.container{
-    margin: 0px 40px;
+    font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    
+    font-size: 13px;
+    color: #676a6c;
+    overflow-x: hidden;
 }
 
-.fill-remaining-space {
-    /* This fills the remaining space, by using flexbox.
-       Every toolbar row uses a flexbox row layout. */
-    flex: 1 1 auto;
-  }
-
-  form.normal-form{
-    margin: 10px;
+.container {
+    display: flex;
 }
 
-.controles-container{
+.row {
+    display: flex;
+    flex-flow: row wrap;
     width: 100%;
-    padding: 5%;
+    padding: 20px;
+    // gap: 15px;
+    // margin: 15px;
 }
 
-.controles-container > * {
-    width: 100%;
-    }
 
-    .add-bottom-padding{
-        padding-bottom: 10px;
-    }
-    /* radio group */
-mat-radio-group mat-radio-button{
-    margin-left: 5px;
+.col-70 {
+    padding: 5px 0px 5px 0px;
+    width: 70%;
+    background-color: #03D29F;
 }
 
-.button-row button{
-    margin: 5px;
+.col-30 {
+    padding: 5px 0px 5px 0px;
+    width: 30%;
+    background-color: #50A7FF;
 }
 
-/* notification */
-snack-bar-container.success {
-    background-color: #5cb85c;
-    color : #fff;
-  }
-
-
-  snack-bar-container.notification simple-snack-bar{
-    font-size: 18px !important;
-    font-weight: bold;
-  }
-
-
-  .hide{
-    display: none;
-}
-
-/* mat-table */
-mat-footer-row mat-footer-cell{
-    justify-content: center;
-    font-style: italic;
-}
-
-/* filter controls */
-.search-div{
+.card-sm {
+    background-color: #03D29F;
+    position: relative;
+    flex: 1;
+    flex-grow: 1;
+    min-width: 400px;
+    // max-width: 400px;
+    height: 150px;
     margin: 10px;
-      }
-      .search-form-field{
-          width: 60%;
-          margin-left: 10px;
-          padding: 5px 10px;
-          background-color: #f5f5f5;
-          border-radius: 5px;
-          }
-          .search-form-field div.mat-form-field-underline {
-              display: none;
-          }
-          .search-form-field div.mat-form-field-infix{
-              border-top: 0px;
-          }
-          .search-form-field div.mat-form-field-wrapper{
-            padding-bottom: 0px;
-        }
-        .search-form-field div.mat-form-field-suffix button{
-            height: 32px;
-            width: 32px;
-        }
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
 
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
 
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+.card-md {
+    background-color: #50A7FF;
+    position: relative;
+    flex: 1;
+    flex-grow: 1;
+    // max-width: 460px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+
+
+.card-lg {
+    background-color: #FF7675;
+    position: relative;
+    flex: 1;
+    flex-grow: 1;
+    // max-width: 460px;
+    height: 300px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
