@@ -1,4 +1,4 @@
-<div class="container" fxLayout="row wrap" fxLayoutAlign="space-between ">
+<!-- <div class="container" fxLayout="row wrap" fxLayoutAlign="space-between ">
     <mat-card>Sample Card</mat-card>
     <mat-card>Sample Card</mat-card>
     <mat-card>Sample Card</mat-card>
@@ -12,4 +12,94 @@
     <mat-card>Sample Card</mat-card>
     <mat-card>Sample Card</mat-card>
     <mat-card>Sample Card</mat-card>
+</div> -->
+
+<div class="content">
+    <div class="header-slider">
+        <ngx-slick-carousel class="carousel" 
+                        #slickModal="slick-carousel" 
+                        [config]="slideConfig">
+        <div ngxSlickItem class="slide d-flex">
+            <div class="header-details">
+                <h4>Hello User</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab perspiciatis sapiente consequatur doloremque! Ducimus.</p>
+                <button class="link-btn">know more...</button>
+            </div>            
+            <img src="../../../../../assets/images/header-img.png" alt="">
+        </div>
+        <div ngxSlickItem class="slide d-flex">
+            <div class="header-details">
+                <h4>Car Loan</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab perspiciatis sapiente consequatur doloremque! Ducimus.</p>
+                <button class="link-btn">know more...</button>
+            </div>            
+            <img src="../../../../../assets/images/header-img.png" alt="">
+        </div>
+        <div ngxSlickItem class="slide d-flex">
+            <div class="header-details">
+                <h4>Home Loan</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab perspiciatis sapiente consequatur doloremque! Ducimus.</p>
+                <button class="link-btn">know more...</button>
+            </div>            
+            <img src="../../../../../assets/images/header-img.png" alt="">
+        </div>
+        <div ngxSlickItem class="slide d-flex">
+            <div class="header-details">
+                <h4>Personal Loan</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab perspiciatis sapiente consequatur doloremque! Ducimus.</p>
+                <button class="link-btn">know more...</button>
+            </div>            
+            <img src="../../../../../assets/images/header-img.png" alt="">
+        </div>
+    </ngx-slick-carousel>
+    </div>
+    <div class="buy-wrapper">
+        <h4>You need to buy?</h4>
+        <div class="buy-list d-flex">
+            <div class="list-item d-flex align-items">
+                <div class="count">3</div>
+                <div class="item-details">
+                    <h5>Content <br>Designers</h5>
+                    <p class="sub-title">5 Items</p>
+                </div>
+                <div class="completion-percentage">
+                    <div class="circle-round"></div>
+                    <p>50%</p>
+                </div>
+            </div>
+            <div class="list-item d-flex align-items">
+                <div class="count">3</div>
+                <div class="item-details">
+                    <h5>Content <br>Designers</h5>
+                    <p class="sub-title">5 Items</p>
+                </div>
+                <div class="completion-percentage">
+                    <div class="circle-round"></div>
+                    <p>75%</p>
+                </div>
+            </div>
+            <div class="list-item d-flex align-items">
+                <div class="count">3</div>
+                <div class="item-details">
+                    <h5>Content <br>Designers</h5>
+                    <p class="sub-title">5 Items</p>
+                </div>
+                <div class="completion-percentage">
+                    <div class="circle-round"></div>
+                    <p>30%</p>
+                </div>
+            </div>
+            <div class="list-item d-flex align-items">
+                <div class="count">3</div>
+                <div class="item-details">
+                    <h5>Content <br>Designers</h5>
+                    <p class="sub-title">5 Items</p>
+                </div>
+                <div class="completion-percentage">
+                    <div class="circle-round"></div>
+                    <p>60%</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

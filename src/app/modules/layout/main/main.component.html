@@ -1,8 +1,44 @@
 <mat-sidenav-container class="sidenav-container" autosize="true">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar [hidden]="isCollapsed"  color="primary">SocioSafety</mat-toolbar>
+    <mat-toolbar [hidden]="isCollapsed"  color="primary">Socio Safety</mat-toolbar>
     <mat-toolbar [hidden]="!isCollapsed" color="primary">SS</mat-toolbar>
+    <div class="nav-top d-flex align-center">
+      <button  aria-label="view profile" name="view profile" class="view-profile">
+        <p class="profile__initals ani">CV</p>
+      </button>
+      <div class="username-box">
+        <span class="name cursor-pointer">Chirag</span>
+        <span class="name cursor-pointer"> Vartak</span>
+      </div>
+    </div>
+    <div class="menu-wrapper">
+      <ul class="menu-list" role="list">
+        <li role="list-item" class="menu-item active">
+          <button class="d-flex width-100 align-items">
+            <mat-icon aria-hidden="true" class="menu-icon">dashboard</mat-icon> <p>Dashboard</p>
+          </button>
+        </li>
+        <li role="list-item" class="menu-item">
+          <button class="d-flex width-100 align-items">
+            <mat-icon aria-hidden="true" class="menu-icon">calendar_month</mat-icon> <p>Calendar</p>
+          </button>
+        </li>
+        <li role="list-item" class="menu-item">
+          <button class="d-flex width-100 align-items">
+            <mat-icon aria-hidden="true" class="menu-icon">settings</mat-icon> <p>Settings</p>
+          </button>
+        </li>
+        <li role="list-item" class="menu-item">
+          <button class="d-flex width-100 align-items">
+            <mat-icon aria-hidden="true" class="menu-icon">notifications</mat-icon> <p>Notifications</p>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <button class="logout-btn d-flex width-100 align-items">
+      <mat-icon aria-hidden="true" class="menu-icon">logout</mat-icon> <p>Logout</p>
+    </button>
   </mat-sidenav>
   <mat-sidenav-content fxLayout="column">
 

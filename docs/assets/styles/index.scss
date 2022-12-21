@@ -199,20 +199,6 @@ section {
 				font-size: $text-lg;
 				line-height: 1.5;
 			}
-			.social-media {
-				.btn {
-					font-size: $text-lg;
-					line-height: 1;
-					border: 1px solid $color-border;
-					color: $color-secondary;
-					border-radius: 50%;
-					padding: $space-sm;
-
-					& + .btn {
-						margin-left: $space-sm;
-					}
-				}
-			}
 			.heading {
 				color: $color-secondary;
 				font-size: $heading-3;
