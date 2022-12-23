@@ -12,27 +12,31 @@
   flex: 1 1 auto;
 }
 
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background-color: $color-primary;
-  color: $color-white;
-}
-
 h5 {
-  color: #ffffff;
+  color: $color-white;
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
 }
 
-.login-sidebar {
-  width: 40%;
+.login-wrapper {
+  min-height: 100vh;
 }
 
 .login-container {
-  width: 60%;
-  
+  width: 350px;
+  margin: 0 auto;
+  @media(max-width: 767px) {
+    width: 90%;
+    padding-top: 30px;
+  }
+  .login {
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 2px rgba(0,0,0,0.3);
+    @media(max-width: 767px) {
+      padding: 15px;
+    }
+  }
   .social-media {
     text-align: center;
     p {
@@ -71,4 +75,68 @@ h5 {
       }
     }
   }
+  .form-group {
+    margin-bottom: 15px;
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+  .form-action {
+    margin-bottom: 10px;
+  }
+}
+
+.title {
+  font-weight: 600;
+}
+
+.common-btn {
+  padding: 12px 25px;
+  border-radius: 8px;
+  color: $color-white;
+  cursor: pointer;
+  &.btn-fill {
+    background: $color-primary;
+    border: none;
+    &:hover, &:focus {
+      background: $color-primary-dark;
+    }
+  }
+}
+
+.text-secondary {
+  &:hover, &:focus {
+    color: $color-primary;
+  }
+}
+
+.login-btn {
+  min-width: 120px;
+  text-align: center;
+  font-weight: 600;
+}
+
+::ng-deep {
+  .form-group {
+    .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick, .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+      color: $color-primary;
+    }
+    .mat-form-field-appearance-outline .mat-form-field-wrapper {
+      padding-bottom: 0;
+    }
+    .mat-form-field-subscript-wrapper {
+      position: relative;
+    }
+    .mat-form-field {
+      display: block;
+    }
+    .mat-error {
+      font-size: 13px;
+    }
+    .mat-form-field-appearance-outline .mat-form-field-infix {
+      border-top: 3px solid transparent;
+    }
+  }
+  
 }
