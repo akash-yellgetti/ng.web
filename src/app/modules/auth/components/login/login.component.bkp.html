@@ -1,0 +1,88 @@
+<mat-toolbar color="primary" class="w-40 bg-primary">
+  <span> Socio Safety </span>
+  <span class="example-spacer"></span>
+  <!-- <button mat-icon-button class="example-icon favorite-icon" (click)="collapse.toggle()"
+    [attr.aria-expanded]="!isCollapsed">
+    <mat-icon> menu</mat-icon>
+  </button> -->
+</mat-toolbar>
+<div class="login-wrapper d-flex">
+  <div class="login-sidebar">
+    <section class="welcome space-lg vh-100 bg-primary inverse" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+      <div class="contain header pt-lg-xs">
+        <h1 class="title"><strong>Welcome Back!</strong></h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta molestiae asperiores modi incidunt
+          dolorem deserunt nihil eius error, accusamus ipsam id facere nemo possimus corrupti quas quo, nostrum
+          iusto expedita.</p>
+      </div>
+
+      <div class="contain mt-5">
+        <h5 class="text-semibold">Download our app</h5>
+        <div class="app-links">
+          <a href="#"> <i class="icon-play-store"></i> <span>Google Play</span> </a>
+          <a href="#"> <i class="icon-apple-icon"></i> <span>App Store</span> </a>
+        </div>
+      </div>
+      <div class="auth-bg-img inverse"></div>
+    </section>
+  </div>
+  <div class="login-container">
+    <section class="login bg-white space-lg vh-100 ">
+      <div class="contain header pt-lg-xs">
+        <h1 class="title">Login</h1>
+      </div>
+      <div class="contain form">
+        <form [formGroup]="loginForm" novalidate>
+          <div class="form-row">
+            <div class="col-12">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" formControlName="email">
+                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+                  Email is <strong>invalid</strong>
+                </mat-error>
+                <!-- <mat-hint>Hint</mat-hint> -->
+              </mat-form-field>
+            </div>
+            <div class="col-12">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                  Password is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="form-row form-action">
+            <div class="col">
+              <a href="javascript:void(0)" class="text-secondary" routerLink="/auth/forgot-password">Forgot your
+                password?</a>
+            </div>
+            <div class="col text-right">
+              <button type="submit" class="btn btn-lg btn-primary rounded-0" (click)="login()">Login</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="other-login">
+        <p class="sub-title">Dont have an account? <a href="javascript:void(0)"
+          routerLink="/auth/registration">Register</a></p>
+      </div>      
+      <div class="social-media">
+        <p class="d-flex"><span class="divider"></span><i>Or</i><span class="divider"></span></p>
+        <button type="button" class="btn btn-icon"> <i class="bi bi-google"></i> </button>
+        <button type="button" class="btn btn-icon"> <i class="bi bi-facebook"></i> </button>
+      </div>
+      <div class="auth-bg-img"></div>
+    </section>
+  </div>
+</div>
