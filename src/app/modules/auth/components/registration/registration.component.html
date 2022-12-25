@@ -30,13 +30,13 @@
               </mat-form-field>
             </div>
             <div class="form-group">
-              <label for="lastName">Gender</label>
-              <mat-radio-group formControlName="gender">
+              <label for="gender">Gender</label>
+              <mat-radio-group formControlName="gender" >
                 <mat-radio-button value="m">Male</mat-radio-button>
                 <mat-radio-button value="f">Female</mat-radio-button>
               </mat-radio-group>
-              <mat-error *ngIf="registrationForm.controls['gender'].hasError('required')">
-                Gender is <strong>required</strong>
+              <mat-error *ngIf="registrationForm.controls['gender'].touched && registrationForm.controls['gender'].hasError('required')">
+                Please select the gender.
               </mat-error>
             </div>
             <div class="form-group datepicker">
