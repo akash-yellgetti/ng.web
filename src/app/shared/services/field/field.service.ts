@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import * as _ from 'lodash';
 
 @Injectable({
@@ -7,7 +8,7 @@ import * as _ from 'lodash';
 })
 export class FieldService {
 
-  constructor() { }
+  constructor(private _snackBar: MatSnackBar) { }
 
   getFormGroupFields = (data: any) => {
     return _.cloneDeep(_.chain(data)
@@ -59,7 +60,8 @@ export class FieldService {
     for (const i in errors) {
       if (Object.prototype.hasOwnProperty.call(errors, i)) {
         const element = errors[i];
-        console.log(element)
+        // console.log(element)
+        this._snackBar.open('Cannonball!!', 'Splash')
 
       }
     }
