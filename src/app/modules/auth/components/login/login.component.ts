@@ -70,11 +70,12 @@ export class LoginComponent implements OnInit {
   }
 
   login = (): any => {
-    const controls = this.loginForm.controls;
-    const errors = this.fieldService.validate(controls, this.fields);
-    if (errors.length > 0) {
-      return false;
+
+    if (this.loginForm.invalid) {
+      return;
     }
+
+    const controls: any = this.loginForm.controls;
     const params = this.fieldService.json(controls);
     const myObserver: any = {
       next: (res: any) => {
