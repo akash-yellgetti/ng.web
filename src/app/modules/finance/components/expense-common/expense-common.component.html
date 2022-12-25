@@ -4,12 +4,12 @@
             <div [fxFlex]="'100%'" >
                 <mat-card class="expense-common-card">
                     <mat-card-header>
-                        <mat-icon mat-card-avatar [style.font-size.px]="24" style="border: 1px solid black" ></mat-icon>
+                        <mat-icon mat-card-avatar [style.font-size.px]="24" class="expense-icon">home</mat-icon>
                         <mat-card-title> {{ item.title }}  </mat-card-title>
                         <mat-card-subtitle>   {{ item.description || 'description' }}   </mat-card-subtitle>
                         <div fxFlex></div>
                         <div style="flex-grow: 1"></div>
-                        <span style="font-weight:bold;">{{ item.amount | currency:"&#8377; "}}</span>
+                        <span class="currency-amount">{{ item.amount | currency:"&#8377; "}}</span>
                     </mat-card-header>
                 </mat-card>
             </div>

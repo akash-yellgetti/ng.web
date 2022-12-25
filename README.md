@@ -88,6 +88,7 @@ ng g c modules/layout/main --module=layout
 ng g c modules/layout/components/home --module=layout
 ng g c modules/layout/components/header --module=layout
 ng g c modules/layout/components/dashboard --module=layout
+ng g c modules/layout/components/calendar --module=layout
 ng g c modules/layout/components/footer --module=layout
 
 

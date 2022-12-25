@@ -1,17 +1,41 @@
 @import "../../../../../assets/styles/index.scss";
 
 .mat-tab-nav-bar-budget-light {
-    background-color: $color-secondary-light;
+    // background-color: $color-secondary-light;
     display: flex;
     justify-content: space-between;
     align-content: stretch;
 }
 
 a {
-    color: $color-white;
+    color: #000000;
 }
 
 
 .mat-tab-link {
-    opacity: 1;;
+    opacity: 1;
+}
+
+.income-tabs {
+    padding: 15px;
+    padding-bottom: 5px;
+}
+
+::ng-deep {
+    .income-tabs {
+        border: none !important;
+        .mat-tab-link {
+            height: auto;
+            border-radius: 24px;
+            opacity: 1;
+            padding: 6px 24px;
+            &.mat-tab-label-active {
+                background-color: $color-primary;
+                color: #ffffff;
+            }
+        }
+        .mat-ink-bar {
+            display: none;
+        }
+    }
 }

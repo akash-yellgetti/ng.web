@@ -4,6 +4,7 @@ import { MaterialModule } from './modules/material.module';
 import { NgxModule } from './modules/ngx.module';
 import { DialogComponent } from './components/dialog/dialog/dialog.component';
 import { NgbModule } from './modules/ngb.module';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
 @NgModule({
@@ -14,12 +15,14 @@ import { NgbModule } from './modules/ngb.module';
     MaterialModule,
     NgxModule,
     NgbModule,
-    CommonModule
+    CommonModule,
+    SlickCarouselModule,
   ],
   exports: [
     MaterialModule,
     NgxModule,
     NgbModule,
+    SlickCarouselModule
   ]
 })
 export class SharedModule { }
