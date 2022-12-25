@@ -91,14 +91,14 @@
   }
 
   .logout-btn {
-    background: $color-gray;
+    // background: $color-gray;
     position: absolute;
     bottom: 0;
     width: 100%;
     left: 0;
     border: none;
     padding: 10px 25px;
-    justify-content: center;
+    // justify-content: center;
     p {
       margin-bottom: 0;
     }
@@ -109,10 +109,10 @@
 }
 
 .footer {
-  // position: fixed;
+  position: fixed;
   bottom: 0;
   right: 0;
   width: 100%;
-  background-color: $color-gray;
+  // background-color: $color-gray;
   text-align: right;
 }
