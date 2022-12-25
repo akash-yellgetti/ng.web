@@ -44,29 +44,29 @@ export class LoginComponent implements OnInit {
   async ngOnInit(): Promise<any> {
     // this.isCollapsed = await this.breakpointObserver.observe(Breakpoints.Handset);
     // console.log('isCollapse', this.isCollapsed)
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
-      showClass: {
-        popup: 'animate__animated animate__fadeInDown'
-      },
-      hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      }
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
-      }
-    })
+    // Swal.fire({
+    //   title: 'Are you sure?',
+    //   text: "You won't be able to revert this!",
+    //   icon: 'warning',
+    //   showCancelButton: true,
+    //   confirmButtonColor: '#3085d6',
+    //   cancelButtonColor: '#d33',
+    //   confirmButtonText: 'Yes, delete it!',
+    //   showClass: {
+    //     popup: 'animate__animated animate__fadeInDown'
+    //   },
+    //   hideClass: {
+    //     popup: 'animate__animated animate__fadeOutUp'
+    //   }
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+    //     Swal.fire(
+    //       'Deleted!',
+    //       'Your file has been deleted.',
+    //       'success'
+    //     )
+    //   }
+    // })
   }
 
   login = (): any => {
@@ -76,26 +76,31 @@ export class LoginComponent implements OnInit {
       return false;
     }
     const params = this.fieldService.json(controls);
-    const myObserver = {
-      next: (res: number) => {
-        console.log('Observer got a next value: ' + res);
+    const myObserver: any = {
+      next: (res: any) => {
+        // console.log('Observer got a next value: ' + res);
+        if (res && res.status) {
+          const data = res.data;
+          this.storageService.store('tokens', data.tokens);
+          this.storageService.store('user', data.user);
+          this.route.navigate(['main/dashboard']);
+        }
       },
-      error: (err: Error) => {
-        console.error('Observer got an error: ' + err);
+      error: (err: any) => {
+        if (err && err.error && err.error.message) {
+          Swal.fire(
+            'Warning!',
+            err.error.message,
+            'error'
+          )  
+        }
       },
       complete: () => {
         console.log('Observer got a complete notification');
       },
     };
 
-    this.authService.login(params).subscribe((res: any) => {
-      if (res && res.status) {
-        const data = res.data;
-        this.storageService.store('tokens', data.tokens);
-        this.storageService.store('user', data.user);
-        this.route.navigate(['main/dashboard']);
-      }
-    })
+    this.authService.login(params).subscribe(myObserver)
   }
 
 }
