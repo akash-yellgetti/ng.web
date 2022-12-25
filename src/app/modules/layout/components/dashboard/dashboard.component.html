@@ -1,4 +1,40 @@
 <div class="container-fluid">
+  <div class="header-slider col-100">
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+      <div ngxSlickItem class="slide d-flex">
+          <div class="header-details">
+              <h4>Hello User</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab perspiciatis sapiente consequatur doloremque! Ducimus.</p>
+              <button class="link-btn">know more...</button>
+          </div>            
+          <img src="../../../../../assets/images/header-img.png" alt="">
+      </div>
+      <div ngxSlickItem class="slide d-flex">
+          <div class="header-details">
+              <h4>Car Loan</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab perspiciatis sapiente consequatur doloremque! Ducimus.</p>
+              <button class="link-btn">know more...</button>
+          </div>            
+          <img src="../../../../../assets/images/header-img.png" alt="">
+      </div>
+      <div ngxSlickItem class="slide d-flex">
+          <div class="header-details">
+              <h4>Home Loan</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab perspiciatis sapiente consequatur doloremque! Ducimus.</p>
+              <button class="link-btn">know more...</button>
+          </div>            
+          <img src="../../../../../assets/images/header-img.png" alt="">
+      </div>
+      <div ngxSlickItem class="slide d-flex">
+          <div class="header-details">
+              <h4>Personal Loan</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab perspiciatis sapiente consequatur doloremque! Ducimus.</p>
+              <button class="link-btn">know more...</button>
+          </div>            
+          <img src="../../../../../assets/images/header-img.png" alt="">
+      </div>
+    </ngx-slick-carousel> 
+  </div>
   <div class="row">
     <div class="col-70">
       <mat-card class="col-100 card-md">Sample Card</mat-card>
@@ -131,7 +167,7 @@
         
       </div>
     </div>
-    <div class="col-30 ">
+    <div class="col-30 sidebar">
       <mat-card >
         <mat-card-header>
           <mat-card-title> insurance </mat-card-title>
