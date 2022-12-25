@@ -15,6 +15,7 @@ import { ModuleService } from '../core/services/module.service';
 export class MainComponent {
   public mainTitle: string = 'Dashboard';
   public isCollapsed: any = false;
+  public user: any = null;
   // mobileQuery: MediaQueryList;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -27,6 +28,7 @@ export class MainComponent {
       console.log(r)
       this.mainTitle = r;
     })
+    this.user = this.localStorageService.retrieve('user');
   }
   
   logout = () => {
