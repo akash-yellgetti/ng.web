@@ -14,6 +14,11 @@
     flex-direction: row;
 }
 
+.d-row-reverse {
+    flex-direction: row-reverse;
+}
+
+
 .d-column {
     flex-direction: column;
 }
@@ -30,9 +35,19 @@
     align-items: center;
 }
 
+
+.align-item-right {
+    align-items:flex-end;
+}
+
 .justify-content-center {
     justify-content: center;
 }
+
+.justify-content-end {
+    justify-content: flex-end;
+}
+
 
 .row {
     padding: 15px;

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as _ from 'lodash';
 
@@ -77,4 +77,23 @@ export class FieldService {
 
       .value();
   }
+}
+
+
+export function dateIsBeforeOrOnToday(control: FormControl) {
+  const dateStruct: any = control.value;
+  if (!dateStruct || !dateStruct.year || !dateStruct.month || !dateStruct.day) {
+    return { validDate: true };
+  }
+  //confirm it is before today or today
+  const date = new Date(dateStruct.year, dateStruct.month - 1, dateStruct.day);
+
+  let today = new Date();
+  today.setHours(0,0,0,0);
+
+  if (date <= today) {
+      return null;
+  }
+
+  return { validDate: true };
 }

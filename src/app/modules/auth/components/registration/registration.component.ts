@@ -21,9 +21,9 @@ export class RegistrationComponent implements OnInit {
     firstName: [null, Validators.required],
     lastName: [null, Validators.required],
     gender: [null, Validators.required],
+    dob: [null, Validators.required],
     mobileNo: [null, Validators.required],
     no: [null, []],
-    dob: [null, []],
     email: [null, []],
     password: [null, []],
     confirmPassword: [null, []],
@@ -51,6 +51,10 @@ export class RegistrationComponent implements OnInit {
   }
 
   generateOTP = (): any => {
+    this.registrationForm.markAllAsTouched();
+    if (this.registrationForm.invalid) {
+      return;
+    }
     const controls = this.registrationForm.controls;
     const errors = this.fieldService.validate(controls, this.fields);
     if (errors.length > 0) {
@@ -69,6 +73,9 @@ export class RegistrationComponent implements OnInit {
   }
 
   verify = (): any => {
+    if (this.registrationForm.invalid) {
+      return;
+    }
     const controls = this.registrationForm.controls;
     const errors = this.fieldService.validate(controls, this.fields);
     if (errors.length > 0) {
@@ -87,6 +94,10 @@ export class RegistrationComponent implements OnInit {
   }
 
   register = () => {
+    if (this.registrationForm.invalid) {
+      return;
+    }
+
     const controls = this.registrationForm.controls;
     const params: any = this.fieldService.json(controls);
     params.type = this.flag.otpFlag;
