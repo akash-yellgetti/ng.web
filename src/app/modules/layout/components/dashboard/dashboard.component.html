@@ -57,13 +57,13 @@
       </mat-card>
     </div>
   </div>
-  <div class="w-30 d-flex d-wrap d-gap-15 pb-65">
+  <div class="w-30 d-flex d-wrap d-gap-15 pb-65 sidebar">
     <mat-card class="w-100" *ngFor="let catergory of contentCatergory">
       <mat-card-header class="align-center  border-bottom">
         <mat-card-title> {{ catergory.title }} </mat-card-title>
       </mat-card-header>
       <mat-card-content class="align-center">
-        <mat-list role="list" class="card-sm-list">
+        <mat-list role="list">
           <mat-list-item role="listitem" *ngFor="let child of catergory.children">
             <mat-icon matListItemIcon>folder</mat-icon>
             <div matListItemTitle> {{ child.title }} </div>

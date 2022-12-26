@@ -173,6 +173,21 @@
 
 ::ng-deep {
     .sidebar {
+        padding-right: 15px;
+        .mat-card {
+            width: 100%;
+        }
+        .mat-list-base {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .mat-list-base .mat-list-item {
+            width: 33.33%;
+            margin-bottom: 10px;
+            text-align: center;
+            height: auto;
+            cursor: pointer;
+        } 
         .mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content {
             flex-wrap: wrap;
             justify-content: center;
@@ -181,6 +196,7 @@
             display: block;
             width: 100%;
             text-align: center;
-            color: $color-primary;        }
+            color: $color-primary;        
+        }
     }
 }
