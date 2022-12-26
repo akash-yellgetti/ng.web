@@ -1,7 +1,7 @@
 <mat-sidenav-container class="sidenav-container" autosize="true" [class.collapsed]="isCollapsed">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar color="primary" >{{ isCollapsed ? 'PF' : 'Personal Finance'}}</mat-toolbar>
+    <mat-toolbar >{{ isCollapsed ? 'PF' : 'Personal Finance'}}</mat-toolbar>
     
     <div class="nav-top d-flex align-center">
       <button  aria-label="view profile" name="view profile" class="view-profile">

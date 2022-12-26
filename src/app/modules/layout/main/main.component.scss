@@ -94,20 +94,21 @@
         margin-right: 10px;
       }
       &:hover {
-        background-color: $color-primary-opacity;
+        button {
+          font-weight: 600;
+        }
       }
     }
     .active {
       button {
         font-weight: 600;
-        background-color: $color-primary-opacity;
         &:before {
           content: '';
           position: absolute;
           left: 0;
           height: 100%;
           width: 3px;
-          background: $color-primary;
+          background: $color-white;
           top: 0;
         }
       }

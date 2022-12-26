@@ -116,27 +116,3 @@ h5 {
   text-align: center;
   font-weight: 600;
 }
-
-::ng-deep {
-  .form-group {
-    .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick, .mat-form-field-appearance-outline .mat-form-field-outline-thick {
-      color: $color-primary;
-    }
-    .mat-form-field-appearance-outline .mat-form-field-wrapper {
-      padding-bottom: 0;
-    }
-    .mat-form-field-subscript-wrapper {
-      position: relative;
-    }
-    .mat-form-field {
-      display: block;
-    }
-    .mat-error {
-      font-size: 13px;
-    }
-    .mat-form-field-appearance-outline .mat-form-field-infix {
-      border-top: 3px solid transparent;
-    }
-  }
-  
-}

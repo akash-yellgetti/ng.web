@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ModuleService } from '../../../layout/core/services/module.service';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-profile',
@@ -39,15 +40,17 @@ export class ProfileComponent implements OnInit {
       name: 'Payment',
       link: '/main/user/payment'
     }
-  ]
+  ];
+  user: any;
 
-  constructor(private router: Router, public moduleService: ModuleService) { 
+  constructor(private router: Router, public moduleService: ModuleService, private localStorageService: LocalStorageService) { 
     this.moduleService.mainTitle.next("Profile");
   }
 
   
 
   ngOnInit(): void {
+    this.user = this.localStorageService.retrieve('user');
   }
 
   redirect = (route: any) => {
