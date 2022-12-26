@@ -43,7 +43,7 @@
       </div>
     </ngx-slick-carousel>
     <div class="d-flex d-wrap d-gap-15">
-      <mat-card class="col-50" *ngFor="let product of products">
+      <mat-card class="col-50" *ngFor="let product of products;">
         <mat-card-header>
           <mat-icon mat-card-avatar [style.font-size.px]="24" style="border: 1px solid black"></mat-icon>
           <mat-card-title> {{ product.title }} </mat-card-title>
@@ -58,7 +58,7 @@
     </div>
   </div>
   <div class="w-30 d-flex d-wrap d-gap-15 pb-65 sidebar">
-    <mat-card class="w-100" *ngFor="let catergory of contentCatergory">
+    <!-- <mat-card class="w-100" *ngFor="let catergory of contentCatergory">
       <mat-card-header class="align-center  border-bottom">
         <mat-card-title> {{ catergory.title }} </mat-card-title>
       </mat-card-header>
@@ -70,6 +70,6 @@
           </mat-list-item>
         </mat-list>
       </mat-card-content>
-    </mat-card>
+    </mat-card> -->
   </div>
 </div>
