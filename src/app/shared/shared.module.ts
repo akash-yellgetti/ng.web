@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './modules/material.module';
 import { NgxModule } from './modules/ngx.module';
 import { DialogComponent } from './components/dialog/dialog/dialog.component';
-import { NgbModule } from './modules/ngb.module';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
@@ -14,14 +13,12 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
   imports: [
     MaterialModule,
     NgxModule,
-    NgbModule,
     CommonModule,
     SlickCarouselModule,
   ],
   exports: [
     MaterialModule,
     NgxModule,
-    NgbModule,
     SlickCarouselModule
   ]
 })

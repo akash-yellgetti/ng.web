@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/modules/material.module';
 import { LayoutModule } from '../app/modules/layout/layout.module';
 import { AppRoutingModule } from './app-routing.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 @NgModule({
   declarations: [
@@ -18,7 +17,6 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    NgbModule,
     SlickCarouselModule
   ],
   providers: [],
