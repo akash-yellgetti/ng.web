@@ -23,11 +23,19 @@ body {
 	background-color: $color-gray;
 }
 
+* {
+	box-sizing: border-box;
+}
+
 .mat-body, .mat-body-1, .mat-typography .mat-body, .mat-typography .mat-body-1, .mat-typography, .mat-toolbar, .mat-toolbar h1, .mat-toolbar h2, .mat-toolbar h3, .mat-toolbar h4, .mat-toolbar h5, .mat-toolbar h6, .mat-form-field {
 	font-family: "Open Sans", sans-serif !important;
 }
 
 .mat-h1, .mat-headline, .mat-typography .mat-h1, .mat-typography .mat-headline, .mat-typography h1 {
+	font-family: "Open Sans", sans-serif !important;
+}
+
+.default-font {
 	font-family: "Open Sans", sans-serif !important;
 }
 
@@ -674,3 +682,65 @@ section {
 }
 
 // input
+
+::ng-deep {
+	.form-group {
+		.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+			background-color: $color-primary;
+		}
+		.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+			border-color: $color-primary;
+		}
+		.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick, .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+			color: $color-primary;
+		}
+		.mat-radio-label {
+			margin-right: 10px;
+		}
+		input {
+			line-height: 1.2em;
+		}
+		.mat-form-field-appearance-outline .mat-form-field-wrapper {
+			padding-bottom: 0;
+		}
+		.mat-form-field-subscript-wrapper {
+			position: relative;
+		}
+		.mat-form-field {
+			display: block;
+		}
+		.mat-error {
+			font-size: 13px;
+		}
+		.mat-form-field-appearance-outline .mat-form-field-infix {
+			border-top: 3px solid transparent;
+		}
+		&.datepicker {
+			.mat-form-field-infix {
+			padding: 3px 0;
+			display: inline-flex;
+			}
+			.mat-icon-button {
+				height: 38px;
+				width: 38px;
+				line-height: 38px;
+			}
+		}
+	}
+}
+
+// buttons
+
+.common-btn {
+	padding: 12px 25px;
+	border-radius: 8px;
+	color: $color-white;
+	cursor: pointer;
+	&.btn-fill {
+	  background: $color-primary;
+	  border: none;
+	  &:hover, &:focus {
+		background: $color-primary-dark;
+	  }
+	}
+}

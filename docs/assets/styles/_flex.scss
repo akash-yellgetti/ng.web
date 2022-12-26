@@ -48,6 +48,10 @@
     justify-content: flex-end;
 }
 
+.flex-auto {
+    flex: 1 1 auto;
+}
+
 
 .row {
     padding: 15px;
@@ -67,4 +71,18 @@
 
 .col-25 {
     flex: 1 1 24%;
+}
+
+
+.w-70 {
+    width: 70%;
+}
+
+
+.w-50 {
+    width: 50%;
+}
+
+.w-30 {
+    width: 30%;
 }
