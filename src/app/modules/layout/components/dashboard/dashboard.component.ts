@@ -27,6 +27,170 @@ export class DashboardComponent implements OnInit {
       updated: new Date('1/18/16'),
     },
   ];
+  products = [
+    {
+      title: 'Start Your Financial Plan',
+      description: 'description',
+    },
+    {
+      title: 'Start Your Income Tax Saving',
+      description: 'description',
+    },
+    {
+      title: 'Explore Stocks',
+      description: 'description',
+    },
+    {
+      title: 'Learn basic rules of Financial Planning ' ,
+      description: 'description',
+    }
+  ]
+  contentCatergory = [
+    {
+      title: 'Insurance',
+      description: '',
+      children:  [
+        {
+          title: 'Home',
+          description: '',
+        },
+        {
+          title: 'Health',
+          description: '',
+        },
+        {
+          title: 'Life',
+          description: '',
+        }
+      ]
+    },
+    {
+      title: 'Loan',
+      description: '',
+      children:  [
+        {
+          title: 'Home',
+          description: '',
+        },
+        {
+          title: 'Business',
+          description: '',
+        },
+        {
+          title: 'Personal',
+          description: '',
+        },
+        {
+          title: 'Eduction',
+          description: '',
+        },
+        {
+          title: 'Mortgage',
+          description: '',
+        },
+        {
+          title: 'Gold',
+          description: '',
+        }
+         
+      ]
+    },
+    {
+      title: 'Share Market',
+      description: '',
+      children:  [
+        {
+          title: 'Stocks',
+          description: '',
+        },
+        {
+          title: 'Multual Fund',
+          description: '',
+        },
+        {
+          title: 'Futures',
+          description: '',
+        },
+        {
+          title: 'Options Trading',
+          description: '',
+        }
+      ]
+    },
+    {
+      title: 'Goal',
+      description: '',
+      children:  [
+        {
+          title: 'Retirement',
+          description: '',
+        },
+        {
+          title: 'Child Education',
+          description: '',
+        },
+        {
+          title: 'Marriage',
+          description: '',
+        },
+        {
+          title: 'High Education',
+          description: '',
+        },
+        {
+          title: 'New House',
+          description: '',
+        },
+        {
+          title: 'Emergency Fund',
+          description: '',
+        }
+      ]
+    },
+    {
+      title: 'Investment',
+      description: '',
+      children:  [
+        {
+          title: 'ePF',
+          description: '',
+        },
+        {
+          title: 'Stocks',
+          description: '',
+        },
+        {
+          title: 'MF',
+          description: '',
+        },
+        {
+          title: 'PPF',
+          description: '',
+        },
+        {
+          title: 'NPS',
+          description: '',
+        },
+        
+        {
+          title: 'FD',
+          description: '',
+        },
+        {
+          title: 'RD',
+          description: '',
+        },
+        {
+          title: 'Property',
+          description: '',
+        },
+        {
+          title: 'Gold',
+          description: '',
+        }
+      ]
+    }
+  ]
 
   constructor() { }
 

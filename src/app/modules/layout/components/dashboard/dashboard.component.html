@@ -1,309 +1,75 @@
-<div class="container-fluid">
-  <div class="header-slider col-100">
-    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+<div class="dashboard-container-fluid d-flex">
+  <div class="header-slider w-70 ">
+    <ngx-slick-carousel class="carousel pb-15" #slickModal="slick-carousel" [config]="slideConfig">
       <div ngxSlickItem class="slide d-flex">
-          <div class="header-details">
-              <h4>Hello User</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab perspiciatis sapiente consequatur doloremque! Ducimus.</p>
-              <button class="link-btn">know more...</button>
-          </div>            
-          <img src="../../../../../assets/images/header-img.png" alt="">
+        <div class="header-details">
+          <h4>Hello User</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni
+            consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab
+            perspiciatis sapiente consequatur doloremque! Ducimus.</p>
+          <button class="link-btn">know more...</button>
+        </div>
+        <img src="../../../../../assets/images/header-img.png" alt="">
       </div>
       <div ngxSlickItem class="slide d-flex">
-          <div class="header-details">
-              <h4>Car Loan</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab perspiciatis sapiente consequatur doloremque! Ducimus.</p>
-              <button class="link-btn">know more...</button>
-          </div>            
-          <img src="../../../../../assets/images/header-img.png" alt="">
+        <div class="header-details">
+          <h4>Car Loan</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni
+            consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab
+            perspiciatis sapiente consequatur doloremque! Ducimus.</p>
+          <button class="link-btn">know more...</button>
+        </div>
+        <img src="../../../../../assets/images/header-img.png" alt="">
       </div>
       <div ngxSlickItem class="slide d-flex">
-          <div class="header-details">
-              <h4>Home Loan</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab perspiciatis sapiente consequatur doloremque! Ducimus.</p>
-              <button class="link-btn">know more...</button>
-          </div>            
-          <img src="../../../../../assets/images/header-img.png" alt="">
+        <div class="header-details">
+          <h4>Home Loan</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni
+            consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab
+            perspiciatis sapiente consequatur doloremque! Ducimus.</p>
+          <button class="link-btn">know more...</button>
+        </div>
+        <img src="../../../../../assets/images/header-img.png" alt="">
       </div>
       <div ngxSlickItem class="slide d-flex">
-          <div class="header-details">
-              <h4>Personal Loan</h4>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab perspiciatis sapiente consequatur doloremque! Ducimus.</p>
-              <button class="link-btn">know more...</button>
-          </div>            
-          <img src="../../../../../assets/images/header-img.png" alt="">
+        <div class="header-details">
+          <h4>Personal Loan</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni
+            consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab
+            perspiciatis sapiente consequatur doloremque! Ducimus.</p>
+          <button class="link-btn">know more...</button>
+        </div>
+        <img src="../../../../../assets/images/header-img.png" alt="">
       </div>
-    </ngx-slick-carousel> 
+    </ngx-slick-carousel>
+    <div class="d-flex d-wrap d-gap-15">
+      <mat-card class="col-50" *ngFor="let product of products">
+        <mat-card-header>
+          <mat-icon mat-card-avatar [style.font-size.px]="24" style="border: 1px solid black"></mat-icon>
+          <mat-card-title> {{ product.title }} </mat-card-title>
+          <mat-card-subtitle> {{ product.description }} </mat-card-subtitle>
+          <div fxFlex></div>
+          <div style="flex-grow: 1"></div>
+          <button mat-icon-button>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+        </mat-card-header>
+      </mat-card>
+    </div>
   </div>
-  <div class="row">
-    <div class="col-70">
-      <mat-card class="col-100 card-md">Sample Card</mat-card>
-      <mat-card class="col-50">
-        <mat-card-header>
-          <mat-icon mat-card-avatar [style.font-size.px]="24" style="border: 1px solid black"></mat-icon>
-          <mat-card-title> Sample Title </mat-card-title>
-          <mat-card-subtitle> Sample Description </mat-card-subtitle>
-          <div fxFlex></div>
-          <div style="flex-grow: 1"></div>
-          <button mat-icon-button>
-            <mat-icon>qr_code</mat-icon>
-          </button>
-          <button mat-icon-button>
-            <mat-icon>check_circle</mat-icon>
-          </button>
-          <button mat-icon-button>
-            <mat-icon>more_vert</mat-icon>
-          </button>
-        </mat-card-header>
-      </mat-card>
-      <mat-card class="col-50">
-        <mat-card-header>
-          <mat-icon mat-card-avatar [style.font-size.px]="24" style="border: 1px solid black"></mat-icon>
-          <mat-card-title> Sample Title </mat-card-title>
-          <mat-card-subtitle> Sample Description </mat-card-subtitle>
-          <div fxFlex></div>
-          <div style="flex-grow: 1"></div>
-          <button mat-icon-button>
-            <mat-icon>qr_code</mat-icon>
-          </button>
-          <button mat-icon-button>
-            <mat-icon>check_circle</mat-icon>
-          </button>
-          <button mat-icon-button>
-            <mat-icon>more_vert</mat-icon>
-          </button>
-        </mat-card-header>
-      </mat-card>
-      <mat-card class="col-50">
-        <mat-card-header>
-          <mat-icon mat-card-avatar [style.font-size.px]="24" style="border: 1px solid black"></mat-icon>
-          <mat-card-title> Sample Title </mat-card-title>
-          <mat-card-subtitle> Sample Description </mat-card-subtitle>
-          <div fxFlex></div>
-          <div style="flex-grow: 1"></div>
-          <button mat-icon-button>
-            <mat-icon>qr_code</mat-icon>
-          </button>
-          <button mat-icon-button>
-            <mat-icon>check_circle</mat-icon>
-          </button>
-          <button mat-icon-button>
-            <mat-icon>more_vert</mat-icon>
-          </button>
-        </mat-card-header>
-      </mat-card>
-      <mat-card class="col-50">
-        <mat-card-header>
-          <mat-icon mat-card-avatar [style.font-size.px]="24" style="border: 1px solid black"></mat-icon>
-          <mat-card-title> Sample Title </mat-card-title>
-          <mat-card-subtitle> Sample Description </mat-card-subtitle>
-          <div fxFlex></div>
-          <div style="flex-grow: 1"></div>
-          <button mat-icon-button>
-            <mat-icon>qr_code</mat-icon>
-          </button>
-          <button mat-icon-button>
-            <mat-icon>check_circle</mat-icon>
-          </button>
-          <button mat-icon-button>
-            <mat-icon>more_vert</mat-icon>
-          </button>
-        </mat-card-header>
-      </mat-card>
-      <div class="col-100 d-flex d-wrap d-gap-15">
-        <mat-card class="w-px-300">
-          <mat-card-header>
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-            
-          </mat-card-header>
-
-          <mat-card-header>
-            
-            <mat-card-title> Sample Title </mat-card-title>
-            <mat-card-subtitle> Sample Description </mat-card-subtitle>
-            
-          </mat-card-header>
-          <mat-card-actions class="d-flex justify-content-end">
-            <button mat-raised-button color="primary">Take Course</button>
-          </mat-card-actions>
-          
-        </mat-card>
-
-        <mat-card class="w-px-300">
-          <mat-card-header>
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-            
-          </mat-card-header>
-
-          <mat-card-header>
-            
-            <mat-card-title> Sample Title </mat-card-title>
-            <mat-card-subtitle> Sample Description </mat-card-subtitle>
-            
-          </mat-card-header>
-          <mat-card-actions class="d-flex justify-content-end">
-            <button mat-raised-button color="primary">Take Course</button>
-          </mat-card-actions>
-          
-        </mat-card>
-
-        <mat-card class="w-px-300">
-          <mat-card-header>
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-            
-          </mat-card-header>
-
-          <mat-card-header>
-            
-            <mat-card-title> Sample Title </mat-card-title>
-            <mat-card-subtitle> Sample Description </mat-card-subtitle>
-            
-          </mat-card-header>
-          <mat-card-actions class="d-flex justify-content-end">
-            <button mat-raised-button color="primary">Take Course</button>
-          </mat-card-actions>
-          
-        </mat-card>
-        
-      </div>
-    </div>
-    <div class="col-30 sidebar">
-      <mat-card >
-        <mat-card-header>
-          <mat-card-title> insurance </mat-card-title>
-          <mat-card-subtitle>  Learn more on the life, health and other Insurence  </mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-list role="list" class="card-sm-list" >
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon>
-              <div matListItemTitle> Item 1 </div>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon> 
-              <div matListItemTitle> Item 2 </div>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon> 
-              <div matListItemTitle> Item 3 </div>
-            </mat-list-item>
-          </mat-list>
-        </mat-card-content>
-      </mat-card>
-      <mat-card >
-        <mat-card-header>
-          <mat-card-title> insurance </mat-card-title>
-          <mat-card-subtitle>  Learn more on the life, health and other Insurence  </mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-list role="list" class="card-sm-list" >
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon>
-              <div matListItemTitle> Item 1 </div>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon> 
-              <div matListItemTitle> Item 2 </div>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon> 
-              <div matListItemTitle> Item 3 </div>
-            </mat-list-item>
-          </mat-list>
-        </mat-card-content>
-      </mat-card>
-
-      <mat-card >
-        <mat-card-header>
-          <mat-card-title> insurance </mat-card-title>
-          <mat-card-subtitle>  Learn more on the life, health and other Insurence  </mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-list role="list" class="card-sm-list" >
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon>
-              <div matListItemTitle> Item 1 </div>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon> 
-              <div matListItemTitle> Item 2 </div>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon> 
-              <div matListItemTitle> Item 3 </div>
-            </mat-list-item>
-          </mat-list>
-        </mat-card-content>
-      </mat-card>
-      <mat-card >
-        <mat-card-header>
-          <mat-card-title> insurance </mat-card-title>
-          <mat-card-subtitle>  Learn more on the life, health and other Insurence  </mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-list role="list" class="card-sm-list" >
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon>
-              <div matListItemTitle> Item 1 </div>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon> 
-              <div matListItemTitle> Item 2 </div>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon> 
-              <div matListItemTitle> Item 3 </div>
-            </mat-list-item>
-          </mat-list>
-        </mat-card-content>
-      </mat-card>
-      <mat-card >
-        <mat-card-header>
-          <mat-card-title> insurance </mat-card-title>
-          <mat-card-subtitle>  Learn more on the life, health and other Insurence  </mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-list role="list" class="card-sm-list" >
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon>
-              <div matListItemTitle> Item 1 </div>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon> 
-              <div matListItemTitle> Item 2 </div>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon> 
-              <div matListItemTitle> Item 3 </div>
-            </mat-list-item>
-          </mat-list>
-        </mat-card-content>
-      </mat-card>
-      <mat-card >
-        <mat-card-header>
-          <mat-card-title> insurance </mat-card-title>
-          <mat-card-subtitle>  Learn more on the life, health and other Insurence  </mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-list role="list" class="card-sm-list" >
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon>
-              <div matListItemTitle> Item 1 </div>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon> 
-              <div matListItemTitle> Item 2 </div>
-            </mat-list-item>
-            <mat-list-item role="listitem">
-              <mat-icon matListItemIcon>folder</mat-icon> 
-              <div matListItemTitle> Item 3 </div>
-            </mat-list-item>
-          </mat-list>
-        </mat-card-content>
-      </mat-card>
-
-     
-      
-    </div>
+  <div class="w-30 d-flex d-wrap d-gap-15 pb-65">
+    <mat-card class="w-100" *ngFor="let catergory of contentCatergory">
+      <mat-card-header class="align-center  border-bottom">
+        <mat-card-title> {{ catergory.title }} </mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="align-center">
+        <mat-list role="list" class="card-sm-list">
+          <mat-list-item role="listitem" *ngFor="let child of catergory.children">
+            <mat-icon matListItemIcon>folder</mat-icon>
+            <div matListItemTitle> {{ child.title }} </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

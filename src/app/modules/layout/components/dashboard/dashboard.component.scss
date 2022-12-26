@@ -8,9 +8,10 @@
     grid-auto-flow: column;
 }
 
-.container-fluid {
-    padding-top: 64px;
+.dashboard-container-fluid {
+    padding-top: 15px;
     padding-bottom: 40px;
+    // z-index: 2;
 }
 
 .content {
@@ -24,8 +25,19 @@
     }
 }
 
+.pb-15 {
+    padding-bottom: 15px;
+    z-index: 2;
+}
+
+.pb-65 {
+    padding-top: 65px;
+    z-index: 2;
+}
+
 .header-slider {
     padding: 15px;
+    // width: 70%;
     padding-bottom: 0;
     @media (max-width: 767px) {
         padding-top: 15px;
