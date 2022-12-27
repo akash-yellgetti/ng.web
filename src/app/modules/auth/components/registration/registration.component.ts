@@ -103,8 +103,6 @@ export class RegistrationComponent implements OnInit {
     const params: any = this.fieldService.json(controls);
     params.type = this.flag.otpFlag;
 
-   
-
     const myObserver: any = {
       next: (res: any) => {
 
