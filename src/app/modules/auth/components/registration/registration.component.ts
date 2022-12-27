@@ -6,6 +6,7 @@ import { FieldService } from 'src/app/shared/services/field/field.service';
 import { AuthService } from '../../services/auth/auth.service';
 import * as _ from 'lodash';
 import { LoaderService } from 'src/app/shared/services/loader/loader.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-registration',
@@ -102,14 +103,40 @@ export class RegistrationComponent implements OnInit {
     const params: any = this.fieldService.json(controls);
     params.type = this.flag.otpFlag;
 
-    this.authService.register(params).subscribe((res: any) => {
-      if (res && res.status) {
-        this.flag.requestOtp = false;
-        this.flag.verifyOtp = false;
-        this.flag.register = true;
-        this.route.navigate(['auth/login']);
-      }
-    });
+   
+
+    const myObserver: any = {
+      next: (res: any) => {
+
+        Swal.fire({
+          title: 'Registered successfully',
+          icon: 'success',
+          confirmButtonColor: '#002b5c',
+          confirmButtonText: 'Redirect To Login'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.flag.requestOtp = false;
+            this.flag.verifyOtp = false;
+            this.flag.register = true;
+            this.route.navigate(['auth/login']);
+          }
+        });
+      },
+      error: (err: any) => {
+        if (err && err.error && err.error.message) {
+          Swal.fire(
+            'Warning!',
+            err.error.message,
+            'error'
+          )  
+        }
+      },
+      complete: () => {
+        console.log('Observer got a complete notification');
+      },
+    };
+
+    this.authService.register(params).subscribe(myObserver);
   }
 }
 
