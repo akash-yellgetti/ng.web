@@ -11,6 +11,10 @@
 .dashboard-container-fluid {
     padding-top: 15px;
     padding-bottom: 40px;
+    @media (max-width: 767px) {
+        display: block;
+        padding-top: 60px;
+    }
     // z-index: 2;
 }
 
@@ -40,7 +44,7 @@
     // width: 70%;
     padding-bottom: 0;
     @media (max-width: 767px) {
-        padding-top: 15px;
+        width: 100%;
     }
     .slide {
         background: $color-primary;
@@ -93,6 +97,13 @@
                 margin-bottom: 15px;
             }
         }
+    }
+}
+
+.sidebar {
+    @media (max-width: 767px) {
+        width: 100%;
+        padding: 15px;
     }
 }
 
