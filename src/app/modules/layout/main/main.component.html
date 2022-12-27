@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container" autosize="true" [class.collapsed]="isCollapsed">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+  <mat-sidenav #drawer class="sidenav main-sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar >{{ isCollapsed ? 'PF' : 'Personal Finance'}}</mat-toolbar>
     
@@ -45,9 +45,20 @@
         </li>
       </ul>
     </div>
-    <button class="logout-btn d-flex width-100 align-items">
-      <mat-icon aria-hidden="true" class="menu-icon">logout</mat-icon> <p  *ngIf="!isCollapsed">Logout</p>
-    </button>
+    <div class="footer-menu">
+      <ul class="menu-list" role="list">
+        <li role="list-item" class="menu-item">
+          <button class="logout-btn d-flex width-100 align-items">
+            <mat-icon aria-hidden="true" class="menu-icon">settings</mat-icon> <p  *ngIf="!isCollapsed">Settings</p>
+          </button>
+        </li>
+        <li role="list-item" class="menu-item">
+          <button class="logout-btn d-flex width-100 align-items">
+            <mat-icon aria-hidden="true" class="menu-icon">logout</mat-icon> <p  *ngIf="!isCollapsed">Logout</p>
+          </button>
+        </li>
+      </ul>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content fxLayout="column">
 

@@ -10,7 +10,11 @@
 
 .dashboard-container-fluid {
     padding-top: 15px;
-    padding-bottom: 40px;
+    padding-bottom: 60px;
+    @media (max-width: 767px) {
+        display: block;
+        padding-top: 60px;
+    }
     // z-index: 2;
 }
 
@@ -40,7 +44,7 @@
     // width: 70%;
     padding-bottom: 0;
     @media (max-width: 767px) {
-        padding-top: 15px;
+        width: 100%;
     }
     .slide {
         background: $color-primary;
@@ -93,6 +97,13 @@
                 margin-bottom: 15px;
             }
         }
+    }
+}
+
+.sidebar {
+    @media (max-width: 767px) {
+        width: 100%;
+        padding: 15px;
     }
 }
 
@@ -171,7 +182,61 @@
     }
 }
 
+.course-wrapper {
+    padding-top: 15px;
+    @media (max-width:767px) {
+       display: block;
+    }
+    .count-wrapper {
+        margin-bottom: 15px;
+        .count-icon {
+            margin-right: 5px;
+        }
+    }
+    .course-card {
+        margin-bottom: 15px;
+        @media (max-width:767px) {
+            width: 100%;
+        }
+        .image-wrapper {
+            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+            .learn-time {
+                padding: 7px 10px;
+                background: $color-black-opacity;
+                color: $color-white;
+                position: absolute;
+                right: 0;
+                top: 0;
+                line-height: 1.2em;
+                margin-bottom: 0;
+                border-radius: 0 4px 0 4px;
+            }
+        }
+        .mat-card-image {
+            width: 100%;
+            margin: 0;
+            border-radius: 4px;
+        }
+    }
+}
+
 ::ng-deep {
+    .course-card {
+        .mat-card-header-text {
+            margin: 0;
+            margin-bottom: 20px;
+        }
+        .mat-card-actions {
+            margin: 0;
+            padding-bottom: 0;
+        }
+        &.mat-card>.mat-card-actions:last-child {
+            margin: 0;
+            padding-bottom: 0;
+        }
+    }
     .sidebar {
         padding-right: 15px;
         .mat-card {
