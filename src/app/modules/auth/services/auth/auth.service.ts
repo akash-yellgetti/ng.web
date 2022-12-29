@@ -91,7 +91,10 @@ export class AuthService {
     const error = e.error;
     switch (e.status) {
       case 401:
-        return throwError(error);
+        // return throwError(error);
+        this._snackBar.open(error.message, undefined, {
+          duration: 5000,
+        })
         break;
       case 400:
         const data = error.data;
