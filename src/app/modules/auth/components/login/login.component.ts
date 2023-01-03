@@ -82,8 +82,13 @@ export class LoginComponent implements OnInit {
         // console.log('Observer got a next value: ' + res);
         if (res && res.status) {
           const data = res.data;
+          const user: any = data.user;
+          const fullName: string = user.firstName+" "+user.lastName;
+          user.fullName = fullName;
+          const shortName: any = fullName.match(/\b(\w)/g)?.join('');
+          user.shortName = shortName;
           this.storageService.store('tokens', data.tokens);
-          this.storageService.store('user', data.user);
+          this.storageService.store('user', user);
           this.route.navigate(['main/dashboard']);
         }
       },
