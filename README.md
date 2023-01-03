@@ -78,6 +78,10 @@ ng g c modules/socio-safety/members --module=socio-safety
 
 
 
+ng g m modules/main --routing=true
+ng g c modules/main/components/layout --module=main
+
+
 
 
 ng g m modules/layout
@@ -123,6 +127,9 @@ ng g s modules/auth/services/auth/auth
 
 
 ng g s modules/comm/socket/socket
+
+
+
 
 
 ng g m modules/finance --routing=true
