@@ -1,73 +1,116 @@
 <mat-sidenav-container class="sidenav-container" autosize="true" [class.collapsed]="isCollapsed">
-  <mat-sidenav #drawer class="sidenav main-sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar >{{ isCollapsed ? 'PF' : 'Personal Finance'}}</mat-toolbar>
-    
-    <div class="nav-top d-flex align-center">
-      <button  aria-label="view profile" name="view profile" class="view-profile">
-        <p class="profile__initals ani">CV</p>
-      </button>
-      <div class="username-box" *ngIf="!isCollapsed">
-        <div class="profile-details d-flex">
-          <div class="user-details">
-            <p class="name">{{ user.firstName+" "+user.lastName }}</p>
-            <p class="sub-details">Senior Developer</p>
-          </div>
-          <div class="divider"></div>
-          <div class="user-details">
-            <p class="name">Member Since</p>
-            <p class="sub-details">12th july, 2022</p>
-          </div>
+  <mat-sidenav #drawer class="sidenav main-sidenav" fixedInViewport
+  [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+  [opened]="(isHandset$ | async) === false">
+  <mat-toolbar>{{ isCollapsed ? 'PF' : 'Personal Finance'}}</mat-toolbar>
+  <div class="nav-top d-flex align-center">
+    <button aria-label="view profile" name="view profile" class="view-profile">
+      <p class="profile__initals ani">CV</p>
+    </button>
+    <div class="username-box" *ngIf="!isCollapsed">
+      <div class="profile-details d-flex">
+        <div class="user-details">
+          <p class="name">{{ user.firstName+" "+user.lastName }}</p>
+          <p class="sub-details">Senior Developer</p>
+        </div>
+        <div class="divider"></div>
+        <div class="user-details">
+          <p class="name">Member Since</p>
+          <p class="sub-details">12th july, 2022</p>
         </div>
       </div>
     </div>
-    <div class="menu-wrapper">
-      <ul class="menu-list" role="list">
-        <li role="list-item" class="menu-item active">
-          <button class="d-flex width-100 align-items">
-            <mat-icon aria-hidden="true" class="menu-icon">dashboard</mat-icon> <p  *ngIf="!isCollapsed">Dashboard</p>
-          </button>
-        </li>
-        <li role="list-item" class="menu-item">
-          <button class="d-flex width-100 align-items">
-            <mat-icon aria-hidden="true" class="menu-icon">calendar_month</mat-icon> <p  *ngIf="!isCollapsed">Calendar</p>
-          </button>
-        </li>
-        <li role="list-item" class="menu-item">
-          <button class="d-flex width-100 align-items">
-            <mat-icon aria-hidden="true" class="menu-icon">settings</mat-icon> <p *ngIf="!isCollapsed">Settings</p>
-          </button>
-        </li>
-        <li role="list-item" class="menu-item">
-          <button class="d-flex width-100 align-items">
-            <mat-icon aria-hidden="true" class="menu-icon">notifications</mat-icon> <p  *ngIf="!isCollapsed">Notifications</p>
-          </button>
-        </li>
-      </ul>
-    </div>
-    <div class="footer-menu">
-      <ul class="menu-list" role="list">
-        <li role="list-item" class="menu-item">
-          <button class="logout-btn d-flex width-100 align-items">
-            <mat-icon aria-hidden="true" class="menu-icon">settings</mat-icon> <p  *ngIf="!isCollapsed">Settings</p>
-          </button>
-        </li>
-        <li role="list-item" class="menu-item">
-          <button class="logout-btn d-flex width-100 align-items">
-            <mat-icon aria-hidden="true" class="menu-icon">logout</mat-icon> <p  *ngIf="!isCollapsed">Logout</p>
-          </button>
-        </li>
-      </ul>
-    </div>
+  </div>
+  <div class="menu-wrapper">
+    <ul class="menu-list" role="list">
+      <li role="list-item" class="menu-item active">
+        <button class="d-flex width-100 align-items" (click)="redirect('dashboard')">
+          <mat-icon aria-hidden="true" class="menu-icon">dashboard</mat-icon>
+          <p *ngIf="!isCollapsed">Dashboard</p>
+        </button>
+      </li>
+      <li role="list-item" class="menu-item">
+        <button class="d-flex width-100 align-items">
+          <mat-icon aria-hidden="true" class="menu-icon">calendar_month</mat-icon>
+          <p *ngIf="!isCollapsed">Calendar</p>
+        </button>
+      </li>
+      <li role="list-item" class="menu-item">
+        <button class="d-flex width-100 align-items">
+          <mat-icon aria-hidden="true" class="menu-icon">settings</mat-icon>
+          <p *ngIf="!isCollapsed">Settings</p>
+        </button>
+      </li>
+      <li role="list-item" class="menu-item">
+        <button class="d-flex width-100 align-items">
+          <mat-icon aria-hidden="true" class="menu-icon">notifications</mat-icon>
+          <p *ngIf="!isCollapsed">Notifications</p>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="footer-menu">
+    <ul class="menu-list" role="list">
+      <li role="list-item" class="menu-item">
+        <button class="logout-btn d-flex width-100 align-items">
+          <mat-icon aria-hidden="true" class="menu-icon">settings</mat-icon>
+          <p *ngIf="!isCollapsed">Settings</p>
+        </button>
+      </li>
+      <li role="list-item" class="menu-item">
+        <button class="logout-btn d-flex width-100 align-items">
+          <mat-icon aria-hidden="true" class="menu-icon">logout</mat-icon>
+          <p *ngIf="!isCollapsed">Logout</p>
+        </button>
+      </li>
+    </ul>
+  </div>
   </mat-sidenav>
   <mat-sidenav-content fxLayout="column">
-
-    <app-header [drawerRef]="drawer" [drawerChatRef]="''" [isHandset]="(isHandset$ | async)" (toSideNavToggle)="sideNavToggle($event)"></app-header>
-
+    <!-- <app-header [drawerRef]="drawer" [drawerChatRef]="''" [isHandset]="(isHandset$ | async)" (toSideNavToggle)="sideNavToggle($event)"></app-header> -->
+    <mat-toolbar color="primary" class="header-toolbar">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span> App </span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+        (click)="redirect('dashboard')">
+        <mat-icon> dashboard</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+        (click)="redirect('chat')">
+        <mat-icon> chat</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon"
+        (click)="redirect('notification')">
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="redirect('profile')">
+          <mat-icon>person</mat-icon>
+          <span>My Profile</span>
+        </button>
+        <button mat-menu-item (click)="redirect('finance')">
+          <mat-icon>person</mat-icon>
+          <span>My Finance</span>
+        </button>
+        <button mat-menu-item (click)="redirect('family')">
+          <mat-icon>person</mat-icon>
+          <span>My Family</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>power_settings_new</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar>
     <router-outlet class="main"></router-outlet>
-    <app-footer class="footer" fxFlexOffset="auto"></app-footer>
-
+    <mat-toolbar class="footer footer-toolbar" fxFlexOffset="auto">
+      <span>Sociosafety. All rights reserved.</span>
+    </mat-toolbar>
   </mat-sidenav-content>
-
- 
 </mat-sidenav-container>

@@ -41,6 +41,27 @@ export class MainComponent {
       case 'home':
         this.route.navigate(['main/home']);
         break;
+      case 'dashboard':
+        this.route.navigate(['main/dashboard']);
+        break;
+      case 'finance':
+        this.route.navigate(['main/user/finance/dashboard']);
+        break;
+      case 'profile':
+        this.route.navigate(['main/user/profile']);
+        break;
+      case 'family':
+        this.route.navigate(['main/user/family']);
+        break;
+      case 'chat':
+        this.route.navigate(['main/user/chat']);
+        break;
+      case 'notification':
+        this.route.navigate(['main/user/notification']);
+        break;
+      case 'home':
+        this.route.navigate(['main/home']);
+        break;
       case 'finance':
         this.route.navigate(['main/user/finance/dashboard']);
         break;
@@ -60,7 +81,6 @@ export class MainComponent {
       default:
         break;
     }
-    
   }
 
   sideNavToggle = ($event: any) => {
