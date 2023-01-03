@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ModuleService } from '../../../layout/core/services/module.service';
 import { LocalStorageService } from 'ngx-webstorage';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -42,15 +43,31 @@ export class ProfileComponent implements OnInit {
     }
   ];
   user: any;
+  public profileForm = this.fb.group({
+    firstName: ['', Validators.required],
+    lastName: [null, Validators.required],
+    gender: [null, Validators.required],
+    dob: [null, Validators.required],
+    mobileNo: [null, Validators.required],
+    email: [null, []],
+  });
 
-  constructor(private router: Router, public moduleService: ModuleService, private localStorageService: LocalStorageService) { 
+  constructor(private router: Router, public moduleService: ModuleService, private localStorageService: LocalStorageService, private fb: FormBuilder) {
     this.moduleService.mainTitle.next("Profile");
   }
 
   
 
   ngOnInit(): void {
-    this.user = this.localStorageService.retrieve('user');
+    const user: any = this.localStorageService.retrieve('user');
+    this.user = user;
+    // this.profileForm.firstName.setValue('akash');
+    this.profileForm.controls['firstName'].setValue(user.firstName);
+    this.profileForm.controls['lastName'].setValue(user.lastName);
+    this.profileForm.controls['gender'].setValue(user.gender);
+    this.profileForm.controls['dob'].setValue(user.dob);
+    this.profileForm.controls['mobileNo'].setValue(user.mobileNo);
+    this.profileForm.controls['email'].setValue(user.email);
   }
 
   redirect = (route: any) => {

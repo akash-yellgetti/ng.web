@@ -29,50 +29,46 @@
         <mat-card-title>Profile</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <div class="d-flex width-100 mb-10">
-          <div class="form-group">
-            <label>First Name</label>
-            <mat-form-field appearance="outline" class="w-100">
-              <input matInput placeholder="First Name">
-            </mat-form-field>
+        <form [formGroup]="profileForm" novalidate>
+          <div class="d-flex width-100 mb-10">
+            <div class="form-group">
+              <label>First Name</label>
+              <mat-form-field appearance="outline" class="w-100">
+                <input matInput placeholder="First Name" formControlName="firstName">
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <label>Last name</label>
+              <mat-form-field appearance="outline" class="w-100">
+                <input matInput placeholder="Last name"  formControlName="lastName">
+              </mat-form-field>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Middle Name</label>
-            <mat-form-field appearance="outline" class="w-100">
-              <input matInput placeholder="Middle Name">
-            </mat-form-field>
+          <div class="d-flex width-100 mb-10">
+            <div class="form-group datepicker">
+              <label>Date of birth</label>
+              <mat-form-field appearance="outline" class="w-100">
+                <input matInput placeholder="Choose a date" [matDatepicker]="picker"  formControlName="dob">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
           </div>
-        </div>
-        <div class="d-flex width-100 mb-10">
-          <div class="form-group">
-            <label>Last name</label>
-            <mat-form-field appearance="outline" class="w-100">
-              <input matInput placeholder="Last name">
-            </mat-form-field>
+          <div class="d-flex width-100 mb-10">
+            <div class="form-group">
+              <label>Mobile number</label>
+              <mat-form-field appearance="outline" class="w-100">
+                <input matInput placeholder="Mobile number"  formControlName="mobileNo">
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <mat-form-field appearance="outline" class="w-100">
+                <input matInput placeholder="Email"  formControlName="email">
+              </mat-form-field>
+            </div>
           </div>
-          <div class="form-group datepicker">
-            <label>Date of birth</label>
-            <mat-form-field appearance="outline" class="w-100">
-              <input matInput placeholder="Choose a date" [matDatepicker]="picker">
-              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="d-flex width-100 mb-10">
-          <div class="form-group">
-            <label>Mobile number</label>
-            <mat-form-field appearance="outline" class="w-100">
-              <input matInput placeholder="Mobile number">
-            </mat-form-field>
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <mat-form-field appearance="outline" class="w-100">
-              <input matInput placeholder="Email">
-            </mat-form-field>
-          </div>
-        </div>
+        </form>
       </mat-card-content>
       <mat-card-actions align="end" class="card-actions">
         <button type="submit" class="common-btn btn-fill">Save</button>

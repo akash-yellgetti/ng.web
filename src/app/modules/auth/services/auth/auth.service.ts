@@ -97,6 +97,7 @@ export class AuthService {
         })
         break;
       case 400:
+      case 422:
         const data = error.data;
         for(let i in data) {
           const e = data[i];
@@ -108,6 +109,9 @@ export class AuthService {
         break;
     
       default:
+        this._snackBar.open(error.message, undefined, {
+          duration: 5000,
+        })
         break;
     }
   }
