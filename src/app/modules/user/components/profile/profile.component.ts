@@ -5,8 +5,8 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ProfileService } from '../../services/profile/profile.service';
-import { setting } from '../../../../shared/json/setting.json';
 import { FieldService } from 'src/app/shared/services/field/field.service';
+import { setting } from '../../../../shared/json/setting.json';
 
 @Component({
   selector: 'app-profile',
