@@ -7,6 +7,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ProfileService } from '../../services/profile/profile.service';
 import { FieldService } from 'src/app/shared/services/field/field.service';
 import { setting } from '../../../../shared/json/setting.json';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-profile',
@@ -16,38 +17,6 @@ import { setting } from '../../../../shared/json/setting.json';
 export class ProfileComponent implements OnInit {
   @ViewChild('editProfileImagesDialog', { static: true })
   editProfileImagesTemplate!: TemplateRef<any>;
-  public tabs = [
-    {
-      code: 'profile',
-      name: 'Profile',
-      link: '/main/user/profile',
-    },
-    {
-      code: 'family',
-      name: 'Family',
-      link: '/main/user/family',
-    },
-    {
-      code: 'vehicle',
-      name: 'Vehicle',
-      link: '/main/user/vehicle',
-    },
-    {
-      code: 'visitor',
-      name: 'Visitor',
-      link: '/main/user/visitor',
-    },
-    {
-      code: 'vendor',
-      name: 'Vendor',
-      link: '/main/user/vendor',
-    },
-    {
-      code: 'payment',
-      name: 'Payment',
-      link: '/main/user/payment',
-    },
-  ];
   user: any;
   public profileForm = this.fb.group({
     firstName: ['', Validators.required],
@@ -61,6 +30,21 @@ export class ProfileComponent implements OnInit {
   profileBg: any;
   selectedFile: any;
   selectedFileBg: any;
+
+  profileImages: any = {
+    picture: {
+      url: null,
+      evt: null,
+      src: null,
+      blob: null,
+    },
+    pictureBackground: {
+      url: null,
+      evt: null,
+      src: null,
+      blob: null,
+    }
+  }
 
   constructor(
     private router: Router,
@@ -204,4 +188,36 @@ export class ProfileComponent implements OnInit {
     };
     this.profileService.updateProfile(params).subscribe(myObserver);
   };
+
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+
+  fileChangeEvent(event: any): void {
+      this.imageChangedEvent = event;
+  }
+  imageCropped(event: ImageCroppedEvent, field: any) {
+    field.src = event.base64;
+    field.blob = this.b64toBlob(event.base64, 'image/png');
+  }
+  imageLoaded() {
+      // show cropper
+  }
+  cropperReady() {
+      // cropper ready
+  }
+  loadImageFailed() {
+      // show message
+  }
+
+  b64toBlob = (dataURI: any, type: any) => {
+    const byteString = atob(dataURI.split(',')[1]);
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+
+    for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ab], { type });
+  }
+
 }
