@@ -43,8 +43,8 @@ export class ProfileComponent implements OnInit {
       evt: null,
       src: null,
       blob: null,
-    }
-  }
+    },
+  };
 
   constructor(
     private router: Router,
@@ -78,9 +78,10 @@ export class ProfileComponent implements OnInit {
     }
 
     if (this.user && this.user.profilePictureBackground) {
-      this.profileBg = setting['uri'] + '/' + this.user.profilePictureBackground;
+      this.profileBg =
+        setting['uri'] + '/' + this.user.profilePictureBackground;
     }
-  }
+  };
 
   redirect = (route: any) => {
     const navigationExtras: NavigationExtras = {
@@ -113,9 +114,11 @@ export class ProfileComponent implements OnInit {
     ) {
       const file: File = event.target.files[0];
       if (type === 'profile') {
-        this.selectedFile = file;
+        // this.selectedFile = file;
+        this.profileImages.picture.evt = event;
       } else if (type === 'profileBg') {
-        this.selectedFileBg = file;
+        // this.selectedFileBg = file;
+        this.profileImages.pictureBackground.evt = event;
       }
     } else {
       this.clearFile(type);
@@ -125,11 +128,19 @@ export class ProfileComponent implements OnInit {
   clearFile = (type: any) => {
     if (type === 'profile') {
       this.selectedFile = null;
+      this.profileImages.picture.evt = null;
+      this.profileImages.picture.blob = null;
     } else if (type === 'profileBg') {
       this.selectedFileBg = null;
+      this.profileImages.pictureBackground.evt = null;
+      this.profileImages.pictureBackground.blob = null;
     } else if (type === 'all') {
       this.selectedFile = null;
       this.selectedFileBg = null;
+      this.profileImages.picture.evt = null;
+      this.profileImages.picture.blob = null;
+      this.profileImages.pictureBackground.evt = null;
+      this.profileImages.pictureBackground.blob = null;
     }
   };
 
@@ -156,6 +167,8 @@ export class ProfileComponent implements OnInit {
           user = { ...user, ...res.data };
           this.localStorageService.store('user', user);
           this.user = user;
+          this.setProfileImage();
+          this.clearFile('all');
         }
       },
     };
@@ -177,7 +190,7 @@ export class ProfileComponent implements OnInit {
         if (res && res.status) {
           let user: any = this.user;
           user = { ...user, ...res.data };
-          const fullName: string = user.firstName+" "+user.lastName;
+          const fullName: string = user.firstName + ' ' + user.lastName;
           user.fullName = fullName;
           const shortName: any = fullName.match(/\b(\w)/g)?.join('');
           user.shortName = shortName;
@@ -193,20 +206,31 @@ export class ProfileComponent implements OnInit {
   croppedImage: any = '';
 
   fileChangeEvent(event: any): void {
-      this.imageChangedEvent = event;
+    this.imageChangedEvent = event;
   }
-  imageCropped(event: ImageCroppedEvent, field: any) {
+  imageCropped(event: ImageCroppedEvent, field: any, key: any) {
     field.src = event.base64;
     field.blob = this.b64toBlob(event.base64, 'image/png');
+    switch (key) {
+      case 'picture':
+        this.selectedFile = field.blob;
+        break;
+      case 'pictureBackground':
+        this.selectedFileBg = field.blob;
+        break;
+
+      default:
+        break;
+    }
   }
   imageLoaded() {
-      // show cropper
+    // show cropper
   }
   cropperReady() {
-      // cropper ready
+    // cropper ready
   }
   loadImageFailed() {
-      // show message
+    // show message
   }
 
   b64toBlob = (dataURI: any, type: any) => {
@@ -215,9 +239,8 @@ export class ProfileComponent implements OnInit {
     const ia = new Uint8Array(ab);
 
     for (let i = 0; i < byteString.length; i++) {
-        ia[i] = byteString.charCodeAt(i);
+      ia[i] = byteString.charCodeAt(i);
     }
     return new Blob([ab], { type });
-  }
-
+  };
 }
