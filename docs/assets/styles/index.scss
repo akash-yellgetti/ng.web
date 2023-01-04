@@ -742,9 +742,20 @@ section {
 	cursor: pointer;
 	&.btn-fill {
 	  background: $color-primary;
-	  border: none;
+	  border: 1px solid $color-primary;
 	  &:hover, &:focus {
 		background: $color-primary-dark;
 	  }
+	}
+	&.btn-text {
+		padding: 0;
+		border-radius: 0;
+		color: $color-primary;
+		border: none;
+	}
+	&.btn-white {
+		background: $color-white;
+		border: 1px solid $color-primary;
+		color: $color-black;
 	}
 }

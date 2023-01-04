@@ -178,6 +178,10 @@ export class ProfileComponent implements OnInit {
         if (res && res.status) {
           let user: any = this.user;
           user = { ...user, ...res.data };
+          const fullName: string = user.firstName+" "+user.lastName;
+          user.fullName = fullName;
+          const shortName: any = fullName.match(/\b(\w)/g)?.join('');
+          user.shortName = shortName;
           this.localStorageService.store('user', user);
           this.user = user;
         }
