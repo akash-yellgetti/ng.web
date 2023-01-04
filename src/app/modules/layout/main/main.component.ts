@@ -6,6 +6,7 @@ import * as menus from '../core/json/menus.json';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Router } from '@angular/router';
 import { ModuleService } from '../core/services/module.service';
+import { setting } from '../../../shared/json/setting.json';
 
 @Component({
   selector: 'app-main',
@@ -16,6 +17,8 @@ export class MainComponent {
   public mainTitle: string = 'Dashboard';
   public isCollapsed: any = false;
   public user: any = null;
+  profileImg: any;
+  profileBg: any;
   // mobileQuery: MediaQueryList;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -28,6 +31,18 @@ export class MainComponent {
       this.mainTitle = r;
     })
     this.user = this.localStorageService.retrieve('user');
+    this.setProfileImage();
+  }
+
+  setProfileImage = () => {
+    this.user = this.localStorageService.retrieve('user');
+    if (this.user && this.user.profilePicture) {
+      this.profileImg = setting['uri'] + '/' + this.user.profilePicture;
+    }
+
+    if (this.user && this.user.profilePictureBackground) {
+      this.profileBg = setting['uri'] + '/' + this.user.profilePictureBackground;
+    }
   }
   
   logout = () => {

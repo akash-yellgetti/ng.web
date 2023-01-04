@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ProfileService } from '../../services/profile/profile.service';
 import { FieldService } from 'src/app/shared/services/field/field.service';
+import { setting } from '../../../../shared/json/setting.json';
 
 @Component({
   selector: 'app-profile',
@@ -56,6 +57,8 @@ export class ProfileComponent implements OnInit {
     mobileNo: [null, Validators.required],
     email: [null, []],
   });
+  profileImg: any;
+  profileBg: any;
   selectedFile: any;
   selectedFileBg: any;
 
@@ -81,6 +84,18 @@ export class ProfileComponent implements OnInit {
     this.profileForm.controls['dob'].setValue(user.dob);
     this.profileForm.controls['mobileNo'].setValue(user.mobileNo);
     this.profileForm.controls['email'].setValue(user.email);
+    this.setProfileImage();
+  }
+
+  setProfileImage = () => {
+    this.user = this.localStorageService.retrieve('user');
+    if (this.user && this.user.profilePicture) {
+      this.profileImg = setting['uri'] + '/' + this.user.profilePicture;
+    }
+
+    if (this.user && this.user.profilePictureBackground) {
+      this.profileBg = setting['uri'] + '/' + this.user.profilePictureBackground;
+    }
   }
 
   redirect = (route: any) => {

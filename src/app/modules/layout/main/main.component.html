@@ -1,35 +1,23 @@
-<mat-sidenav-container
-  class="sidenav-container"
-  autosize="true"
-  [class.collapsed]="isCollapsed"
->
-  <mat-sidenav
-    class="sidenav main-sidenav"
-    fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
-  >
-    <mat-toolbar>{{ isCollapsed ? "PF" : "Personal Finance" }}</mat-toolbar>
-    <div class="nav-top d-flex align-center">
-      <button
-        aria-label="view profile"
-        name="view profile"
-        class="view-profile"
-      >
-        <p class="profile__initals ani">{{ user.shortName }}</p>
-      </button>
-      <div class="username-box" *ngIf="!isCollapsed">
-        <div class="profile-details d-flex">
-          <div class="user-details">
-            <p class="name">{{ user.fullName }}</p>
-            <p class="sub-details">Senior Developer</p>
-          </div>
-          <div class="divider"></div>
-          <div class="user-details">
-            <p class="name">Member Since</p>
-            <p class="sub-details">{{ user.createdAt | date }}</p>
-          </div>
+<mat-sidenav-container class="sidenav-container" autosize="true" [class.collapsed]="isCollapsed">
+  <mat-sidenav class="sidenav main-sidenav" fixedInViewport
+  [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+  [opened]="(isHandset$ | async) === false">
+  <mat-toolbar>{{ isCollapsed ? 'PF' : 'Personal Finance'}}</mat-toolbar>
+  <div class="nav-top d-flex align-center" [ngStyle]="{'background-image': 'url(' + profileBg + ')'}">
+    <button aria-label="view profile" name="view profile" class="view-profile">
+      <p class="profile__initals ani" *ngIf="!profileImg">{{ user.shortName}}</p>
+      <img [src]="profileImg" *ngIf="profileImg" alt="profile image">
+    </button>
+    <div class="username-box" *ngIf="!isCollapsed">
+      <div class="profile-details d-flex">
+        <div class="user-details">
+          <p class="name">{{ user.fullName }}</p>
+          <p class="sub-details">Senior Developer</p>
+        </div>
+        <div class="divider"></div>
+        <div class="user-details">
+          <p class="name">Member Since</p>
+          <p class="sub-details"> {{ user.createdAt | date }} </p>
         </div>
       </div>
     </div>
