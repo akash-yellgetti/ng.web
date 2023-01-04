@@ -52,30 +52,42 @@
             <div class="form-group datepicker">
               <label>Date of birth</label>
               <mat-form-field appearance="outline" class="w-100">
-                <input matInput placeholder="Choose a date" [matDatepicker]="picker"  formControlName="dob">
+                <input matInput placeholder="Choose a date" [matDatepicker]="picker"  formControlName="dob" readonly>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
             </div>
+
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <mat-radio-group formControlName="gender" >
+                <mat-radio-button value="m">Male</mat-radio-button>
+                <mat-radio-button value="f">Female</mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="profileForm.controls['gender'].touched && profileForm.controls['gender'].hasError('required')">
+                Please select the gender.
+              </mat-error>
+            </div>
+
           </div>
           <div class="d-flex width-100 mb-10">
             <div class="form-group">
               <label>Mobile number</label>
               <mat-form-field appearance="outline" class="w-100">
-                <input matInput placeholder="Mobile number"  formControlName="mobileNo">
+                <input matInput placeholder="Mobile number"  formControlName="mobileNo" readonly>
               </mat-form-field>
             </div>
             <div class="form-group">
               <label>Email</label>
               <mat-form-field appearance="outline" class="w-100">
-                <input matInput placeholder="Email"  formControlName="email">
+                <input matInput placeholder="Email"  formControlName="email" readonly>
               </mat-form-field>
             </div>
           </div>
         </form>
       </mat-card-content>
       <mat-card-actions align="end" class="card-actions">
-        <button type="submit" class="common-btn btn-fill">Save</button>
+        <button type="submit" class="common-btn btn-fill" (click)="update()" >Save</button>
       </mat-card-actions>
     </mat-card>
     <mat-card class="form-wrapper default-font change-password">
@@ -109,7 +121,7 @@
         </div>
       </mat-card-content>
       <mat-card-actions align="end" class="card-actions">
-        <button type="submit" class="common-btn btn-fill">Save</button>
+        <button type="submit" class="common-btn btn-fill" >Save</button>
       </mat-card-actions>
     </mat-card>
   </div>
