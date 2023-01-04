@@ -37,6 +37,16 @@
         width: 100%;
       }
     }
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid $color-white;
+      display: block;
+      margin: 0 auto;      
+      margin-bottom: 10px;
+      position: relative;
+    }
     .profile-details {
       padding: 15px 10px;
       background: $color-white;

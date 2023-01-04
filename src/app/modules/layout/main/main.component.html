@@ -12,13 +12,14 @@
   >
     <mat-toolbar>{{ isCollapsed ? "PF" : "Personal Finance" }}</mat-toolbar>
     <div class="nav-top d-flex align-center" [ngStyle]="{'background-image': 'url(' + profileBg + ')'}">
+      <img [src]="profileImg" *ngIf="profileImg" alt="profile image" class="profile-img">
       <button
         aria-label="view profile"
         name="view profile"
         class="view-profile"
+        *ngIf="!profileImg"
       >
-      <p class="profile__initals ani" *ngIf="!profileImg">{{ user.shortName}}</p>
-      <img [src]="profileImg" *ngIf="profileImg" alt="profile image">
+      <p class="profile__initals ani">{{ user.shortName}}</p>
       </button>
       <div class="username-box" *ngIf="!isCollapsed">
         <div class="profile-details d-flex">
