@@ -216,16 +216,27 @@
 }
 
 ::ng-deep {
-.collapsed {
-  .mat-toolbar.mat-primary {
-    left: 80px;
-    width: calc(100% - 80px);
-    @media(max-width: 767px) {
-      left: 0;
-      width: 100%;
+  .collapsed {
+    .mat-toolbar.mat-primary {
+      left: 80px;
+      width: calc(100% - 80px);
+      @media(max-width: 767px) {
+        left: 0;
+        width: 100%;
+      }
     }
-  }
-}
+    .mat-drawer[style*="visibility: hidden"] {
+      display: block;
+      visibility: visible !important;
+      transform: none !important;
+    }
+    .mat-drawer-content {
+      margin-left: 80px;
+    }
+    .sidenav .profile__initals {
+      font-size: 24px !important;
+    }
+  } 
 }
 
 .footer-toolbar {

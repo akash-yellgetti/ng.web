@@ -25,7 +25,6 @@ export class MainComponent {
 
   constructor(private breakpointObserver: BreakpointObserver, private localStorageService: LocalStorageService, private route: Router, public moduleService: ModuleService) {
     this.moduleService.mainTitle.subscribe((r: any) => {
-      console.log(r)
       this.mainTitle = r;
     })
     this.user = this.localStorageService.retrieve('user');
@@ -83,8 +82,7 @@ export class MainComponent {
     }
   }
 
-  sideNavToggle = ($event: any) => {
-    console.log('sideNavToggle');
+  sideNavToggle = () => {
     this.isCollapsed = !this.isCollapsed;
   }
 }

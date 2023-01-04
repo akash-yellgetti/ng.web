@@ -1,5 +1,8 @@
 <div class="container-fluid d-flex">
   <div class="profile-details-wrapper">
+    <button class="common-btn btn-fill" (click)="editProfile()">
+      <mat-icon class="edit-profile">edit_square</mat-icon>
+    </button>
     <mat-card class="default-font">
       <mat-card-content>
         <div class="nav-top d-flex align-center">
@@ -110,3 +113,29 @@
     </mat-card>
   </div>
 </div>
+
+<ng-template #editProfileImagesDialog>
+  <h2 mat-dialog-title> Change profile images </h2>
+  <mat-dialog-content>
+    <div class="upload-image-wrapper">
+      <h3>Profile image upload</h3>
+      <div class="image-wrapper d-flex align-center align-items">
+        <input type="file" (change)="onFileSelected($event, 'profile')" #fileInput accept="image/*" name="browse" aria-label="browse" class="browse-input">
+        <button tabindex="0" type="button" class="common-btn btn-text default-font" aria-label="browse" (click)="fileInput.click()">Browse or drag file here</button>
+      </div>
+      <label class="browse-image-label" *ngIf="selectedFile && selectedFile.name">Selected file: {{ selectedFile.name }}</label>
+    </div>
+    <div class="upload-image-wrapper">
+      <h3>Profile background image upload</h3>
+      <div class="image-wrapper d-flex align-center align-items">
+        <input type="file" (change)="onFileSelected($event, 'profileBg')" #fileInput1 accept="image/*" name="browse" aria-label="browse" class="browse-input">
+        <button tabindex="0" type="button" class="common-btn btn-text default-font" aria-label="browse" (click)="fileInput1.click()">Browse or drag file here</button>
+      </div>      
+      <label class="browse-image-label" *ngIf="selectedFileBg && selectedFileBg.name">Selected file: {{ selectedFile.name }}</label>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button class="common-btn btn-white" mat-dialog-close>Cancel</button>
+    <button class="common-btn btn-fill" mat-dialog-close>Save</button>
+  </mat-dialog-actions>
+</ng-template>

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ModuleService } from '../../../layout/core/services/module.service';
 import { LocalStorageService } from 'ngx-webstorage';
+import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -10,6 +11,8 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  @ViewChild('editProfileImagesDialog', { static: true })
+  editProfileImagesTemplate!: TemplateRef<any>;
   public tabs = [
     {
       code: 'profile',
@@ -51,8 +54,10 @@ export class ProfileComponent implements OnInit {
     mobileNo: [null, Validators.required],
     email: [null, []],
   });
+  selectedFile: any;
+  selectedFileBg: any;
 
-  constructor(private router: Router, public moduleService: ModuleService, private localStorageService: LocalStorageService, private fb: FormBuilder) {
+  constructor(private router: Router, public moduleService: ModuleService, private localStorageService: LocalStorageService, private fb: FormBuilder, public dialog: MatDialog) {
     this.moduleService.mainTitle.next("Profile");
   }
 
@@ -78,6 +83,41 @@ export class ProfileComponent implements OnInit {
     }
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
     this.router.navigate([route.link], navigationExtras));
+  }
+
+  editProfile = () => {
+    const dialogRef = this.dialog.open(this.editProfileImagesTemplate, {
+      width: '800px',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.clearFile('all');
+    });
+  }
+
+  onFileSelected = (event: any, type: any) => {
+    if (event && event.target && event.target.files && event.target.files.length > 0) {
+      const file: File = event.target.files[0];
+      if (type === 'profile') {
+        this.selectedFile = file;
+      } else if (type === 'profileBg') {
+        this.selectedFileBg = file;
+      }
+    } else {
+      this.clearFile(type);
+    }
+  }
+
+  clearFile = (type: any) => {
+    if (type === 'profile') {
+      this.selectedFile = null;
+    } else if (type === 'profileBg') {
+      this.selectedFileBg = null;
+    } else if (type === 'all') {
+      this.selectedFile = null;
+      this.selectedFileBg = null;
+    }
   }
 
 }
