@@ -188,6 +188,8 @@ ng g c modules/user/components/notification --module=user
 ng g c modules/user/components/family --module=user
 ng g c modules/user/components/habits --module=user
 
+ng g s modules/user/services/profile/profile --module=user
+
 
 
 ng g m modules/communication --routing=true

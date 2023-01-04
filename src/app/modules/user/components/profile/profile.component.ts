@@ -4,6 +4,7 @@ import { ModuleService } from '../../../layout/core/services/module.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ProfileService } from '../../services/profile/profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -57,7 +58,10 @@ export class ProfileComponent implements OnInit {
   selectedFile: any;
   selectedFileBg: any;
 
-  constructor(private router: Router, public moduleService: ModuleService, private localStorageService: LocalStorageService, private fb: FormBuilder, public dialog: MatDialog) {
+  constructor(private router: Router, public moduleService: ModuleService, private localStorageService: LocalStorageService, private fb: FormBuilder, 
+    public dialog: MatDialog,
+    public profileService: ProfileService
+    ) {
     this.moduleService.mainTitle.next("Profile");
   }
 
@@ -118,6 +122,40 @@ export class ProfileComponent implements OnInit {
       this.selectedFile = null;
       this.selectedFileBg = null;
     }
+  }
+
+  upload = (): any => {
+    // console.log(this.selectedFile)
+    if(this.selectedFile === null && this.selectedFileBg === null) {
+      return false;
+    }
+
+    const formData = new FormData();
+    if(this.selectedFile) {
+      formData.append('profilePicture', this.selectedFile);
+    }
+
+    if(this.selectedFileBg) {
+      formData.append('profilePictureBackground', this.selectedFileBg);
+    }
+
+    const myObserver: any = {
+      next: (res: any) => {
+        // console.log('Observer got a next value: ' + res);
+        if (res && res.status) {
+          const data = res.data;
+          const user: any = data.user;
+          const fullName: string = user.firstName+" "+user.lastName;
+          user.fullName = fullName;
+          const shortName: any = fullName.match(/\b(\w)/g)?.join('');
+          user.shortName = shortName;
+          this.localStorageService.store('tokens', data.tokens);
+          this.localStorageService.store('user', user);
+          
+        }
+      }
+    };
+    this.profileService.updateProfilePic(formData).subscribe()
   }
 
 }
