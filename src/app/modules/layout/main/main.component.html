@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container" autosize="true" [class.collapsed]="isCollapsed">
-  <mat-sidenav #drawer class="sidenav main-sidenav" fixedInViewport
+  <mat-sidenav class="sidenav main-sidenav" fixedInViewport
   [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
   [opened]="(isHandset$ | async) === false">
   <mat-toolbar>{{ isCollapsed ? 'PF' : 'Personal Finance'}}</mat-toolbar>
@@ -69,7 +69,7 @@
   <mat-sidenav-content fxLayout="column">
     <!-- <app-header [drawerRef]="drawer" [drawerChatRef]="''" [isHandset]="(isHandset$ | async)" (toSideNavToggle)="sideNavToggle($event)"></app-header> -->
     <mat-toolbar color="primary" class="header-toolbar">
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="sideNavToggle();">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span> App </span>
