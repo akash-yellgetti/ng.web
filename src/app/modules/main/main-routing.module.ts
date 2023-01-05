@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../auth/guards/auth/auth.guard';
+import { BlankComponent } from './components/blank/blank.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HelpComponent } from './components/help/help.component';
 import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { SettingComponent } from './components/setting/setting.component';
 
 const routes: Routes = [
   {
@@ -19,6 +22,18 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent
+      },
+      {
+        path: 'setting',
+        component: SettingComponent
+      },
+      {
+        path: 'help',
+        component: HelpComponent
+      },
+      {
+        path: 'blank',
+        component: BlankComponent
       },
       {
         path: 'admin',

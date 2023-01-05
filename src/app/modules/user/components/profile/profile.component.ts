@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { ModuleService } from '../../../layout/core/services/module.service';
+import { ModuleService } from '../../../main/core/services/module.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';

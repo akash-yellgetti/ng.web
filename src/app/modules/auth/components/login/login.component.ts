@@ -89,7 +89,7 @@ export class LoginComponent implements OnInit {
           user.shortName = shortName;
           this.storageService.store('tokens', data.tokens);
           this.storageService.store('user', user);
-          this.route.navigate(['main/dashboard']);
+          this.route.navigate(['main/layout/dashboard']);
         }
       },
       error: (err: any) => {

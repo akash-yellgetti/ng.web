@@ -1,1 +1,129 @@
-<p>dashboard works!</p>
+<div class="dashboard-container-fluid d-flex">
+  <div class="header-slider w-70 ">
+    <ngx-slick-carousel class="carousel pb-15" #slickModal="slick-carousel" [config]="slideConfig">
+      <div ngxSlickItem class="slide d-flex">
+        <div class="header-details">
+          <h4>Hello User</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni
+            consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab
+            perspiciatis sapiente consequatur doloremque! Ducimus.</p>
+          <button class="link-btn">know more...</button>
+        </div>
+        <img src="../../../../../assets/images/header-img.png" alt="">
+      </div>
+      <div ngxSlickItem class="slide d-flex">
+        <div class="header-details">
+          <h4>Car Loan</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni
+            consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab
+            perspiciatis sapiente consequatur doloremque! Ducimus.</p>
+          <button class="link-btn">know more...</button>
+        </div>
+        <img src="../../../../../assets/images/header-img.png" alt="">
+      </div>
+      <div ngxSlickItem class="slide d-flex">
+        <div class="header-details">
+          <h4>Home Loan</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni
+            consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab
+            perspiciatis sapiente consequatur doloremque! Ducimus.</p>
+          <button class="link-btn">know more...</button>
+        </div>
+        <img src="../../../../../assets/images/header-img.png" alt="">
+      </div>
+      <div ngxSlickItem class="slide d-flex">
+        <div class="header-details">
+          <h4>Personal Loan</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni
+            consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab
+            perspiciatis sapiente consequatur doloremque! Ducimus.</p>
+          <button class="link-btn">know more...</button>
+        </div>
+        <img src="../../../../../assets/images/header-img.png" alt="">
+      </div>
+    </ngx-slick-carousel>
+    <div class="d-flex d-wrap d-gap-15">
+      <mat-card class="col-50" *ngFor="let product of products;">
+        <mat-card-header>
+          <mat-icon mat-card-avatar [style.font-size.px]="24" style="border: 1px solid black"></mat-icon>
+          <mat-card-title> {{ product.title }} </mat-card-title>
+          <mat-card-subtitle> {{ product.description }} </mat-card-subtitle>
+          <div fxFlex></div>
+          <div style="flex-grow: 1"></div>
+          <button mat-icon-button>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+        </mat-card-header>
+      </mat-card>
+    </div>
+    <div class="d-flex d-gap-15 course-wrapper width-100">
+      <mat-card class="col-30 course-card">
+        <div class="d-flex space-between count-wrapper">
+          <div class="count d-flex align-items"><mat-icon class="count-icon">view_timeline</mat-icon> 3/5 Lessons</div>
+          <div class="count d-flex align-items"><mat-icon class="count-icon">person</mat-icon> 61526 taken course</div>
+        </div>
+        <div class="image-wrapper">
+          <p class="learn-time">Learn in 5 minutes</p>
+          <img mat-card-image src="../../../../../assets/images/pattern-share-market.jpg" alt="Photo of a Shiba Inu">          
+        </div>
+        <mat-card-header>
+          <mat-card-title>Basics of money</mat-card-title>
+          <mat-card-subtitle>Learn the basic of money in 5 minutes</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions align="end">
+          <button class="common-btn btn-fill">Complete the course</button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card class="col-30 course-card">
+        <div class="d-flex space-between count-wrapper">
+          <div class="count d-flex align-items"><mat-icon class="count-icon">view_timeline</mat-icon> 3/5 Lessons</div>
+          <div class="count d-flex align-items"><mat-icon class="count-icon">person</mat-icon> 61526 taken course</div>
+        </div>
+        <div class="image-wrapper">
+          <p class="learn-time">Learn in 5 minutes</p>
+          <img mat-card-image src="../../../../../assets/images/pattern-share-market.jpg" alt="Photo of a Shiba Inu">          
+        </div>
+        <mat-card-header>
+          <mat-card-title>Basics of money</mat-card-title>
+          <mat-card-subtitle>Learn the basic of money in 5 minutes</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions align="end">
+          <button class="common-btn btn-fill">Complete the course</button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card class="col-30 course-card">
+        <div class="d-flex space-between count-wrapper">
+          <div class="count d-flex align-items"><mat-icon class="count-icon">view_timeline</mat-icon> 3/5 Lessons</div>
+          <div class="count d-flex align-items"><mat-icon class="count-icon">person</mat-icon> 61526 taken course</div>
+        </div>
+        <div class="image-wrapper">
+          <p class="learn-time">Learn in 5 minutes</p>
+          <img mat-card-image src="../../../../../assets/images/pattern-share-market.jpg" alt="Photo of a Shiba Inu">          
+        </div>
+        <mat-card-header>
+          <mat-card-title>Basics of money</mat-card-title>
+          <mat-card-subtitle>Learn the basic of money in 5 minutes</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions align="end">
+          <button class="common-btn btn-fill">Complete the course</button>
+        </mat-card-actions>
+      </mat-card>
+      
+    </div>
+  </div>
+  <div class="w-30 d-flex d-wrap d-gap-15 pb-65 sidebar">
+    <mat-card class="w-100" *ngFor="let catergory of contentCatergory">
+      <mat-card-header class="align-center  border-bottom">
+        <mat-card-title> {{ catergory.title }} </mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="align-center">
+        <mat-list role="list">
+          <mat-list-item role="listitem" *ngFor="let child of catergory.children">
+            <mat-icon matListItemIcon>folder</mat-icon>
+            <div matListItemTitle> {{ child.title }} </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
