@@ -38,6 +38,7 @@
     "@types/lodash": "^4.14.188",
     "jquery": "^3.6.2",
     "lodash": "^4.17.21",
+    "ngx-device-detector": "^4.0.1",
     "ngx-image-cropper": "^6.3.2",
     "ngx-pagination": "^6.0.2",
     "ngx-socket-io": "^4.3.1",
