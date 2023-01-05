@@ -37,7 +37,10 @@ ng g c modules/main/components/setting --module=main
 ng g c modules/main/components/help --module=main
 ng g c modules/main/components/blank --module=main
 
-
 ng g s modules/main/core/services/module
+
+--------------------------------------------------------------------------------------------------
+
+ng g s shared/services/field/field
 
 --------------------------------------------------------------------------------------------------

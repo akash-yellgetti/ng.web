@@ -3,7 +3,8 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Router, Routes } from '@angular/router';
-import { FieldService } from 'src/app/shared/services/field/field.service';
+import { FieldService } from '../../../../shared/services/field/field.service';
+
 import { forms } from 'src/app/shared/json/forms.json';
 import * as _ from 'lodash';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';

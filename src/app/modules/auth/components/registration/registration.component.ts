@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
-import { FieldService } from 'src/app/shared/services/field/field.service';
+import { FieldService } from '../../../../shared/services/field/field.service';
 import { AuthService } from '../../services/auth/auth.service';
 import * as _ from 'lodash';
-import { LoaderService } from 'src/app/shared/services/loader/loader.service';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -45,7 +44,7 @@ export class RegistrationComponent implements OnInit {
   public confirm_password: string = '';
   public fields: any;
   constructor(private fb: FormBuilder, private route: Router, private storageService: LocalStorageService,
-    private fieldService: FieldService, private loaderService: LoaderService, private authService: AuthService) { }
+    private fieldService: FieldService, private authService: AuthService) { }
 
   ngOnInit(): void {
     // this.fields = _.get(form, 'default.fields');

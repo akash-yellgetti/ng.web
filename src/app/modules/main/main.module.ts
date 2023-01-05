@@ -9,7 +9,6 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BlankComponent } from './components/blank/blank.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { FormBuilderModule } from '../form-builder/form-builder.module';
 
 
 @NgModule({
@@ -23,9 +22,9 @@ import { FormBuilderModule } from '../form-builder/form-builder.module';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     MainRoutingModule,
-    FormBuilderModule,
-    SharedModule
+    
   ]
 })
 export class MainModule { }

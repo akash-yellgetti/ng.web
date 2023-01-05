@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { ModuleService } from 'src/app/modules/layout/core/services/module.service';
+import { ModuleService } from '../../../main/core/services/module.service';
 
 @Component({
   selector: 'app-family',
