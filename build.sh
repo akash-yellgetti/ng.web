@@ -1,5 +1,5 @@
 rm -rf docs
-ng build
+ng build --aot
 # rm -rf ../nginx/html/
 # cp -r docs ../nginx/html
 
