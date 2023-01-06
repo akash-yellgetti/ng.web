@@ -66,6 +66,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "ngx-slick-carousel": "^0.6.0",
+    "ngx-toastr": "15.2.2",
     "typescript": "~4.6.4"
   }
 }

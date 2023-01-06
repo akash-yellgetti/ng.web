@@ -10,7 +10,8 @@ import * as _ from 'lodash';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit {
     private fieldService: FieldService,
     private authService: AuthService,
     private storageService: LocalStorageService,
+    private toastr: ToastrService,
     private route: Router) {
     // this.fields = forms.login;
     this.fields = forms.login;
@@ -81,7 +83,8 @@ export class LoginComponent implements OnInit {
     const myObserver: any = {
       next: (res: any) => {
         // console.log('Observer got a next value: ' + res);
-        if (res && res.status) {
+        if (res && res.status) {          
+          this.toastr.success(res.message);
           const data = res.data;
           const user: any = data.user;
           const fullName: string = user.firstName+" "+user.lastName;
@@ -95,11 +98,12 @@ export class LoginComponent implements OnInit {
       },
       error: (err: any) => {
         if (err && err.error && err.error.message) {
-          Swal.fire(
-            'Warning!',
-            err.error.message,
-            'error'
-          )  
+          // Swal.fire(
+          //   'Warning!',
+          //   err.error.message,
+          //   'error'
+          // )  
+          this.toastr.error(err.error.message);
         }
       },
       complete: () => {

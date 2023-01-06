@@ -5,13 +5,14 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { setting } from 'src/app/shared/json/setting.json';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private _snackBar: MatSnackBar, private http: HttpClient, private storage: LocalStorageService) { }
+  constructor(private _snackBar: MatSnackBar, private http: HttpClient, private storage: LocalStorageService, private toastr: ToastrService) { }
 
   generateOTP = (data: any): any => {
     const url = setting['uri'] + '/auth/otp/generate';
@@ -92,9 +93,10 @@ export class AuthService {
     switch (e.status) {
       case 401:
         // return throwError(error);
-        this._snackBar.open(error.message, undefined, {
-          duration: 5000,
-        })
+        // this._snackBar.open(error.message, undefined, {
+        //   duration: 5000,
+        // })
+        this.toastr.error(error.message);
         break;
       case 400:
       case 422:
@@ -102,16 +104,18 @@ export class AuthService {
         for(let i in data) {
           const e = data[i];
           // console.log(e.message)
-          this._snackBar.open(e.message, undefined, {
-            duration: 5000,
-          })
+          // this._snackBar.open(e.message, undefined, {
+          //   duration: 5000,
+          // })
+          this.toastr.error(e.message);
         }
         break;
     
       default:
-        this._snackBar.open(error.message, undefined, {
-          duration: 5000,
-        })
+        // this._snackBar.open(error.message, undefined, {
+        //   duration: 5000,
+        // })
+        this.toastr.error(error.message);
         break;
     }
   }

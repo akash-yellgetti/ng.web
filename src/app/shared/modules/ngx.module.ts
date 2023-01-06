@@ -7,6 +7,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { ToastrModule } from 'ngx-toastr';
 
 import { setting } from '../json/setting.json'
 const config: SocketIoConfig = { url: setting.uri, options: { transports: ['polling']  } };
@@ -24,6 +25,9 @@ const config: SocketIoConfig = { url: setting.uri, options: { transports: ['poll
     NgxWebstorageModule.forRoot({ prefix: '', separator: '', caseSensitive:true }),
     SocketIoModule.forRoot(config),
     SlickCarouselModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-center',
+    }),
     CommonModule
   ], 
   exports: [

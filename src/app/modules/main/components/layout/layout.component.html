@@ -1,14 +1,15 @@
-<mat-sidenav-container
+<mat-drawer-container
   class="sidenav-container"
   autosize="true"
   [class.collapsed]="isCollapsed"
 >
-  <mat-sidenav
+  <mat-drawer
     class="sidenav main-sidenav"
+    #drawer
     fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
+    opened="true"
   >
     <mat-toolbar>{{ isCollapsed ? "PF" : "Personal Finance" }}</mat-toolbar>
     <div class="nav-top d-flex align-center" [ngStyle]="{'background-image': 'url(' + profileBg + ')'}">
@@ -21,7 +22,7 @@
       >
       <p class="profile__initals ani">{{ user.shortName}}</p>
       </button>
-      <div class="username-box" *ngIf="!isCollapsed">
+      <div class="username-box">
         <div class="profile-details d-flex">
           <div class="user-details">
             <p class="name">{{ user.fullName }}</p>
@@ -43,7 +44,7 @@
             (click)="redirect('dashboard')"
           >
             <mat-icon aria-hidden="true" class="menu-icon">dashboard</mat-icon>
-            <p *ngIf="!isCollapsed">Dashboard</p>
+            <p>Dashboard</p>
           </button>
         </li>
       </ul>
@@ -53,19 +54,19 @@
         <li role="list-item" class="menu-item">
           <button class="logout-btn d-flex width-100 align-items" (click)="redirect('setting')">
             <mat-icon aria-hidden="true" class="menu-icon">settings</mat-icon>
-            <p *ngIf="!isCollapsed">Settings</p>
+            <p>Settings</p>
           </button>
         </li>
         <li role="list-item" class="menu-item">
           <button class="logout-btn d-flex width-100 align-items" (click)="redirect('blank')">
             <mat-icon aria-hidden="true" class="menu-icon">help</mat-icon>
-            <p *ngIf="!isCollapsed">Blank</p>
+            <p>Blank</p>
           </button>
         </li>
         <li role="list-item" class="menu-item">
           <button class="logout-btn d-flex width-100 align-items" (click)="redirect('help')">
             <mat-icon aria-hidden="true" class="menu-icon">help</mat-icon>
-            <p *ngIf="!isCollapsed">Help</p>
+            <p>Help</p>
           </button>
         </li>
         <li role="list-item" class="menu-item">
@@ -74,7 +75,7 @@
             (click)="redirect('profile')"
           >
             <mat-icon aria-hidden="true" class="menu-icon">person</mat-icon>
-            <p *ngIf="!isCollapsed">Profile</p>
+            <p>Profile</p>
           </button>
         </li>
 
@@ -84,20 +85,30 @@
             (click)="logout()"
           >
             <mat-icon aria-hidden="true" class="menu-icon">logout</mat-icon>
-            <p *ngIf="!isCollapsed">Logout</p>
+            <p>Logout</p>
           </button>
         </li>
       </ul>
     </div>
-  </mat-sidenav>
-  <mat-sidenav-content fxLayout="column">
+  </mat-drawer>
+  <mat-drawer-content fxLayout="column">
     <!-- <app-header [drawerRef]="drawer" [drawerChatRef]="''" [isHandset]="(isHandset$ | async)" (toSideNavToggle)="sideNavToggle($event)"></app-header> -->
     <mat-toolbar color="primary" class="header-toolbar">
       <button
         type="button"
         aria-label="Toggle sidenav"
+        class="desktop-btn"
         mat-icon-button
         (click)="sideNavToggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        class="mobile-btn"
+        mat-icon-button
+        (click)="drawer.toggle()"
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
@@ -145,5 +156,5 @@
     <mat-toolbar class="footer footer-toolbar" fxFlexOffset="auto">
       <span>Sociosafety. All rights reserved.</span>
     </mat-toolbar>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </mat-drawer-content>
+</mat-drawer-container>

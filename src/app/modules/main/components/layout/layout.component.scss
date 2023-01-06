@@ -14,7 +14,6 @@
   box-shadow: 1px 0 7px rgba(0,0,0,0.1);
   background: $color-primary;
   border: none;
-
   .mat-toolbar {
     background-color: $color-primary;
     color: $color-white;
@@ -158,32 +157,66 @@
   padding-top: 25px;
 }
 
-.collapsed {
-  .sidenav {
-    width: 80px;
-    .nav-top {
-      background: none;
-      button {
-        width: 60px;
-        height: 60px;
+.mobile-btn {
+  display: none;
+  @media(max-width: 767px) {
+    display: block;
+  }
+}
+
+.desktop-btn {
+  display: block;
+  @media(max-width: 767px) {
+    display: none;
+  }
+}
+
+// ::ng-deep {
+//   .collapsed {
+//     .mat-drawer-backdrop {
+//       visibility: visible;
+//       background-color: rgba(0,0,0,.6);
+//     }
+//   }
+// }
+
+@media(min-width: 768px) {
+  .collapsed {
+    .sidenav {
+      width: 80px;
+      .nav-top {
+        background: none;
+        button, .profile-img {
+          width: 60px;
+          height: 60px;
+        }
+        .username-box {
+          display: none;
+        }
       }
-    }
-    .menu-list {
-      margin-top: 10px;
-      button {
+      .menu-list {
+        margin-top: 10px;
+        button {
+          padding: 10px 15px;
+          justify-content: center;
+        }
+        .menu-item {
+          p {
+            display: none;
+          }
+        }
+      }
+      .logout-btn {
         padding: 10px 15px;
         justify-content: center;
-      }
-    }
-    .logout-btn {
-      padding: 10px 15px;
-      justify-content: center;
-      .menu-icon {
-        margin: 0;
+        .menu-icon {
+          margin: 0;
+        }
       }
     }
   }
 }
+
 
 .footer {
   position: fixed;
@@ -208,6 +241,7 @@
     .mat-drawer-inner-container {
       display: flex;
       flex-direction: column;
+      height: 100vh;
     }
   }
 }
