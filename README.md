@@ -29,6 +29,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 --------------------------------------------------------------------------------------------------
 
+npm install @capacitor/android
+npx cap add android
+npx cap open android
+
+npx cap run android
+
+--------------------------------------------------------------------------------------------------
+
 ng g m modules/main --routing=true
 ng g c modules/main/components/layout --module=main
 ng g c modules/main/components/dashboard --module=main
