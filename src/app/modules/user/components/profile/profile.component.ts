@@ -168,6 +168,7 @@ export class ProfileComponent implements OnInit {
           this.localStorageService.store('user', user);
           this.user = user;
           this.setProfileImage();
+          this.dialog.closeAll();
           this.clearFile('all');
         }
       },
