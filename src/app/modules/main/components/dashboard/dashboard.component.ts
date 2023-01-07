@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { slides } from 'src/app/shared/json/dashboard/slides.json';
 import { ModuleService } from '../../core/services/module.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class DashboardComponent implements OnInit {
     },
 
   ];;
+  slides: any = [];
   circumference = 2 * Math.PI * 50;
   slideConfig = { "slidesToShow": 1, "slidesToScroll": 1, "autoplay": true, "arrows": false };
   notes: any[] = [
@@ -195,6 +197,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(public moduleService: ModuleService) {
     this.moduleService.mainTitle.next("Dashboard");
+    this.slides = slides;
+    
   }
 
   ngOnInit(): void {
