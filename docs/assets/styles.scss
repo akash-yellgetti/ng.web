@@ -1,5 +1,6 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import '../../node_modules/sweetalert2/src/sweetalert2.scss';
+@import 'ngx-toastr/toastr';
 // @import "../../node_modules/angular-calendar/css/angular-calendar.css";
 @import "./styles/index.scss";
 
@@ -13,6 +14,10 @@ body {
     font-size: 13px;
     color: #676a6c;
     overflow-x: hidden;
+}
+
+.ngx-toastr {
+  background-color: $color-black;
 }
 
 
