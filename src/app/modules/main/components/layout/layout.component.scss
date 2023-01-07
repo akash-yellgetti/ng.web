@@ -14,6 +14,8 @@
   box-shadow: 1px 0 7px rgba(0,0,0,0.1);
   background: $color-primary;
   border: none;
+  position: fixed;
+  overflow: hidden;
   .mat-toolbar {
     background-color: $color-primary;
     color: $color-white;
@@ -21,6 +23,12 @@
     font-size: 18px;
     font-weight: 600;
     padding: 15px;
+  }
+
+  .menu-content {
+    height: calc(100vh - 292px);
+    overflow: hidden;
+    overflow-y: auto;
   }
 
   .nav-top {
@@ -159,14 +167,14 @@
 
 .mobile-btn {
   display: none;
-  @media(max-width: 767px) {
+  @media (hover: none) and (pointer: coarse) {
     display: block;
   }
 }
 
 .desktop-btn {
   display: block;
-  @media(max-width: 767px) {
+  @media (hover: none) and (pointer: coarse) {
     display: none;
   }
 }
@@ -193,6 +201,9 @@
         .username-box {
           display: none;
         }
+      }
+      .menu-content {
+        height: calc(100vh - 154px);
       }
       .menu-list {
         margin-top: 10px;
@@ -258,7 +269,7 @@
   background-color: $color-primary;
   left: 250px;
   width: calc(100% - 250px);
-  @media(max-width: 767px) {
+  @media (hover: none) and (pointer: coarse) {
     left: 0;
     width: 100%;
   }
@@ -269,7 +280,7 @@
     .mat-toolbar.mat-primary {
       left: 80px;
       width: calc(100% - 80px);
-      @media(max-width: 767px) {
+      @media (hover: none) and (pointer: coarse) {
         left: 0;
         width: 100%;
       }

@@ -36,59 +36,61 @@
         </div>
       </div>
     </div>
-    <div class="menu-wrapper">
-      <ul class="menu-list" role="list">
-        <li role="list-item" class="menu-item active">
-          <button
-            class="d-flex width-100 align-items"
-            (click)="redirect('dashboard')"
-          >
-            <mat-icon aria-hidden="true" class="menu-icon">dashboard</mat-icon>
-            <p>Dashboard</p>
-          </button>
-        </li>
-      </ul>
-    </div>
-    <div class="footer-menu">
-      <ul class="menu-list" role="list">
-        <li role="list-item" class="menu-item">
-          <button class="logout-btn d-flex width-100 align-items" (click)="redirect('setting')">
-            <mat-icon aria-hidden="true" class="menu-icon">settings</mat-icon>
-            <p>Settings</p>
-          </button>
-        </li>
-        <li role="list-item" class="menu-item">
-          <button class="logout-btn d-flex width-100 align-items" (click)="redirect('blank')">
-            <mat-icon aria-hidden="true" class="menu-icon">help</mat-icon>
-            <p>Blank</p>
-          </button>
-        </li>
-        <li role="list-item" class="menu-item">
-          <button class="logout-btn d-flex width-100 align-items" (click)="redirect('help')">
-            <mat-icon aria-hidden="true" class="menu-icon">help</mat-icon>
-            <p>Help</p>
-          </button>
-        </li>
-        <li role="list-item" class="menu-item">
-          <button
-            class="logout-btn d-flex width-100 align-items"
-            (click)="redirect('profile')"
-          >
-            <mat-icon aria-hidden="true" class="menu-icon">person</mat-icon>
-            <p>Profile</p>
-          </button>
-        </li>
+    <div class="menu-content">
+      <div class="menu-wrapper">
+        <ul class="menu-list" role="list">
+          <li role="list-item" class="menu-item active">
+            <button
+              class="d-flex width-100 align-items"
+              (click)="redirect('dashboard')"
+            >
+              <mat-icon aria-hidden="true" class="menu-icon">dashboard</mat-icon>
+              <p>Dashboard</p>
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-menu">
+        <ul class="menu-list" role="list">
+          <li role="list-item" class="menu-item">
+            <button class="logout-btn d-flex width-100 align-items" (click)="redirect('setting')">
+              <mat-icon aria-hidden="true" class="menu-icon">settings</mat-icon>
+              <p>Settings</p>
+            </button>
+          </li>
+          <li role="list-item" class="menu-item">
+            <button class="logout-btn d-flex width-100 align-items" (click)="redirect('blank')">
+              <mat-icon aria-hidden="true" class="menu-icon">help</mat-icon>
+              <p>Blank</p>
+            </button>
+          </li>
+          <li role="list-item" class="menu-item">
+            <button class="logout-btn d-flex width-100 align-items" (click)="redirect('help')">
+              <mat-icon aria-hidden="true" class="menu-icon">help</mat-icon>
+              <p>Help</p>
+            </button>
+          </li>
+          <li role="list-item" class="menu-item">
+            <button
+              class="logout-btn d-flex width-100 align-items"
+              (click)="redirect('profile')"
+            >
+              <mat-icon aria-hidden="true" class="menu-icon">person</mat-icon>
+              <p>Profile</p>
+            </button>
+          </li>
 
-        <li role="list-item" class="menu-item">
-          <button
-            class="logout-btn d-flex width-100 align-items"
-            (click)="logout()"
-          >
-            <mat-icon aria-hidden="true" class="menu-icon">logout</mat-icon>
-            <p>Logout</p>
-          </button>
-        </li>
-      </ul>
+          <li role="list-item" class="menu-item">
+            <button
+              class="logout-btn d-flex width-100 align-items"
+              (click)="logout()"
+            >
+              <mat-icon aria-hidden="true" class="menu-icon">logout</mat-icon>
+              <p>Logout</p>
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
   </mat-drawer>
   <mat-drawer-content fxLayout="column">
