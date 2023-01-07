@@ -159,14 +159,14 @@
 
 .mobile-btn {
   display: none;
-  @media(max-width: 767px) {
+  @media (hover: none) and (pointer: coarse) {
     display: block;
   }
 }
 
 .desktop-btn {
   display: block;
-  @media(max-width: 767px) {
+  @media (hover: none) and (pointer: coarse) {
     display: none;
   }
 }
@@ -258,7 +258,7 @@
   background-color: $color-primary;
   left: 250px;
   width: calc(100% - 250px);
-  @media(max-width: 767px) {
+  @media (hover: none) and (pointer: coarse) {
     left: 0;
     width: 100%;
   }
@@ -269,7 +269,7 @@
     .mat-toolbar.mat-primary {
       left: 80px;
       width: calc(100% - 80px);
-      @media(max-width: 767px) {
+      @media (hover: none) and (pointer: coarse) {
         left: 0;
         width: 100%;
       }
