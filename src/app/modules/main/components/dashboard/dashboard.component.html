@@ -1,46 +1,15 @@
 <div class="dashboard-container-fluid d-flex">
   <div class="header-slider w-70 ">
     <ngx-slick-carousel class="carousel pb-15" #slickModal="slick-carousel" [config]="slideConfig">
-      <div ngxSlickItem class="slide d-flex">
+      <div ngxSlickItem class="slide d-flex" *ngFor="let slide of slides">
         <div class="header-details">
-          <h4>Hello User</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni
-            consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab
-            perspiciatis sapiente consequatur doloremque! Ducimus.</p>
+          <h4>{{ slide.title }}</h4>
+          <p>{{ slide.description }}</p>
           <button class="link-btn">know more...</button>
         </div>
         <img src="../../../../../assets/images/header-img.png" alt="">
       </div>
-      <div ngxSlickItem class="slide d-flex">
-        <div class="header-details">
-          <h4>Car Loan</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni
-            consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab
-            perspiciatis sapiente consequatur doloremque! Ducimus.</p>
-          <button class="link-btn">know more...</button>
-        </div>
-        <img src="../../../../../assets/images/header-img.png" alt="">
-      </div>
-      <div ngxSlickItem class="slide d-flex">
-        <div class="header-details">
-          <h4>Home Loan</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni
-            consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab
-            perspiciatis sapiente consequatur doloremque! Ducimus.</p>
-          <button class="link-btn">know more...</button>
-        </div>
-        <img src="../../../../../assets/images/header-img.png" alt="">
-      </div>
-      <div ngxSlickItem class="slide d-flex">
-        <div class="header-details">
-          <h4>Personal Loan</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus expedita vel blanditiis voluptas magni
-            consectetur voluptate dolorem, nostrum aspernatur non, quisquam praesentium exercitationem hic. Ab
-            perspiciatis sapiente consequatur doloremque! Ducimus.</p>
-          <button class="link-btn">know more...</button>
-        </div>
-        <img src="../../../../../assets/images/header-img.png" alt="">
-      </div>
+    
     </ngx-slick-carousel>
     <div class="d-flex d-wrap d-gap-15">
       <mat-card class="col-50" *ngFor="let product of products;">
