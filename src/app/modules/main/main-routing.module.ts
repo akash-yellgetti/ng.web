@@ -39,6 +39,10 @@ const routes: Routes = [
           path: 'user',
           loadChildren: () => import('../user/user.module').then(m => m.UserModule)
       },
+      {
+          path: 'course',
+          loadChildren: () => import('../lessons/course.module').then(m => m.CourseModule)
+      },
       // { path: '',   redirectTo: '/dashboard', pathMatch: 'full' }, // redirect to `first-component`
       // { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
     ]

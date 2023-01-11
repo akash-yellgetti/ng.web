@@ -9,7 +9,7 @@
     fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    opened="true"
+    [opened]="(isHandset$ | async) === false"
   >
     <mat-toolbar>{{ isCollapsed ? "PF" : "Personal Finance" }}</mat-toolbar>
     <div class="nav-top d-flex align-center" [ngStyle]="{'background-image': 'url(' + profileBg + ')'}">

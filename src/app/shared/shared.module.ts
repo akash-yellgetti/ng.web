@@ -4,7 +4,6 @@ import { NgxModule } from './modules/ngx.module';
 
 
 
-
 @NgModule({
   declarations: [
 
