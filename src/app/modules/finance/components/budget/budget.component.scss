@@ -1,5 +1,15 @@
 @import "../../../../../assets/styles/index.scss";
 
+.container-fluid {
+	padding: 15px;
+	padding-top: 75px;
+	padding-bottom: 60px;
+	min-height: 100vh;
+	flex-direction: row;
+	@media(max-width: 767px) {
+		flex-wrap: wrap;
+	}
+}
 .mat-tab-nav-bar-budget {
     background-color: $color-secondary;
     display: flex;

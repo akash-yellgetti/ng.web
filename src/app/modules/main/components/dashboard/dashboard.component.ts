@@ -195,6 +195,21 @@ export class DashboardComponent implements OnInit {
     }
   ]
 
+  courses = [
+    {
+      title: "Basics of Personal Finance",
+      description: "Learn the basic of money in 5 minutes",
+    },
+    {
+      title: "7 Baby Steps To Finance Freedom",
+      description: "Learn the basic of money in 5 minutes",
+    },
+    {
+      title: "Financial independence, retire early (FIRE)",
+      description: "Learn the basic of money in 5 minutes",
+    }
+  ]
+
   constructor(public moduleService: ModuleService) {
     this.moduleService.mainTitle.next("Dashboard");
     this.slides = slides;
