@@ -18,6 +18,84 @@ export class BudgetComponent implements OnInit {
     }
     
   ];
+
+  data: any = [
+    {
+      "type": "house-hold",
+      "amount": 10000,
+      "title": "Amma",
+      "description": "Daily-Expense",
+  },
+  {
+      "type": "house-hold",
+      "amount": 5000,
+      "title": "D-Mart",
+      "description": "Monthly Groceries",
+  },
+  {
+      "type": "house-hold",
+      "amount": 5000,
+      "title": "Akash",
+      "description": "Personal Expense",
+  },
+  {
+      "type": "house-hold",
+      "amount": 5000,
+      "title": "Panu",
+      "description": "Personal Expense",
+  },
+  {
+      "title": "Mortgage or rent",
+      "description": "Description",
+      "amount": 0,
+      "type": "house-hold"
+  }, {
+      "title": "Phone",
+      "description": "Description",
+      "amount": 0,
+      "type": "house-hold"
+  }, {
+      "title": "Electricity",
+      "description": "Description",
+      "amount": 0,
+      "type": "house-hold"
+  }, {
+      "title": "Gas",
+      "description": "Description",
+      "amount": 0,
+      "type": "house-hold"
+  }, {
+      "title": "Water and sewer",
+      "description": "Description",
+      "amount": 0,
+      "type": "house-hold"
+  }, {
+      "title": "Cable",
+      "description": "Description",
+      "amount": 0,
+      "type": "house-hold"
+  }, {
+      "title": "Waste removal",
+      "description": "Description",
+      "amount": 0,
+      "type": "house-hold"
+  }, {
+      "title": "Maintenance or repairs",
+      "description": "Description",
+      "amount": 0,
+      "type": "house-hold"
+  }, {
+      "title": "Supplies",
+      "description": "Description",
+      "amount": 0,
+      "type": "house-hold"
+  }, {
+      "title": "Other",
+      "description": "Description",
+      "amount": 0,
+      "type": "house-hold"
+  }
+  ]
   constructor(public moduleService: ModuleService) { 
     this.moduleService.mainTitle.next("Budget");
   }

@@ -1,0 +1,23 @@
+
+    
+<div class="container-fluid d-flex d-gap-15">
+    
+    <mat-card class="w-30 padding-zero">
+        <nav mat-tab-nav-bar class="mat-tab-nav-bar-budget">
+            <a 
+                mat-tab-link
+                *ngFor="let tab of tabs"
+                [routerLink]="tab.link"
+                routerLinkActive #rla="routerLinkActive"
+                [active]="rla.isActive"
+            >
+                {{ tab.label }}
+            </a>
+        </nav>
+    </mat-card>
+
+    <div class="w-70  padding-zero">
+        <router-outlet></router-outlet>
+    </div>
+
+</div>
