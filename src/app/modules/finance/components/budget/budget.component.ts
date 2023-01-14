@@ -4,7 +4,7 @@ import { ModuleService } from '../../../main/core/services/module.service';
 @Component({
   selector: 'app-budget',
   templateUrl: './budget.component.html',
-  styleUrls: ['./budget.component.scss']
+  styleUrls: ['./budget.component.scss', '../expense-common/expense-common.component.scss']
 })
 export class BudgetComponent implements OnInit {
   public tabs: any = [

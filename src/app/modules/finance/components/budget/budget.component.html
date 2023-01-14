@@ -1,20 +1,32 @@
 <div class="container-fluid d-flex d-gap-15">
   <div class="w-30 d-flex d-gap-15 d-wrap">
-    <div class="w-100 d-flex d-gap-15">
-      <mat-card class="w-50 h-150"> Income </mat-card>
-      <mat-card class="w-50 h-150"> Expense </mat-card>
+    <div class="w-100 d-flex d-gap-15 expense-tabs">
+      <mat-card class="w-50 h-150 default-font">
+        <p class="title">Income</p>
+        <div class="d-flex">
+          <span class="salary"><i class="fa-solid fa-indian-rupee-sign"></i> 22,000</span>
+          <button class="common-btn btn-fill"><i class="fa-solid fa-plus"></i></button>
+        </div>        
+      </mat-card>
+      <mat-card class="w-50 h-150 default-font">
+        <p class="title">Expense</p>
+        <div class="d-flex">
+          <span class="salary"><i class="fa-solid fa-indian-rupee-sign"></i> 22,000</span>
+          <button class="common-btn btn-fill"><i class="fa-solid fa-plus"></i></button>
+        </div>
+      </mat-card>
     </div>
     <div class="w-100 d-flex d-gap-15">
       <mat-card class="w-100 h-350"> Graph </mat-card>
     </div>
-    <div class="w-100 d-flex d-gap-15 d-wrap">
-      <mat-card class="w-20 d-grow h-100" *ngFor="let num of numbers">
+    <div class="w-100 d-flex d-wrap expense-items">
+      <mat-card class="h-100 expense-card" *ngFor="let num of numbers">
         Income {{ num }}
       </mat-card>
     </div>
   </div>
   <div class="w-70 d-flex d-wrap d-gap-15">
-    <mat-card class="w-100" *ngFor="let item of data">
+    <mat-card class="w-100 expense-common-card" *ngFor="let item of data">
       <mat-card-header>
         <mat-icon mat-card-avatar [style.font-size.px]="24" class="expense-icon"
           >home</mat-icon
