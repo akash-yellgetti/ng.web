@@ -14,7 +14,13 @@ const routes: Routes = [
   },
   {
     path: 'chat',
-    component: ChatComponent
+    component: ChatComponent,
+    children: [
+      {
+        path: ':id/conversation',
+        component: ChatComponent,
+      }
+    ]
   },
   {
     path: 'notification',

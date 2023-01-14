@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModuleService } from '../../../main/core/services/module.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { setting } from '../../../../shared/json/setting.json';
+import { ConversationService } from '../../services/conversation.service';
 
 @Component({
   selector: 'app-chat',
@@ -12,8 +13,9 @@ export class ChatComponent implements OnInit {
   public user: any = null;
   profileImg: any;
 
-  constructor(public moduleService: ModuleService, private localStorageService: LocalStorageService) { 
+  constructor(public moduleService: ModuleService, private localStorageService: LocalStorageService, private conversationService: ConversationService) { 
     this.moduleService.mainTitle.next("Chat");
+    
   }
 
   ngOnInit(): void {
