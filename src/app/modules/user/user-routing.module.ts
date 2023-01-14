@@ -22,7 +22,7 @@ const routes: Routes = [
     children: [
       {
         path: ':id/conversation',
-        resolve: { conversations: ConversationHistoryResolver  },
+        resolve: { conversationHistory: ConversationHistoryResolver  },
         component: ChatWindowComponent
       }
     ]

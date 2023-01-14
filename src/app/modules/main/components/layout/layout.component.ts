@@ -26,7 +26,8 @@ export class LayoutComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private localStorageService: LocalStorageService, private route: Router, public moduleService: ModuleService) {
+  constructor(private breakpointObserver: BreakpointObserver, private localStorageService: LocalStorageService, 
+    private route: Router, public moduleService: ModuleService) {
     this.moduleService.mainTitle.subscribe((r: any) => {
       this.mainTitle = r;
     })

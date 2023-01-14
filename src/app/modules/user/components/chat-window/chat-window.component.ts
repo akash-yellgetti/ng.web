@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ModuleService } from '../../../main/core/services/module.service';
+import { LocalStorageService } from 'ngx-webstorage';
+import { setting } from '../../../../shared/json/setting.json';
+import { ConversationService } from '../../services/conversation/conversation.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-chat-window',
@@ -7,7 +13,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatWindowComponent implements OnInit {
 
-  constructor() { }
+  conversationHistory: any = [];
+  constructor(
+    public moduleService: ModuleService, 
+    private activatedRoute: ActivatedRoute,
+    private route: Router,
+    private localStorageService: LocalStorageService, 
+    private conversationService: ConversationService
+    ) {
+      // console.log(this.activatedRoute.snapshot)
+    this.conversationHistory = this.activatedRoute.snapshot.data.conversationHistory.data;
+    console.log(this.activatedRoute.snapshot.data.conversationHistory.data)
+    // this.moduleService.mainTitle.next("Chat");
+  }
 
   ngOnInit(): void {
   }
