@@ -3,7 +3,7 @@ import { ModuleService } from '../../../main/core/services/module.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { setting } from '../../../../shared/json/setting.json';
 import { ConversationService } from '../../services/conversation/conversation.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -16,11 +16,12 @@ export class ChatComponent implements OnInit {
   conversations: any = [];
   constructor(
     public moduleService: ModuleService, 
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
+    private route: Router,
     private localStorageService: LocalStorageService, 
     private conversationService: ConversationService
     ) {
-    this.conversations = this.route.snapshot.data.conversations.data;
+    this.conversations = this.activatedRoute.snapshot.data.conversations.data;
     this.moduleService.mainTitle.next("Chat");
   }
 
@@ -34,6 +35,10 @@ export class ChatComponent implements OnInit {
     if (this.user && this.user.profilePicture) {
       this.profileImg = setting['uri'] + '/' + this.user.profilePicture;
     }
+  }
+
+  redirectToChatWindow = (conversation: any) => {
+    this.route.navigate(['main/layout/user/chat', conversation.conversationId, 'conversation']);
   }
 
 }

@@ -20,7 +20,7 @@
                         <p class="profile__initals ani">CV</p>
                     </div>
                     <div class="user-details">
-                        <p class="profile__initals ani">{{ conversation.conversationId }}</p>
+                        <p class="profile__initals ani" (click)="redirectToChatWindow(conversation)" >{{ conversation.conversationId }}</p>
                     </div>
                 </div>
             </div>
