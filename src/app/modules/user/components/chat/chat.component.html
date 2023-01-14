@@ -15,111 +15,18 @@
                 <input type="text" value="" placeholder="Search or start new chat">
             </div>
             <div class="message-list">
-                <div class="user-detail d-flex align-items">
+                <div class="user-detail d-flex align-items" *ngFor="let conversation of conversations">
                     <div class="user-img d-flex align-items align-center">
                         <p class="profile__initals ani">CV</p>
                     </div>
                     <div class="user-details">
-                        <p class="profile__initals ani">Chirag Vartak</p>
-                    </div>
-                </div>
-                <div class="user-detail d-flex align-items">
-                    <div class="user-img d-flex align-items align-center">
-                        <p class="profile__initals ani">CV</p>
-                    </div>
-                    <div class="user-details">
-                        <p class="profile__initals ani">Chirag Vartak</p>
-                    </div>
-                </div>
-                <div class="user-detail d-flex align-items">
-                    <div class="user-img d-flex align-items align-center">
-                        <p class="profile__initals ani">CV</p>
-                    </div>
-                    <div class="user-details">
-                        <p class="profile__initals ani">Chirag Vartak</p>
-                    </div>
-                </div>
-                <div class="user-detail d-flex align-items">
-                    <div class="user-img d-flex align-items align-center">
-                        <p class="profile__initals ani">CV</p>
-                    </div>
-                    <div class="user-details">
-                        <p class="profile__initals ani">Chirag Vartak</p>
-                    </div>
-                </div>
-                <div class="user-detail d-flex align-items">
-                    <div class="user-img d-flex align-items align-center">
-                        <p class="profile__initals ani">CV</p>
-                    </div>
-                    <div class="user-details">
-                        <p class="profile__initals ani">Chirag Vartak</p>
-                    </div>
-                </div>
-                <div class="user-detail d-flex align-items">
-                    <div class="user-img d-flex align-items align-center">
-                        <p class="profile__initals ani">CV</p>
-                    </div>
-                    <div class="user-details">
-                        <p class="profile__initals ani">Chirag Vartak</p>
-                    </div>
-                </div>
-                <div class="user-detail d-flex align-items">
-                    <div class="user-img d-flex align-items align-center">
-                        <p class="profile__initals ani">CV</p>
-                    </div>
-                    <div class="user-details">
-                        <p class="profile__initals ani">Chirag Vartak</p>
-                    </div>
-                </div>
-                <div class="user-detail d-flex align-items">
-                    <div class="user-img d-flex align-items align-center">
-                        <p class="profile__initals ani">CV</p>
-                    </div>
-                    <div class="user-details">
-                        <p class="profile__initals ani">Chirag Vartak</p>
+                        <p class="profile__initals ani">{{ conversation.conversationId }}</p>
                     </div>
                 </div>
             </div>
         </mat-card>
     </div>
     <div class="w-70 d-flex d-wrap d-gap-15">
-        <mat-card class="chat-window padding-zero">
-                <div class="list-header d-flex align-items">
-                    <div class="user-img d-flex align-items align-center">
-                        <img [src]="profileImg" *ngIf="profileImg" alt="profile image" class="profile-img">
-                        <p class="profile__initals ani" *ngIf="!profileImg">{{ user.shortName}}</p>
-                    </div>
-                    <div class="user-details">
-                        <p class="profile__initals ani">{{ user.fullName }}</p>
-                    </div>
-                </div>
-                <div class="chat-messages d-flex">
-                    <div class="receive-msg chat-popup">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum iure, dignissimos ab ducimus nisi corrupti vero. Voluptas consequuntur veritatis hic explicabo facere omnis itaque distinctio. Cum nemo labore minus architecto.
-                    </div>
-                    <div class="send-msg chat-popup">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum iure, dignissimos ab ducimus nisi corrupti vero. Voluptas consequuntur veritatis hic explicabo facere omnis itaque distinctio. Cum nemo labore minus architecto.
-                    </div>
-                    <div class="send-msg chat-popup">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum iure, dignissimos ab ducimus nisi corrupti vero. Voluptas consequuntur veritatis hic explicabo facere omnis itaque distinctio. Cum nemo labore minus architecto.
-                    </div>
-                    <div class="receive-msg chat-popup">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum iure, dignissimos ab ducimus nisi corrupti vero. Voluptas consequuntur veritatis hic explicabo facere omnis itaque distinctio. Cum nemo labore minus architecto.
-                    </div>
-                    <div class="receive-msg chat-popup">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum iure, dignissimos ab ducimus nisi corrupti vero. Voluptas consequuntur veritatis hic explicabo facere omnis itaque distinctio. Cum nemo labore minus architecto.
-                    </div>
-                    <div class="send-msg chat-popup">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum iure, dignissimos ab ducimus nisi corrupti vero. Voluptas consequuntur veritatis hic explicabo facere omnis itaque distinctio. Cum nemo labore minus architecto.
-                    </div>
-                </div>
-                <div class="send-input d-flex">
-                    <textarea cols="3" placeholder="Type a message"></textarea>
-                    <button class="common-btn btn-text">
-                        <i class="fa-regular fa-paper-plane"></i>
-                    </button>
-                </div>
-            
-        </mat-card>
+        <router-outlet></router-outlet>
     </div>
 </div>

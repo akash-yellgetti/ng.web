@@ -3,6 +3,7 @@ import { ModuleService } from '../../../main/core/services/module.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { setting } from '../../../../shared/json/setting.json';
 import { ConversationService } from '../../services/conversation/conversation.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -12,10 +13,15 @@ import { ConversationService } from '../../services/conversation/conversation.se
 export class ChatComponent implements OnInit {
   public user: any = null;
   profileImg: any;
-
-  constructor(public moduleService: ModuleService, private localStorageService: LocalStorageService, private conversationService: ConversationService) { 
+  conversations: any = [];
+  constructor(
+    public moduleService: ModuleService, 
+    private route: ActivatedRoute,
+    private localStorageService: LocalStorageService, 
+    private conversationService: ConversationService
+    ) {
+    this.conversations = this.route.snapshot.data.conversations.data;
     this.moduleService.mainTitle.next("Chat");
-    
   }
 
   ngOnInit(): void {

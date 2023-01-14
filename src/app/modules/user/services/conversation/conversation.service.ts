@@ -32,6 +32,23 @@ export class ConversationService {
       catchError(this.handleError));
   }
 
+  getConversationHistory = (id: any) => {
+    const url = setting['uri'] + '/conversation/history';
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: this.getAuthToken(),
+    });
+    const options = { headers: headers };
+    const params = JSON.stringify({ id });
+
+    return this.http.post(url, params, options).pipe(
+      map((data) => data),
+      catchError(this.handleError)
+    );
+  };
+  
+
   getAuthToken = () => {
     const tokens = this.storage.retrieve('tokens');
     return `JWT ${tokens.accessToken}`;
