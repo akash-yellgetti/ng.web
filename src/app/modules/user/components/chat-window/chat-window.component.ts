@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ChatWindowComponent implements OnInit {
 
+  user: any = null;
   conversationHistory: any = [];
   constructor(
     public moduleService: ModuleService, 
@@ -28,6 +29,7 @@ export class ChatWindowComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.user = this.localStorageService.retrieve('user');
   }
 
 }
