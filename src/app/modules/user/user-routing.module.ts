@@ -6,6 +6,8 @@ import { HabitsComponent } from './components/habits/habits.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { PersonalFinanceComponent } from './components/personal-finance/personal-finance.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ConversationsResolver } from './resolver/conversations/conversations.resolver';
+import { ConversationHistoryResolver } from './resolver/conversation-history/conversation-history.resolver';
 
 const routes: Routes = [
   {
@@ -15,9 +17,11 @@ const routes: Routes = [
   {
     path: 'chat',
     component: ChatComponent,
+    resolve: { conversations: ConversationsResolver  },
     children: [
       {
         path: ':id/conversation',
+        resolve: { conversations: ConversationsResolver  },
         component: ChatComponent,
       }
     ]

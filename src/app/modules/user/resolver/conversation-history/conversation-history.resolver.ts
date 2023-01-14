@@ -9,7 +9,7 @@ import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ConversationHistoryResolverResolver implements Resolve<boolean> {
+export class ConversationHistoryResolver implements Resolve<boolean> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return of(true);
   }

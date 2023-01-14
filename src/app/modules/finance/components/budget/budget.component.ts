@@ -98,7 +98,7 @@ export class BudgetComponent implements OnInit {
   ];
   numbers: any = [];
   constructor(public moduleService: ModuleService) { 
-    this.numbers = Array(36).fill(4).map((x,i)=>i);
+    this.numbers = Array(10).fill(4).map((x,i)=>i);
     this.moduleService.mainTitle.next("Budget");
   }
 

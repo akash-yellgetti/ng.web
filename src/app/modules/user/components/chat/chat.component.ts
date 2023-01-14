@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModuleService } from '../../../main/core/services/module.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { setting } from '../../../../shared/json/setting.json';
-import { ConversationService } from '../../services/conversation.service';
+import { ConversationService } from '../../services/conversation/conversation.service';
 
 @Component({
   selector: 'app-chat',
