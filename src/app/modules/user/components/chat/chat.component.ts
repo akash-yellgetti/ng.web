@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModuleService } from '../../../main/core/services/module.service';
+import { LocalStorageService } from 'ngx-webstorage';
+import { setting } from '../../../../shared/json/setting.json';
 
 @Component({
   selector: 'app-chat',
@@ -7,12 +9,23 @@ import { ModuleService } from '../../../main/core/services/module.service';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
+  public user: any = null;
+  profileImg: any;
 
-  constructor(public moduleService: ModuleService) { 
+  constructor(public moduleService: ModuleService, private localStorageService: LocalStorageService) { 
     this.moduleService.mainTitle.next("Chat");
   }
 
   ngOnInit(): void {
+    this.user = this.localStorageService.retrieve('user');
+    this.setProfileImage();
+  }
+
+  setProfileImage = () => {
+    this.user = this.localStorageService.retrieve('user');
+    if (this.user && this.user.profilePicture) {
+      this.profileImg = setting['uri'] + '/' + this.user.profilePicture;
+    }
   }
 
 }
