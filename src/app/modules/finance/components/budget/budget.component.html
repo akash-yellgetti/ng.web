@@ -1,38 +1,34 @@
-
-    
 <div class="container-fluid d-flex d-gap-15">
-    
-    <div class="w-30 d-flex d-gap-15 d-wrap">
-        <div class="w-100 d-flex d-gap-15">
-            <mat-card class="w-50">
-                Income
-            </mat-card>
-            <mat-card class="w-50">
-                Expense
-            </mat-card>
-        </div>
-        <div class="w-100 d-flex d-gap-15">
-            <mat-card class="w-100">
-                Graph
-            </mat-card>
-        </div>
-        <div class="w-100 d-flex d-gap-15">
-            <mat-card class="w-100">
-                categories
-            </mat-card>
-        </div>
+  <div class="w-30 d-flex d-gap-15 d-wrap">
+    <div class="w-100 d-flex d-gap-15">
+      <mat-card class="w-50 h-150"> Income </mat-card>
+      <mat-card class="w-50 h-150"> Expense </mat-card>
     </div>
-    <div class="w-70 d-flex d-wrap d-gap-15">
-        <mat-card class="w-100" *ngFor="let item of data">
-            <mat-card-header>
-                <mat-icon mat-card-avatar [style.font-size.px]="24" class="expense-icon">home</mat-icon>
-                <mat-card-title> {{ item.title }}  </mat-card-title>
-                <mat-card-subtitle>   {{ item.description || 'description' }}   </mat-card-subtitle>
-                <div fxFlex></div>
-                <div style="flex-grow: 1"></div>
-                <span class="currency-amount">{{ item.amount | currency:"&#8377; "}}</span>
-            </mat-card-header>
-        </mat-card>
+    <div class="w-100 d-flex d-gap-15">
+      <mat-card class="w-100 h-350"> Graph </mat-card>
     </div>
-
+    <div class="w-100 d-flex d-gap-15 d-wrap">
+      <mat-card class="w-20 d-grow h-100" *ngFor="let num of numbers">
+        Income {{ num }}
+      </mat-card>
+    </div>
+  </div>
+  <div class="w-70 d-flex d-wrap d-gap-15">
+    <mat-card class="w-100" *ngFor="let item of data">
+      <mat-card-header>
+        <mat-icon mat-card-avatar [style.font-size.px]="24" class="expense-icon"
+          >home</mat-icon
+        >
+        <mat-card-title> {{ item.title }} </mat-card-title>
+        <mat-card-subtitle>
+          {{ item.description || "description" }}
+        </mat-card-subtitle>
+        <div fxFlex></div>
+        <div style="flex-grow: 1"></div>
+        <span class="currency-amount">{{
+          item.amount | currency : "&#8377; "
+        }}</span>
+      </mat-card-header>
+    </mat-card>
+  </div>
 </div>

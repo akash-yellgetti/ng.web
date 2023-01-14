@@ -95,8 +95,10 @@ export class BudgetComponent implements OnInit {
       "amount": 0,
       "type": "house-hold"
   }
-  ]
+  ];
+  numbers: any = [];
   constructor(public moduleService: ModuleService) { 
+    this.numbers = Array(36).fill(4).map((x,i)=>i);
     this.moduleService.mainTitle.next("Budget");
   }
 
