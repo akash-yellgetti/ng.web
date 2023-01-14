@@ -51,6 +51,10 @@ ng g s modules/user/services/conversation/conversation
 
 --------------------------------------------------------------------------------------------------
 
+ng g s shared/services/socket/socket
+
+--------------------------------------------------------------------------------------------------
+
 
 ng g c modules/user/components/chat-window --module=user
 

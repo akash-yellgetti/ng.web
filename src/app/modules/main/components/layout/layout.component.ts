@@ -7,6 +7,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { Router } from '@angular/router';
 import { ModuleService } from '../../core/services/module.service';
 import { setting } from '../../../../shared/json/setting.json';
+import { SocketService } from 'src/app/shared/services/socket/socket.service';
 
 @Component({
   selector: 'app-layout',
@@ -27,12 +28,21 @@ export class LayoutComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver, private localStorageService: LocalStorageService, 
-    private route: Router, public moduleService: ModuleService) {
+    private route: Router, 
+    private socketService: SocketService, 
+    public moduleService: ModuleService) {
     this.moduleService.mainTitle.subscribe((r: any) => {
       this.mainTitle = r;
     })
     this.user = this.localStorageService.retrieve('user');
     this.setProfileImage();
+    this.socketService.joinSocket();
+    this.socketService.getUsers().subscribe((r) => {
+      console.log('users', r)
+    })
+    this.socketService.getMessage().subscribe((r) => {
+      console.log('message', r)
+    })
   }
 
   setProfileImage = () => {
