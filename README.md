@@ -49,6 +49,14 @@ ng g s modules/main/core/services/module
 
 ng g s modules/user/services/conversation/conversation
 
+--------------------------------------------------------------------------------------------------
+
+ng g s shared/services/socket/socket
+
+--------------------------------------------------------------------------------------------------
+
+
+ng g c modules/user/components/chat-window --module=user
 
 ng g r modules/user/resolver/conversations/conversations
 ng g r modules/user/resolver/conversation-history/conversation-history

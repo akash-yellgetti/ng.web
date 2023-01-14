@@ -8,6 +8,7 @@ import { PersonalFinanceComponent } from './components/personal-finance/personal
 import { ProfileComponent } from './components/profile/profile.component';
 import { ConversationsResolver } from './resolver/conversations/conversations.resolver';
 import { ConversationHistoryResolver } from './resolver/conversation-history/conversation-history.resolver';
+import { ChatWindowComponent } from './components/chat-window/chat-window.component';
 
 const routes: Routes = [
   {
@@ -21,8 +22,8 @@ const routes: Routes = [
     children: [
       {
         path: ':id/conversation',
-        resolve: { conversations: ConversationsResolver  },
-        component: ChatComponent,
+        resolve: { conversationHistory: ConversationHistoryResolver  },
+        component: ChatWindowComponent
       }
     ]
   },
