@@ -1,7 +1,22 @@
 @import "../../../../../assets/styles/index.scss";
 
+.container-fluid {
+	padding: 15px;
+	padding-top: 75px;
+	padding-bottom: 60px;
+	min-height: 100vh;
+	flex-direction: row;
+	@media(max-width: 767px) {
+		flex-wrap: wrap;
+	}
+}
+
+.padding-zero {
+    padding: 0;
+}
+
 .chart-wrapper {
-    padding-top: 64px;
+    // padding-top: 64px;
     padding-bottom: 60px;
     height: 100vh;
     overflow: hidden;
@@ -53,7 +68,7 @@
         }
     }
     .chat-list {
-        width: 300px;
+        width: 100%;
         border-right: 1px solid $color-light-gray;
         @media(max-width: 767px) {
             width: 150px;
@@ -81,7 +96,7 @@
             }
         }
         .message-list {
-            min-height: calc(100vh - 236px);
+            // min-height: calc(100vh - 236px);
             max-height: calc(100vh - 236px);
             overflow: auto;
             .user-detail {
@@ -101,14 +116,14 @@
         }
     }
     .chat-window {
-        width: calc(100% - 300px);
-        @media(max-width: 767px) {
-            width: calc(100% - 150px);
-        }
+        // width: calc(100% - 300px);
+        // @media(max-width: 767px) {
+        //     width: calc(100% - 150px);
+        // }
     }
     .chat-messages {
-        min-height: calc(100vh - 236px);
-        max-height: calc(100vh - 236px);
+        // min-height: calc(100vh - 236px);
+        max-height: calc(100vh - 257px);
         flex-direction: column;
         padding: 15px;
         overflow: auto;

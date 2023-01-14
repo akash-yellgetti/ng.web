@@ -1,5 +1,10 @@
 @import "../../../../../assets/styles/index.scss";
 
+.mat-drawer-container
+{
+  background-color: #f0f2f5;
+}
+
 .sidenav-container {
   height: 100%;
   // background-color: $color-gray;
@@ -300,6 +305,7 @@
 }
 
 .footer-toolbar {
+  background-color: #fff;
   justify-content: flex-end;
   padding: 8px 15px;
   height: auto;
