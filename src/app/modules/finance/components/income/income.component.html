@@ -1,14 +1,12 @@
-<div class="container-fluid d-flex">
-    <nav mat-tab-nav-bar class="mat-tab-nav-bar-budget-light income-tabs">
-        <a 
-            mat-tab-link
-            *ngFor="let tab of tabs"
-            [routerLink]="tab.link"
-            routerLinkActive #rla="routerLinkActive"
-            [active]="rla.isActive"
-        >
-            {{ tab.label }}
-        </a>
-    </nav>
-    <router-outlet></router-outlet>
-</div>
+<nav mat-tab-nav-bar class="mat-tab-nav-bar-budget-light">
+    <a 
+        mat-tab-link
+        *ngFor="let tab of tabs"
+        [routerLink]="tab.link"
+        routerLinkActive #rla="routerLinkActive"
+        [active]="rla.isActive"
+    >
+        {{ tab.label }}
+    </a>
+</nav>
+<router-outlet></router-outlet>
