@@ -7,10 +7,13 @@
 	min-height: 100vh;
 	flex-direction: row;
 	@media(max-width: 767px) {
-		flex-wrap: wrap;
+        padding: 0;
 	}
 }
 
+::ng-deep app-chat-window {
+    width: 100%;
+}
 
 
 .chart-wrapper {
@@ -20,7 +23,20 @@
     overflow: hidden;
     @media (max-width: 767px) {
         padding-top: 56px;
-    }    
+        gap: 0;
+    }
+    .chat-list-wrapper {
+        @media (max-width: 767px) {
+            width: 150px;
+            gap: 0;
+        }
+    }
+    .chat-message-wrapper {
+        @media (max-width: 767px) {
+            width: calc(100% - 150px);
+            gap: 0;
+        }
+    }
     .list-header {
         background: $color-light;
         padding: 10px 15px;
@@ -52,6 +68,7 @@
         @media (max-width: 767px) {
             width: 35px;
             height: 35px;
+            display: none;
         }
         p {
             margin-bottom: 0;
@@ -100,6 +117,19 @@
             .user-detail {
                 padding: 10px 15px;
                 border-bottom: 1px solid $color-light-gray;
+                .user-details .profile__initals {
+                    font-weight: 600;
+                    font-family: 'Open Sans', sans-serif;
+                }
+                .time {
+                    font-size: 12px;
+                    color: $color-light-gray;
+                    width: 50px;
+                    margin-left: auto;
+                    @media (max-width: 767px) {
+                        display: none;
+                    }
+                }
                 @media (max-width: 767px) {
                     .user-details {
                         p {
@@ -109,6 +139,18 @@
                             overflow: hidden;
                         }
                     }
+                }
+            }
+            .user-details {
+                width: calc(100% - 105px);
+                overflow: hidden;
+                @media (max-width: 767px) {
+                    width: 100%;
+                }
+                p {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
                 }
             }
         }

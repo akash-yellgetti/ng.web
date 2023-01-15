@@ -1,7 +1,7 @@
 <div class="container-fluid d-flex  d-gap-15 chart-wrapper">
-    <div class="w-30 d-flex d-wrap d-gap-15">
+    <div class="w-30 chat-list-wrapper d-flex d-wrap d-gap-15">
         <mat-card class="chat-list padding-zero">
-            <div class="list-header d-flex align-items">
+            <div class="list-header d-flex">
                 <div class="user-img d-flex align-items align-center">
                     <img [src]="profileImg" *ngIf="profileImg" alt="profile image" class="profile-img">
                     <p class="profile__initals ani" *ngIf="!profileImg">{{ user.shortName}}</p>
@@ -15,18 +15,22 @@
                 <input type="text" value="" placeholder="Search or start new chat">
             </div>
             <div class="message-list">
-                <div class="user-detail d-flex align-items" *ngFor="let conversation of conversations">
+                <div class="user-detail d-flex" *ngFor="let conversation of conversations">
                     <div class="user-img d-flex align-items align-center">
                         <p class="profile__initals ani">CV</p>
                     </div>
                     <div class="user-details">
                         <p class="profile__initals ani" (click)="redirectToChatWindow(conversation)" >{{ conversation.conversationId }}</p>
+                        <p class="desc">Lorem, ipsum dolor sit</p>
+                    </div>
+                    <div class="time">
+                        9.31 am
                     </div>
                 </div>
             </div>
         </mat-card>
     </div>
-    <div class="w-70 d-flex d-wrap d-gap-15">
+    <div class="w-70 chat-message-wrapper d-flex d-wrap">
         <router-outlet></router-outlet>
     </div>
 </div>
