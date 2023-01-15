@@ -1,16 +1,16 @@
 <div class="container-fluid d-flex d-gap-15">
   <div class="w-30 d-flex d-gap-15 d-wrap">
     <div class="w-100 d-flex d-gap-15 expense-tabs">
-      <mat-card class="w-50 h-150 default-font">
+      <mat-card class="w-50 default-font active income">
         <p class="title">Income</p>
-        <div class="d-flex">
+        <div class="d-flex align-items">
           <span class="salary"><i class="fa-solid fa-indian-rupee-sign"></i> 22,000</span>
           <button class="common-btn btn-fill"><i class="fa-solid fa-plus"></i></button>
         </div>        
       </mat-card>
-      <mat-card class="w-50 h-150 default-font">
+      <mat-card class="w-50 default-font expense">
         <p class="title">Expense</p>
-        <div class="d-flex">
+        <div class="d-flex align-items">
           <span class="salary"><i class="fa-solid fa-indian-rupee-sign"></i> 22,000</span>
           <button class="common-btn btn-fill"><i class="fa-solid fa-plus"></i></button>
         </div>
@@ -26,6 +26,9 @@
     </div>
   </div>
   <div class="w-70 d-flex d-wrap d-gap-15">
+    <div class="bradcrumbs">
+      <app-breadcrumbs></app-breadcrumbs>
+    </div>
     <mat-card class="w-100 expense-common-card" *ngFor="let item of data">
       <mat-card-header>
         <mat-icon mat-card-avatar [style.font-size.px]="24" class="expense-icon"

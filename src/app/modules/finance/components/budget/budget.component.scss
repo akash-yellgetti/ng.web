@@ -43,6 +43,11 @@
 	.title {
 		font-weight: 600;
 		font-size: 18px;
+		padding-bottom: 10px;
+		border-bottom: 1px solid $color-light-gray;
+		@media(max-width: 1420px) {
+			font-size: 16px;
+		}
 	}
 	.salary {
 		font-size: 22px;
@@ -60,10 +65,35 @@
 		border-radius: 50%;
 		padding: 0;
 		font-size: 27px;
+		box-shadow: 0 0 6px rgba(0,0,0,0.7);
 		@media(max-width: 1420px) {
 			width: 40px;
 			height: 40px;
 			font-size: 22px;
+		}
+	}
+	.income {
+		.salary {
+			color: $color-green;
+		}
+	}
+	.expense {
+		.salary {
+			color: $color-error;
+		}
+	}
+	.active {
+		background-color: $color-primary;
+		color: $color-white;
+		.title {
+			border-color: $color-white;
+		}
+		// .salary {
+		// 	color: $color-white;
+		// }
+		button {
+			background-color: $color-white;
+			color: $color-primary;
 		}
 	}
 }
