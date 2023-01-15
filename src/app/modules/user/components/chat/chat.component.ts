@@ -4,6 +4,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { setting } from '../../../../shared/json/setting.json';
 import { ConversationService } from '../../services/conversation/conversation.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-chat',
@@ -21,12 +22,26 @@ export class ChatComponent implements OnInit {
     private localStorageService: LocalStorageService, 
     private conversationService: ConversationService
     ) {
-    this.conversations = this.activatedRoute.snapshot.data.conversations.data;
+    this.user = this.localStorageService.retrieve('user');
+    this.conversations = _.map(this.activatedRoute.snapshot.data.conversations.data, (r) => {
+      if(r && r.type && r.type === 'individual') {
+        const u = _.find(r.users, (d) => {
+          return d._id !== this.user._id;
+        })
+        r.fullName = u.firstName +" "+ u.lastName;
+      } else if(r && r.type && r.type === 'group') {
+        // const u = _.find(r.users, (d) => {
+        //   return d._id !== this.user._id;
+        // })
+        r.fullName = r.name;
+      }
+      return r;
+    });
     this.moduleService.mainTitle.next("Chat");
   }
 
   ngOnInit(): void {
-    this.user = this.localStorageService.retrieve('user');
+    
     this.setProfileImage();
   }
 
@@ -38,7 +53,7 @@ export class ChatComponent implements OnInit {
   }
 
   redirectToChatWindow = (conversation: any) => {
-    this.route.navigate(['main/layout/user/chat', conversation.conversationId, 'conversation']);
+    this.route.navigate(['main/layout/user/chat', conversation._id, 'conversation']);
   }
 
 }
