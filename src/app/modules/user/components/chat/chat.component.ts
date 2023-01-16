@@ -53,7 +53,9 @@ export class ChatComponent implements OnInit {
   }
 
   redirectToChatWindow = (conversation: any) => {
-    this.route.navigate(['main/layout/user/chat', conversation._id, 'conversation']);
+    this.route.navigateByUrl('/main/layout/user/chat', { skipLocationChange: true }).then(() => {
+      this.route.navigate(['main/layout/user/chat', conversation._id, 'conversation']);
+    });
   }
 
 }
