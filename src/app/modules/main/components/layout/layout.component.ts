@@ -30,19 +30,24 @@ export class LayoutComponent {
   constructor(private breakpointObserver: BreakpointObserver, private localStorageService: LocalStorageService, 
     private route: Router, 
     private socketService: SocketService, 
+    private toastr: SocketService, 
     public moduleService: ModuleService) {
     this.moduleService.mainTitle.subscribe((r: any) => {
       this.mainTitle = r;
     })
     this.user = this.localStorageService.retrieve('user');
     this.setProfileImage();
-    this.socketService.joinSocket();
-    this.socketService.getUsers().subscribe((r) => {
-      console.log('users', r)
-    })
-    this.socketService.getMessage().subscribe((r) => {
-      console.log('message', r)
-    })
+    this.socketService.connect();
+    // this.socketService.emit('main');
+    // this.socketService.join('main');
+    // this.socketService.join('notification');
+    this.socketService.getNotification()
+    // .subscribe((r) => {
+    //   console.log(r)
+    // })
+    // this.socketService.getMessage().subscribe((r) => {
+    //   console.log('message', r)
+    // })
   }
 
   setProfileImage = () => {

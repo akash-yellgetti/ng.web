@@ -24,16 +24,17 @@ export class ChatComponent implements OnInit {
     ) {
     this.user = this.localStorageService.retrieve('user');
     this.conversations = _.map(this.activatedRoute.snapshot.data.conversations.data, (r) => {
-      if(r && r.type && r.type === 'individual') {
+      const conversation = r.conversationDetail;
+      if(conversation && conversation.type && conversation.type === 'individual') {
         const u = _.find(r.users, (d) => {
           return d._id !== this.user._id;
         })
         r.fullName = u.firstName +" "+ u.lastName;
-      } else if(r && r.type && r.type === 'group') {
+      } else if(conversation && conversation.type && conversation.type === 'group') {
         // const u = _.find(r.users, (d) => {
         //   return d._id !== this.user._id;
         // })
-        r.fullName = r.name;
+        r.fullName = conversation.name;
       }
       return r;
     });

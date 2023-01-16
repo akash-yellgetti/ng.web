@@ -24,7 +24,7 @@ export class ChatWindowComponent implements OnInit {
     ) {
       // console.log(this.activatedRoute.snapshot)
     this.conversationHistory = this.activatedRoute.snapshot.data.conversationHistory.data;
-    console.log(this.conversationHistory)
+    // console.log(this.conversationHistory)
     // this.moduleService.mainTitle.next("Chat");
   }
 

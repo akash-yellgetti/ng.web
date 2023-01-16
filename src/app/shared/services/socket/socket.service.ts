@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
+import { ToastrService } from 'ngx-toastr';
 import { LocalStorageService } from 'ngx-webstorage';
 
 @Injectable({
@@ -7,25 +8,48 @@ import { LocalStorageService } from 'ngx-webstorage';
 })
 export class SocketService {
 
-  constructor(public socket: Socket,private storage: LocalStorageService) { }
+  constructor(public socket: Socket,private storage: LocalStorageService,
+    private toastr: ToastrService) { }
 
-  joinSocket = () => {
-    const data: any = {  userId: this.storage.retrieve('user')._id };
-    console.log(data);
-    // console.log(this.socket.ioSocket.id);
-    this.socket.emit('join-socket', data)
+  connect = () => {
+    const user = this.storage.retrieve('user');
+    this.socket.emit("connected", { user });
   }
 
-  sendMessage(data: any) {
-    this.socket.emit('chat.message', data)
+  emit = () => {
+
   }
 
-  getMessage() {
-    return this.socket.fromEvent('chat.message');
+  join = (roomName: string) => {
+    // this.socket.emit('join.'+roomName);
   }
 
-  getUsers() {
-    return this.socket.fromEvent('users');
+  leave = (roomName: string) => {
+    // this.socket.emit('join.'+roomName);
+  }
+  // joinSocket = () => {
+  //   const data: any = {  userId: this.storage.retrieve('user')._id };
+  //   console.log(data);
+  //   // console.log(this.socket.ioSocket.id);
+  //   this.socket.emit('join-socket', data)
+  // }
+
+  // sendMessage(data: any) {
+  //   this.socket.emit('chat.message', data)
+  // }
+
+  // getMessage() {
+  //   return this.socket.fromEvent('chat.message');
+  // }
+
+  // getUsers() {
+  //   return this.socket.fromEvent('users');
+  // }
+
+  getNotification() {
+    this.socket.on('notification', (data: any) => {
+      this.toastr.info(data.title)
+    });
   }
 
 }
