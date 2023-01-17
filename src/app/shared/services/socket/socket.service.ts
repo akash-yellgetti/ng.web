@@ -16,8 +16,8 @@ export class SocketService {
     this.socket.emit("connected", { user });
   }
 
-  emit = () => {
-
+  send = (evtName: string, data: any) => {
+    this.socket.emit(evtName, data);
   }
 
   join = (roomName: string) => {
