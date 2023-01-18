@@ -5,6 +5,7 @@ import { setting } from '../../../../shared/json/setting.json';
 import { ConversationService } from '../../services/conversation/conversation.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SocketService } from 'src/app/shared/services/socket/socket.service';
+import * as _ from 'lodash';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class ChatWindowComponent implements OnInit {
 
   user: any = null;
   params: any = null;
+  message: string = '';
   conversationHistory: any = [];
   constructor(
     public moduleService: ModuleService, 
@@ -48,9 +50,10 @@ export class ChatWindowComponent implements OnInit {
       "conversationId": this.params.id,
       "data": {
           "type": "text",
-          "text": "Hi!!!"
+          "text": _.cloneDeep(this.message)
       }
     })
+    this.message = '';
   }
 
 }
