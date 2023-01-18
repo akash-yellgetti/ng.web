@@ -5,6 +5,7 @@ import { setting } from '../../../../shared/json/setting.json';
 import { ConversationService } from '../../services/conversation/conversation.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as _ from 'lodash';
+import { SocketService } from 'src/app/shared/services/socket/socket.service';
 
 @Component({
   selector: 'app-chat',
@@ -20,7 +21,8 @@ export class ChatComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private route: Router,
     private localStorageService: LocalStorageService, 
-    private conversationService: ConversationService
+    private conversationService: ConversationService,
+    private socketService: SocketService
     ) {
     this.user = this.localStorageService.retrieve('user');
     this.conversations = _.map(this.activatedRoute.snapshot.data.conversations.data, (r) => {
@@ -38,6 +40,11 @@ export class ChatComponent implements OnInit {
       }
       return r;
     });
+    this.socketService.join({ channels: _.values(_.mapValues(this.conversations, '_id')) });
+    // this.socketService.receive().subscribe((data: any) => {
+    //   const conversation: any = _.find(this.conversations, { _id: data.conversationId });
+    //   conversation.
+    // })
     this.moduleService.mainTitle.next("Chat");
   }
 

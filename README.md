@@ -37,6 +37,9 @@ npx cap run android
 
 --------------------------------------------------------------------------------------------------
 
+--------------------------------------------------------------------------------------------------
+
+
 ng g m modules/main --routing=true
 ng g c modules/main/components/layout --module=main
 ng g c modules/main/components/dashboard --module=main

@@ -30,6 +30,11 @@ export class ChatWindowComponent implements OnInit {
     this.params = this.activatedRoute.snapshot.params;
     // console.log(params)
     // this.moduleService.mainTitle.next("Chat");
+    this.socketService.receive().subscribe((data: any) => {
+      if(this.params && this.params.id && this.params.id === data.conversationId) {
+        this.conversationHistory.push(data);
+      }
+    })
   }
 
   ngOnInit(): void {
@@ -37,8 +42,9 @@ export class ChatWindowComponent implements OnInit {
   }
 
   send = () => {
-    this.socketService.send('chat.message', {
-      "type": "individual",
+    this.socketService.postChatMessageSend({
+      "conversationType": "individual",
+      "userId": this.user._id,
       "conversationId": this.params.id,
       "data": {
           "type": "text",

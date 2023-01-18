@@ -17,11 +17,15 @@ export class SocketService {
   }
 
   send = (evtName: string, data: any) => {
-    this.socket.emit(evtName, data);
+    this.socket.emit('send', { ...data, evtName });
   }
 
-  join = (roomName: string) => {
-    // this.socket.emit('join.'+roomName);
+  receive = () => {
+    return this.socket.fromEvent('receive');
+  }
+
+  join = (data: any = { channels: [] }) => {
+    this.socket.emit('join', data);
   }
 
   leave = (roomName: string) => {
@@ -42,9 +46,13 @@ export class SocketService {
   //   return this.socket.fromEvent('chat.message');
   // }
 
-  // getUsers() {
-  //   return this.socket.fromEvent('users');
-  // }
+  postChatMessageSend(data: any) {
+    this.send('chat.message.send', data);
+  }
+
+  getChatMessageReceive() {
+    return this.socket.fromEvent('chat.message.receive');
+  }
 
   getNotification() {
     this.socket.on('notification', (data: any) => {
