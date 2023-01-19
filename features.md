@@ -19,8 +19,12 @@ Taxation
     - Income Tax Saving
 
 Share Market
-    - Income
-    - Expense
+    - Equity
+    - Futures
+        - Derivatives
+        - Options Trading
+    - Mutual Fund
+    - ETF
 
 Goal
     - New House
