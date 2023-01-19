@@ -1,14 +1,20 @@
+Shared
+    - Card View
+    - Datatable View
+    - Pagination
+    - Menu
+
 Auth
     - Registration
     - Login
-    - Forgot Password
+    - Forgot Password - Not Started
     
 User
     - Profile Picture
     - Profile Background Picture
     - Profile Information
-    - Change Password
-    - Family
+    - Change Password - Not Started
+    - Family - Not Started
     - Chat
 
 Budget
