@@ -1,5 +1,13 @@
 @import "../../../../../assets/styles/index.scss";
 
+.mat-expansion-panel {
+  background-color: transparent;
+  color: $color-gray;
+}
+
+.mat-list-base .mat-list-item {
+  color: $color-gray;
+}
 .mat-drawer-container
 {
   // background-color: #f0f2f5;

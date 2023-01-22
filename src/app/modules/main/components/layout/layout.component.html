@@ -11,7 +11,7 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
-    <mat-toolbar>{{ isCollapsed ? "PF" : "Personal Finance" }}</mat-toolbar>
+    <mat-toolbar class="bottom-box-shadow">{{ isCollapsed ? "PF" : "Personal Finance" }}</mat-toolbar>
     <!-- <div class="nav-top d-flex align-center" [ngStyle]="{'background-image': 'url(' + profileBg + ')'}">
       <img [src]="profileImg" *ngIf="profileImg" alt="profile image" class="profile-img">
       <button
@@ -80,7 +80,7 @@
   </mat-drawer>
   <mat-drawer-content fxLayout="column">
     <!-- <app-header [drawerRef]="drawer" [drawerChatRef]="''" [isHandset]="(isHandset$ | async)" (toSideNavToggle)="sideNavToggle($event)"></app-header> -->
-    <mat-toolbar color="primary" class="header-toolbar">
+    <mat-toolbar color="primary" class="header-toolbar bottom-box-shadow">
       <button
         type="button"
         aria-label="Toggle sidenav"
