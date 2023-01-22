@@ -19,16 +19,19 @@ export class BudgetComponent implements OnInit {
           title: 'Salary',
           description: 'Salary',
           link: './salary',
+          key: 'salary',
         },
         {
           title: 'Business',
           description: 'Business',
           link: './business',
+          key: 'business',
         },
         {
           title: 'Rental',
           description: 'Rental',
           link: './rental',
+          key: 'rental',
         }
       ]
     },
@@ -125,76 +128,91 @@ export class BudgetComponent implements OnInit {
           title: 'Loan',
           description: 'Loan',
           link: './loan',
+          key : 'loan',
         },
         {
           title: 'Transportation',
           description: 'Transportation',
           link: './transportation',
+          key : 'transportation',
         },
         {
           title: 'Insurance',
           description: 'Insurance',
           link: './insurance',
+          key : 'insurance',
         },
         {
           title: 'Food',
           description: 'Food',
           link: './food',
+          key : 'food',
         },
         {
           title: 'Pets',
           description: 'Pets',
           link: './pets',
+          key : 'pets',
         },
         {
           title: 'Personal-Care',
           description: 'Personal-Care',
           link: './personal-care',
+          key : 'personal-care',
         },
         {
           title: 'Entertainment',
           description: 'Entertainment',
           link: './entertainment',
+          key : 'entertainment',
         },
         {
           title: 'Gift',
           description: 'Gift',
           link: './gift',
+          key : 'gift',
         },
         {
           title: 'Donation',
           description: 'Donation',
           link: './donation',
+          key : 'donation',
         },
         {
           title: 'Credit-Card',
           description: 'Credit-Card',
           link: './credit-card',
+          key : 'credit-card',
         },
         {
           title: 'Vehicle',
           description: 'Vehicle',
           link: './vehicle',
+          key : 'vehicle',
         },
         {
           title: 'Investment',
           description: 'Investment',
           link: './investment',
+          key : 'investment',
         },
           // {
         //   title: 'Saving',
         // description: 'Saving',
         //   link: './saving',
+        //   key : 'saving',
         // },
         // {
         //   title: 'Taxes',
         // description: 'Taxes',
         //   link: './taxes',
+        //   key : 'taxes',
         // },
         // {
         //   title: 'Legal',
         // description: 'Legal',
         //   link: './legal',
+        //   key : 'legal',
         // }
       ]
     }

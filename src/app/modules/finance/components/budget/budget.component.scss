@@ -37,10 +37,10 @@
 	&:hover, &:focus {
 		border-color: $color-primary;
 	}
+}
 
-	.border-active {
-		border-color: $color-primary;
-	}
+.border-active {
+	border-color: $color-primary;
 }
 
 .expense-tabs {

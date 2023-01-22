@@ -13,7 +13,7 @@
       <mat-card class="w-100 h-350"> Graph </mat-card>
     </div>
     <div class="w-100 d-flex d-wrap expense-items">
-      <mat-card class="h-100 expense-card" *ngFor="let c of tab.children" (click)="selectCategory(c.key)"   >
+      <mat-card class="h-100 expense-card" *ngFor="let c of tab.children" (click)="selectCategory(c.key)"  [ngClass]="{ 'border-active': data && data.key && data.key === c.key }"  >
         {{ c.title }}
       </mat-card>
     </div>
