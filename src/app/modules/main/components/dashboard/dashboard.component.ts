@@ -56,6 +56,7 @@ export class DashboardComponent implements OnInit {
         {
           title: 'Home',
           description: '',
+          icon: 'icon-home-01'
         },
         {
           title: 'Health',
@@ -74,10 +75,12 @@ export class DashboardComponent implements OnInit {
         {
           title: 'Home',
           description: '',
+          icon: 'icon-home-01'
         },
         {
           title: 'Business',
           description: '',
+          icon: 'icon-business-01'
         },
         {
           title: 'Personal',

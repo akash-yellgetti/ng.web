@@ -105,6 +105,12 @@
         width: 100%;
         padding: 15px;
     }
+    .category-list {
+        i {
+            font-size: 24px;
+            color: $color-primary;
+        }
+    }
 }
 
 .progress-svg {

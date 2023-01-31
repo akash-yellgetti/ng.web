@@ -390,7 +390,7 @@
     </mat-card>
   </div>
   <div class="family-list" *ngIf="!showGrid">
-    <ngx-datatable class="material" [rows]="familyList" [columns]="columns" [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [columnMode]="'force'" [swapColumns]="false" [reorderable]="false">
+    <ngx-datatable class="material" [rows]="familyList | paginate: { itemsPerPage: 3, currentPage: page }" [columns]="columns" [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [columnMode]="'force'" [swapColumns]="false" [reorderable]="false">
       <ngx-datatable-column *ngFor="let column of columns; let i = index;" name="{{column.name}}" prop="{{column.prop}}">
         <ng-template ngx-datatable-header-template> {{ column.title }} </ng-template>
         <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
@@ -419,6 +419,7 @@
         </ng-template>
       </ngx-datatable-column>
     </ngx-datatable>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
   </div>
 </section>
 <router-outlet></router-outlet>

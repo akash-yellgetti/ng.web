@@ -324,3 +324,11 @@
       font-weight: 600;
   }
 }
+
+::ng-deep {
+  .sidenav {
+    .mat-icon {
+      margin-left: 5px;
+    }
+  }
+}
