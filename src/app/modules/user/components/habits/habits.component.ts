@@ -16,7 +16,9 @@ export class HabitsComponent implements OnInit {
   },{
     'name': 'end', 
   },{
-    'name': 'time', 
+    'name': 'duration', 
+  },{
+    'name': 'type', 
   },{
     'name': 'title', 
   },{

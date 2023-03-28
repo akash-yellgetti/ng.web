@@ -1,5 +1,8 @@
 <div class="container-fluid d-flex">
     <mat-card class="col-100">
-        <p>routine works!</p>
+        <ngx-datatable class="table" [rows]="data" [columns]="columns" 
+            [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" >
+        </ngx-datatable>
     </mat-card>
 </div>
+
