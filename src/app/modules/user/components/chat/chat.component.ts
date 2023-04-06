@@ -6,6 +6,7 @@ import { ConversationService } from '../../services/conversation/conversation.se
 import { ActivatedRoute, Router } from '@angular/router';
 import * as _ from 'lodash';
 import { SocketService } from 'src/app/shared/services/socket/socket.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-chat',
@@ -16,35 +17,41 @@ export class ChatComponent implements OnInit {
   public user: any = null;
   profileImg: any;
   conversations: any = [];
+  params: any = null;
+  message: string = '';
+  currentConversationData: any = null;
+  conversationHistory: any = [];
   constructor(
     public moduleService: ModuleService, 
     private activatedRoute: ActivatedRoute,
     private route: Router,
     private localStorageService: LocalStorageService, 
     private conversationService: ConversationService,
-    private socketService: SocketService
+    private socketService: SocketService,
+    private toastr: ToastrService
     ) {
     this.user = this.localStorageService.retrieve('user');
-    this.conversations = _.map(this.activatedRoute.snapshot.data.conversations.data, (r) => {
-      const conversation = r.conversationDetail;
+    this.conversations = _.map(this.activatedRoute.snapshot.data.conversations.data, (conversation) => {
+      // const conversation = r.conversationDetail;
       if(conversation && conversation.type && conversation.type === 'individual') {
-        const u = _.find(r.users, (d) => {
+        const u = _.find(conversation.members, (d) => {
           return d._id !== this.user._id;
         })
-        r.fullName = u.firstName +" "+ u.lastName;
+        conversation.fullName = u.user.firstName +" "+ u.user.lastName;
       } else if(conversation && conversation.type && conversation.type === 'group') {
         // const u = _.find(r.users, (d) => {
         //   return d._id !== this.user._id;
         // })
-        r.fullName = conversation.name;
+        conversation.fullName = conversation.name;
       }
-      return r;
+      return conversation;
     });
     this.socketService.join({ channels: _.values(_.mapValues(this.conversations, '_id')) });
-    // this.socketService.receive().subscribe((data: any) => {
-    //   const conversation: any = _.find(this.conversations, { _id: data.conversationId });
-    //   conversation.
-    // })
+    this.socketService.receive().subscribe((data: any) => {
+      this.toastr.info(JSON.stringify(data));
+      // const conversation: any = _.find(this.conversations, { _id: data.conversationId });
+      // conversation.
+    })
     this.moduleService.mainTitle.next("Chat");
   }
 
@@ -61,9 +68,32 @@ export class ChatComponent implements OnInit {
   }
 
   redirectToChatWindow = (conversation: any) => {
-    this.route.navigateByUrl('/main/layout/user/chat', { skipLocationChange: true }).then(() => {
-      this.route.navigate(['main/layout/user/chat', conversation._id, 'conversation']);
-    });
+    console.log(conversation)
+    this.currentConversationData = conversation;
+    // this.localStorageService.store('currentConversationData', { 
+    //   userId: conversation._id,
+    //   userFullName: conversation.fullName,
+    // });
+    // this.route.navigateByUrl('/main/layout/user/chat', { skipLocationChange: true }).then(() => {
+    //   this.route.navigate(['main/layout/user/chat', conversation._id, 'conversation']);
+    // });
   }
+
+  send = () => {
+    this.socketService.postChatMessageSend({
+      eventName: 'chat.message.receive',
+      // eventType: '',
+      eventTo: this.currentConversationData.conversationId,
+      "conversationType": "individual",
+      "userId": this.currentConversationData.userId,
+      "conversationId": this.currentConversationData.conversationId,
+      "data": {
+          "type": "text",
+          "text": _.cloneDeep(this.message)
+      }
+    })
+    this.message = '';
+  }
+
 
 }

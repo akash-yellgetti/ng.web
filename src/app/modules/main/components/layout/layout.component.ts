@@ -7,7 +7,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { Router } from '@angular/router';
 import { ModuleService } from '../../core/services/module.service';
 import { setting } from '../../../../shared/json/setting.json';
-import { SocketService } from 'src/app/shared/services/socket/socket.service';
+import { SocketService } from '../../../../shared/services/socket/socket.service';
 
 @Component({
   selector: 'app-layout',
@@ -37,11 +37,11 @@ export class LayoutComponent {
     })
     this.user = this.localStorageService.retrieve('user');
     this.setProfileImage();
-    this.socketService.connect();
+    // this.socketService.connect();
     // this.socketService.emit('main');
     // this.socketService.join('main');
     // this.socketService.join('notification');
-    this.socketService.getNotification()
+    // this.socketService.getNotification()
     // .subscribe((r) => {
     //   console.log(r)
     // })

@@ -18,6 +18,7 @@ export class ChatWindowComponent implements OnInit {
   user: any = null;
   params: any = null;
   message: string = '';
+  currentConversationData: any = null;
   conversationHistory: any = [];
   constructor(
     public moduleService: ModuleService, 
@@ -29,6 +30,8 @@ export class ChatWindowComponent implements OnInit {
     ) {
       // console.log(this.activatedRoute.snapshot)
     this.conversationHistory = this.activatedRoute.snapshot.data.conversationHistory.data;
+    this.currentConversationData = this.localStorageService.retrieve('currentConversationData');
+    // console.log(this.conversationHistory);
     this.params = this.activatedRoute.snapshot.params;
     // console.log(params)
     // this.moduleService.mainTitle.next("Chat");
@@ -45,6 +48,9 @@ export class ChatWindowComponent implements OnInit {
 
   send = () => {
     this.socketService.postChatMessageSend({
+      eventName: 'chat.message.receive',
+      // eventType: '',
+      eventTo: this.params.id,
       "conversationType": "individual",
       "userId": this.user._id,
       "conversationId": this.params.id,

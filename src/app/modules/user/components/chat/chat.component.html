@@ -1,36 +1,92 @@
-<div class="container-fluid d-flex  d-gap-15 chart-wrapper">
-    <div class="w-30 chat-list-wrapper d-flex d-wrap d-gap-15">
-        <mat-card class="chat-list padding-zero">
-            <div class="list-header d-flex">
-                <div class="user-img d-flex align-items align-center">
-                    <img [src]="profileImg" *ngIf="profileImg" alt="profile image" class="profile-img">
-                    <p class="profile__initals ani" *ngIf="!profileImg">{{ user.shortName}}</p>
-                </div>
-                <div class="user-details">
-                    <p class="profile__initals ani">{{ user.fullName }}</p>
-                </div>
+<div class="container-fluid d-flex d-gap-15 chart-wrapper">
+  <div class="w-30 chat-list-wrapper d-flex d-wrap d-gap-15">
+    <mat-card class="chat-list padding-zero">
+      <div class="list-header d-flex">
+        <div class="user-img d-flex align-items align-center">
+          <img
+            [src]="profileImg"
+            *ngIf="profileImg"
+            alt="profile image"
+            class="profile-img"
+          />
+          <p class="profile__initals ani" *ngIf="!profileImg">
+            {{ user.shortName }}
+          </p>
+        </div>
+        <div class="user-details">
+          <p class="profile__initals ani">{{ user.fullName }}</p>
+        </div>
+      </div>
+      <div class="search-user">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" value="" placeholder="Search or start new chat" />
+      </div>
+      <div class="message-list">
+        <div
+          class="user-detail d-flex"
+          *ngFor="let conversation of conversations"
+        >
+          <div class="user-img d-flex align-items align-center">
+            <p class="profile__initals ani">CV</p>
+          </div>
+          <div class="user-details">
+            <p
+              class="profile__initals ani"
+              (click)="redirectToChatWindow(conversation)"
+            >
+              {{ conversation.fullName }}
+            </p>
+            <p class="desc">Lorem, ipsum dolor sit</p>
+          </div>
+          <div class="time">9.31 am</div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="w-70 chat-message-wrapper d-flex d-wrap">
+    <div class="chart-wrapper width-100" *ngIf="currentConversationData">
+      <mat-card class="chat-window padding-zero">
+        <div class="list-header d-flex align-items">
+          <div class="user-img d-flex align-items align-center">
+            <!-- <img [src]="profileImg" *ngIf="profileImg" alt="profile image" class="profile-img"> -->
+            <!-- <p class="profile__initals ani" *ngIf="!profileImg">{{ user.shortName}}</p> -->
+          </div>
+          <div class="user-details">
+            <p class="profile__initals ani">
+              {{ currentConversationData.fullName }}
+            </p>
+          </div>
+        </div>
+        <div class="chat-messages d-flex">
+          <div
+            class="chat-popup"
+            *ngFor="let message of currentConversationData.messages"
+            [ngClass]="{
+              'receive-msg': message.userId !== user._id,
+              'send-msg': message.userId === user._id
+            }"
+          >
+            <p>{{ message.text }}</p>
+            <div class="d-flex time-wrapper w-100">
+              <span class="time">9.30 am</span
+              ><span class="tick"
+                ><i class="fa-solid fa-check-double"></i
+              ></span>
             </div>
-            <div class="search-user">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" value="" placeholder="Search or start new chat">
-            </div>
-            <div class="message-list">
-                <div class="user-detail d-flex" *ngFor="let conversation of conversations">
-                    <div class="user-img d-flex align-items align-center">
-                        <p class="profile__initals ani">CV</p>
-                    </div>
-                    <div class="user-details" >
-                        <p class="profile__initals ani" (click)="redirectToChatWindow(conversation)" >{{ conversation.fullName }}</p>
-                        <p class="desc">Lorem, ipsum dolor sit</p>
-                    </div>
-                    <div class="time">
-                        9.31 am
-                    </div>
-                </div>
-            </div>
-        </mat-card>
+          </div>
+           
+        </div>
+        <div class="send-input d-flex">
+          <textarea
+            cols="3"
+            placeholder="Type a message"
+            [(ngModel)]="message"
+          ></textarea>
+          <button class="common-btn btn-text">
+            <i class="fa-regular fa-paper-plane" (click)="send()"></i>
+          </button>
+        </div>
+      </mat-card>
     </div>
-    <div class="w-70 chat-message-wrapper d-flex d-wrap">
-        <router-outlet></router-outlet>
-    </div>
+  </div>
 </div>
