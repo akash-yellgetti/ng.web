@@ -39,6 +39,109 @@ body {
 	font-family: "Open Sans", sans-serif !important;
 }
 
+@font-face {
+	font-family: 'icon-lib';
+	src:  url('../fonts/personal-finance-icons/icomoon.eot?m5ubuu');
+	src:  url('../fonts/personal-finance-icons/icomoon.eot?m5ubuu#iefix') format('embedded-opentype'),
+		url('../fonts/personal-finance-icons/icomoon.ttf?m5ubuu') format('truetype'),
+		url('../fonts/personal-finance-icons/icomoon.woff?m5ubuu') format('woff'),
+		url('../fonts/personal-finance-icons/icomoon.svg?m5ubuu#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
+.icon-font {
+/* use !important to prevent issues with browser extensions that change fonts */
+font-family: 'icon-lib' !important;
+speak: never;
+font-style: normal;
+font-weight: normal;
+font-variant: normal;
+text-transform: none;
+line-height: 1;
+
+/* Better Font Rendering =========== */
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-business-01:before {
+content: "\e900";
+}
+.icon-child-education-01:before {
+content: "\e901";
+}
+.icon-education-01:before {
+content: "\e902";
+}
+.icon-emergency-fund-01:before {
+content: "\e903";
+}
+.icon-epf-fund-01:before {
+content: "\e904";
+}
+.icon-fd-01:before {
+content: "\e905";
+}
+.icon-futures-01:before {
+content: "\e906";
+}
+.icon-gold-01:before {
+content: "\e907";
+}
+.icon-gold-02-01:before {
+content: "\e908";
+}
+.icon-high-education-01:before {
+content: "\e909";
+}
+.icon-home-01:before {
+content: "\e90a";
+}
+.icon-marriage-01:before {
+content: "\e90b";
+}
+.icon-mf-01:before {
+content: "\e90c";
+}
+.icon-mortgage-loan-01:before {
+content: "\e90d";
+}
+.icon-mutual-fund-01:before {
+content: "\e90e";
+}
+.icon-new-house-01:before {
+content: "\e90f";
+}
+.icon-nps-01:before {
+content: "\e910";
+}
+.icon-personal-01:before {
+content: "\e911";
+}
+.icon-ppf-01:before {
+content: "\e912";
+}
+.icon-property-01:before {
+content: "\e913";
+}
+.icon-rd-01:before {
+content: "\e914";
+}
+.icon-retirement-01:before {
+content: "\e915";
+}
+.icon-stocks-01:before {
+content: "\e916";
+}
+.icon-stocks-02-01:before {
+content: "\e917";
+}
+.icon-trading-01:before {
+content: "\e918";
+}  
+
 strong,
 .text-bold {
 	font-weight: 700;
