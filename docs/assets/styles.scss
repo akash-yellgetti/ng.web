@@ -2,6 +2,9 @@
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import '../../node_modules/sweetalert2/src/sweetalert2.scss';
 @import 'ngx-toastr/toastr';
+@import '../../node_modules/@swimlane/ngx-datatable/index.scss';
+@import '../../node_modules/@swimlane/ngx-datatable/themes/material.scss';
+@import '../../node_modules/@swimlane/ngx-datatable/assets/icons.css';
 // @import "../../node_modules/angular-calendar/css/angular-calendar.css";
 @import "./styles/index.scss";
 
@@ -117,3 +120,8 @@ body {
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
+
+
+// .table-bordered {
+  // border: 1px solid #000;
+// }

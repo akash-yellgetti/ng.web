@@ -22,7 +22,7 @@ export class RoutineComponent implements OnInit {
   },{
     'name': 'title', 
   },{
-    'name': 'decription',
+    'name': 'description',
   }
   ];
   constructor() { }
