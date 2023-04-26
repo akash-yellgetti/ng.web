@@ -232,11 +232,15 @@ const dailyTimeTable = [
   },
 ];
 
+const format = 'HH:mm a';
+const currentTime = moment(moment().format(format), format);
 for (let i in dailyTimeTable) {
   const timeTable: any = dailyTimeTable[i];
-  const startTime = moment(timeTable.start, 'HH:mm a');
-  const endTime = moment(timeTable.end, 'HH:mm a');
+  const startTime = moment(timeTable.start, format);
+  const endTime = moment(timeTable.end, format);
   const duration = moment.duration(endTime.diff(startTime)).asMinutes();
+  const currentSlot = currentTime.isBetween(startTime, endTime);
+  timeTable['currentSlot'] = currentSlot;
   timeTable['duration'] = duration;
 }
 

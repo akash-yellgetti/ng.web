@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routine } from 'src/app/shared/json/routine.json';
-
+import * as _ from 'lodash';
+import { SelectionType } from '@swimlane/ngx-datatable';
 @Component({
   selector: 'app-routine',
   templateUrl: './routine.component.html',
@@ -18,16 +19,23 @@ export class RoutineComponent implements OnInit {
   },{
     'name': 'duration', 
   },{
-    'name': 'type', 
+    'name': 'currentSlot',
   },{
     'name': 'title', 
   },{
     'name': 'description',
   }
   ];
+  selected: any = [];
+  SelectionType = SelectionType;
   constructor() { }
 
   ngOnInit(): void {
+    this.selected = _.filter(this.data, (r: any) => r && r.currentSlot === true);
+    console.log(this.selected)
   }
 
+  onSelect({ selected } : any) {
+    console.log('Select Event', selected, this.selected);
+  }
 }
