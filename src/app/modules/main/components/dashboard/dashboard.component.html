@@ -9,8 +9,21 @@
         </div>
         <img src="../../../../../assets/images/header-img.png" alt="">
       </div>
-    
     </ngx-slick-carousel>
+    <div class="d-flex d-wrap d-gap-15">
+      <mat-card class="col-25" *ngFor="let user of users;">
+        <mat-card-header>
+          <!-- <mat-icon mat-card-avatar [style.font-size.px]="24" style="border: 1px solid black"></mat-icon> -->
+          <mat-card-title> {{ user.userId }} </mat-card-title>
+          <!-- <mat-card-subtitle> {{ product.description }} </mat-card-subtitle> -->
+          <div fxFlex></div>
+          <!-- <div style="flex-grow: 1"></div> -->
+          <!-- <a mat-icon-button  href="#/main/layout/user/finance/dashboard" >
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </a> -->
+        </mat-card-header>
+      </mat-card>
+    </div>
     <div class="d-flex d-wrap d-gap-15">
       <mat-card class="col-50" *ngFor="let product of products;">
         <mat-card-header>

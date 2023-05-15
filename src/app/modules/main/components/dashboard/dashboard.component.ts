@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { slides } from 'src/app/shared/json/dashboard/slides.json';
 import { ModuleService } from '../../core/services/module.service';
+import { SocketService } from 'src/app/shared/services/socket/socket.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +10,7 @@ import { ModuleService } from '../../core/services/module.service';
 })
 export class DashboardComponent implements OnInit {
 
+  users: any = [];
   dataArray: any = [
     {
       id: 20, title: 'Match', desc: 'BL Match',
@@ -213,9 +215,15 @@ export class DashboardComponent implements OnInit {
     }
   ]
 
-  constructor(public moduleService: ModuleService) {
+  constructor(public moduleService: ModuleService, public socketService: SocketService) {
     this.moduleService.mainTitle.next("Dashboard");
     this.slides = slides;
+    const user = this.socketService.storage.retrieve('user');
+    console.log(user)
+    this.socketService.getOnlineUsers().subscribe((res: any) => {
+      console.log(res.userId === user._d);
+      this.users = res.users.filter((r: any) => r && r.userId && r.userId !== user._id );
+    })
     
   }
 

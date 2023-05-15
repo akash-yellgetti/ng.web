@@ -8,11 +8,11 @@ import { LocalStorageService } from 'ngx-webstorage';
 })
 export class SocketService {
 
-  constructor(public socket: Socket,private storage: LocalStorageService,
+  constructor(public socket: Socket,public storage: LocalStorageService,
     private toastr: ToastrService) {
       this.socket.fromEvent('userSocketId').subscribe((id: any) => {
         let user = this.storage.retrieve('user');
-        user = {...user, userSocketId: id };
+        user = {...user, userSocketId: id, deviceId: '12345' };
         // console.log('userSocketId', id)
         this.storage.store('user', user);
         this.connected();
@@ -54,6 +54,10 @@ export class SocketService {
   // getMessage() {
   //   return this.socket.fromEvent('chat.message');
   // }
+
+  getOnlineUsers() {
+    return this.socket.fromEvent('onlineUsers');
+  }
 
   postChatMessageSend(data: any) {
     this.send('send', data);
