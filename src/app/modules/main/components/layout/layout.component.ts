@@ -48,6 +48,12 @@ export class LayoutComponent {
     // this.socketService.getMessage().subscribe((r) => {
     //   console.log('message', r)
     // })
+
+    this.socketService.getOnlineUsers().subscribe((res: any) => {
+      this.localStorageService.store('onlineUsers', res.users.filter((r: any) => r && r.userId && r.userId !== this.user._id ));
+      // console.log(res.userId === user._d);
+      // this.users = res.users.filter((r: any) => r && r.userId && r.userId !== user._id );
+    })
   }
 
   setProfileImage = () => {

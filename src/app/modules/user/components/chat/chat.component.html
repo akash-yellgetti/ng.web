@@ -35,6 +35,7 @@
               (click)="redirectToChatWindow(conversation)"
             >
               {{ conversation.fullName }}
+              <span class="status-circle "  [ngClass]="{'online': conversation && conversation.isOnline !== false, 'away': conversation && conversation.isOnline === false }" ></span>
             </p>
             <p class="desc">Lorem, ipsum dolor sit</p>
           </div>

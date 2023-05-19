@@ -30,20 +30,33 @@ export class ChatComponent implements OnInit {
     private socketService: SocketService,
     private toastr: ToastrService
     ) {
-    this.user = this.localStorageService.retrieve('user');
+    const user = this.localStorageService.retrieve('user');
+    const onlineUsers = this.localStorageService.retrieve('onlineUsers');
+    console.log(onlineUsers);
     this.conversations = _.map(this.activatedRoute.snapshot.data.conversations.data, (conversation) => {
       // const conversation = r.conversationDetail;
       if(conversation && conversation.type && conversation.type === 'individual') {
         const u = _.find(conversation.members, (d) => {
-          return d._id !== this.user._id;
+          return !(d.userId === user._id);
         })
+        // console.log(u)
+        // console.log(user._id)
+        conversation.user = u.user;
         conversation.fullName = u.user.firstName +" "+ u.user.lastName;
+        // conversation.userId = u.userId;
+        // console.log(onlineUsers, u)
+        conversation.isOnline = _.find(onlineUsers, { userId: u.user._id }) || false;
       } else if(conversation && conversation.type && conversation.type === 'group') {
         // const u = _.find(r.users, (d) => {
         //   return d._id !== this.user._id;
         // })
         conversation.fullName = conversation.name;
       }
+      // conversation.
+
+      console.log(conversation)
+      
+
       return conversation;
     });
     this.socketService.join({ channels: _.values(_.mapValues(this.conversations, '_id')) });
