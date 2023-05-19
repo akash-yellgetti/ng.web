@@ -60,10 +60,16 @@ export class ChatComponent implements OnInit {
       return conversation;
     });
     this.socketService.join({ channels: _.values(_.mapValues(this.conversations, '_id')) });
-    this.socketService.receive().subscribe((data: any) => {
+    this.socketService.getChatMessageReceive().subscribe((data: any) => {
       this.toastr.info(JSON.stringify(data));
-      // const conversation: any = _.find(this.conversations, { _id: data.conversationId });
-      // conversation.
+      const conversation: any = _.find(this.conversations, { _id: data.conversationId });
+      const messages = conversation.messages;
+      messages.push({
+        "conversationId": data.conversationId,
+        "userId": data.userId,
+        "type": data.data.type,
+        "text": data.data.text,
+      })
     })
     this.moduleService.mainTitle.next("Chat");
   }
@@ -93,18 +99,20 @@ export class ChatComponent implements OnInit {
   }
 
   send = () => {
-    this.socketService.postChatMessageSend({
-      eventName: 'chat.message.receive',
-      // eventType: '',
-      eventTo: this.currentConversationData.conversationId,
-      "conversationType": "individual",
-      "userId": this.currentConversationData.userId,
-      "conversationId": this.currentConversationData.conversationId,
+    const data: any = {
+      eventName: 'chat.message',
+      eventTo: this.currentConversationData._id,
+      "type": this.currentConversationData.type,
+      "userId": this.user._id,
+      "conversationId": this.currentConversationData._id,
       "data": {
           "type": "text",
           "text": _.cloneDeep(this.message)
       }
-    })
+    };
+    // const conversationType = this.currentConversationData.type === 'individual' ? : 
+    this.conversationService.postConversationMessage(data).subscribe();
+    this.socketService.postChatMessageSend(data);
     this.message = '';
   }
 

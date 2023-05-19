@@ -30,7 +30,7 @@ export class SocketService {
   }
 
   receive = () => {
-    return this.socket.fromEvent('receive');
+    return this.socket.fromEvent('chat.message');
   }
 
   join = (data: any = { channels: [] }) => {
@@ -64,7 +64,7 @@ export class SocketService {
   }
 
   getChatMessageReceive() {
-    return this.socket.fromEvent('chat.message.receive');
+    return this.socket.fromEvent('chat.message');
   }
 
   getNotification() {

@@ -47,6 +47,22 @@ export class ConversationService {
       catchError(this.handleError)
     );
   };
+
+  postConversationMessage = (data: any) => {
+    const url = setting['uri'] + '/conversation/message/create';
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: this.getAuthToken(),
+    });
+    const options = { headers: headers };
+    const params = JSON.stringify(data);
+
+    return this.http.post(url, params, options).pipe(
+      map((data) => data),
+      catchError(this.handleError)
+    );
+  };
   
 
   getAuthToken = () => {
