@@ -1,6 +1,7 @@
 rm -rf docs
 rm -rf android/app/src/main/assets/public
 ng build --aot
+git checkout -- docs/CNAME
 # rm -rf ../nginx/html/
 # cp -r docs ../nginx/html
 
