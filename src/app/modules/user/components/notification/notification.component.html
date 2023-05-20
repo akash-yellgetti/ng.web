@@ -1,18 +1,18 @@
 <div class="container-fluid d-flex">
     <button class="common-btn btn-text">Mark all as read</button>
-    <div class="notification-wrapper">
-        <mat-card class="w-100 not-read notify-card d-flex">
+    <div class="notification-wrapper" *ngIf="notifications && notifications.length > 0">
+        <mat-card class="w-100 not-read notify-card d-flex" *ngFor="let notification of notifications">
             <div class="avatar-wrapper">
                 <img src="../../../../../assets/images/user-pic.png" alt="">
             </div>
             <div class="notification-content">
-                <h3>Where to invest your money to save tax</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore, illo cumque odio obcaecati repellendus voluptatem officia similique qui, cum repudiandae iusto atque architecto, corrupti quae animi quaerat provident velit. Unde.</p>
+                <h3>{{ notification?.title }}</h3>
+                <p>{{ notification?.description }}</p>
             </div>
             <div class="notfication-time">1 day ago</div>
             <button class="common-btn btn-text"><i class="fa-solid fa-xmark"></i></button>
         </mat-card>
-        <mat-card class="w-100 notify-card d-flex">
+        <!-- <mat-card class="w-100 notify-card d-flex">
             <div class="avatar-wrapper">
                 <img src="../../../../../assets/images/user-pic.png" alt="">
             </div>
@@ -55,7 +55,7 @@
             </div>
             <div class="notfication-time">1 day ago</div>
             <button class="common-btn btn-text"><i class="fa-solid fa-xmark"></i></button>
-        </mat-card>
+        </mat-card> -->
     </div>    
 </div>
 

@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { ModuleService } from '../../core/services/module.service';
 import { setting } from '../../../../shared/json/setting.json';
 import { SocketService } from '../../../../shared/services/socket/socket.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-layout',
@@ -30,7 +31,7 @@ export class LayoutComponent {
   constructor(private breakpointObserver: BreakpointObserver, private localStorageService: LocalStorageService, 
     private route: Router, 
     private socketService: SocketService, 
-    private toastr: SocketService, 
+    private toastr: ToastrService, 
     public moduleService: ModuleService) {
     this.moduleService.mainTitle.subscribe((r: any) => {
       this.mainTitle = r;
@@ -41,10 +42,13 @@ export class LayoutComponent {
     // this.socketService.emit('main');
     // this.socketService.join('main');
     // this.socketService.join('notification');
-    // this.socketService.getNotification()
-    // .subscribe((r) => {
-    //   console.log(r)
-    // })
+    this.socketService.getNotification()
+    .subscribe((notification: any) => {
+      // console.log(r)
+      const data = notification.data;
+      // console.log(data)
+      this.toastr.info(data.description, data.title)
+    })
     // this.socketService.getMessage().subscribe((r) => {
     //   console.log('message', r)
     // })

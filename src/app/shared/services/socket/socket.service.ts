@@ -68,9 +68,10 @@ export class SocketService {
   }
 
   getNotification() {
-    this.socket.on('notification', (data: any) => {
-      this.toastr.info(data.title)
-    });
+    return this.socket.fromEvent('notification');
+    // this.socket.on('notification', (data: any) => {
+    //   this.toastr.info(data.title)
+    // });
   }
 
 }

@@ -9,6 +9,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ConversationsResolver } from './resolver/conversations/conversations.resolver';
 import { ConversationHistoryResolver } from './resolver/conversation-history/conversation-history.resolver';
 import { ChatWindowComponent } from './components/chat-window/chat-window.component';
+import { NotificationsResolver } from './resolver/notifications/notifications.resolver';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'notification',
+    resolve: { notifications: NotificationsResolver  },
     component: NotificationComponent
   },
   {
