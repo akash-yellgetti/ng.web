@@ -34,10 +34,21 @@ export class ChartComponent implements OnInit {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-            }
+                // distance: -20,
+                // style: {
+                //     fontWeight: 'bold',
+                //     color: 'white'
+                // },
+                format: '<b>{point.name}</b>: {point.percentage:.1f} % | {y:.2f}'
+            },
+            // startAngle: -90,
+            // endAngle: 90,
+            // center: ['50%', '75%'],
+            // size: '70%',
+            showInLegend: true
         }
     },
+     
     series: []
 };
   constructor() { }

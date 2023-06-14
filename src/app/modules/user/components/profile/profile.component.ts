@@ -8,6 +8,7 @@ import { ProfileService } from '../../services/profile/profile.service';
 import { FieldService } from 'src/app/shared/services/field/field.service';
 import { setting } from '../../../../shared/json/setting.json';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-profile',
@@ -161,16 +162,45 @@ export class ProfileComponent implements OnInit {
 
     const myObserver: any = {
       next: (res: any) => {
-        // console.log('Observer got a next value: ' + res);
-        if (res && res.status) {
-          let user: any = this.user;
-          user = { ...user, ...res.data };
-          this.localStorageService.store('user', user);
-          this.user = user;
-          this.setProfileImage();
-          this.dialog.closeAll();
-          this.clearFile('all');
+        let title = '';
+        if (this.selectedFile) {
+          title = 'Successfully uploaded profile photo.'
         }
+
+        if (this.selectedFileBg) {
+          title = 'Successfully uploaded profile background photo.'
+        }
+
+        Swal.fire({
+          title,
+          icon: 'success',
+          confirmButtonColor: '#002b5c',
+          confirmButtonText: 'Close'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            if (res && res.status) {
+              let user: any = this.user;
+              user = { ...user, ...res.data };
+              this.localStorageService.store('user', user);
+              this.user = user;
+              this.setProfileImage();
+              this.dialog.closeAll();
+              this.clearFile('all');
+            }
+          }
+        });
+      },
+      error: (err: any) => {
+        if (err && err.error && err.error.message) {
+          Swal.fire(
+            'Warning!',
+            err.error.message,
+            'error'
+          )  
+        }
+      },
+      complete: () => {
+        console.log('Observer got a complete notification');
       },
     };
     this.profileService.updateProfilePic(formData).subscribe(myObserver);
@@ -188,16 +218,26 @@ export class ProfileComponent implements OnInit {
     const myObserver: any = {
       next: (res: any) => {
         // console.log('Observer got a next value: ' + res);
-        if (res && res.status) {
-          let user: any = this.user;
-          user = { ...user, ...res.data };
-          const fullName: string = user.firstName + ' ' + user.lastName;
-          user.fullName = fullName;
-          const shortName: any = fullName.match(/\b(\w)/g)?.join('');
-          user.shortName = shortName;
-          this.localStorageService.store('user', user);
-          this.user = user;
-        }
+        Swal.fire({
+          title: "Profile data updated successfully.",
+          icon: 'success',
+          confirmButtonColor: '#002b5c',
+          confirmButtonText: 'Close'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            if (res && res.status) {
+              let user: any = this.user;
+              user = { ...user, ...res.data };
+              const fullName: string = user.firstName + ' ' + user.lastName;
+              user.fullName = fullName;
+              const shortName: any = fullName.match(/\b(\w)/g)?.join('');
+              user.shortName = shortName;
+              this.localStorageService.store('user', user);
+              this.user = user;
+            }
+          }
+        });
+        
       },
     };
     this.profileService.updateProfile(params).subscribe(myObserver);

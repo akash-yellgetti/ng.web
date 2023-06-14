@@ -10,12 +10,13 @@ import * as _ from 'lodash';
 export class BudgetComponent implements OnInit {
   public data: any = budget;
   public columns: any = [
-    {
-      'name': 'date',
-    }, {
+    // {
+    //   'name': 'date',
+    // },
+     {
     'name': 'category',
   },{
-    'name': 'type', 
+    'name': 'subCategory', 
   },{
     'name': 'title', 
   },{
@@ -61,19 +62,22 @@ export class BudgetComponent implements OnInit {
       }]
   }]
   }
-  constructor() { }
+  chartOptions1: any = {};
+  constructor() { 
+    this.chartOptions1 = {...this.chartOptions}
+  }
 
   ngOnInit(): void {
       this.chartOptions.series = [{
-        name: 'Brands',
+        name: 'Category',
         colorByPoint: true,
         data: this.getChartDataFormat(this.data, 'category', 'amount')
       }];
 
-      this.chartOptions.series = [{
+      this.chartOptions1.series = [{
         name: 'Type',
         colorByPoint: true,
-        data: this.getChartDataFormat(this.data, 'type', 'amount')
+        data: this.getChartDataFormat(this.data, 'subCategory', 'amount')
       }];
   }
 

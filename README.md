@@ -82,5 +82,6 @@ ng g c modules/school/components/teacher --module=school
 ng g m modules/personal --routing=true
 ng g c modules/personal/components/budget --module=personal
 ng g c modules/personal/components/routine --module=personal
+ng g c modules/personal/components/goal --module=personal
 
 --------------------------------------------------------------------------------------------------
