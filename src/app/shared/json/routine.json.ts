@@ -23,9 +23,15 @@ const dailyTimeTable = [
   },
   {
     start: "06:45 AM",
-    end: "7:00 AM",
+    end: "06:46 AM",
     type: "Drink",
     title: "Water",
+  },
+  {
+    start: "06:45 AM",
+    end: "7:00 AM",
+    type: "Health",
+    title: "Mediation",
   },
   {
     start: "07:00 AM",
@@ -91,9 +97,15 @@ const dailyTimeTable = [
   },
   {
     start: "12:30 PM",
-    end: "12:45 PM",
+    end: "12:31 PM",
     type: "Drink",
     title: "Water",
+  }, 
+  {
+    start: "12:30 PM",
+    end: "12:45 PM",
+    type: "Blank",
+    title: "",
   }, 
   {
     start: "12:45 PM",
@@ -221,8 +233,14 @@ const dailyTimeTable = [
     title: "Water",
   },
   {
+    start: "11:00 PM",
+    end: "11:59 PM",
+    type: "Sleep",
+    title: "Sleep",
+  },
+  {
     start: "12:00 AM",
-    end: "07:00 AM",
+    end: "06:00 AM",
     type: "Sleep",
     title: "Sleep",
   },
