@@ -94,7 +94,7 @@ const items: any = [
       subCategory: 'invest',
       title: 'PPF',
       description: 'Child Education',
-      amount: 7500,
+      amount: 5000,
     },
     {
       date: 5,
@@ -102,7 +102,7 @@ const items: any = [
       subCategory: 'invest',
       title: 'NPS',
       description: 'Retirement',
-      amount: 7500,
+      amount: 5000,
     },
     // {
     //   date: 5,
@@ -148,9 +148,9 @@ const items: any = [
       date: 5,
       category: 'expense',
       subCategory: 'loan',
-      title: 'Home',
-      description: 'Addon A-704 - Kashigoan',
-      amount: 10000,
+      title: 'Scaler',
+      description: 'Master\'s',
+      amount: 11500,
     },
     {
       date: 5,
