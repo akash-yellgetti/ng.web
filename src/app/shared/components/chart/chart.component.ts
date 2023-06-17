@@ -4,57 +4,59 @@ import * as Highcharts from 'highcharts';
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.scss']
+  styleUrls: ['./chart.component.scss'],
 })
 export class ChartComponent implements OnInit {
   Highcharts: typeof Highcharts = Highcharts;
   @Input() options: any = {};
-  chartOptions: any =  {
+  @Input() updateFlag: any = false;
+  chartOptions: any = {
     chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
+      type: 'column',
     },
     title: {
-        // text: 'Browser market shares in May, 2020',
-        align: 'left'
+      text: 'Major trophies for some English teams',
+      align: 'center',
+    },
+    // xAxis: {
+    //   categories: ['Arsenal', 'Chelsea', 'Liverpool', 'Manchester United'],
+    // },
+    yAxis: {
+      min: 0,
+      title: {
+        text: 'Count trophies',
+      },
+      stackLabels: {
+        // enabled: true,
+      },
+    },
+    legend: {
+      align: 'left',
+      x: 70,
+      verticalAlign: 'top',
+      y: 70,
+      floating: true,
+      backgroundColor: 'white',
+      borderColor: '#CCC',
+      borderWidth: 1,
+      shadow: false,
     },
     tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    accessibility: {
-        point: {
-            valueSuffix: '%'
-        }
+      headerFormat: '<b>{point.x}</b><br/>',
+      pointFormat: '{series.name}: {point.y}',
     },
     plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: true,
-                // distance: -20,
-                // style: {
-                //     fontWeight: 'bold',
-                //     color: 'white'
-                // },
-                format: '<b>{point.name}</b>: {point.percentage:.1f} % | {y:.2f}'
-            },
-            // startAngle: -90,
-            // endAngle: 90,
-            // center: ['50%', '75%'],
-            // size: '70%',
-            showInLegend: true
-        }
+      column: {
+        stacking: 'normal',
+        // dataLabels: {
+        //   enabled: true,
+        // },
+      },
     },
-     
-    series: []
-};
-  constructor() { }
+  };
+  constructor() {}
 
   ngOnInit(): void {
     this.chartOptions.series = this.options.series;
   }
-
 }

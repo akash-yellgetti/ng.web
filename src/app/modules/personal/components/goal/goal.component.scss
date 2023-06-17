@@ -10,3 +10,19 @@
 		flex-wrap: wrap;
 	}
 }
+
+
+.grid-container {
+    display: flex;
+    // flex-wrap: wrap;
+	flex-direction: column;
+	gap: 15px;
+  }
+  
+  .grid-item {
+	flex-basis: 25%; /* Adjust the value as needed */
+    padding: 10px;
+    box-sizing: border-box;
+	background-color: aliceblue;
+	border: 1px solid #000;
+  }

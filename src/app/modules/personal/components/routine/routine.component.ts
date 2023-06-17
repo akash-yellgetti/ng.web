@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { routine } from 'src/app/shared/json/routine.json';
 import * as _ from 'lodash';
 import { SelectionType } from '@swimlane/ngx-datatable';
-import * as Highcharts from 'highcharts';
+
 @Component({
   selector: 'app-routine',
   templateUrl: './routine.component.html',
