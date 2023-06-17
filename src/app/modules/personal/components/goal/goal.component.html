@@ -18,10 +18,22 @@
           <mat-label>Tenure (In years)</mat-label>
           <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.tenure.value" />
         </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Extra amount</mat-label>
+          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.extraAmount.value" />
+        </mat-form-field>
+        <mat-form-field class="w-100" *ngIf="InstallmentAmount > 0">
+          <mat-label>Installment Amount</mat-label>
+          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="InstallmentAmount" />
+        </mat-form-field>
       </mat-card-content>
+      
       <mat-card-actions>
         <button mat-raised-button color="primary" (click)="getPrincipalMonthlyAmount()" >Calculate</button>
       </mat-card-actions>
     </mat-card>
+  </div>
+  <div class="w-100">
+    <app-chart class="col-100" [options]="chartOptions"  [updateFlag]="updateFlag" ></app-chart>
   </div>
 </div>

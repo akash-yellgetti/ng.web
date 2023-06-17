@@ -43,6 +43,10 @@ export class GoalComponent implements OnInit {
   }
   ];
   chartOptions: any = {
+    title: {
+      text: 'Monthly Investment',
+      align: 'center',
+    },
     series: [{
       name: 'Brands',
       colorByPoint: true,
@@ -78,17 +82,21 @@ export class GoalComponent implements OnInit {
       }]
   }]
   }
-  updateFlag: any = false;
+  updateFlag: any = 0;
+  InstallmentAmount: any = 0;
   goal: any = {
     amount: {
-      value: 10000
+      value: 1962433
     },
     rate: {
-      value: 12
+      value: 9.4
     },
     tenure: {
-      value: 5
-    }
+      value: 4
+    },
+    extraAmount: {
+      value: 5000
+    },
   }
   selected: any = [];
   SelectionType = SelectionType;
@@ -98,16 +106,23 @@ export class GoalComponent implements OnInit {
   ngOnInit(): void {
     this.selected = _.filter(this.data, (r: any) => r && r.currentSlot === true);
     console.log(this.selected)
-    this.chartOptions.series =  [{
-      name: 'Principal',
-      data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4,
-          194.1, 95.6, 54.4]
+    this.chartOptions.series =  [  {
+    name: 'extraAmount',
+    data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5,
+        106.6, 92.3]
+},
+{
+  name: 'Interest',
+  data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5,
+      106.6, 92.3]
+},
+{
+  name: 'Principal',
+  data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4,
+      194.1, 95.6, 54.4]
 
-  }, {
-      name: 'Interest',
-      data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5,
-          106.6, 92.3]
-  },
+},
+  
 ];
   }
 
@@ -122,14 +137,24 @@ export class GoalComponent implements OnInit {
 
   getPrincipalMonthlyAmount = () => {
     const goal = this.goal;
-    const sipAmount: any = this.calculatorService.SIPAmount(goal.amount.value, goal.rate.value, goal.tenure.value);
-    const data: any = this.calculatorService.getSIPAmountGrid(parseFloat(sipAmount), goal.rate.value, goal.tenure.value);
-    const principal: any = _.values(_.mapValues(data, 'monthlyAmount'));
-    this.chartOptions.series[0].data = principal;
-    const Interest: any = _.values(_.mapValues(data, 'monthlyInterest'));
-    this.chartOptions.series[1].data = Interest;
-    // console.log(this.chartOptions.series)
+    const emiAmount: any = this.calculatorService.emi(goal.amount.value, goal.rate.value, goal.tenure.value);
+    this.InstallmentAmount = emiAmount;
+    const data: any = this.calculatorService.emiTable(goal.amount.value, goal.rate.value, goal.tenure.value, parseFloat(goal.extraAmount.value));
     console.log(data);
-    this.updateFlag = true;
+    const principal: any = _.values(_.mapValues(data, 'principalPayment'));
+    // console.log(principal)
+    this.chartOptions.series[2].data = principal;
+    const Interest: any = _.values(_.mapValues(data, 'interest'));
+    this.chartOptions.series[1].data = Interest;
+    const extraAmount: any = _.values(_.mapValues(data, 'extraAmount'));
+    this.chartOptions.series[0].data = extraAmount;
+    // console.log(this.chartOptions.series)
+    // this.chartOptions.title = this.chartOptions.title + " : " + sipAmount;
+    // console.log(data);
+    this.updateFlag = new Date().getTime();
+    // console.log(this.updateFlag)
+    // this.updateFlag = this.updateFlag === false ? true : this.updateFlag;
+    // console.log(this.updateFlag);
+    // this.updateFlag =  !(this.updateFlag);
   }
 }

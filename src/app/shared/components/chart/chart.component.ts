@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import * as Highcharts from 'highcharts';
 
 @Component({
@@ -57,6 +57,12 @@ export class ChartComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.chartOptions.series = this.options.series;
+    // this.chartOptions.series = this.options.series;
+    this.chartOptions = { ...this.chartOptions, ...this.options}
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    // changes.prop contains the old and the new value...
+    console.log(changes)
   }
 }

@@ -57,7 +57,7 @@ export class CalculatorService {
     return sipAmount.toFixed(2); // Round the result to 2 decimal places
   }
 
-  getSIPAmountGrid = (sipAmount: number, rate: number,time: any) => {
+  sipTable = (sipAmount: number, rate: number,time: any) => {
 
     const decimalRate = rate / 100;
     const monthlyRate = decimalRate / 12;
@@ -88,6 +88,48 @@ export class CalculatorService {
     }
 
     return data;
+  }
+
+  emi = (principal: number, rate: number, time: number) => {
+    // Convert rate to decimal and calculate monthly rate
+    const decimalRate = rate / 100;
+    const monthlyRate = decimalRate / 12;
+  
+    // Convert time to number of months
+    const numberOfMonths = time * 12;
+  
+    // Calculate EMI using the formula
+    const emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, numberOfMonths)) /
+      (Math.pow(1 + monthlyRate, numberOfMonths) - 1);
+  
+    return emi.toFixed(2); // Round the result to 2 decimal places
+  }
+
+  
+  emiTable = (principal: number, rate: number, time: number, extraAmount = 0) => {
+    const emiTable = [];
+    let remainingPrincipal = principal;
+    const emi = parseFloat(this.emi(remainingPrincipal, rate, time));
+    
+    while(remainingPrincipal > 0) {
+      const principal = this.round2Decimal(remainingPrincipal);
+      const interest = this.round2Decimal((remainingPrincipal * rate) / (12 * 100));
+      const principalPayment = this.round2Decimal(emi - interest);
+  
+      remainingPrincipal -= this.round2Decimal(principalPayment);
+      remainingPrincipal -= extraAmount;
+
+      emiTable.push({
+        principal,
+        emi,
+        principalPayment,
+        interest,
+        extraAmount,
+        remainingPrincipal
+      })
+    }
+
+    return emiTable;
   }
 
   round2Decimal = (value: any) => {
