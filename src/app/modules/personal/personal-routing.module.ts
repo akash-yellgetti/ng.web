@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BudgetComponent } from './components/budget/budget.component';
 import { RoutineComponent } from './components/routine/routine.component';
 import { GoalComponent } from './components/goal/goal.component';
+import { TransactionComponent } from './components/transaction/transaction.component';
 
 const routes: Routes = [
   {
@@ -17,8 +18,10 @@ const routes: Routes = [
     path: 'goal',
     component: GoalComponent
   },
-  
-  
+  {
+    path: 'transaction',
+    component: TransactionComponent
+  },
 ];
 
 
