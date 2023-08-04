@@ -1,11 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ViewEncapsulation, OnInit} from '@angular/core';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import {MatDatepicker, MatDatepickerModule} from '@angular/material/datepicker';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { budget } from 'src/app/shared/json/budet.json';
+import { Moment} from 'moment';
+import * as _moment from 'moment';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+const moment = _moment;
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @Component({
   selector: 'app-transaction',
   templateUrl: './transaction.component.html',
   styleUrls: ['./transaction.component.scss'],
+  providers: [
+    // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
+    // application's root module. We provide it at the component level here, due to limitations of
+    // our example generation script.
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+  ],
 })
 export class TransactionComponent implements OnInit {
   public data: any = budget;
@@ -26,16 +59,36 @@ export class TransactionComponent implements OnInit {
   loading = false;
   rows: any = [];
   ColumnMode = ColumnMode;
+  month: any = 1;
+  date = new FormControl(moment());
   ngOnInit(): void {}
 
   constructor() {
+    const d = new Date();
+    this.month = d.getMonth()+1;
+    // console.log(this.date.value.t)
+    const check = moment(this.data.value).format("MM-YYYY");
+    console.log(check)
     this.fetch((data: any) => {
       this.rows = data;
     });
   }
 
+  setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
+    const ctrlValue = this.date.value!;
+    ctrlValue.month(normalizedMonthAndYear.month());
+    ctrlValue.year(normalizedMonthAndYear.year());
+    this.date.setValue(ctrlValue);
+    console.log(normalizedMonthAndYear)
+    datepicker.close();
+  }
+
   fetch(cb: any) {
+
     const req = new XMLHttpRequest();
+    var data = JSON.stringify({
+      "month": this.month
+    });
     req.open('POST', 'http://localhost:5001/personal/transaction/list');
     req.setRequestHeader(
       'Authorization',
@@ -49,7 +102,7 @@ export class TransactionComponent implements OnInit {
       cb(data.data);
     };
 
-    req.send();
+    req.send(data);
   }
 
   onSort(event: any) {
