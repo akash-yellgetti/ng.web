@@ -1,9 +1,19 @@
 
 <div class="container-fluid d-flex">
-    <mat-card class="col-100">
-        <p>transaction works!</p>
-    </mat-card>
+    <div class="col-100">
+        <ngx-datatable
+        class="material"
+        [rows]="rows"
+        [columns]="columns"
+        [columnMode]="ColumnMode.force"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        rowHeight="auto"
+        [externalSorting]="true"
+        [loadingIndicator]="loading"
+        (sort)="onSort($event)"
+      >
+      </ngx-datatable>
+    </div>
 </div>
-
-
 
