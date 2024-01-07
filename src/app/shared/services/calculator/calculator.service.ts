@@ -90,6 +90,57 @@ export class CalculatorService {
     return data;
   }
 
+  stepUpSipTable = (sipAmount: number, rate: number, growthRate: number, time: any) => {
+
+    const decimalRate = rate / 100;
+    const growthdecimalRate = growthRate / 100;
+    const monthlyRate = decimalRate / 12;
+
+    const numberOfMonths = time * 12;
+    
+    const data = [];
+    let initialAmount = 0;
+    let monthlyAmount = 0;
+    let monthlySum = 0;
+    let monthlyInterest = 0;
+    let totalAmount = 0;
+    for(let i = 0; i < numberOfMonths; i++) {
+      sipAmount = i != 0 && i%12 === 0 ? sipAmount + (sipAmount * growthdecimalRate) : sipAmount;
+      initialAmount = totalAmount;
+      monthlyAmount = sipAmount;
+      monthlySum = this.round2Decimal(initialAmount + monthlyAmount);
+      monthlyInterest = this.round2Decimal(monthlySum * monthlyRate);
+      totalAmount = this.round2Decimal(monthlySum + monthlyInterest);
+
+      data.push({
+        initialAmount,
+        monthlyAmount,
+        monthlySum,
+        monthlyInterest,
+        totalAmount,
+      })
+    }
+
+    return data;
+  }
+
+  loanAmount = (emiAmount: number, rate: number,time: any) => {
+
+    // Convert time to number of months
+    const numberOfMonths = time * 12;
+
+    
+
+    // Convert annual interest rate to monthly and decimal
+    const monthlyInterestRate = (rate / 100) / 12;
+
+    // Calculate the loan amount formula
+    const maxLoanAmount = emiAmount * ((1 - Math.pow(1 + monthlyInterestRate, -numberOfMonths)) / monthlyInterestRate);
+
+    return maxLoanAmount;
+}
+
+
   emi = (principal: number, rate: number, time: number) => {
     // Convert rate to decimal and calculate monthly rate
     const decimalRate = rate / 100;
