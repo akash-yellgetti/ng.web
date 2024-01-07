@@ -8,15 +8,15 @@
             <mat-card-content>
                 <mat-form-field class="w-100">
                     <mat-label>Monthly Investment</mat-label>
-                    <input matInput placeholder="Ex. Pizza" value="100000" [(ngModel)]="investment.monthlyAmount.value" />
+                    <input matInput placeholder="Ex. Pizza" value="100000" [(ngModel)]="investment.sip.form.monthlyAmount.value" />
                 </mat-form-field>
                 <mat-form-field class="w-100">
                     <mat-label>ROI</mat-label>
-                    <input matInput placeholder="Ex. Pizza" value="9" [(ngModel)]="investment.roi.value" />
+                    <input matInput placeholder="Ex. Pizza" value="9" [(ngModel)]="investment.sip.form.roi.value" />
                 </mat-form-field>
                 <mat-form-field class="w-100">
                     <mat-label>tenure (In Months)</mat-label>
-                    <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="investment.tenure.value" />
+                    <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="investment.sip.form.tenure.value" />
                 </mat-form-field>
             </mat-card-content>
             <mat-card-actions>
@@ -33,20 +33,22 @@
             <mat-card-content>
                 <mat-form-field class="w-100">
                     <mat-label>Monthly Investment</mat-label>
-                    <input matInput placeholder="Ex. Pizza" value="100000" [(ngModel)]="investment.monthlyAmount.value" />
+                    <input matInput placeholder="Ex. Pizza" value="100000" [(ngModel)]="investment.stepUpSip.form.monthlyAmount.value" />
                 </mat-form-field>
                 <mat-form-field class="w-100">
                     <mat-label>ROI</mat-label>
-                    <input matInput placeholder="Ex. Pizza" value="9" [(ngModel)]="investment.roi.value" />
+                    <input matInput placeholder="Ex. Pizza" value="9" [(ngModel)]="investment.stepUpSip.form.roi.value" />
                 </mat-form-field>
+            
                 <mat-form-field class="w-100">
                     <mat-label>Yearly Growth </mat-label>
-                    <input matInput placeholder="Ex. Pizza" value="10" [(ngModel)]="investment.growth.value" />
+                    <input matInput placeholder="Ex. Pizza" value="10" [(ngModel)]="investment.stepUpSip.form.growth.value" />
                 </mat-form-field>
                 <mat-form-field class="w-100">
                     <mat-label>tenure (In Months)</mat-label>
-                    <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="investment.tenure.value" />
+                    <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="investment.stepUpSip.form.tenure.value" />
                 </mat-form-field>
+            
             </mat-card-content>
         </mat-card>
     </div>
@@ -59,19 +61,17 @@
             <mat-card-content>
                 <mat-form-field class="w-100">
                     <mat-label>Monthly Investment</mat-label>
-                    <input matInput placeholder="Ex. Pizza" value="100000" [(ngModel)]="investment.monthlyAmount.value" />
+                    <input matInput placeholder="Ex. Pizza" value="100000" [(ngModel)]="investment.loan.form.monthlyAmount.value" />
                 </mat-form-field>
                 <mat-form-field class="w-100">
                     <mat-label>ROI</mat-label>
-                    <input matInput placeholder="Ex. Pizza" value="9" [(ngModel)]="investment.roi.value" />
+                    <input matInput placeholder="Ex. Pizza" value="9" [(ngModel)]="investment.loan.form.roi.value" />
                 </mat-form-field>
-                <mat-form-field class="w-100">
-                    <mat-label>Yearly Extra EMI </mat-label>
-                    <input matInput placeholder="Ex. Pizza" value="2" [(ngModel)]="investment.extra.value" />
-                </mat-form-field>
+            
+                
                 <mat-form-field class="w-100">
                     <mat-label>tenure (In Months)</mat-label>
-                    <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="investment.tenure.value" />
+                    <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="investment.loan.form.tenure.value" />
                 </mat-form-field>
             </mat-card-content>
         </mat-card>

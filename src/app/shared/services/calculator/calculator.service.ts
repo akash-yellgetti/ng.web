@@ -70,13 +70,15 @@ export class CalculatorService {
     let monthlySum = 0;
     let monthlyInterest = 0;
     let totalAmount = 0;
+    let totalInvestmentAmount = 0;
     for(let i = 0; i < numberOfMonths; i++) {
 
       initialAmount = totalAmount;
-      monthlyAmount = sipAmount;
+      monthlyAmount = this.round2Decimal(sipAmount);
       monthlySum = this.round2Decimal(initialAmount + monthlyAmount);
       monthlyInterest = this.round2Decimal(monthlySum * monthlyRate);
       totalAmount = this.round2Decimal(monthlySum + monthlyInterest);
+      totalInvestmentAmount += this.round2Decimal(monthlyAmount);
 
       data.push({
         initialAmount,
@@ -84,6 +86,7 @@ export class CalculatorService {
         monthlySum,
         monthlyInterest,
         totalAmount,
+        totalInvestmentAmount
       })
     }
 
@@ -104,13 +107,15 @@ export class CalculatorService {
     let monthlySum = 0;
     let monthlyInterest = 0;
     let totalAmount = 0;
+    let totalInvestmentAmount = 0;
     for(let i = 0; i < numberOfMonths; i++) {
       sipAmount = i != 0 && i%12 === 0 ? sipAmount + (sipAmount * growthdecimalRate) : sipAmount;
       initialAmount = totalAmount;
-      monthlyAmount = sipAmount;
+      monthlyAmount = this.round2Decimal(sipAmount);
       monthlySum = this.round2Decimal(initialAmount + monthlyAmount);
       monthlyInterest = this.round2Decimal(monthlySum * monthlyRate);
       totalAmount = this.round2Decimal(monthlySum + monthlyInterest);
+      totalInvestmentAmount += this.round2Decimal(monthlyAmount);
 
       data.push({
         initialAmount,
@@ -118,6 +123,7 @@ export class CalculatorService {
         monthlySum,
         monthlyInterest,
         totalAmount,
+        totalInvestmentAmount
       })
     }
 
@@ -129,16 +135,41 @@ export class CalculatorService {
     // Convert time to number of months
     const numberOfMonths = time * 12;
 
-    
-
     // Convert annual interest rate to monthly and decimal
     const monthlyInterestRate = (rate / 100) / 12;
 
     // Calculate the loan amount formula
     const maxLoanAmount = emiAmount * ((1 - Math.pow(1 + monthlyInterestRate, -numberOfMonths)) / monthlyInterestRate);
 
-    return maxLoanAmount;
-}
+    return this.round2Decimal(maxLoanAmount);
+  }
+
+  emiGrid = (principal: number, emi: any,  rate: number, time: number, extraAmount = 0) => {
+    const emiTable = [];
+    let remainingPrincipal = principal;
+    emi = parseFloat(emi) || parseFloat(this.emi(remainingPrincipal, rate, time));
+    let totalInterest = 0;
+    while(remainingPrincipal > 0) {
+      const principal = this.round2Decimal(remainingPrincipal);
+      const interest = this.round2Decimal((remainingPrincipal * rate) / (12 * 100));
+      const principalPayment = this.round2Decimal(emi - interest);
+      totalInterest += this.round2Decimal(interest);
+      remainingPrincipal -= this.round2Decimal(principalPayment);
+      remainingPrincipal -= extraAmount;
+
+      emiTable.push({
+        principal,
+        emi,
+        principalPayment,
+        interest,
+        extraAmount,
+        remainingPrincipal,
+        totalInterest
+      })
+    }
+
+    return emiTable;
+  }
 
 
   emi = (principal: number, rate: number, time: number) => {

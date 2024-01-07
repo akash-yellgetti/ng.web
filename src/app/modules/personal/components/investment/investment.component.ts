@@ -8,21 +8,76 @@ import { CalculatorService } from 'src/app/shared/services/calculator/calculator
 })
 export class InvestmentComponent implements OnInit {
   investment: any = {
-    monthlyAmount: {
-      value: 25000
+
+    sip: {
+      form: {
+        monthlyAmount: {
+          value: 25000
+        },
+        roi: {
+          value: 12
+        },
+        tenure: {
+          value: 10
+        },
+        growth: {
+          value: 10
+        },
+        extra: {
+          value: 2
+        },
+      },
+      result: {
+
+      }
     },
-    roi: {
-      value: 12
+
+    stepUpSip: {
+      form: {
+        monthlyAmount: {
+          value: 25000
+        },
+        roi: {
+          value: 12
+        },
+        tenure: {
+          value: 10
+        },
+        growth: {
+          value: 10
+        },
+        extra: {
+          value: 2
+        },
+      },
+      result: {
+        
+      }
     },
-    tenure: {
-      value: 10
+
+    loan: {
+      form: {
+        monthlyAmount: {
+          value: 25000
+        },
+        roi: {
+          value: 12
+        },
+        tenure: {
+          value: 10
+        },
+        growth: {
+          value: 10
+        },
+        extra: {
+          value: 2
+        },
+      },
+      result: {
+        
+      }
     },
-    growth: {
-      value: 10
-    },
-    extra: {
-      value: 2
-    },
+ 
 
   }
   constructor(public calculatorService: CalculatorService) { }
@@ -31,8 +86,10 @@ export class InvestmentComponent implements OnInit {
   }
 
   calculate = () => {
-    console.log(this.calculatorService.sipTable(this.investment.monthlyAmount.value, this.investment.roi.value, this.investment.tenure.value))
-    console.log(this.calculatorService.loanAmount(this.investment.monthlyAmount.value, this.investment.roi.value, this.investment.tenure.value))
-    console.log(this.calculatorService.stepUpSipTable(this.investment.monthlyAmount.value, this.investment.roi.value, this.investment.growth.value, this.investment.tenure.value))
+    this.investment.sip.result = this.calculatorService.sipTable(this.investment.sip.form.monthlyAmount.value, this.investment.sip.form.roi.value, this.investment.sip.form.tenure.value);
+    this.investment.stepUpSip.result = this.calculatorService.stepUpSipTable(this.investment.stepUpSip.form.monthlyAmount.value, this.investment.stepUpSip.form.roi.value, this.investment.stepUpSip.form.growth.value, this.investment.stepUpSip.form.tenure.value);
+    const loan = this.calculatorService.loanAmount(this.investment.loan.form.monthlyAmount.value, this.investment.loan.form.roi.value, this.investment.loan.form.tenure.value)
+    this.investment.loan.result = this.calculatorService.emiGrid(loan, this.investment.loan.form.monthlyAmount.value, this.investment.loan.form.roi.value, this.investment.loan.form.tenure.value)
+    console.log(this.investment)
   }
 }
