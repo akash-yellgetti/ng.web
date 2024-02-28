@@ -126,6 +126,9 @@ export class LayoutComponent {
       case 'notification':
         this.route.navigate(['main/layout/user/notification']);
         break;
+      case 'logout':
+        this.logout();
+        break;
     
       default:
         break;

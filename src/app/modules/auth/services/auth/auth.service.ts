@@ -56,23 +56,14 @@ export class AuthService {
   }
 
   login = (data: any) => {
-    const url = 'https://momentaglobaldev.btsmomenta.com/auth/api/v1/basic/login';
-    // const url = setting['uri'] + '/auth/login';
+    const url = setting['uri'] + '/auth/login';
     
     const headers = new HttpHeaders({
       'api-build-version': '1.1.96',
       'Content-Type': 'application/json'
     });
     const options = { headers: headers };
-    // const params = JSON.stringify(data);
-    const params =  JSON.stringify({
-      "program": "AuthService",
-      "data": {
-        "email": "akash.y@bts.com",
-        "password": "U2FsdGVkX18rR4AAzffliNhYZ+dVaAdz9dUPyhsofb4=",
-        "apiContextCode": "bts"
-      }
-    })
+    const params = JSON.stringify(data);
 
     return this.http.post(url, params, options)
       .pipe(map((data) => data),

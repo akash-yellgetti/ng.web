@@ -83,16 +83,16 @@ export class LoginComponent implements OnInit {
     const myObserver: any = {
       next: (res: any) => {
         // console.log('Observer got a next value: ' + res);
-        if (res && res.code === 200) {          
-          this.toastr.success(res.message);
-          const data = res.payload;
+        if (res && res.status === true) {          
+          // this.toastr.success(res.message);
+          const data = res.data;
           const user: any = data.user;
-          // const fullName: string = user.firstName+" "+user.lastName;
-          const fullName: string = user.fname+" "+user.lname;
+          const fullName: string = user.firstName+" "+user.lastName;
+          // const fullName: string = user.fname+" "+user.lname;
           user.fullName = fullName;
           const shortName: any = fullName.match(/\b(\w)/g)?.join('');
           user.shortName = shortName;
-          this.storageService.store('tokens', data.token);
+          this.storageService.store('tokens', data.tokens);
           this.storageService.store('user', user);
           this.route.navigate(['main/layout/dashboard']);
         }
