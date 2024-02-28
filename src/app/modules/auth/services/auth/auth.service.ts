@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { setting } from 'src/app/shared/json/setting.json';
+import { setting } from '../../../../shared/json/setting.json';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
