@@ -1,12 +1,42 @@
-<nav mat-tab-nav-bar class="mat-tab-nav-bar-budget">
-    <a 
-        mat-tab-link
-        *ngFor="let tab of tabs"
-        [routerLink]="tab.link"
-        routerLinkActive #rla="routerLinkActive"
-        [active]="rla.isActive"
-    >
-        {{ tab.label }}
-    </a>
-</nav>
-<router-outlet></router-outlet>
+<div class="container-fluid d-flex d-gap-15">
+  <div class="w-30 d-flex d-gap-15 d-wrap">
+    <div class="w-100 d-flex d-gap-15 expense-tabs">
+      <mat-card class="w-50 default-font  " *ngFor="let t of tabs"  (click)="switchTab(t.key)" [ngClass]="{ 'active': t.key == tab.key }" >
+        <p class="title">{{t.title}}</p>
+        <div class="d-flex align-items">
+          <span class="salary"><i class="fa-solid fa-indian-rupee-sign"></i> 22,000</span>
+          <button class="common-btn btn-fill"><i class="fa-solid fa-plus"></i></button>
+        </div>        
+      </mat-card>
+    </div>
+    <div class="w-100 d-flex d-gap-15">
+      <mat-card class="w-100 h-350"> Graph </mat-card>
+    </div>
+    <div class="w-100 d-flex d-wrap expense-items">
+      <mat-card class="h-100 expense-card" *ngFor="let c of tab.children" (click)="selectCategory(c.key)"  [ngClass]="{ 'border-active': data && data.key && data.key === c.key }"  >
+        {{ c.title }}
+      </mat-card>
+    </div>
+  </div>
+  <div class="w-70 d-flex d-wrap d-gap-15" *ngIf="data" >
+    <div class="bradcrumbs">
+      <app-breadcrumbs></app-breadcrumbs>
+    </div>
+    <mat-card class="w-100 expense-common-card" *ngFor="let item of data.children">
+      <mat-card-header>
+        <mat-icon mat-card-avatar [style.font-size.px]="24" class="expense-icon"
+          >home</mat-icon
+        >
+        <mat-card-title> {{ item.title }} </mat-card-title>
+        <mat-card-subtitle>
+          {{ item.description || "description" }}
+        </mat-card-subtitle>
+        <div fxFlex></div>
+        <div style="flex-grow: 1"></div>
+        <span class="currency-amount">{{
+          item.amount | currency : "&#8377; "
+        }}</span>
+      </mat-card-header>
+    </mat-card>
+  </div>
+</div>

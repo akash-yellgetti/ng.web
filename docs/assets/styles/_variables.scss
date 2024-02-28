@@ -3,8 +3,11 @@ $background-color:#eeeff4;
 
 $body-bg: #edeff2;
 
-$color-primary: #4F69ED;
+// $color-primary: #4F69ED;
+$color-primary: #002b5c;
+// $color-primary: #820000;
 $color-primary-dark: #0f248d;
+$color-primary-opacity: #000f5c9d;
 $color-secondary: #344955;
 $color-secondary-light: #4A6572;
 $color-secondary: #364363;
@@ -13,12 +16,20 @@ $color-white: #ffffff;
 $color-gray: #f1f5ff;
 $color-light-gray: #cccccc;
 $color-black: #000000;
+$color-black-opacity: rgba(0,0,0,0.7);
 
 $color-border: #e0e1e3;
 $color-divider:#e0e1e3;
 
 $text-color-base: #3a405b;
 $text-color-light: #838691;
+
+$color-light: #eeeeee;
+
+$color-green: #4bb543;
+$color-error: #ff3333;
+
+$color-success: #d9fdd3;
 
 
 $space-xs: 7px;

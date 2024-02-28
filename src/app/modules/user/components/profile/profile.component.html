@@ -1,38 +1,283 @@
-<section class="user-main">
-    <div class="contain cover">
-      <img src="https://images.pexels.com/photos/268941/pexels-photo-268941.jpeg?fit=crop&h=1000&mark=https%3A%2F%2Fassets.imgix.net%2F~text%3Fbg%3D80000000%26txt%3DFree%2BStock%2BPhotos%26txtalign%3Dcenter%26txtclr%3Dfff%26txtfont%3DAvenir-Heavy%26txtpad%3D20%26txtsize%3D120%26w%3D1300&markalign=center%2Cmiddle&txt=pexels.com&txtalign=center&txtclr=eeffffff&txtfont=Avenir-Heavy&txtshad=10&txtsize=60&w=1500">
-      <button type="button" class="btn btn-light btn-sm btn-edit" > <i class="bi bi-pencil-square"></i>  Edit</button>
-    </div>
-    <div class="contain mt-0">
-      <nav class="navbar navbar-expand-md navbar-light bg-white">
-        <ul class="user-details col-6">
-          <li>
-            <div class="profile-picture">
-              <img src="https://i.pinimg.com/originals/73/16/f5/7316f550de9ca0045e3d8d98a5bb5e44.png" alt="">
-              <button type="button" class="btn btn-edit"  ><i class="bi bi-camera"></i> </button>
+<div class="container-fluid d-flex">
+  <div class="profile-details-wrapper">
+    <button class="common-btn btn-fill" (click)="editProfile()">
+      <mat-icon class="edit-profile">edit_square</mat-icon>
+    </button>
+    <mat-card class="default-font">
+      <mat-card-content>
+        <div
+          class="nav-top d-flex align-center"
+          [ngStyle]="{ 'background-image': 'url(' + profileBg + ')' }"
+        >
+          <img
+            [src]="profileImg"
+            *ngIf="profileImg"
+            alt="profile image"
+            class="profile-img"
+          />
+          <button
+            aria-label="view profile"
+            name="view profile"
+            class="view-profile"
+            *ngIf="!profileImg"
+          >
+            <p class="profile__initals ani">{{ user.shortName }}</p>
+          </button>
+          <div class="username-box">
+            <div class="profile-details d-flex">
+              <div class="user-details">
+                <p class="name">{{ user.fullName }}</p>
+                <p class="sub-details">Senior Developer</p>
+              </div>
+              <div class="divider"></div>
+              <div class="user-details">
+                <p class="name">Member Since</p>
+                <p class="sub-details">{{ user.createdAt | date }}</p>
+              </div>
             </div>
-            <div class="title user-name">John Doe</div>
-            <div class="sub-title user-position">Commitee Member</div>
-          </li>
-          <li>
-            <div class="title">Member since</div>
-            <div class="sub-title">12th Aug, 2019</div>
-          </li>
-        </ul>
-        <!-- <button class="navbar-toggler" type="button" aria-controls="navbarContent" [attr.aria-expanded]="!collapsed" aria-label="Toggle navigation" (click)="collapsed = !collapsed">
-          <span class="navbar-toggler-icon"></span>
-          </button> -->
-        <div class="navbar-collapse col-6" id="navbarContent" >
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item" *ngFor="let tab of tabs; let index = index" [routerLinkActive]="['active']">
-            <a class="nav-link" tabindex="0" id="" role="button" (click)="redirect(tab)"
-            [routerLink]="tab.link" routerLinkActive #rla="routerLinkActive" >
-            {{tab.name}}
-            </a>
-            </li>        
-          </ul>
+          </div>
         </div>
-      </nav>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="profile-forms">
+    <mat-card class="form-wrapper default-font">
+      <mat-card-header>
+        <mat-card-title>Profile</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="profileForm" novalidate>
+          <div class="d-flex width-100 mb-10">
+            <div class="form-group">
+              <label>First Name</label>
+              <mat-form-field appearance="outline" class="w-100">
+                <input
+                  matInput
+                  placeholder="First Name"
+                  formControlName="firstName"
+                />
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <label>Last name</label>
+              <mat-form-field appearance="outline" class="w-100">
+                <input
+                  matInput
+                  placeholder="Last name"
+                  formControlName="lastName"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="d-flex width-100 mb-10">
+            <div class="form-group datepicker">
+              <label>Date of birth</label>
+              <mat-form-field appearance="outline" class="w-100">
+                <input
+                  matInput
+                  placeholder="Choose a date"
+                  [matDatepicker]="picker"
+                  formControlName="dob"
+                  readonly
+                />
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <mat-radio-group formControlName="gender">
+                <mat-radio-button value="m">Male</mat-radio-button>
+                <mat-radio-button value="f">Female</mat-radio-button>
+              </mat-radio-group>
+              <mat-error
+                *ngIf="
+                  profileForm.controls['gender'].touched &&
+                  profileForm.controls['gender'].hasError('required')
+                "
+              >
+                Please select the gender.
+              </mat-error>
+            </div>
+          </div>
+          <div class="d-flex width-100 mb-10">
+            <div class="form-group">
+              <label>Mobile number</label>
+              <mat-form-field appearance="outline" class="w-100">
+                <input
+                  matInput
+                  placeholder="Mobile number"
+                  formControlName="mobileNo"
+                  readonly
+                />
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <mat-form-field appearance="outline" class="w-100">
+                <input
+                  matInput
+                  placeholder="Email"
+                  formControlName="email"
+                  readonly
+                />
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+      </mat-card-content>
+      <mat-card-actions align="end" class="card-actions">
+        <button type="submit" class="common-btn btn-fill" (click)="update()">
+          Save
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card class="form-wrapper default-font change-password">
+      <mat-card-header>
+        <mat-card-title>Change Password</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="d-flex">
+          <div class="form-group">
+            <label>Current password</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input matInput placeholder="Current password" />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="d-flex">
+          <div class="form-group">
+            <label>New password</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input matInput placeholder="New password" />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="d-flex">
+          <div class="form-group">
+            <label>Retype new password</label>
+            <mat-form-field appearance="outline" class="w-100">
+              <input matInput placeholder="Retype new password" />
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions align="end" class="card-actions">
+        <button type="submit" class="common-btn btn-fill">Save</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<ng-template #editProfileImagesDialog>
+  <h2 mat-dialog-title>Change profile images</h2>
+  <mat-dialog-content>
+    <div class="upload-image-wrapper">
+      <h3>Profile image upload</h3>
+      <div class="image-wrapper d-flex align-center align-items">
+        <input
+          type="file"
+          (change)="onFileSelected($event, 'profile')"
+          #fileInput
+          accept="image/*"
+          name="browse"
+          aria-label="browse"
+          class="browse-input"
+        />
+        <button
+          tabindex="0"
+          type="button"
+          class="common-btn btn-text default-font"
+          aria-label="browse"
+          (click)="fileInput.click()"
+        >
+          Browse or drag file here
+        </button>
+      </div>
+      <div class="row" *ngIf="profileImages.picture.evt">
+        <div class="col-70">
+          <h3>Crop image</h3>
+          <image-cropper
+            [imageChangedEvent]="profileImages.picture.evt"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="4 / 4"
+            [resizeToWidth]="256"
+            format="png"
+            (imageCropped)="
+              imageCropped($event, profileImages.picture, 'picture')
+            "
+            (imageLoaded)="imageLoaded()"
+            (cropperReady)="cropperReady()"
+            (loadImageFailed)="loadImageFailed()"
+          ></image-cropper>
+        </div>
+        <div class="col-30">
+          <h3>Preview</h3>
+          <img [src]="profileImages.picture.src" width="200px" height="200px" />
+        </div>
+      </div>
     </div>
-  </section>
-  <router-outlet></router-outlet>
+    <div class="upload-image-wrapper">
+      <h3>Profile background image upload</h3>
+      <div class="image-wrapper d-flex align-center align-items">
+        <input
+          type="file"
+          (change)="onFileSelected($event, 'profileBg')"
+          #fileInput1
+          accept="image/*"
+          name="browse"
+          aria-label="browse"
+          class="browse-input"
+        />
+        <button
+          tabindex="0"
+          type="button"
+          class="common-btn btn-text default-font"
+          aria-label="browse"
+          (click)="fileInput1.click()"
+        >
+          Browse or drag file here
+        </button>
+      </div>
+      <!-- <label class="browse-image-label" *ngIf="selectedFileBg && selectedFileBg.name">Selected file: {{ selectedFileBg.name }}</label> -->
+      <div class="row" *ngIf="profileImages.pictureBackground.evt">
+        <div class="col-70">
+          <h3>Crop image</h3>
+          <image-cropper
+            [imageChangedEvent]="profileImages.pictureBackground.evt"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="4 / 4"
+            [resizeToWidth]="256"
+            format="png"
+            (imageCropped)="
+              imageCropped(
+                $event,
+                profileImages.pictureBackground,
+                'pictureBackground'
+              )
+            "
+            (imageLoaded)="imageLoaded()"
+            (cropperReady)="cropperReady()"
+            (loadImageFailed)="loadImageFailed()"
+          ></image-cropper>
+        </div>
+        <div class="col-30">
+          <h3>Preview</h3>
+          <img
+            [src]="profileImages.pictureBackground.src"
+            width="200px"
+            height="200px"
+          />
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button class="common-btn btn-white" mat-dialog-close>Cancel</button>
+    <button class="common-btn btn-fill" (click)="upload()">Save</button>
+  </mat-dialog-actions>
+</ng-template>

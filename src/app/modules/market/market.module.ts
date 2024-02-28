@@ -2,27 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MarketRoutingModule } from './market-routing.module';
-import { StockComponent } from './components/stock/stock.component';
-import { IndexComponent } from './components/index/index.component';
-import { CurrencyComponent } from './components/currency/currency.component';
-import { MutualFundComponent } from './components/mutual-fund/mutual-fund.component';
-import { MaterialModule } from '../../shared/modules/material.module';
-import { FormsModule } from '@angular/forms';
-import { DetailComponent } from './components/detail/detail.component';
+import { OptionChainComponent } from './components/option-chain/option-chain.component';
+import { EquityComponent } from './components/equity/equity.component';
 
 
 @NgModule({
   declarations: [
-    StockComponent,
-    IndexComponent,
-    CurrencyComponent,
-    MutualFundComponent,
-    DetailComponent
+    OptionChainComponent,
+    EquityComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule,
-    FormsModule,
     MarketRoutingModule
   ]
 })

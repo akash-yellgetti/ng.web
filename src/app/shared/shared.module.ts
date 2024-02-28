@@ -1,28 +1,28 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { MaterialModule } from './modules/material.module';
 import { NgxModule } from './modules/ngx.module';
-import { DialogComponent } from './components/dialog/dialog/dialog.component';
-import { NgbModule } from './modules/ngb.module';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
-
+import { BreadcrumbsComponent } from '../modules/main/components/breadcrumbs/breadcrumbs.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { ChartComponent } from './components/chart/chart.component';
 
 @NgModule({
   declarations: [
-    DialogComponent
+    BreadcrumbsComponent,
+    DialogComponent,
+    ChartComponent
   ],
   imports: [
     MaterialModule,
     NgxModule,
-    NgbModule,
-    CommonModule,
-    SlickCarouselModule,
+    HighchartsChartModule
   ],
   exports: [
     MaterialModule,
     NgxModule,
-    NgbModule,
-    SlickCarouselModule
+    // HighchartsChartModule,
+    BreadcrumbsComponent,
+    ChartComponent
   ]
 })
 export class SharedModule { }

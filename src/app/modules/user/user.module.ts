@@ -10,6 +10,7 @@ import { NotificationComponent } from './components/notification/notification.co
 import { FamilyComponent } from './components/family/family.component';
 import { HabitsComponent } from './components/habits/habits.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ChatWindowComponent } from './components/chat-window/chat-window.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ChatComponent,
     NotificationComponent,
     FamilyComponent,
-    HabitsComponent
+    HabitsComponent,
+    ChatWindowComponent
   ],
   imports: [
     CommonModule,

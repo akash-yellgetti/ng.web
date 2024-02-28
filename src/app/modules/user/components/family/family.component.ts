@@ -1,13 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { ModuleService } from 'src/app/modules/layout/core/services/module.service';
+import { PaginationInstance } from 'ngx-pagination';
+import { ModuleService } from '../../../main/core/services/module.service';
 
 @Component({
   selector: 'app-family',
   templateUrl: './family.component.html',
-  styleUrls: ['./family.component.scss']
+  styleUrls: ['./family.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class FamilyComponent implements OnInit {
+  public maxSize: number = 7;
+  page = 1;
+  public config: PaginationInstance = {
+    id: 'custom',
+    itemsPerPage: 3,
+    currentPage: 1
+  };
   public tabs = [
     {
       code: 'profile',
@@ -40,7 +49,175 @@ export class FamilyComponent implements OnInit {
       link: '/main/user/payment'
     }
   ];
+  showGrid = false;
   sortBy = 'sort';
+  public columns: any = [
+  {
+    'title': '',
+    'name': 'user_img',
+  }, {
+    'title': 'Name',
+    'name': 'username',
+  },{
+    'title': 'Date of birth',
+    'name': 'dob', 
+  },{
+    'title': 'Gender',
+    'name': 'gender', 
+  },{
+    'title': 'Telephone',
+    'name': 'telephone', 
+  },{
+    'title': 'Actions',
+    'name': 'actions',
+  }
+  ];
+  public familyList: any = [
+    {
+      "user_img": "cv",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453683",
+      "actions": "",
+    },
+    {
+      "user_img": "ay",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453684",
+      "actions": "",
+    },
+    {
+      "user_img": "cv",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453685",
+      "actions": "",
+    },
+    {
+      "user_img": "cv",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453683",
+      "actions": "",
+    },
+    {
+      "user_img": "ay",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453684",
+      "actions": "",
+    },
+    {
+      "user_img": "cv",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453685",
+      "actions": "",
+    },
+    {
+      "user_img": "cv",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453683",
+      "actions": "",
+    },
+    {
+      "user_img": "ay",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453684",
+      "actions": "",
+    },
+    {
+      "user_img": "cv",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453685",
+      "actions": "",
+    },
+    {
+      "user_img": "cv",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453683",
+      "actions": "",
+    },
+    {
+      "user_img": "ay",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453684",
+      "actions": "",
+    },
+    {
+      "user_img": "cv",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453685",
+      "actions": "",
+    },
+    {
+      "user_img": "cv",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453683",
+      "actions": "",
+    },
+    {
+      "user_img": "ay",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453684",
+      "actions": "",
+    },
+    {
+      "user_img": "cv",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453685",
+      "actions": "",
+    },
+    {
+      "user_img": "cv",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453683",
+      "actions": "",
+    },
+    {
+      "user_img": "ay",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453684",
+      "actions": "",
+    },
+    {
+      "user_img": "cv",
+      "username": "Chirag Vartak",
+      "dob": "26-09-1991",
+      "gender": "Male",
+      "telephone": "7276453685",
+      "actions": "",
+    }
+  ]
 
   constructor(private router: Router, public moduleService: ModuleService) { 
     this.moduleService.mainTitle.next("Profile");
@@ -49,6 +226,10 @@ export class FamilyComponent implements OnInit {
   
 
   ngOnInit(): void {
+  }
+
+  onPageChange(number: number) {
+    this.config.currentPage = number;
   }
 
   redirect = (route: any) => {

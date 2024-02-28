@@ -1,0 +1,11 @@
+.breadcrumbs-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    li {
+        margin-right: 5px;
+        &.active {
+            font-weight: 600;
+        }
+    }
+}

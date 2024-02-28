@@ -1,0 +1,67 @@
+@import "../../../../../assets/styles/index.scss";
+
+.container-fluid {
+	padding: 15px;
+	padding-top: 75px;
+	padding-bottom: 60px;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+.btn-text {
+	background: none;
+	margin-bottom: 15px;
+	margin-left: auto;
+	text-decoration: underline;
+	font-weight: 600;
+}
+
+.notify-card {
+	margin-bottom: 15px;
+	cursor: pointer;
+	.avatar-wrapper {
+		width: 45px;
+		height: 45px;
+		overflow: hidden;
+		border-radius: 50%;
+		margin-right: 20px;
+		img {
+			width: 45px;
+			height: 45px;
+		}
+	}	
+	.notification-content {
+		width: calc(100% - 170px);
+		h3 {
+			font-weight: 600;
+			margin-bottom: 5px;
+			line-height: 1.2em;
+		}
+		p {
+			margin-bottom: 0;
+		}
+	}
+	.notfication-time {
+		width: 70px;
+		margin-left: auto;
+	}
+	.btn-text {
+		font-size: 20px;
+		color: $color-light-gray;
+		margin-left: 10px;
+	}
+	&.not-read {
+		background-color: $color-light;
+		position: relative;
+		&:after {
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			content: '';
+			background-color: $color-primary;
+			position: absolute;
+			right: 10px;
+			top: 10px;
+		}
+	}
+}

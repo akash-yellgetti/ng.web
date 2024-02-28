@@ -4,14 +4,14 @@
 @import "./_flex";
 
 // Fonts
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
 // font-family: 'Open Sans', sans-serif;
 
 //BS icons
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css");
+// @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css");
 
 //animation
-@import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
+// @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
 
 // @media (min-width: 576px) { ... }
 // @media (min-width: 768px) { ... }
@@ -23,6 +23,10 @@ body {
 	background-color: $color-gray;
 }
 
+* {
+	box-sizing: border-box;
+}
+
 .mat-body, .mat-body-1, .mat-typography .mat-body, .mat-typography .mat-body-1, .mat-typography, .mat-toolbar, .mat-toolbar h1, .mat-toolbar h2, .mat-toolbar h3, .mat-toolbar h4, .mat-toolbar h5, .mat-toolbar h6, .mat-form-field {
 	font-family: "Open Sans", sans-serif !important;
 }
@@ -30,6 +34,113 @@ body {
 .mat-h1, .mat-headline, .mat-typography .mat-h1, .mat-typography .mat-headline, .mat-typography h1 {
 	font-family: "Open Sans", sans-serif !important;
 }
+
+.default-font {
+	font-family: "Open Sans", sans-serif !important;
+}
+
+@font-face {
+	font-family: 'icon-lib';
+	src:  url('../fonts/personal-finance-icons/icomoon.eot?m5ubuu');
+	src:  url('../fonts/personal-finance-icons/icomoon.eot?m5ubuu#iefix') format('embedded-opentype'),
+		url('../fonts/personal-finance-icons/icomoon.ttf?m5ubuu') format('truetype'),
+		url('../fonts/personal-finance-icons/icomoon.woff?m5ubuu') format('woff'),
+		url('../fonts/personal-finance-icons/icomoon.svg?m5ubuu#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
+.icon-font {
+/* use !important to prevent issues with browser extensions that change fonts */
+font-family: 'icon-lib' !important;
+speak: never;
+font-style: normal;
+font-weight: normal;
+font-variant: normal;
+text-transform: none;
+line-height: 1;
+
+/* Better Font Rendering =========== */
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-business-01:before {
+content: "\e900";
+}
+.icon-child-education-01:before {
+content: "\e901";
+}
+.icon-education-01:before {
+content: "\e902";
+}
+.icon-emergency-fund-01:before {
+content: "\e903";
+}
+.icon-epf-fund-01:before {
+content: "\e904";
+}
+.icon-fd-01:before {
+content: "\e905";
+}
+.icon-futures-01:before {
+content: "\e906";
+}
+.icon-gold-01:before {
+content: "\e907";
+}
+.icon-gold-02-01:before {
+content: "\e908";
+}
+.icon-high-education-01:before {
+content: "\e909";
+}
+.icon-home-01:before {
+content: "\e90a";
+}
+.icon-marriage-01:before {
+content: "\e90b";
+}
+.icon-mf-01:before {
+content: "\e90c";
+}
+.icon-mortgage-loan-01:before {
+content: "\e90d";
+}
+.icon-mutual-fund-01:before {
+content: "\e90e";
+}
+.icon-new-house-01:before {
+content: "\e90f";
+}
+.icon-nps-01:before {
+content: "\e910";
+}
+.icon-personal-01:before {
+content: "\e911";
+}
+.icon-ppf-01:before {
+content: "\e912";
+}
+.icon-property-01:before {
+content: "\e913";
+}
+.icon-rd-01:before {
+content: "\e914";
+}
+.icon-retirement-01:before {
+content: "\e915";
+}
+.icon-stocks-01:before {
+content: "\e916";
+}
+.icon-stocks-02-01:before {
+content: "\e917";
+}
+.icon-trading-01:before {
+content: "\e918";
+}  
 
 strong,
 .text-bold {
@@ -207,6 +318,10 @@ label {
 
 .align-items {
 	align-items: center;
+}
+
+.space-between {
+	justify-content: space-between;
 }
 
 // GRID
@@ -674,3 +789,76 @@ section {
 }
 
 // input
+
+::ng-deep {
+	.form-group {
+		.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+			background-color: $color-primary;
+		}
+		.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+			border-color: $color-primary;
+		}
+		.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick, .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+			color: $color-primary;
+		}
+		.mat-radio-label {
+			margin-right: 10px;
+		}
+		input {
+			line-height: 1.2em;
+		}
+		.mat-form-field-appearance-outline .mat-form-field-wrapper {
+			padding-bottom: 0;
+		}
+		.mat-form-field-subscript-wrapper {
+			position: relative;
+		}
+		.mat-form-field {
+			display: block;
+		}
+		.mat-error {
+			font-size: 13px;
+		}
+		.mat-form-field-appearance-outline .mat-form-field-infix {
+			border-top: 3px solid transparent;
+		}
+		&.datepicker {
+			.mat-form-field-infix {
+			padding: 3px 0;
+			display: inline-flex;
+			}
+			.mat-icon-button {
+				height: 38px;
+				width: 38px;
+				line-height: 38px;
+			}
+		}
+	}
+}
+
+// buttons
+
+.common-btn {
+	padding: 12px 25px;
+	border-radius: 8px;
+	color: $color-white;
+	cursor: pointer;
+	&.btn-fill {
+	  background: $color-primary;
+	  border: 1px solid $color-primary;
+	  &:hover, &:focus {
+		background: $color-primary-dark;
+	  }
+	}
+	&.btn-text {
+		padding: 0;
+		border-radius: 0;
+		color: $color-primary;
+		border: none;
+	}
+	&.btn-white {
+		background: $color-white;
+		border: 1px solid $color-primary;
+		color: $color-black;
+	}
+}

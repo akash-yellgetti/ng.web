@@ -3,13 +3,15 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Router, Routes } from '@angular/router';
-import { FieldService } from 'src/app/shared/services/field/field.service';
+import { FieldService } from '../../../../shared/services/field/field.service';
+
 import { forms } from 'src/app/shared/json/forms.json';
 import * as _ from 'lodash';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -33,6 +35,7 @@ export class LoginComponent implements OnInit {
     private fieldService: FieldService,
     private authService: AuthService,
     private storageService: LocalStorageService,
+    private toastr: ToastrService,
     private route: Router) {
     // this.fields = forms.login;
     this.fields = forms.login;
@@ -80,20 +83,28 @@ export class LoginComponent implements OnInit {
     const myObserver: any = {
       next: (res: any) => {
         // console.log('Observer got a next value: ' + res);
-        if (res && res.status) {
-          const data = res.data;
-          this.storageService.store('tokens', data.tokens);
-          this.storageService.store('user', data.user);
-          this.route.navigate(['main/dashboard']);
+        if (res && res.code === 200) {          
+          this.toastr.success(res.message);
+          const data = res.payload;
+          const user: any = data.user;
+          // const fullName: string = user.firstName+" "+user.lastName;
+          const fullName: string = user.fname+" "+user.lname;
+          user.fullName = fullName;
+          const shortName: any = fullName.match(/\b(\w)/g)?.join('');
+          user.shortName = shortName;
+          this.storageService.store('tokens', data.token);
+          this.storageService.store('user', user);
+          this.route.navigate(['main/layout/dashboard']);
         }
       },
       error: (err: any) => {
         if (err && err.error && err.error.message) {
-          Swal.fire(
-            'Warning!',
-            err.error.message,
-            'error'
-          )  
+          // Swal.fire(
+          //   'Warning!',
+          //   err.error.message,
+          //   'error'
+          // )  
+          this.toastr.error(err.error.message);
         }
       },
       complete: () => {

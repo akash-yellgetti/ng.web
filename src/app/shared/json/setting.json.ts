@@ -1,4 +1,4 @@
 export const setting = {
-    uri: 'http://api.dicezen.com'
+    uri: 'https://api-web-bxum.onrender.com'
     // uri: 'http://localhost:5001'
 }

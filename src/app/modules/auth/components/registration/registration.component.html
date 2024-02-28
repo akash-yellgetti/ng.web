@@ -40,9 +40,9 @@
               </mat-error>
             </div>
             <div class="form-group datepicker">
-              <label for="dob">Choose a date</label>
+              <label for="dob">Date of birth</label>
               <mat-form-field appearance="outline" class="w-100">
-                <input matInput placeholder="Choose a date" [matDatepicker]="picker" formControlName="dob">
+                <input matInput placeholder="Choose Date of birth" [matDatepicker]="picker" formControlName="dob">
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
                 <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
@@ -54,7 +54,7 @@
             <div class="form-group">
               <label for="number">Mobile Number</label>
               <mat-form-field appearance="outline" class="w-100">
-                <input matInput placeholder="Last name" formControlName="mobileNo">
+                <input matInput placeholder="Mobile Number" formControlName="mobileNo">
                 <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
                 <mat-error *ngIf="registrationForm.controls['mobileNo'].hasError('required')">
                   Mobile Number is <strong>required</strong>
