@@ -5,12 +5,14 @@ import { BreadcrumbsComponent } from '../modules/main/components/breadcrumbs/bre
 import { HighchartsChartModule } from 'highcharts-angular';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { ChartComponent } from './components/chart/chart.component';
+import { DatatableComponent } from './components/datatable/datatable.component';
 
 @NgModule({
   declarations: [
     BreadcrumbsComponent,
     DialogComponent,
-    ChartComponent
+    ChartComponent,
+    DatatableComponent
   ],
   imports: [
     MaterialModule,
@@ -22,7 +24,8 @@ import { ChartComponent } from './components/chart/chart.component';
     NgxModule,
     // HighchartsChartModule,
     BreadcrumbsComponent,
-    ChartComponent
+    ChartComponent,
+    DatatableComponent
   ]
 })
 export class SharedModule { }

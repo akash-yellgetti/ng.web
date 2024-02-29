@@ -51,6 +51,10 @@ const routes: Routes = [
           path: 'personal',
           loadChildren: () => import('../personal/personal.module').then(m => m.PersonalModule)
       },
+      {
+          path: 'tradingview',
+          loadChildren: () => import('../tradingview/tradingview.module').then(m => m.TradingviewModule)
+      },
       // { path: '',   redirectTo: '/dashboard', pathMatch: 'full' }, // redirect to `first-component`
       // { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
     ]
