@@ -82,6 +82,7 @@ ng g c modules/school/components/teacher --module=school
 
 ng g m modules/tradingview --routing=true
 ng g c modules/tradingview/components/alerts --module=tradingview
+ng g c modules/tradingview/components/trades --module=tradingview
 --------------------------------------------------------------------------------------------------
 ng g c shared/components/datatable --module=shared
 --------------------------------------------------------------------------------------------------
