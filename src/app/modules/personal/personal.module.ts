@@ -8,6 +8,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { GoalComponent } from './components/goal/goal.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { InvestmentComponent } from './components/investment/investment.component';
+import { RoutineSchedulerComponent } from './components/routine-scheduler/routine-scheduler.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { InvestmentComponent } from './components/investment/investment.componen
     RoutineComponent,
     GoalComponent,
     TransactionComponent,
-    InvestmentComponent
+    InvestmentComponent,
+    RoutineSchedulerComponent
   ],
   imports: [
     CommonModule,

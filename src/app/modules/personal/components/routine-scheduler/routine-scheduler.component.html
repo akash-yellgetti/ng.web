@@ -1,0 +1,29 @@
+<div class="container-fluid d-flex d-wrap d-gap-15">
+  <div class="w-30">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Task Scheduler</mat-card-title>
+        <!-- <mat-card-subtitle>Start</mat-card-subtitle> -->
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="w-100">
+          <mat-label>Title</mat-label>
+          <input matInput placeholder="Ex. Pizza" value="100000" [(ngModel)]="form.title.value" />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Duration</mat-label>
+          <input matInput placeholder="Ex. Pizza" value="100000" [(ngModel)]="form.duration.value" />
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="addTask()">Add</button>
+        <button mat-raised-button color="primary" (click)="calculateSchedule()">calculateSchedule</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="w-60">
+    <ngx-datatable class="material striped " [rows]="schedule" [columns]="columns" [headerHeight]="50"
+      [footerHeight]="50" [rowHeight]="50" [selected]="selected"  [selectionType]="SelectionType.single" (select)='onSelect($event)'>
+    </ngx-datatable>
+  </div>
+</div>
