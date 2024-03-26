@@ -9,6 +9,9 @@ import { SelectionType } from '@swimlane/ngx-datatable';
 export class RoutineSchedulerComponent {
   SelectionType = SelectionType;
   form: any = {
+    startTime: {
+      value: '05:30'
+    },
     title: {
       value: "Task 1"
     },
@@ -72,9 +75,7 @@ public columns: any = [
   'name': 'startTime',
 },{
   'name': 'endTime', 
-},{
-  'name': 'isRunning'
-}
+} 
 
 ];
 selected: any = [];
@@ -86,6 +87,7 @@ selected: any = [];
   }
 
   calculateSchedule() {
+    this.startTime = this.form.startTime.value;
     const startTimeParts = this.startTime.split(':').map(Number);
     const startTime = new Date(0, 0, 0, startTimeParts[0], startTimeParts[1]);
     let currentTime = new Date(startTime);
