@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ModuleService } from '../../../main/core/services/module.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { setting } from '../../../../shared/json/setting.json';
@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as _ from 'lodash';
 import { SocketService } from 'src/app/shared/services/socket/socket.service';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+import { ContactService } from '../../services/contact/contact.service';
 
 @Component({
   selector: 'app-chat',
@@ -14,6 +16,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
+  @ViewChild("dialogRef") dialogRef: any;
   public user: any = null;
   profileImg: any;
   conversations: any = [];
@@ -21,13 +24,23 @@ export class ChatComponent implements OnInit {
   message: string = '';
   currentConversationData: any = null;
   conversationHistory: any = [];
+  public contact = {
+    firstName: {
+      value: ''
+    },
+    mobileNo: {
+      value: ''
+    }
+  }
   constructor(
+    private dialog: MatDialog,
     public moduleService: ModuleService, 
     private activatedRoute: ActivatedRoute,
     private route: Router,
     private localStorageService: LocalStorageService, 
     private conversationService: ConversationService,
     private socketService: SocketService,
+    private contactService: ContactService,
     private toastr: ToastrService
     ) {
     const user = this.localStorageService.retrieve('user');
@@ -114,6 +127,41 @@ export class ChatComponent implements OnInit {
     this.conversationService.postConversationMessage(data).subscribe();
     this.socketService.postChatMessageSend(data);
     this.message = '';
+  }
+
+ 
+
+  addContactDialog(): void {
+    const dialogRef = this.dialog.open(this.dialogRef, {
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+  }
+
+  addContact = () => {
+    console.log(this.contact)
+    this.contactService.addContact({ firstName: this.contact.firstName.value, mobileNo: this.contact.mobileNo.value }).subscribe((data: any) => {
+      this.toastr.success(data.message);
+      this.dialog.closeAll();
+    })
+  }
+
+  refreshContacts = () => {
+    // console.log(this.contact)
+    // this.contactService.addContact({ firstName: this.contact.firstName.value, mobileNo: this.contact.mobileNo.value }).subscribe((data: any) => {
+    //   this.toastr.success(data.message);
+    //   this.dialog.closeAll();
+    // })
+  }
+
+  
+
+  cancel = () => {
+    this.dialog.closeAll()
   }
 
 

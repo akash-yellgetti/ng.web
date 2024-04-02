@@ -5,16 +5,19 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { setting } from 'src/app/shared/json/setting.json';
+import { CommonService } from '../../../../shared/services/common/common.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProfileService {
+export class ProfileService extends CommonService {
   constructor(
-    private _snackBar: MatSnackBar,
-    private http: HttpClient,
-    private storage: LocalStorageService
-  ) {}
+    protected _snackBar: MatSnackBar,
+    protected http: HttpClient,
+    protected storage: LocalStorageService
+  ) {
+    super(_snackBar, http, storage);
+  }
 
   updateProfilePic = (data: any) => {
     const url = setting['uri'] + '/user/profile/picture';
@@ -45,11 +48,6 @@ export class ProfileService {
       map((data) => data),
       catchError(this.handleError)
     );
-  };
-
-  getAuthToken = () => {
-    const tokens = this.storage.retrieve('tokens');
-    return `JWT ${tokens.accessToken}`;
   };
 
   handleError = (e: any): any => {

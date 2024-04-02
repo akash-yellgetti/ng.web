@@ -50,8 +50,7 @@ ng g c modules/main/components/blank --module=main
 
 ng g s modules/main/core/services/module
 
-ng g s modules/user/services/conversation/conversation
-ng g s modules/user/services/notification/notification
+
 
 --------------------------------------------------------------------------------------------------
 
@@ -61,14 +60,21 @@ ng g s shared/services/socket/socket
 
 
 ng g c modules/user/components/chat-window --module=user
+ng g c modules/user/components/contact --module=user
 
 ng g r modules/user/resolver/notifications/notifications
-
 ng g r modules/user/resolver/conversations/conversations
 ng g r modules/user/resolver/conversation-history/conversation-history
 
+ng g s modules/user/services/conversation/conversation
+ng g s modules/user/services/notification/notification
+ng g s modules/user/services/contact/contact
+
+
+
 --------------------------------------------------------------------------------------------------
 
+ng g s shared/services/common/common
 ng g s shared/services/field/field
 ng g s shared/services/calculator/calculator
 ng g s shared/services/chart/chart
