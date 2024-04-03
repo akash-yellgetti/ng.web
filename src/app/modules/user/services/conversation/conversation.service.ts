@@ -50,7 +50,7 @@ export class ConversationService {
 
   postConversationMessage = (data: any) => {
     const url = setting['uri'] + '/conversation/message/create';
-
+    console.log(data)
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: this.getAuthToken(),

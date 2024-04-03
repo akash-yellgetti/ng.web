@@ -19,7 +19,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  public hide: boolean = false;
+  public hide: boolean = true;
   public isCollapsed: any = false;
   public fields: any = [];
   public loginForm: any;

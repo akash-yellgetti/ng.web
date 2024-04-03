@@ -81,7 +81,7 @@ export class ChatComponent implements OnInit {
         "conversationId": data.conversationId,
         "userId": data.userId,
         "type": data.data.type,
-        "text": data.data.text,
+        "message": data.data.message,
       })
     })
     this.moduleService.mainTitle.next("Chat");
@@ -120,7 +120,7 @@ export class ChatComponent implements OnInit {
       "conversationId": this.currentConversationData._id,
       "data": {
           "type": "text",
-          "text": _.cloneDeep(this.message)
+          "message": _.cloneDeep(this.message)
       }
     };
     // const conversationType = this.currentConversationData.type === 'individual' ? : 
