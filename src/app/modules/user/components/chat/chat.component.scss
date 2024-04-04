@@ -11,6 +11,26 @@
 	}
 }
 
+.whatsapp-container {
+    display: flex;
+    height: 100%;
+}
+
+.sidebar {
+    width: 30%;
+    background-color: #ededed;
+    border-right: 1px solid #ccc;
+    padding: 20px;
+}
+
+.chat-area {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Styling for other elements follows similar structure */
+
+
 ::ng-deep app-chat-window {
     width: 100%;
 }

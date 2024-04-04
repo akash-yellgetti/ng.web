@@ -19,6 +19,19 @@ export class ContactService extends CommonService{
     super(_snackBar, http, storage);
   }
 
+  getContacts = () => {
+    const url = setting['uri'] + '/contact/list';
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getAuthToken()
+    });
+    const options = { headers: headers };
+    
+    return this.http.get(url, options)
+      .pipe(map((data) => data),
+      catchError(this.handleError));
+  };
+
   addContact = (data: any) => {
     const url = setting['uri'] + '/contact/create';
 

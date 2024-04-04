@@ -20,8 +20,10 @@ export class ChatComponent implements OnInit {
   public user: any = null;
   profileImg: any;
   conversations: any = [];
+  contacts: any = [];
   params: any = null;
   message: string = '';
+  view: string = 'chat';
   currentConversationData: any = null;
   conversationHistory: any = [];
   public contact = {
@@ -148,6 +150,22 @@ export class ChatComponent implements OnInit {
       this.toastr.success(data.message);
       this.dialog.closeAll();
     })
+  }
+
+  newChat = () => {
+    this.contactService.getContacts().subscribe((data: any) => {
+      console.log(data);
+      if(data && data.status) {
+        this.contacts = _.map(data.data, (contact) => {
+          contact.fullName = contact.firstName + " " + _.get(contact, 'lastName', '');
+          return contact;
+        });
+
+        this.view = 'new-chat';
+      }
+    })
+
+    
   }
 
   refreshContacts = () => {
