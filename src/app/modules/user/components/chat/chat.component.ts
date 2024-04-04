@@ -104,6 +104,7 @@ export class ChatComponent implements OnInit {
   redirectToChatWindow = (conversation: any) => {
     // console.log(conversation)
     this.currentConversationData = conversation;
+    this.view = 'chat';
     // this.localStorageService.store('currentConversationData', { 
     //   userId: conversation._id,
     //   userFullName: conversation.fullName,
