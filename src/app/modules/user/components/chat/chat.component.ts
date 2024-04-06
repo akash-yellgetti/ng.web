@@ -159,6 +159,7 @@ export class ChatComponent implements OnInit {
       if(data && data.status) {
         this.contacts = _.map(data.data, (contact) => {
           contact.fullName = contact.firstName + " " + _.get(contact, 'lastName', '');
+          contact.type = 'individual';
           return contact;
         });
 
