@@ -84,6 +84,21 @@ export class AuthService {
       catchError(this.handleError));
   }
 
+  saveDevice = (data: any) => {
+    const url = setting['uri'] + '/device/create';
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getAuthToken()
+    });
+    const options = { headers: headers };
+    const params = JSON.stringify(data);
+
+    return this.http.post(url, params, options)
+      .pipe(map((data) => data),
+      catchError(this.handleError));
+  }
+
   getAuthToken = () => {
     const tokens = this.storage.retrieve('tokens');
     return `JWT ${tokens.accessToken}`;

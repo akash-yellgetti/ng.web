@@ -10,19 +10,29 @@ export class SocketService {
 
   constructor(public socket: Socket,public storage: LocalStorageService,
     private toastr: ToastrService) {
-      this.socket.fromEvent('userSocketId').subscribe((id: any) => {
+      // this.connected();
+      // this.socket.fromEvent('userSocketId').subscribe((id: any) => {
+      //   let user = this.storage.retrieve('user');
+      //   user = {...user, userSocketId: id, deviceId: '12345' };
+      //   // console.log('userSocketId', id)
+      //   this.storage.store('user', user);
+      //   this.connected();
+      //   this.toastr.info(id, 'User Socket Id')
+      // })
+      this.socket.fromEvent('getUserDetails').subscribe((data: any) => {
+        // console.log(data)
         let user = this.storage.retrieve('user');
-        user = {...user, userSocketId: id, deviceId: '12345' };
-        // console.log('userSocketId', id)
+        user = {...user, userSocketId: data.socketId, deviceId: '12345' };
         this.storage.store('user', user);
         this.connected();
-        this.toastr.info(id, 'User Socket Id')
       })
     }
 
   connected = () => {
     const user = this.storage.retrieve('user');
-    this.socket.emit("connected", { user });
+    const device = this.storage.retrieve('device');
+    // console.log(this.socket)
+    this.socket.emit("online", { user, socketId: this.socket.ioSocket.id, deviceId: device.deviceId });
   }
 
   send = (evtName: string, data: any) => {
