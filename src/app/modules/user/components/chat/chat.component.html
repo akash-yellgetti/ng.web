@@ -48,7 +48,7 @@
           <div class="user-details">
             <p class="profile__initals ani" (click)="redirectToChatWindow(conversation)">
               {{ conversation.fullName }}
-              <span class="status-circle "  [ngClass]="{'online': conversation && conversation.isOnline !== false, 'away': conversation && conversation.isOnline === false }" ></span>
+              <span class="status-circle "  [ngClass]="{'online': conversation && conversation.isOnline === true, 'away': conversation && !conversation.isOnline }" ></span>
             </p>
             <p class="desc">Lorem, ipsum dolor sit</p>
           </div>

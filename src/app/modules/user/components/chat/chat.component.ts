@@ -60,7 +60,8 @@ export class ChatComponent implements OnInit {
         conversation.fullName = u.user.firstName +" "+ u.user.lastName;
         // conversation.userId = u.userId;
         // console.log(onlineUsers, u)
-        conversation.isOnline = _.find(onlineUsers, { userId: u.user._id }) || false;
+        /* conversation.isOnline = _.find(onlineUsers, { userId: u.user._id }) || false; */
+        this.socketService.socket.emit('getUserStatus', { userId: u.user._id });
       } else if(conversation && conversation.type && conversation.type === 'group') {
         // const u = _.find(r.users, (d) => {
         //   return d._id !== this.user._id;
@@ -87,6 +88,14 @@ export class ChatComponent implements OnInit {
       })
     })
     this.moduleService.mainTitle.next("Chat");
+
+    this.socketService.userStatusChange().subscribe((data: any) => {
+      const conversation: any = _.find(this.conversations,  (r) => {
+        return r.user._id == data.userId
+      })
+      _.set(conversation, 'isOnline', data.online);
+      console.log(this.conversations)
+    })
   }
 
   ngOnInit(): void {

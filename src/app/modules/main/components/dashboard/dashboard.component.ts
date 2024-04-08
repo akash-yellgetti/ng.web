@@ -220,10 +220,10 @@ export class DashboardComponent implements OnInit {
     this.slides = slides;
     const user = this.socketService.storage.retrieve('user');
     console.log(user)
-    this.socketService.getOnlineUsers().subscribe((res: any) => {
+    /* this.socketService.getOnlineUsers().subscribe((res: any) => {
       console.log(res.userId === user._d);
       this.users = res.users.filter((r: any) => r && r.userId && r.userId !== user._id );
-    })
+    }) */
     
   }
 

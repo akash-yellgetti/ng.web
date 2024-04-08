@@ -32,7 +32,7 @@ export class SocketService {
     const user = this.storage.retrieve('user');
     const device = this.storage.retrieve('device');
     // console.log(this.socket)
-    this.socket.emit("online", { user, socketId: this.socket.ioSocket.id, deviceId: device.deviceId });
+    this.socket.emit("userStatusChange", { user, socketId: this.socket.ioSocket.id, deviceId: device.deviceId });
   }
 
   send = (evtName: string, data: any) => {
@@ -64,6 +64,10 @@ export class SocketService {
   // getMessage() {
   //   return this.socket.fromEvent('chat.message');
   // }
+
+  userStatusChange() {
+    return this.socket.fromEvent('userStatusChange');
+  }
 
   getOnlineUsers() {
     return this.socket.fromEvent('onlineUsers');
