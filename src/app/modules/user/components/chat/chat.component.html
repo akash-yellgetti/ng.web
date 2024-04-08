@@ -63,7 +63,7 @@
           <div class="user-details">
             <p class="profile__initals ani" (click)="redirectToChatWindow(contact)">
               {{ contact.fullName }}
-              <span class="status-circle"  [ngClass]="{'online': contact && contact.isOnline !== false, 'away': contact && contact.isOnline === false }" ></span>
+              <span class="status-circle"  [ngClass]="{'online': contact && contact.isOnline === true, 'away': contact && !contact.isOnline }" ></span>
             </p>
             <p class="desc">Lorem, ipsum dolor sit</p>
           </div>

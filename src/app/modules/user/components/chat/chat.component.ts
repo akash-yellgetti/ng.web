@@ -94,12 +94,15 @@ export class ChatComponent implements OnInit {
         return r.user._id == data.userId
       })
       _.set(conversation, 'isOnline', data.online);
+      const contact: any = _.find(this.contacts,  (r) => {
+        return r.user._id == data.userId
+      })
+      _.set(conversation, 'isOnline', data.online);
       console.log(this.conversations)
     })
   }
 
   ngOnInit(): void {
-    
     this.setProfileImage();
   }
 
@@ -181,10 +184,11 @@ export class ChatComponent implements OnInit {
 
   refreshContacts = () => {
     // console.log(this.contact)
-    // this.contactService.addContact({ firstName: this.contact.firstName.value, mobileNo: this.contact.mobileNo.value }).subscribe((data: any) => {
-    //   this.toastr.success(data.message);
-    //   this.dialog.closeAll();
-    // })
+    this.contactService.refreshContacts().subscribe((data: any) => {
+      console.log(data)
+      // this.toastr.success(data.message);
+      // this.dialog.closeAll();
+    })
   }
 
   

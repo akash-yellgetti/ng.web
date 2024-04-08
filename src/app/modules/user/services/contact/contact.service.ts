@@ -32,6 +32,19 @@ export class ContactService extends CommonService{
       catchError(this.handleError));
   };
 
+  refreshContacts = () => {
+    const url = setting['uri'] + '/contact/refresh';
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getAuthToken()
+    });
+    const options = { headers: headers };
+    
+    return this.http.get(url, options)
+      .pipe(map((data) => data),
+      catchError(this.handleError));
+  };
+
   addContact = (data: any) => {
     const url = setting['uri'] + '/contact/create';
 
