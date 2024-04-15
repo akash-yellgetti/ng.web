@@ -1,6 +1,5 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import * as $ from 'jquery';
-import 'datatables.net';
+import { Component, OnInit, AfterViewInit, SimpleChanges, Input } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-datatable',
@@ -10,59 +9,81 @@ import 'datatables.net';
   ]
 })
 export class DatatableComponent implements OnInit, AfterViewInit {
-  constructor() { }
+  dataTable: any;
+  @Input() columns: any;
+  @Input() data: any;
+  public id: any = Math.random().toString(36).substring(7);
+
+  constructor() { 
+    
+  }
 
   ngOnInit() {
+    this.loadData();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    // changes.prop contains the old and the new value...
+    console.log(changes)
+    if (changes.data && changes.data.currentValue) {
+      this.loadData();
+    }
   }
 
   ngAfterViewInit() {
-    const datatableOptions = {
-      ajax: {
-        url: 'https://api-web-bxum.onrender.com/tradingview/webhook/logs',
-        type: 'GET',
-        contentType: 'application/json'
-      },
-      // responsive: true,
-      // dom: 'lBfrtip',
-  
-      buttons: [
-        {
-          extend: 'csv',
-          split: ['pdf', 'excel'],
-          title: new Date().getTime() + ' - Data export'
-        }
-      ],
+    this.initializeDataTable();
+  }
+
+  ngOnDestroy() {
+    if (this.dataTable) {
+      this.dataTable.destroy();
+    }
+  }
+
+  loadData() {
+    // Simulate fetching data (replace with actual HTTP call)
+    // const data = [
+    //   { id: 1, name: 'John Doe', age: 30 },
+    //   { id: 2, name: 'Jane Smith', age: 25 },
+    //   // Add more data as needed
+    // ];
+
+    // Use setTimeout to simulate async data loading
+    // setTimeout(() => {
+    //   // Initialize DataTable after data is loaded
+    //   this.initializeDataTable();
+    // }, 0);
+
+    if(this.dataTable) { 
+      // Fetch and set data for DataTable
+      this.dataTable.clear();
+      this.dataTable.rows.add(this.data);
+      this.dataTable.draw();
+    }
+  }
+
+  initializeDataTable() {
+    // if ($.fn.DataTable.isDataTable('#example')) {
+    //   // Destroy existing DataTable if it exists
+    //   this.dataTable.destroy();
+    // ...
+
+    this.dataTable = $('#'+this.id).DataTable({
+      dom: 'lBfrtip',
+      buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
       lengthMenu: [
-        [10, 20, 25, 50, -1],
-        [10, 20, 25, 50, 'All']
+        [10, 15, 20, 25, 50,   -1],
+        [10, 15, 20, 25, 50,  'All']
       ],
-      pageLength: 10,
-      // order: [[0, 'desc']],
-      columns: [
-        { title: 'timestamp', data: 'timestamp' },
-        { title: 'datetime', data: 'datetime' },
-        { title: 'timeframe', data: 'timeframe' },
-        { title: 'type', data: 'type' },
-        { title: 'exchange', data: 'exchange' },
-        { title: 'symbol', data: 'symbol' },
-        { title: 'price', data: 'price' },
-        { title: 'volume', data: 'volume' },
-        // { title: 'open', data: 'open' },
-        // { title: 'high', data: 'high' },
-        // { title: 'low', data: 'low' },
-        // { title: 'close', data: 'close' },
-        // { title: 'volume', data: 'volume' },
-      ],
-      initComplete: function () {
-        const table = this;
-        // table.api().page('last').draw('page')
-        // const data = table.api().rows().data();
-        // refreshChart(data)
-        // console.log()
-      }
-    };
-    $(document).ready(function () {
-      $('#example').DataTable(datatableOptions);
+      pageLength: 15,
+      data: [], // Initialize with empty data
+      columns: this.columns
     });
+
+    // ...
+    // Fetch and set data for DataTable
+    this.dataTable.clear();
+    this.dataTable.rows.add(this.data);
+    this.dataTable.draw();
   }
 }

@@ -108,8 +108,8 @@ export class CalculatorService {
     let monthlyInterest = 0;
     let totalAmount = 0;
     let totalInvestmentAmount = 0;
-    for(let i = 0; i < numberOfMonths; i++) {
-      sipAmount = i != 0 && i%12 === 0 ? sipAmount + (sipAmount * growthdecimalRate) : sipAmount;
+    for(let i = 1; i < numberOfMonths; i++) {
+      sipAmount = i%12 === 0 ? sipAmount + (sipAmount * growthdecimalRate) : sipAmount;
       initialAmount = totalAmount;
       monthlyAmount = this.round2Decimal(sipAmount);
       monthlySum = this.round2Decimal(initialAmount + monthlyAmount);
@@ -118,6 +118,7 @@ export class CalculatorService {
       totalInvestmentAmount += this.round2Decimal(monthlyAmount);
 
       data.push({
+        month: i,
         initialAmount,
         monthlyAmount,
         monthlySum,
@@ -188,27 +189,34 @@ export class CalculatorService {
   }
 
   
-  emiTable = (principal: number, rate: number, time: number, extraAmount = 0) => {
+  emiTable = (principal: number, rate: number, time: number, emi: number = 0, partPaymentEmiCount = 0, increaseEmi = 0) => {
     const emiTable = [];
     let remainingPrincipal = principal;
-    const emi = parseFloat(this.emi(remainingPrincipal, rate, time));
-    
+    emi = emi = 0 ? parseFloat(this.emi(remainingPrincipal, rate, time)) : emi;
+    let i = 1;
+    let totalInterest = 0;
     while(remainingPrincipal > 0) {
+      emi = i % 13 === 0 && i !== 0 ? emi + this.round2Decimal((emi * increaseEmi) / 100) : emi;
       const principal = this.round2Decimal(remainingPrincipal);
       const interest = this.round2Decimal((remainingPrincipal * rate) / (12 * 100));
+      totalInterest = this.round2Decimal(totalInterest + interest);
       const principalPayment = this.round2Decimal(emi - interest);
-  
+      
       remainingPrincipal -= this.round2Decimal(principalPayment);
-      remainingPrincipal -= extraAmount;
-
+      let partPaymentAmount = i % 12 === 0 ? (emi * partPaymentEmiCount) : 0; 
+      remainingPrincipal -= partPaymentAmount;
+      remainingPrincipal = this.round2Decimal(remainingPrincipal);
       emiTable.push({
+        month: i,
         principal,
         emi,
         principalPayment,
         interest,
-        extraAmount,
+        totalInterest,
+        partPaymentAmount,
         remainingPrincipal
       })
+      i++;
     }
 
     return emiTable;
@@ -216,5 +224,12 @@ export class CalculatorService {
 
   round2Decimal = (value: any) => {
     return parseFloat(value.toFixed(2));
+  }
+
+  percentage = (value: number, total: number) => {
+  }
+
+  percentageValue = (total: number, percentage: number) => {
+    return (total * percentage) / 100;
   }
 }

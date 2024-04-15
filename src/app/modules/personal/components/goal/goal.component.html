@@ -19,13 +19,32 @@
           <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.tenure.value" />
         </mat-form-field>
         <mat-form-field class="w-100">
-          <mat-label>Extra amount</mat-label>
-          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.extraAmount.value" />
+          <mat-label> EMi Amount (No Of Emi) </mat-label>
+          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.emi.value" />
         </mat-form-field>
-        <mat-form-field class="w-100" *ngIf="InstallmentAmount > 0">
+        <!-- <mat-form-field class="w-100" *ngIf="InstallmentAmount > 0">
           <mat-label>Installment Amount</mat-label>
           <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="InstallmentAmount" />
+        </mat-form-field> -->
+        <mat-form-field class="w-100">
+          <mat-label>Part Payment Amount (No Of Emi) </mat-label>
+          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.partPaymentAmount.value" />
         </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Increase Emi (In Percent)</mat-label>
+          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.increaseEmi.value" />
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <mat-label>Invest Percent Of Emi</mat-label>
+          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.investPercentEmi.value" />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Investment ROI</mat-label>
+          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.investmentROI.value" />
+        </mat-form-field>
+        
+      
       </mat-card-content>
       
       <mat-card-actions>
@@ -33,7 +52,11 @@
       </mat-card-actions>
     </mat-card>
   </div>
-  <div class="w-100">
-    <app-chart class="col-100" [options]="chartOptions"  [updateFlag]="updateFlag" ></app-chart>
+  <div class="w-60">
+    <app-datatable [columns] = "emiColumns"  [data]="emiData" ></app-datatable>
+    <app-datatable [columns] = "investmentColumns"  [data]="investmentData" ></app-datatable>
+  </div>
+  <div class="w-60">
+    <!-- <app-chart class="col-100" [options]="chartOptions2"  [updateFlag]="updateFlag" ></app-chart> -->
   </div>
 </div>

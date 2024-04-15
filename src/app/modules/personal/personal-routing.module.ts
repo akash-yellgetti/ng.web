@@ -6,6 +6,7 @@ import { GoalComponent } from './components/goal/goal.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { InvestmentComponent } from './components/investment/investment.component';
 import { RoutineSchedulerComponent } from './components/routine-scheduler/routine-scheduler.component';
+import { FireComponent } from './components/fire/fire.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'goal',
     component: GoalComponent
+  },
+  {
+    path: 'fire',
+    component: FireComponent
   },
   {
     path: 'transaction',

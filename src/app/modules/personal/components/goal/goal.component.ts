@@ -19,83 +19,114 @@ import Swal from 'sweetalert2'
   styleUrls: ['./goal.component.scss']
 })
 export class GoalComponent implements OnInit {
-  public data: any = goals;
-  public profileForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: [null, Validators.required],
-    gender: [null, Validators.required],
-    dob: [null, Validators.required],
-    mobileNo: [null, Validators.required],
-    email: [null, []],
-  });
+  public emiData: any = [];
+  public investmentData: any = [];
+ 
 
-  public columns: any = [
+  public emiColumns: any = [
     {
-      'name': 'type',
-    }, {
-      'name': 'title',
-    }, {
-    'name': 'description',
-  },{
-    'name': 'noOfYears', 
-  },{
-    'name': 'amount', 
-  }
+      data: 'month',
+      title: 'month',
+    }
+    ,{
+      data: 'principal',
+      title: 'principal',
+    }
+    ,{
+      data: 'emi',
+      title: 'emi',
+    }
+    ,{
+      data: 'principalPayment',
+      title: 'principalPayment',
+    }
+    ,{
+      data: 'interest',
+      title: 'interest',
+    }
+    ,{
+      data: 'totalInterest',
+      title: 'totalInterest',
+    }
+    ,{
+      data: 'partPaymentAmount',
+      title: 'partPaymentAmount',
+    }
+    ,{
+      data: 'remainingPrincipal',
+      title: 'remainingPrincipal',
+    }
+    
+  //   {
+  //     'name': 'type',
+  //   }, {
+  //     'name': 'title',
+  //   }, {
+  //   'name': 'description',
+  // },{
+  //   'name': 'noOfYears', 
+  // },{
+  //   'name': 'amount', 
+  // }
   ];
-  chartOptions: any = {
-    title: {
-      text: 'Monthly Investment',
-      align: 'center',
+
+  investmentColumns: any = [
+    {
+      data: 'month',
+      title: 'month',
     },
-    series: [{
-      name: 'Brands',
-      colorByPoint: true,
-      data: [{
-          name: 'Chrome',
-          y: 70.67,
-          // sliced: true,
-          // selected: true
-      }, {
-          name: 'Edge',
-          y: 14.77
-      },  {
-          name: 'Firefox',
-          y: 4.86
-      }, {
-          name: 'Safari',
-          y: 2.63
-      }, {
-          name: 'Internet Explorer',
-          y: 1.53
-      },  {
-          name: 'Opera',
-          y: 1.40
-      }, {
-          name: 'Sogou Explorer',
-          y: 0.84
-      }, {
-          name: 'QQ',
-          y: 0.51
-      }, {
-          name: 'Other',
-          y: 2.6
-      }]
-  }]
-  }
+    {
+      data: 'initialAmount',
+      title: 'initialAmount',
+    },
+    {
+      data: 'monthlyAmount',
+      title: 'monthlyAmount',
+    },
+    {
+      data: 'monthlySum',
+      title: 'monthlySum',
+    },
+    {
+      data: 'monthlyInterest',
+      title: 'monthlyInterest',
+    },
+    {
+      data: 'totalAmount',
+      title: 'totalAmount',
+    },
+    {
+      data: 'totalInvestmentAmount',
+      title: 'totalInvestmentAmount',
+    }
+  ];
+
   updateFlag: any = 0;
   InstallmentAmount: any = 0;
   goal: any = {
     amount: {
-      value: 1962433
+      value: 7500000
     },
     rate: {
-      value: 9.4
+      value: 8.6
     },
     tenure: {
-      value: 4
+      value: 15
     },
-    extraAmount: {
-      value: 5000
+    emi: {
+      value: 75000
+    },
+    partPaymentAmount: {
+      value: 2
+    },
+    increaseEmi: {
+      value: 10
+    },
+    investPercentEmi: {
+      value: 30
+    },
+    investmentROI: {
+      value: 12
     },
   }
   selected: any = [];
@@ -104,26 +135,7 @@ export class GoalComponent implements OnInit {
     public calculatorService: CalculatorService) { }
 
   ngOnInit(): void {
-    this.selected = _.filter(this.data, (r: any) => r && r.currentSlot === true);
-    console.log(this.selected)
-    this.chartOptions.series =  [  {
-    name: 'extraAmount',
-    data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5,
-        106.6, 92.3]
-},
-{
-  name: 'Interest',
-  data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5,
-      106.6, 92.3]
-},
-{
-  name: 'Principal',
-  data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4,
-      194.1, 95.6, 54.4]
-
-},
-  
-];
+     
   }
 
   onSelect({ selected } : any) {
@@ -137,24 +149,11 @@ export class GoalComponent implements OnInit {
 
   getPrincipalMonthlyAmount = () => {
     const goal = this.goal;
-    const emiAmount: any = this.calculatorService.emi(goal.amount.value, goal.rate.value, goal.tenure.value);
-    this.InstallmentAmount = emiAmount;
-    const data: any = this.calculatorService.emiTable(goal.amount.value, goal.rate.value, goal.tenure.value, parseFloat(goal.extraAmount.value));
-    console.log(data);
-    const principal: any = _.values(_.mapValues(data, 'principalPayment'));
-    // console.log(principal)
-    this.chartOptions.series[2].data = principal;
-    const Interest: any = _.values(_.mapValues(data, 'interest'));
-    this.chartOptions.series[1].data = Interest;
-    const extraAmount: any = _.values(_.mapValues(data, 'extraAmount'));
-    this.chartOptions.series[0].data = extraAmount;
-    // console.log(this.chartOptions.series)
-    // this.chartOptions.title = this.chartOptions.title + " : " + sipAmount;
-    // console.log(data);
-    this.updateFlag = new Date().getTime();
-    // console.log(this.updateFlag)
-    // this.updateFlag = this.updateFlag === false ? true : this.updateFlag;
-    // console.log(this.updateFlag);
-    // this.updateFlag =  !(this.updateFlag);
+    const emiAmount: any = parseFloat(goal.emi.value) === 0 ? this.calculatorService.emi(goal.amount.value, goal.rate.value, goal.tenure.value) : parseFloat(goal.emi.value);
+    goal.emi.value = emiAmount;
+    this.emiData = this.calculatorService.emiTable(goal.amount.value, goal.rate.value, goal.tenure.value, parseFloat(goal.emi.value), parseFloat(goal.partPaymentAmount.value), parseFloat(goal.increaseEmi.value));
+    this.investmentData = this.calculatorService.stepUpSipTable(this.calculatorService.percentageValue(emiAmount, goal.investPercentEmi.value), goal.investmentROI.value, goal.increaseEmi.value, parseFloat((this.emiData.length/12).toFixed(2)));
+    
+    
   }
 }

@@ -98,6 +98,7 @@ ng g m modules/personal --routing=true
 ng g c modules/personal/components/budget --module=personal
 ng g c modules/personal/components/routine --module=personal
 ng g c modules/personal/components/goal --module=personal
+ng g c modules/personal/components/fire --module=personal
 ng g c modules/personal/components/transaction --module=personal
 ng g c modules/personal/components/investment --module=personal
 ng g c modules/personal/components/routine-scheduler --module=personal
