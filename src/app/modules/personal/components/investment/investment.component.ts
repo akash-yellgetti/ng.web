@@ -7,6 +7,24 @@ import { CalculatorService } from 'src/app/shared/services/calculator/calculator
   styleUrls: ['./investment.component.scss']
 })
 export class InvestmentComponent implements OnInit {
+  form: any = {
+    amount: {
+      value: 7500
+    },
+    rate: {
+      value: 12
+    },
+    tenure: {
+      value: 15
+    },
+    growthRate: {
+      value: 0
+    },
+    additionalAmount: {
+      value: 0
+    },
+    
+  }
   investment: any = {
 
     sip: {
@@ -80,16 +98,62 @@ export class InvestmentComponent implements OnInit {
  
 
   }
+
+  investmentColumns: any = [
+    {
+      data: 'month',
+      title: 'month',
+    },
+    {
+      data: 'initialAmount',
+      title: 'initialAmount',
+    },
+    {
+      data: 'monthlyAmount',
+      title: 'monthlyAmount',
+    },
+    {
+      data: 'totalMonthlyAmount',
+      title: 'totalMonthlyAmount',
+    },
+    {
+      data: 'monthlySum',
+      title: 'monthlySum',
+    },
+    
+    {
+      data: 'monthlyInterest',
+      title: 'monthlyInterest',
+    },
+    {
+      data: 'totalMonthlyInterest',
+      title: 'totalMonthlyInterest',
+    },
+    {
+      data: 'extraAmount',
+      title: 'extraAmount',
+    },
+    {
+      data: 'totalExtraAmount',
+      title: 'totalExtraAmount',
+    },
+    
+    {
+      data: 'totalAmount',
+      title: 'totalAmount',
+    }
+     
+  ];
+  public investmentData: any = [];
   constructor(public calculatorService: CalculatorService) { }
 
   ngOnInit(): void {
   }
 
   calculate = () => {
-    this.investment.sip.result = this.calculatorService.sipTable(this.investment.sip.form.monthlyAmount.value, this.investment.sip.form.roi.value, this.investment.sip.form.tenure.value);
-    this.investment.stepUpSip.result = this.calculatorService.stepUpSipTable(this.investment.stepUpSip.form.monthlyAmount.value, this.investment.stepUpSip.form.roi.value, this.investment.stepUpSip.form.growth.value, this.investment.stepUpSip.form.tenure.value);
-    const loan = this.calculatorService.loanAmount(this.investment.loan.form.monthlyAmount.value, this.investment.loan.form.roi.value, this.investment.loan.form.tenure.value)
-    this.investment.loan.result = this.calculatorService.emiGrid(loan, this.investment.loan.form.monthlyAmount.value, this.investment.loan.form.roi.value, this.investment.loan.form.tenure.value)
-    console.log(this.investment)
+    const form = this.form;
+    this.investmentData = this.calculatorService.investmentTable(form.amount.value, form.rate.value, form.tenure.value, form.growthRate.value, Number(form.additionalAmount.value));
+    
+    
   }
 }

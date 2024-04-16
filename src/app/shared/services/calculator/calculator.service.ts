@@ -12,15 +12,15 @@ export class CalculatorService {
   ---------------------------------------------------
   principal = Monthly SIP amount
   rate = Rate of return per period (monthly in this case)
-  time = Number of periods (months) 
+  tenure = Number of periods (months) 
    */
-  futureValue = (principal: number, rate: number, time: number) => {
+  futureValue = (principal: number, rate: number, tenure: number) => {
     // Convert rate to decimal and calculate monthly rate
     const decimalRate = rate / 100;
     const monthlyRate = decimalRate / 12;
   
     // Calculate future value using the formula
-    const futureValue = principal * Math.pow(1 + monthlyRate, time);
+    const futureValue = principal * Math.pow(1 + monthlyRate, tenure);
   
     return futureValue.toFixed(2); // Round the result to 2 decimal places
   }
@@ -30,26 +30,26 @@ export class CalculatorService {
   ---------------------------------------------------
   futureValue = Future Value (Goal Amount)
   rate = Rate of return per period (monthly in this case)
-  time = Number of periods (months) 
+  tenure = Number of periods (months) 
    */
-  principalValue = (futureValue: number, rate: number, time: number) => {
+  principalValue = (futureValue: number, rate: number, tenure: number) => {
     // Convert rate to decimal and calculate monthly rate
     const decimalRate = rate / 100;
     const monthlyRate = decimalRate / 12;
   
     // Calculate future value using the formula
-    const principalValue = futureValue * Math.pow(1 + monthlyRate, time);
+    const principalValue = futureValue * Math.pow(1 + monthlyRate, tenure);
   
     return principalValue.toFixed(2); // Round the result to 2 decimal places
   }
 
-  SIPAmount = (goalAmount: number, rate: number, time: number) => {
+  SIPAmount = (goalAmount: number, rate: number, tenure: number) => {
     // Convert rate to decimal and calculate monthly rate
     const decimalRate = rate / 100;
     const monthlyRate = decimalRate / 12;
   
-    // Convert time to number of months
-    const numberOfMonths = time * 12;
+    // Convert tenure to number of months
+    const numberOfMonths = tenure * 12;
   
     // Calculate SIP amount using the formula
     const sipAmount = goalAmount * (monthlyRate / (Math.pow(1 + monthlyRate, numberOfMonths) - 1));
@@ -57,12 +57,12 @@ export class CalculatorService {
     return sipAmount.toFixed(2); // Round the result to 2 decimal places
   }
 
-  sipTable = (sipAmount: number, rate: number,time: any) => {
+  sipTable = (sipAmount: number, rate: number,tenure: any) => {
 
     const decimalRate = rate / 100;
     const monthlyRate = decimalRate / 12;
 
-    const numberOfMonths = time * 12;
+    const numberOfMonths = tenure * 12;
     
     const data = [];
     let initialAmount = 0;
@@ -93,48 +93,59 @@ export class CalculatorService {
     return data;
   }
 
-  stepUpSipTable = (sipAmount: number, rate: number, growthRate: number, time: any) => {
+  investmentTable = (sipAmount: number, rate: number, tenure: any, growthRate: number = 0, additionAmount = 0) => {
 
     const decimalRate = rate / 100;
     const growthdecimalRate = growthRate / 100;
     const monthlyRate = decimalRate / 12;
 
-    const numberOfMonths = time * 12;
+    const numberOfMonths = tenure * 12;
     
     const data = [];
     let initialAmount = 0;
     let monthlyAmount = 0;
+    let totalMonthlyAmount = 0;
     let monthlySum = 0;
     let monthlyInterest = 0;
+    let totalMonthlyInterest = 0;
     let totalAmount = 0;
-    let totalInvestmentAmount = 0;
+    let extraAmount = 0;
+    let totalExtraAmount = 0;
     for(let i = 1; i < numberOfMonths; i++) {
       sipAmount = i%12 === 0 ? sipAmount + (sipAmount * growthdecimalRate) : sipAmount;
       initialAmount = totalAmount;
       monthlyAmount = this.round2Decimal(sipAmount);
+      totalMonthlyAmount += this.round2Decimal(monthlyAmount);
       monthlySum = this.round2Decimal(initialAmount + monthlyAmount);
       monthlyInterest = this.round2Decimal(monthlySum * monthlyRate);
-      totalAmount = this.round2Decimal(monthlySum + monthlyInterest);
-      totalInvestmentAmount += this.round2Decimal(monthlyAmount);
+      totalMonthlyInterest += this.round2Decimal(monthlyInterest);
+      totalMonthlyInterest = this.round2Decimal(totalMonthlyInterest);
+      extraAmount = i%12 === 0 ? additionAmount : 0;
+      totalExtraAmount += this.round2Decimal(extraAmount);
+      totalAmount = this.round2Decimal(monthlySum +  extraAmount + monthlyInterest);
+      
 
       data.push({
         month: i,
         initialAmount,
         monthlyAmount,
+        totalMonthlyAmount,
         monthlySum,
         monthlyInterest,
-        totalAmount,
-        totalInvestmentAmount
+        totalMonthlyInterest,
+        extraAmount,
+        totalExtraAmount,
+        totalAmount
       })
     }
 
     return data;
   }
 
-  loanAmount = (emiAmount: number, rate: number,time: any) => {
+  loanAmount = (emiAmount: number, rate: number,tenure: any) => {
 
-    // Convert time to number of months
-    const numberOfMonths = time * 12;
+    // Convert tenure to number of months
+    const numberOfMonths = tenure * 12;
 
     // Convert annual interest rate to monthly and decimal
     const monthlyInterestRate = (rate / 100) / 12;
@@ -145,18 +156,18 @@ export class CalculatorService {
     return this.round2Decimal(maxLoanAmount);
   }
 
-  emiGrid = (principal: number, emi: any,  rate: number, time: number, extraAmount = 0) => {
+  emiGrid = (principal: number, emi: any,  rate: number, tenure: number, extraAmount = 0) => {
     const emiTable = [];
-    let remainingPrincipal = principal;
-    emi = parseFloat(emi) || parseFloat(this.emi(remainingPrincipal, rate, time));
+    let balance = principal;
+    emi = parseFloat(emi) || parseFloat(this.emi(balance, rate, tenure));
     let totalInterest = 0;
-    while(remainingPrincipal > 0) {
-      const principal = this.round2Decimal(remainingPrincipal);
-      const interest = this.round2Decimal((remainingPrincipal * rate) / (12 * 100));
+    while(balance > 0) {
+      const principal = this.round2Decimal(balance);
+      const interest = this.round2Decimal((balance * rate) / (12 * 100));
       const principalPayment = this.round2Decimal(emi - interest);
       totalInterest += this.round2Decimal(interest);
-      remainingPrincipal -= this.round2Decimal(principalPayment);
-      remainingPrincipal -= extraAmount;
+      balance -= this.round2Decimal(principalPayment);
+      balance -= extraAmount;
 
       emiTable.push({
         principal,
@@ -164,7 +175,7 @@ export class CalculatorService {
         principalPayment,
         interest,
         extraAmount,
-        remainingPrincipal,
+        balance,
         totalInterest
       })
     }
@@ -173,13 +184,13 @@ export class CalculatorService {
   }
 
 
-  emi = (principal: number, rate: number, time: number) => {
+  emi = (principal: number, rate: number, tenure: number) => {
     // Convert rate to decimal and calculate monthly rate
     const decimalRate = rate / 100;
     const monthlyRate = decimalRate / 12;
   
-    // Convert time to number of months
-    const numberOfMonths = time * 12;
+    // Convert tenure to number of months
+    const numberOfMonths = tenure * 12;
   
     // Calculate EMI using the formula
     const emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, numberOfMonths)) /
@@ -189,32 +200,38 @@ export class CalculatorService {
   }
 
   
-  emiTable = (principal: number, rate: number, time: number, emi: number = 0, partPaymentEmiCount = 0, increaseEmi = 0) => {
+  emiTable = (principal: number, rate: number, tenure: number, emi: number = 0, partPaymentEmiCount = 0, increaseEmi = 0) => {
     const emiTable = [];
-    let remainingPrincipal = principal;
-    emi = emi = 0 ? parseFloat(this.emi(remainingPrincipal, rate, time)) : emi;
+    let balance = principal;
+    emi = emi = 0 ? parseFloat(this.emi(balance, rate, tenure)) : emi;
     let i = 1;
+    let totalPrincipal = 0;
     let totalInterest = 0;
-    while(remainingPrincipal > 0) {
+    let totalPartPayment = 0;
+    while(balance > 0) {
       emi = i % 13 === 0 && i !== 0 ? emi + this.round2Decimal((emi * increaseEmi) / 100) : emi;
-      const principal = this.round2Decimal(remainingPrincipal);
-      const interest = this.round2Decimal((remainingPrincipal * rate) / (12 * 100));
+      const loanAmount = this.round2Decimal(balance);
+      const interest = this.round2Decimal((balance * rate) / (12 * 100));
       totalInterest = this.round2Decimal(totalInterest + interest);
-      const principalPayment = this.round2Decimal(emi - interest);
+      const principal = this.round2Decimal(emi - interest);
+      totalPrincipal = this.round2Decimal(totalPrincipal + principal);
       
-      remainingPrincipal -= this.round2Decimal(principalPayment);
-      let partPaymentAmount = i % 12 === 0 ? (emi * partPaymentEmiCount) : 0; 
-      remainingPrincipal -= partPaymentAmount;
-      remainingPrincipal = this.round2Decimal(remainingPrincipal);
+      balance -= this.round2Decimal(principal);
+      let partPayment = i % 12 === 0 ? (emi * partPaymentEmiCount) : 0; 
+      totalPartPayment = partPayment > 0 ? totalPartPayment + partPayment : totalPartPayment; 
+      balance -= partPayment;
+      balance = this.round2Decimal(balance);
       emiTable.push({
         month: i,
-        principal,
+        loanAmount,
         emi,
-        principalPayment,
+        principal,
         interest,
+        totalPrincipal,
         totalInterest,
-        partPaymentAmount,
-        remainingPrincipal
+        partPayment,
+        totalPartPayment,
+        balance
       })
       i++;
     }

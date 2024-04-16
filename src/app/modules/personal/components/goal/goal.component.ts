@@ -29,16 +29,21 @@ export class GoalComponent implements OnInit {
       title: 'month',
     }
     ,{
-      data: 'principal',
-      title: 'principal',
+      data: 'loanAmount',
+      title: 'loanAmount',
     }
     ,{
       data: 'emi',
       title: 'emi',
     }
+    
     ,{
-      data: 'principalPayment',
-      title: 'principalPayment',
+      data: 'principal',
+      title: 'principal',
+    }
+    ,{
+      data: 'totalPrincipal',
+      title: 'totalPrincipal',
     }
     ,{
       data: 'interest',
@@ -49,12 +54,16 @@ export class GoalComponent implements OnInit {
       title: 'totalInterest',
     }
     ,{
-      data: 'partPaymentAmount',
-      title: 'partPaymentAmount',
+      data: 'partPayment',
+      title: 'partPayment',
     }
     ,{
-      data: 'remainingPrincipal',
-      title: 'remainingPrincipal',
+      data: 'totalPartPayment',
+      title: 'totalPartPayment',
+    }
+    ,{
+      data: 'balance',
+      title: 'balance',
     }
     
   //   {
@@ -152,7 +161,7 @@ export class GoalComponent implements OnInit {
     const emiAmount: any = parseFloat(goal.emi.value) === 0 ? this.calculatorService.emi(goal.amount.value, goal.rate.value, goal.tenure.value) : parseFloat(goal.emi.value);
     goal.emi.value = emiAmount;
     this.emiData = this.calculatorService.emiTable(goal.amount.value, goal.rate.value, goal.tenure.value, parseFloat(goal.emi.value), parseFloat(goal.partPaymentAmount.value), parseFloat(goal.increaseEmi.value));
-    this.investmentData = this.calculatorService.stepUpSipTable(this.calculatorService.percentageValue(emiAmount, goal.investPercentEmi.value), goal.investmentROI.value, goal.increaseEmi.value, parseFloat((this.emiData.length/12).toFixed(2)));
+    // this.investmentData = this.calculatorService.stepUpSipTable(this.calculatorService.percentageValue(emiAmount, goal.investPercentEmi.value), goal.investmentROI.value, goal.increaseEmi.value, parseFloat((this.emiData.length/12).toFixed(2)));
     
     
   }
