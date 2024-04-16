@@ -1,0 +1,185 @@
+<mat-drawer-container
+  class="sidenav-container"
+  autosize="true"
+  [class.collapsed]="isCollapsed"
+>
+  <mat-drawer
+    class="sidenav main-sidenav"
+    #drawer
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar class="bottom-box-shadow">{{ isCollapsed ? "PF" : "Personal Finance" }}</mat-toolbar>
+    <!-- <div class="nav-top d-flex align-center" [ngStyle]="{'background-image': 'url(' + profileBg + ')'}">
+      <img [src]="profileImg" *ngIf="profileImg" alt="profile image" class="profile-img">
+      <button
+        aria-label="view profile"
+        name="view profile"
+        class="view-profile"
+        *ngIf="!profileImg"
+      >
+      <p class="profile__initals ani">{{ user.shortName}}</p>
+      </button>
+      <div class="username-box">
+        <div class="profile-details d-flex">
+          <div class="user-details">
+            <p class="name">{{ user.fullName }}</p>
+            <p class="sub-details">Senior Developer</p>
+          </div>
+          <div class="divider"></div>
+          <div class="user-details">
+            <p class="name">Member Since</p>
+            <p class="sub-details">{{ user.createdAt | date }}</p>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <mat-nav-list>
+      <mat-list-item class="d-flex width-100 align-items" (click)="redirect('dashboard')">
+          <mat-icon>dashboard</mat-icon><span>Dashboard</span>
+      </mat-list-item>
+      <mat-expansion-panel [class.mat-elevation-z0]="true">
+        <mat-expansion-panel-header>
+            Tradingview
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+            <a mat-list-item routerLink="./tradingview/alerts">
+                <mat-icon>apple</mat-icon><span>alerts</span>
+            </a>
+        </mat-nav-list>
+    </mat-expansion-panel>
+      <mat-expansion-panel [class.mat-elevation-z0]="true">
+        <mat-expansion-panel-header>
+            Personal
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+            <a mat-list-item routerLink="./personal/budget">
+                <mat-icon>apple</mat-icon><span>Budget</span>
+            </a>
+            <a mat-list-item routerLink="./personal/routine">
+                <mat-icon>android</mat-icon><span>Routine</span>
+            </a>
+            <a mat-list-item routerLink="./personal/routine-scheduler">
+              <mat-icon>android</mat-icon><span>Routine Scheduler</span>
+          </a>
+            <a mat-list-item routerLink="./personal/goal">
+              <mat-icon>apple</mat-icon><span>Goals</span>
+            </a>
+            <a mat-list-item routerLink="./personal/fire">
+              <mat-icon>apple</mat-icon><span>FIRE</span>
+            </a>
+            <a mat-list-item routerLink="./personal/transaction">
+              <mat-icon>apple</mat-icon><span>Transaction</span>
+            </a>
+            <a mat-list-item routerLink="./personal/investment">
+              <mat-icon>apple</mat-icon><span>Investment</span>
+            </a>
+        </mat-nav-list>
+    </mat-expansion-panel>
+      <mat-expansion-panel [class.mat-elevation-z0]="true">
+          <mat-expansion-panel-header>
+              Mobile Phone
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+              <a mat-list-item routerLink="#">
+                  <mat-icon>apple</mat-icon><span>iOS</span>
+              </a>
+              <a mat-list-item routerLink="#">
+                  <mat-icon>android</mat-icon><span>Android</span>
+              </a>
+          </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-expansion-panel [class.mat-elevation-z0]="true">
+          <mat-expansion-panel-header>
+              Frameworks
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+              <a mat-list-item routerLink="#">Spring</a>
+              <a mat-list-item routerLink="#">Hibernate</a>
+              <a mat-list-item routerLink="#">Struts</a>
+          </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-list-item class="d-flex width-100 align-items" (click)="redirect('blank')">
+        <mat-icon>help</mat-icon><span>Blank</span>
+      </mat-list-item>
+      <mat-list-item class="d-flex width-100 align-items" (click)="redirect('help')">
+        <mat-icon>help</mat-icon><span>Help</span>
+      </mat-list-item>
+      <mat-list-item class="d-flex width-100 align-items" (click)="redirect('profile')">
+        <mat-icon>person</mat-icon><span>Profile</span>
+      </mat-list-item>
+      <mat-list-item class="d-flex width-100 align-items" (click)="redirect('logout')">
+        <mat-icon>logout</mat-icon><span>Logout</span>
+      </mat-list-item>
+  </mat-nav-list>
+    
+  </mat-drawer>
+  <mat-drawer-content fxLayout="column">
+    <!-- <app-header [drawerRef]="drawer" [drawerChatRef]="''" [isHandset]="(isHandset$ | async)" (toSideNavToggle)="sideNavToggle($event)"></app-header> -->
+    <mat-toolbar color="primary" class="header-toolbar bottom-box-shadow">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        class="desktop-btn"
+        mat-icon-button
+        (click)="sideNavToggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        class="mobile-btn"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span> {{ mainTitle }} </span>
+      <span class="example-spacer"></span>
+      <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+        (click)="redirect('dashboard')">
+        <mat-icon> dashboard</mat-icon>
+      </button> -->
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+        (click)="redirect('chat')">
+        <mat-icon> chat</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with share icon"
+        (click)="redirect('notification')"
+      >
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <!-- <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="redirect('profile')">
+          <mat-icon>person</mat-icon>
+          <span>My Profile</span>
+        </button>
+        <button mat-menu-item (click)="redirect('finance')">
+          <mat-icon>person</mat-icon>
+          <span>My Finance</span>
+        </button>
+        <button mat-menu-item (click)="redirect('family')">
+          <mat-icon>person</mat-icon>
+          <span>My Family</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>power_settings_new</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu> -->
+    </mat-toolbar>
+    <router-outlet class="main"></router-outlet>
+    <mat-toolbar class="footer footer-toolbar" fxFlexOffset="auto">
+      <span>Sociosafety. All rights reserved.</span>
+    </mat-toolbar>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -116,6 +116,7 @@ export class CalculatorService {
       initialAmount = totalAmount;
       monthlyAmount = this.round2Decimal(sipAmount);
       totalMonthlyAmount += this.round2Decimal(monthlyAmount);
+      totalMonthlyAmount = this.round2Decimal(totalMonthlyAmount);
       monthlySum = this.round2Decimal(initialAmount + monthlyAmount);
       monthlyInterest = this.round2Decimal(monthlySum * monthlyRate);
       totalMonthlyInterest += this.round2Decimal(monthlyInterest);

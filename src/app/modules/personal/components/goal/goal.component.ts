@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { SelectionType } from '@swimlane/ngx-datatable';
-import { goals } from 'src/app/shared/json/goals.json';
+import { forms } from 'src/app/shared/json/forms.json';
 import { CalculatorService } from 'src/app/shared/services/calculator/calculator.service';
 import { ChartService } from 'src/app/shared/services/chart/chart.service';
 import { NavigationExtras, Router } from '@angular/router';
@@ -109,10 +109,40 @@ export class GoalComponent implements OnInit {
       title: 'totalInvestmentAmount',
     }
   ];
-
+  public pieChartOptions: any = { 
+    
+    chart: {
+        type: 'pie',
+        renderTo: 'pie-chart-container'
+    },
+    title: {
+        text: 'Browser Market Share'
+    },
+    series: [{
+        name: 'Investment',
+        data: []
+    }],
+    plotOptions: {
+      pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+              enabled: true,
+              format: '<b>{point.name} ({point.y}) </b>: {point.percentage:.1f} %'
+          }
+      }
+  },
+  legend: {
+      enabled: true,
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'middle',
+      borderWidth: 1
+  }
+};;
   updateFlag: any = 0;
   InstallmentAmount: any = 0;
-  goal: any = {
+  form: any = {
     amount: {
       value: 7500000
     },
@@ -156,12 +186,12 @@ export class GoalComponent implements OnInit {
       y: _.sumBy(v, sumKey) }})
   }
 
-  getPrincipalMonthlyAmount = () => {
-    const goal = this.goal;
-    const emiAmount: any = parseFloat(goal.emi.value) === 0 ? this.calculatorService.emi(goal.amount.value, goal.rate.value, goal.tenure.value) : parseFloat(goal.emi.value);
-    goal.emi.value = emiAmount;
-    this.emiData = this.calculatorService.emiTable(goal.amount.value, goal.rate.value, goal.tenure.value, parseFloat(goal.emi.value), parseFloat(goal.partPaymentAmount.value), parseFloat(goal.increaseEmi.value));
-    // this.investmentData = this.calculatorService.stepUpSipTable(this.calculatorService.percentageValue(emiAmount, goal.investPercentEmi.value), goal.investmentROI.value, goal.increaseEmi.value, parseFloat((this.emiData.length/12).toFixed(2)));
+  calculate = () => {
+    const form = this.form;
+    const emiAmount: any = parseFloat(form.emi.value) === 0 ? this.calculatorService.emi(form.amount.value, form.rate.value, form.tenure.value) : parseFloat(form.emi.value);
+    form.emi.value = emiAmount;
+    this.emiData = this.calculatorService.emiTable(form.amount.value, form.rate.value, form.tenure.value, parseFloat(form.emi.value), parseFloat(form.partPaymentAmount.value), parseFloat(form.increaseEmi.value));
+    // this.investmentData = this.calculatorService.stepUpSipTable(this.calculatorService.percentageValue(emiAmount, form.investPercentEmi.value), form.investmentROI.value, form.increaseEmi.value, parseFloat((this.emiData.length/12).toFixed(2)));
     
     
   }

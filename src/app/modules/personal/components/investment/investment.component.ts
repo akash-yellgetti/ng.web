@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CalculatorService } from 'src/app/shared/services/calculator/calculator.service';
-
+import * as _ from 'lodash';
 @Component({
   selector: 'app-investment',
   templateUrl: './investment.component.html',
   styleUrls: ['./investment.component.scss']
 })
 export class InvestmentComponent implements OnInit {
+  updateFlag: any = 0;
   form: any = {
     amount: {
       value: 7500
@@ -18,10 +19,10 @@ export class InvestmentComponent implements OnInit {
       value: 15
     },
     growthRate: {
-      value: 0
+      value: 10
     },
     additionalAmount: {
-      value: 0
+      value: 150000
     },
     
   }
@@ -145,6 +146,38 @@ export class InvestmentComponent implements OnInit {
      
   ];
   public investmentData: any = [];
+
+  public pieChartOptions: any = { 
+    
+    chart: {
+        type: 'pie',
+        renderTo: 'pie-chart-container'
+    },
+    title: {
+        text: 'Browser Market Share'
+    },
+    series: [{
+        name: 'Investment',
+        data: []
+    }],
+    plotOptions: {
+      pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+              enabled: true,
+              format: '<b>{point.name} ({point.y}) </b>: {point.percentage:.1f} %'
+          }
+      }
+  },
+  legend: {
+      enabled: true,
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'middle',
+      borderWidth: 1
+  }
+};;
   constructor(public calculatorService: CalculatorService) { }
 
   ngOnInit(): void {
@@ -152,8 +185,30 @@ export class InvestmentComponent implements OnInit {
 
   calculate = () => {
     const form = this.form;
-    this.investmentData = this.calculatorService.investmentTable(form.amount.value, form.rate.value, form.tenure.value, form.growthRate.value, Number(form.additionalAmount.value));
+    this.investmentData = this.calculatorService.investmentTable(Number(form.amount.value), Number(form.rate.value), Number(form.tenure.value), Number(form.growthRate.value), Number(form.additionalAmount.value));
+    const last = _.last(this.investmentData);
+    this.pieChartOptions.series[0].data = [
+      { name: 'totalMonthlyAmount', y: _.get(last, 'totalMonthlyAmount', 0) },
+      { name: 'totalExtraAmount', y: _.get(last, 'totalExtraAmount', 0) },
+      { name: 'totalMonthlyInterest', y: _.get(last, 'totalMonthlyInterest', 0) },
     
+  ];
+    // [
+    //   {
+    //     name: 'totalMonthlyAmount',
+    //     data: [_.get(last, 'totalMonthlyAmount', 0)]
+    //   },
+    //   {
+    //     name: 'totalExtraAmount',
+    //     data: [_.get(last, 'totalExtraAmount', 0)]
+    //   },
+    //   {
+    //     name: 'totalMonthlyInterest',
+    //     data: [_.get(last, 'totalMonthlyInterest', 0)]
+    //   },
+      
+    // ]
+    this.updateFlag = !this.updateFlag;
     
   }
 }

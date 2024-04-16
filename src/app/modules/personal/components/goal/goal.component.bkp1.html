@@ -1,0 +1,62 @@
+<div class="container-fluid d-flex d-wrap d-gap-15">
+  <div class="w-30">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Goal Amount Calculator</mat-card-title>
+        <!-- <mat-card-subtitle>Start</mat-card-subtitle> -->
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="w-100">
+          <mat-label>Goal Amount</mat-label>
+          <input matInput placeholder="Ex. Pizza" value="100000" [(ngModel)]="goal.amount.value" />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Rate of Return (in Percent(%))</mat-label>
+          <input matInput placeholder="Ex. Pizza" value="12"  [(ngModel)]="goal.rate.value" />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Tenure (In years)</mat-label>
+          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.tenure.value" />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label> EMi Amount (No Of Emi) </mat-label>
+          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.emi.value" />
+        </mat-form-field>
+        <!-- <mat-form-field class="w-100" *ngIf="InstallmentAmount > 0">
+          <mat-label>Installment Amount</mat-label>
+          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="InstallmentAmount" />
+        </mat-form-field> -->
+        <mat-form-field class="w-100">
+          <mat-label>Part Payment Amount (No Of Emi) </mat-label>
+          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.partPaymentAmount.value" />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Increase Emi (In Percent)</mat-label>
+          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.increaseEmi.value" />
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <mat-label>Invest Percent Of Emi</mat-label>
+          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.investPercentEmi.value" />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Investment ROI</mat-label>
+          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.investmentROI.value" />
+        </mat-form-field>
+        
+      
+      </mat-card-content>
+      
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="getPrincipalMonthlyAmount()" >Calculate</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="w-60">
+    <!-- <app-datatable [columns] = "emiColumns"  [data]="emiData" ></app-datatable> -->
+    <app-datatable [columns] = "investmentColumns"  [data]="investmentData" ></app-datatable>
+  </div>
+  <div class="w-60">
+    <!-- <app-chart class="col-100" [options]="chartOptions2"  [updateFlag]="updateFlag" ></app-chart> -->
+  </div>
+</div>

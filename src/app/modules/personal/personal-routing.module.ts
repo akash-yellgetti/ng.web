@@ -26,6 +26,10 @@ const routes: Routes = [
     component: GoalComponent
   },
   {
+    path: 'loan',
+    component: GoalComponent
+  },
+  {
     path: 'fire',
     component: FireComponent
   },

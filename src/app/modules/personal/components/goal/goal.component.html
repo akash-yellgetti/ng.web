@@ -1,62 +1,86 @@
-<div class="container-fluid d-flex d-wrap d-gap-15">
-  <div class="w-30">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Goal Amount Calculator</mat-card-title>
-        <!-- <mat-card-subtitle>Start</mat-card-subtitle> -->
-      </mat-card-header>
-      <mat-card-content>
-        <mat-form-field class="w-100">
-          <mat-label>Goal Amount</mat-label>
-          <input matInput placeholder="Ex. Pizza" value="100000" [(ngModel)]="goal.amount.value" />
-        </mat-form-field>
-        <mat-form-field class="w-100">
-          <mat-label>Rate of Return (in Percent(%))</mat-label>
-          <input matInput placeholder="Ex. Pizza" value="12"  [(ngModel)]="goal.rate.value" />
-        </mat-form-field>
-        <mat-form-field class="w-100">
-          <mat-label>Tenure (In years)</mat-label>
-          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.tenure.value" />
-        </mat-form-field>
-        <mat-form-field class="w-100">
-          <mat-label> EMi Amount (No Of Emi) </mat-label>
-          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.emi.value" />
-        </mat-form-field>
-        <!-- <mat-form-field class="w-100" *ngIf="InstallmentAmount > 0">
-          <mat-label>Installment Amount</mat-label>
-          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="InstallmentAmount" />
-        </mat-form-field> -->
-        <mat-form-field class="w-100">
-          <mat-label>Part Payment Amount (No Of Emi) </mat-label>
-          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.partPaymentAmount.value" />
-        </mat-form-field>
-        <mat-form-field class="w-100">
-          <mat-label>Increase Emi (In Percent)</mat-label>
-          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.increaseEmi.value" />
-        </mat-form-field>
+<!-- Content Row -->
 
-        <mat-form-field class="w-100">
-          <mat-label>Invest Percent Of Emi</mat-label>
-          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.investPercentEmi.value" />
-        </mat-form-field>
-        <mat-form-field class="w-100">
-          <mat-label>Investment ROI</mat-label>
-          <input matInput placeholder="Ex. Pizza" value="60" [(ngModel)]="goal.investmentROI.value" />
-        </mat-form-field>
-        
-      
-      </mat-card-content>
-      
-      <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="getPrincipalMonthlyAmount()" >Calculate</button>
-      </mat-card-actions>
-    </mat-card>
+
+<div class="row">
+
+  <!-- Pie Chart -->
+  <div class="col-xl-4 col-lg-5">
+      <div class="card shadow mb-4">
+          <!-- Card Header - Dropdown -->
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h6 class="m-0 font-weight-bold text-primary">Investment Calculator</h6>
+          </div>
+          <!-- Card Body -->
+          <div class="card-body">
+
+              <div class="form-group">
+                  <label for="amount">Amount</label>
+                  <input type="text" class="form-control" id="amount" placeholder="Enter amount"
+                      [(ngModel)]="form.amount.value" />
+              </div>
+              <div class="form-group">
+                  <label for="rate">Rate</label>
+                  <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                      [(ngModel)]="form.rate.value" />
+              </div>
+              <div class="form-group">
+                  <label for="tenure">Tenure</label>
+                  <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                      [(ngModel)]="form.tenure.value" />
+              </div>
+              <div class="form-group">
+                  <label for="tenure">Growth Rate</label>
+                  <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                      [(ngModel)]="form.growthRate.value" />
+              </div>
+              <div class="form-group">
+                  <label for="tenure">Growth Rate</label>
+                  <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                      [(ngModel)]="form.additionalAmount.value" />
+              </div>
+              <button type="submit" class="btn btn-primary" (click)="calculate()">Submit</button>
+          </div>
+      </div>
   </div>
-  <div class="w-60">
-    <!-- <app-datatable [columns] = "emiColumns"  [data]="emiData" ></app-datatable> -->
-    <app-datatable [columns] = "investmentColumns"  [data]="investmentData" ></app-datatable>
+  <div class="col-xl-4 col-lg-5">
+      <div class="card shadow mb-4">
+          <!-- Card Header - Dropdown -->
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h6 class="m-0 font-weight-bold text-primary">Investment Pie Chart</h6>
+          </div>
+          <!-- Card Body -->
+          <div class="card-body">
+              <app-chart [options]="pieChartOptions" [updateFlag]="updateFlag"></app-chart>
+          </div>
+      </div>
   </div>
-  <div class="w-60">
-    <!-- <app-chart class="col-100" [options]="chartOptions2"  [updateFlag]="updateFlag" ></app-chart> -->
+</div>
+<div class="row">
+  <!-- Area Chart -->
+  <div class="col-xl-12 col-lg-12">
+      <div class="card shadow mb-4">
+          <!-- Card Header - Dropdown -->
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+              <div class="dropdown no-arrow">
+                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                      aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+              </div>
+          </div>
+          <!-- Card Body -->
+          <div class="card-body">
+              <app-datatable [columns]="investmentColumns" [data]="investmentData"></app-datatable>
+          </div>
+      </div>
   </div>
 </div>

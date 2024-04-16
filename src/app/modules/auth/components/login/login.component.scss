@@ -1,118 +1,118 @@
-@import "../../../../../assets/styles/index.scss";
+// @import "../../../../../assets/styles/index.scss";
 
-.login-container {
-  display: grid;
-}
+// .login-container {
+//   display: grid;
+// }
 
-.login-row {
-  padding-top: 100px;
-}
+// .login-row {
+//   padding-top: 100px;
+// }
 
-.example-spacer {
-  flex: 1 1 auto;
-}
+// .example-spacer {
+//   flex: 1 1 auto;
+// }
 
-h5 {
-  color: $color-white;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 18px;
-}
+// h5 {
+//   color: $color-white;
+//   font-family: 'Open Sans', sans-serif;
+//   font-size: 18px;
+// }
 
-.login-wrapper {
-  min-height: 100vh;
-}
+// .login-wrapper {
+//   min-height: 100vh;
+// }
 
-.login-container {
-  width: 350px;
-  margin: 0 auto;
-  @media(max-width: 767px) {
-    width: 90%;
-    padding-top: 30px;
-  }
-  .login {
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px 2px rgba(0,0,0,0.3);
-    @media(max-width: 767px) {
-      padding: 15px;
-    }
-  }
-  .social-media {
-    text-align: center;
-    p {
-      font-size: 18px;
-      text-transform: uppercase;
-      justify-content: center;
-      align-items: center;
-      span {
-        width: calc(50% - 40px);
-        height: 2px;
-        background-color: $color-light-gray;
-        margin-right: auto;
-        &:nth-child(3) {
-          margin-left: auto;
-          margin-right: 0;
-        }
-      }
-      i {
-        font-style: normal;
-        width: 80px;
-        text-align: center;
-      }
-    }
-    .btn {
-      font-size: $text-lg;
-      line-height: 1;
-      border: 1px solid $color-border;
-      color: $color-primary;
-      border-radius: 50%;
-      padding: $space-sm;
-      position: relative;
-      z-index: 5;
-      background: #ffffff;
-      & + .btn {
-        margin-left: $space-sm;
-      }
-    }
-  }
-  .form-group {
-    margin-bottom: 15px;
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
-  }
-  .form-action {
-    margin-bottom: 10px;
-  }
-}
+// .login-container {
+//   width: 350px;
+//   margin: 0 auto;
+//   @media(max-width: 767px) {
+//     width: 90%;
+//     padding-top: 30px;
+//   }
+//   .login {
+//     padding: 25px;
+//     border-radius: 8px;
+//     box-shadow: 0 0 10px 2px rgba(0,0,0,0.3);
+//     @media(max-width: 767px) {
+//       padding: 15px;
+//     }
+//   }
+//   .social-media {
+//     text-align: center;
+//     p {
+//       font-size: 18px;
+//       text-transform: uppercase;
+//       justify-content: center;
+//       align-items: center;
+//       span {
+//         width: calc(50% - 40px);
+//         height: 2px;
+//         background-color: $color-light-gray;
+//         margin-right: auto;
+//         &:nth-child(3) {
+//           margin-left: auto;
+//           margin-right: 0;
+//         }
+//       }
+//       i {
+//         font-style: normal;
+//         width: 80px;
+//         text-align: center;
+//       }
+//     }
+//     .btn {
+//       font-size: $text-lg;
+//       line-height: 1;
+//       border: 1px solid $color-border;
+//       color: $color-primary;
+//       border-radius: 50%;
+//       padding: $space-sm;
+//       position: relative;
+//       z-index: 5;
+//       background: #ffffff;
+//       & + .btn {
+//         margin-left: $space-sm;
+//       }
+//     }
+//   }
+//   .form-group {
+//     margin-bottom: 15px;
+//     label {
+//       display: block;
+//       margin-bottom: 5px;
+//     }
+//   }
+//   .form-action {
+//     margin-bottom: 10px;
+//   }
+// }
 
-.title {
-  font-weight: 600;
-}
+// .title {
+//   font-weight: 600;
+// }
 
-.common-btn {
-  padding: 12px 25px;
-  border-radius: 8px;
-  color: $color-white;
-  cursor: pointer;
-  &.btn-fill {
-    background: $color-primary;
-    border: none;
-    &:hover, &:focus {
-      background: $color-primary-dark;
-    }
-  }
-}
+// .common-btn {
+//   padding: 12px 25px;
+//   border-radius: 8px;
+//   color: $color-white;
+//   cursor: pointer;
+//   &.btn-fill {
+//     background: $color-primary;
+//     border: none;
+//     &:hover, &:focus {
+//       background: $color-primary-dark;
+//     }
+//   }
+// }
 
-.text-secondary {
-  &:hover, &:focus {
-    color: $color-primary;
-  }
-}
+// .text-secondary {
+//   &:hover, &:focus {
+//     color: $color-primary;
+//   }
+// }
 
-.login-btn {
-  min-width: 120px;
-  text-align: center;
-  font-weight: 600;
-}
+// .login-btn {
+//   min-width: 120px;
+//   text-align: center;
+//   font-weight: 600;
+// }
