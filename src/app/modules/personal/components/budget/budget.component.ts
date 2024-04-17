@@ -9,20 +9,33 @@ import * as _ from 'lodash';
 })
 export class BudgetComponent implements OnInit {
   public data: any = budget;
-  public columns: any = [
-    // {
-    //   'name': 'date',
-    // },
+  public budgetData: any = budget;
+  public budgetColumn: any = [
+    {
+      'name': 'date',
+      'title': 'date',
+      'data': 'date',
+    },
      {
     'name': 'category',
+    'title': 'category',
+    'data': 'category',
   },{
     'name': 'subCategory', 
+    'title': 'subCategory', 
+    'data': 'subCategory', 
   },{
     'name': 'title', 
+    'title': 'title', 
+    'data': 'title', 
   },{
-    'name': 'decription',
+    'name': 'description',
+    'title': 'description',
+    'data': 'description',
   },{
     'name': 'amount', 
+    'title': 'amount', 
+    'data': 'amount', 
   },
   
   ];

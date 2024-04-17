@@ -2,6 +2,7 @@ import * as moment from 'moment';
 
 const items: any = [
     { 
+      date: 1,
       category: 'income',
       subCategory: 'salary',
       title: 'Salary',
@@ -9,6 +10,7 @@ const items: any = [
       amount: 140000,
     },
     {
+      date: 1,
       category: 'income',
       subCategory: 'rental',
       title: 'H-102',
@@ -16,6 +18,7 @@ const items: any = [
       amount: 22000,
     },
     {
+      date: 1,
       category: 'income',
       subCategory: 'rental',
       title: 'A-704',
