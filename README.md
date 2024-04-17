@@ -94,6 +94,11 @@ ng g c shared/components/datatable --module=shared
 --------------------------------------------------------------------------------------------------
 
 
+ng g m modules/calculator --routing=true
+ng g c modules/calculator/components/loan --module=calculator
+
+ng g s modules/calculator/services/calculator
+--------------------------------------------------------------------------------------------------
 ng g m modules/personal --routing=true
 ng g c modules/personal/components/budget --module=personal
 ng g c modules/personal/components/routine --module=personal

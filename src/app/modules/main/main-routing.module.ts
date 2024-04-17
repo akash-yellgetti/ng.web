@@ -52,6 +52,10 @@ const routes: Routes = [
           loadChildren: () => import('../personal/personal.module').then(m => m.PersonalModule)
       },
       {
+        path: 'calculator',
+        loadChildren: () => import('../calculator/calculator.module').then(m => m.CalculatorModule)
+      },
+      {
           path: 'tradingview',
           loadChildren: () => import('../tradingview/tradingview.module').then(m => m.TradingviewModule)
       },

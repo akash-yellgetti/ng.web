@@ -41,7 +41,7 @@ export class InvestmentComponent implements OnInit {
 };;
   form: any = {
     amount: {
-      value: 7500
+      value: 22500
     },
     rate: {
       value: 12

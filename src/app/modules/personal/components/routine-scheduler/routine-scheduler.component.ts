@@ -1,14 +1,49 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectionType } from '@swimlane/ngx-datatable';
-
+import * as _ from 'lodash';
 @Component({
   selector: 'app-routine-scheduler',
   templateUrl: './routine-scheduler.component.html',
   styleUrls: ['./routine-scheduler.component.scss']
 })
 export class RoutineSchedulerComponent {
+  updateFlag: any = 0;
+  public pieChartOptions: any = { 
+    
+    chart: {
+        type: 'pie',
+        renderTo: 'pie-chart-container'
+    },
+    title: {
+        text: 'Browser Market Share'
+    },
+    series: [{
+        name: 'Investment',
+        data: []
+    }],
+    plotOptions: {
+      pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+              enabled: true,
+              format: '<b>{point.name} ({point.y}) </b>: {point.percentage:.1f} %'
+          }
+      }
+  },
+  legend: {
+      enabled: true,
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'middle',
+      borderWidth: 1
+  }
+};;
   SelectionType = SelectionType;
   form: any = {
+    dayStartTime: {
+      value: '05:30'
+    },
     startTime: {
       value: '05:30'
     },
@@ -21,60 +56,72 @@ export class RoutineSchedulerComponent {
   }
   startTime: string = '05:30';
   tasks: any[] =  [
-    { title: "Morning Walk", duration: 15 },
-    { title: "Morning Meditation", duration: 15 },
-    { title: "Water", duration: 5 },
+    { title: "Morning Walk", type: 'Health',duration: 15 },
+    { title: "Morning Meditation", type: 'Health', duration: 15 },
+    { title: "Water", type: 'Water', duration: 5 },
     // { title: "Scaler", duration: 150 },
-    { title: "Exercise #1", duration: 20 },
-    { title: "Drink Salt Water", duration: 15 },
+    { title: "Exercise #1", type: 'Health', duration: 20 },
+    { title: "Drink Salt Water",  type: 'Water', duration: 15 },
     // { title: "Exercise #2", duration: 45 },
-    { title: "Scaler", duration: 150 },
-    { title: "Prep Breakfast", duration: 10 },
-    { title: "Morning Bath", duration: 15 },
-    { title: "Breakfast", duration: 10 },
-    { title: "Home To Metro", duration: 15 },
-    { title: "Metro", duration: 40 },
-    { title: "Office To Metro", duration: 20 },
-    { title: "Work #1", duration: 60 },
-    { title: "Hydrate #2", duration: 5 },
-    { title: "Work #2", duration: 60 },
-    { title: "Hydrate #3", duration: 5 },
-    { title: "Work #3", duration: 50 },
-    { title: "Lunch", duration: 30 },
-    { title: "Nap", duration: 15 },
-    { title: "Break", duration: 15 },
-    { title: "Work #5: Scrum", duration: 45 },
-    { title: "Break", duration: 15 },
-    { title: "Hydrate #4", duration: 5 },
-    { title: "Work #3", duration: 80 },
-    { title: "Break", duration: 30 },
-    { title: "Hydrate #4", duration: 5 },
-    { title: "Work #3", duration: 60 },
-    { title: "Metro To Office", duration: 20 },
-    { title: "Metro", duration: 40 },
-    { title: "Metro To Home", duration: 15 },
-    { title: "Freshen Up", duration: 15 },
-    { title: "Dinner", duration: 15 },
-    { title: "Dish Cleaning", duration: 10 },
-    { title: "Reading", duration: 15 },
-    { title: "Next Day Prep", duration: 45 },
-    { title: "Set Bed", duration: 15 },
-    { title: "Night Bath", duration: 15 },
-    { title: "Facial Care", duration: 10 },
-    { title: "Hair Care", duration: 10 },
-    { title: "Skin Care", duration: 10 },
-    { title: "Night Meditation", duration: 15 },
-    { title: "Sleep", duration: 420 },  
+    { title: "Scaler", type: 'Learn', duration: 150 },
+    { title: "Prep Breakfast",  type: 'Food', duration: 10 },
+    { title: "Morning Bath", type: 'Routine', duration: 15 },
+    { title: "Breakfast",  type: 'Food', duration: 10 },
+    { title: "Home To Metro", type: 'Routine', duration: 15 },
+    { title: "Metro", type: 'Routine', duration: 40 },
+    { title: "Office To Metro", type: 'Routine', duration: 20 },
+    { title: "Work #1", type: 'Work', duration: 60 },
+    { title: "Hydrate #2", type: 'Water', duration: 5 },
+    { title: "Work #2", type: 'Work', duration: 60 },
+    { title: "Hydrate #3", type: 'Water', duration: 5 },
+    { title: "Work #3", type: 'Work', duration: 50 },
+    { title: "Lunch", type: 'Food', duration: 30 },
+    { title: "Nap", type: 'Break', duration: 15 },
+    { title: "Break", type: 'Break',  duration: 15 },
+    { title: "Work #5: Scrum", type: 'Work', duration: 45 },
+    { title: "Break", type: 'Break', duration: 15 },
+    { title: "Hydrate #4", type: 'Water',duration: 5 },
+    { title: "Work #3", type: 'Work', duration: 80 },
+    { title: "Break", type: 'Break',  duration: 30 },
+    { title: "Hydrate #4", type: 'Water', duration: 5 },
+    { title: "Work #3", type: 'Work', duration: 60 },
+    { title: "Metro To Office", type: 'Work', duration: 20 },
+    { title: "Metro", type: 'Work', duration: 40 },
+    { title: "Metro To Home", type: 'Work', duration: 15 },
+    { title: "Freshen Up", type: 'Routine', duration: 15 },
+    { title: "Dinner", type: 'Food', duration: 15 },
+    { title: "Dish Cleaning", type: 'Routine', duration: 10 },
+    { title: "Reading", type: 'Learn', duration: 15 },
+    { title: "Next Day Prep", type: 'Learn',  duration: 45 },
+    { title: "Set Bed", type: 'Routine', duration: 15 },
+    { title: "Night Bath", type: 'Personal-Care', duration: 15 },
+    { title: "Facial Care", type: 'Personal-Care', duration: 10 },
+    { title: "Hair Care", type: 'Personal-Care', duration: 10 },
+    { title: "Skin Care", type: 'Personal-Care', duration: 10 },
+    { title: "Night Meditation", type: 'Health', duration: 15 },
+    { title: "Sleep", type: 'Sleep', duration: 420 },  
 ];
 public columns: any = [
   {
     'name': 'title',
+    'title': 'title',
+    'data': 'title',
+  },{
+    'name': 'type', 
+    'title': 'type', 
+    'data': 'type', 
   },{
     'name': 'duration', 
+    'title': 'duration', 
+    'data': 'duration', 
   }, {
   'name': 'startTime',
+  'title': 'startTime',
+  'data': 'startTime',
 },{
   'name': 'endTime', 
+  'title': 'endTime', 
+  'data': 'endTime', 
 } 
 
 ];
@@ -86,9 +133,9 @@ selected: any = [];
     console.log(this.tasks)
   }
 
-  calculateSchedule() {
-    this.startTime = this.form.startTime.value;
-    const startTimeParts = this.startTime.split(':').map(Number);
+  calculate() {
+    const _startTime = this.form.dayStartTime.value;
+    const startTimeParts = _startTime.split(':').map(Number);
     const startTime = new Date(0, 0, 0, startTimeParts[0], startTimeParts[1]);
     let currentTime = new Date(startTime);
     let nowTime = new Date(0, 0, 0, new Date().getHours(), new Date().getMinutes());
@@ -108,10 +155,18 @@ selected: any = [];
       if(isRunning) {
         this.selected.push(d)
       }
-      
-
       startTime.setTime(endTime.getTime());
-  });
+    });
+
+    const groupBy = _.reduce(_.groupBy(this.schedule, 'type'), (arr: any, value, key) => {
+
+      arr.push({ name: key, y: _.sumBy(value, 'duration') });
+
+      return arr;
+    }, []);
+    this.pieChartOptions.series[0].data = groupBy;
+    this.updateFlag = !this.updateFlag;
+    console.log(groupBy)
   }
 
   formatTime(date: Date): string {

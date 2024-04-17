@@ -1,0 +1,139 @@
+<!-- Content Row -->
+
+
+<div class="row">
+
+    <!-- Pie Chart -->
+    <div class="col-xl-4 col-lg-5">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">loan Calculator</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+  
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="text" class="form-control" id="amount" placeholder="Enter amount"
+                        [(ngModel)]="form.amount.value" />
+                </div>
+                <div class="form-group">
+                    <label for="rate">Rate</label>
+                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                        [(ngModel)]="form.rate.value" />
+                </div>
+                <div class="form-group">
+                    <label for="tenure">Tenure</label>
+                    <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                        [(ngModel)]="form.tenure.value" />
+                </div>
+                <div class="form-group">
+                    <label for="tenure">EMI</label>
+                    <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                        [(ngModel)]="form.emi.value" />
+                </div>
+                <div class="form-group">
+                    <label for="tenure">Growth Rate In Emi Yearly</label>
+                    <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                        [(ngModel)]="form.growthRate.value" />
+                </div>
+                <div class="form-group">
+                    <label for="tenure">Lumsum Part Payment Yearly</label>
+                    <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                        [(ngModel)]="form.additionalAmount.value" />
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="calculate()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow mb-3">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Loan Monthly Emi </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">$ {{ this.form.emi.value | number }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card border-left-primary shadow mb-3">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Interest Payable </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">$ {{ this.lastLoanData.totalInterest | number }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card border-left-primary shadow mb-3">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Part Payment Payable</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">$ {{ this.lastLoanData.totalPartPayment | number }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card border-left-primary shadow mb-3">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Payment (Principal + Interest) </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">$ {{ this.lastLoanData.totalAmount | number }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    
+
+    <div class="col-xl-4 col-lg-5">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">loan Pie Chart</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <app-chart [options]="pieChartOptions" [updateFlag]="updateFlag"></app-chart>
+                <!-- <app-chart [options]="lineChartOptions" [updateFlag]="updateFlag"></app-chart> -->
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12 col-lg-12">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Loan Overview</h6>
+                 
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <app-datatable [columns]="loanColumns" [data]="loanData"></app-datatable>
+            </div>
+        </div>
+    </div>
+  </div>

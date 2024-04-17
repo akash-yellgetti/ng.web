@@ -1,41 +1,81 @@
-<div class="container-fluid d-flex d-wrap d-gap-15">
-  <div class="w-30">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Start Time</mat-card-title>
-        <!-- <mat-card-subtitle>Start</mat-card-subtitle> -->
-      </mat-card-header>
-      <mat-card-content>
-        <mat-form-field class="w-100">
-          <!-- <mat-label>Start Time</mat-label> -->
-          <input matInput type="time" value="100000" [(ngModel)]="form.startTime.value" />
-        </mat-form-field>
-      </mat-card-content>
-    </mat-card>
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Task Scheduler</mat-card-title>
-        <!-- <mat-card-subtitle>Start</mat-card-subtitle> -->
-      </mat-card-header>
-      <mat-card-content>
-        <mat-form-field class="w-100">
-          <mat-label>Title</mat-label>
-          <input matInput placeholder="Ex. Pizza" value="100000" [(ngModel)]="form.title.value" />
-        </mat-form-field>
-        <mat-form-field class="w-100">
-          <mat-label>Duration</mat-label>
-          <input matInput placeholder="Ex. Pizza" value="100000" [(ngModel)]="form.duration.value" />
-        </mat-form-field>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="addTask()">Add</button>
-        <button mat-raised-button color="primary" (click)="calculateSchedule()">calculateSchedule</button>
-      </mat-card-actions>
-    </mat-card>
+<!-- Content Row -->
+
+
+<div class="row">
+
+  <!-- Pie Chart -->
+  <div class="col-xl-4 col-lg-5">
+      <div class="card shadow mb-4">
+          <!-- Card Header - Dropdown -->
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h6 class="m-0 font-weight-bold text-primary">Routine</h6>
+          </div>
+          <!-- Card Body -->
+          <div class="card-body">
+
+              <div class="form-group">
+                  <label for="amount">Start Time</label>
+                  <input type="time" class="form-control" id="amount" placeholder="Enter amount"
+                  [(ngModel)]="form.dayStartTime.value"/>
+              </div>
+              <button type="submit" class="btn btn-primary" (click)="calculate()">Submit</button>
+          </div>
+      </div>
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Add Task</h6>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+
+          <div class="form-group">
+            <label for="amount">Title</label>
+            <input type="text" class="form-control" id="amount" placeholder="Enter amount"
+                [(ngModel)]="form.title.value" />
+        </div>
+        <div class="form-group">
+          <label for="amount">Duration</label>
+          <input type="text" class="form-control" id="amount" placeholder="Enter amount"
+              [(ngModel)]="form.duration.value" />
+      </div>  
+          <div class="form-group">
+                <label for="amount">Start Time</label>
+                <input type="text" class="form-control" id="amount" placeholder="Enter amount"
+                    [(ngModel)]="form.startTime.value" />
+            </div>
+            
+        </div>
+    </div>
   </div>
-  <div class="w-40">
-    <ngx-datatable class="material striped " [rows]="schedule" [columns]="columns" [headerHeight]="50"
-      [footerHeight]="50" [rowHeight]="50" [selected]="selected"  [selectionType]="SelectionType.single" (select)='onSelect($event)'>
-    </ngx-datatable>
+  <div class="col-xl-4 col-lg-5">
+      <div class="card shadow mb-4">
+          <!-- Card Header - Dropdown -->
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h6 class="m-0 font-weight-bold text-primary">Routine Pie Chart</h6>
+          </div>
+          <!-- Card Body -->
+          <div class="card-body">
+              <app-chart [options]="pieChartOptions" [updateFlag]="updateFlag"></app-chart>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <!-- Area Chart -->
+  <div class="col-xl-12 col-lg-12">
+      <div class="card shadow mb-4">
+          <!-- Card Header - Dropdown -->
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Routine Overview</h6>
+           
+      </div>
+          <!-- Card Body -->
+          <div class="card-body">
+              <app-datatable [columns]="columns" [data]="schedule"></app-datatable>
+          </div>
+      </div>
   </div>
 </div>
