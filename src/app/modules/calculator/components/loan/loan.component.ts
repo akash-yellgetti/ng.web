@@ -129,10 +129,10 @@ export class LoanComponent implements OnInit {
       value: 0
     },
     growthRate: {
-      value: 10
+      value: 0
     },
     additionalAmount: {
-      value: 150000
+      value: 0
     },
     
   }

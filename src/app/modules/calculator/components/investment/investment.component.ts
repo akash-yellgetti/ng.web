@@ -50,10 +50,10 @@ export class InvestmentComponent implements OnInit {
       value: 15
     },
     growthRate: {
-      value: 10
+      value: 0
     },
     additionalAmount: {
-      value: 150000
+      value: 0
     },
     
   }
@@ -176,6 +176,7 @@ export class InvestmentComponent implements OnInit {
     }
      
   ];
+  public lastInvestmentData: any = {};
   public investmentData: any = [];
 
   
@@ -188,6 +189,7 @@ export class InvestmentComponent implements OnInit {
     const form = this.form;
     this.investmentData = this.calculatorService.investmentTable(Number(form.amount.value), Number(form.rate.value), Number(form.tenure.value), Number(form.growthRate.value), Number(form.additionalAmount.value));
     const last = _.last(this.investmentData);
+    this.lastInvestmentData = last;
     this.pieChartOptions.series[0].data = [
       { name: 'totalMonthlyAmount', y: _.get(last, 'totalMonthlyAmount', 0) },
       { name: 'totalExtraAmount', y: _.get(last, 'totalExtraAmount', 0) },
