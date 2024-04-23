@@ -4,11 +4,20 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'indianNumberFormat'
 })
 export class IndianNumberFormatPipe implements PipeTransform {
-  transform(value: number): string {
+  transform(value: any): string {
     if (value === null || value === undefined) return '';
 
-    // Convert number to string and format with commas
-    const formattedValue = value.toString().replace(/\B(?=(\d{2})+(?!\d))/g, ',');
+    // Remove non-numeric characters and convert to number
+    const numericValue = typeof value === 'string' ? parseFloat(value.replace(/[^0-9.]/g, '')) : value;
+
+    // Check if the value is not a valid number
+    if (isNaN(numericValue)) return '';
+
+    // Format the number with commas
+    const formattedValue = numericValue.toLocaleString('en-IN', {
+      maximumFractionDigits: 2
+    });
+
     return formattedValue;
   }
 }

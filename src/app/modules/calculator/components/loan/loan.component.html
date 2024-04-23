@@ -56,6 +56,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Loan Monthly Emi </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.form.emi.value || 0 | currency:'INR'}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.form.emi.value || 0 | numberToWords }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -68,7 +69,8 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Interest Payable </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalInterest || 0 | currency:'INR'}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalInterest || 0 | indianNumberFormat}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalInterest || 0 | numberToWords }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -82,6 +84,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Part Payment Payable</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalPartPayment || 0 | currency:'INR'}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalPartPayment || 0 | numberToWords }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -94,7 +97,8 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Payment (Principal + Interest) </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalAmount || 0 | currency:'INR'}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalAmount || 0 |  indianNumberFormat  }}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalAmount || 0 | numberToWords }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>

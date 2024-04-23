@@ -6,9 +6,13 @@ import { NumberToWordsService } from '../../services/numbertowordsservice/number
 })
 export class NumberToWordsPipe implements PipeTransform {
   constructor(private numberToWordsService: NumberToWordsService) {}
+ 
 
-  transform(value: number): string {
+  transform(value: any): string {
     if (value === null || value === undefined) return '';
+
+    // Remove commas and parse the value as a number
+    const numericValue = typeof value === 'string' ? parseFloat(value.replace(/[^0-9.]/g, '')) : value;
 
     // Use a service to convert number to words
     // Get the number word in lowercase
