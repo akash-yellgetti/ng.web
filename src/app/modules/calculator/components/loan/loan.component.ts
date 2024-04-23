@@ -158,7 +158,7 @@ export class LoanComponent implements OnInit {
     form.emi.value = emiAmount;
     const data: any = this.calculatorService.emiTable(Number(form.amount.value), Number(form.rate.value), Number(form.tenure.value), Number(form.emi.value), Number(form.growthRate.value), parseFloat(form.additionalAmount.value));
     const sipAmount = Number(form.emi.value) * 0.30;
-    const investmentData = this.calculatorService.investmentTable(sipAmount, 12, Number(parseInt((data.length/12).toString())), 10, 0);
+    const investmentData = this.calculatorService.investmentTable(sipAmount, 12, Number(parseInt((data.length/12).toString())), 10, 100000);
     const finalData = _.values(_.merge(_.keyBy(data, 'month'), _.keyBy(investmentData, 'month')));
     this.loanData = finalData;
     const last: any = _.last(data);
