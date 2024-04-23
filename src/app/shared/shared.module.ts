@@ -6,13 +6,17 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { ChartComponent } from './components/chart/chart.component';
 import { DatatableComponent } from './components/datatable/datatable.component';
+import { IndianNumberFormatPipe } from './pipe/indianNumberFormat/indian-number-format.pipe';
+import { NumberToWordsPipe } from './pipe/numberToWords/number-to-words.pipe';
 
 @NgModule({
   declarations: [
     BreadcrumbsComponent,
     DialogComponent,
     ChartComponent,
-    DatatableComponent
+    DatatableComponent,
+    IndianNumberFormatPipe,
+    NumberToWordsPipe
   ],
   imports: [
     MaterialModule,
@@ -25,7 +29,9 @@ import { DatatableComponent } from './components/datatable/datatable.component';
     // HighchartsChartModule,
     BreadcrumbsComponent,
     ChartComponent,
-    DatatableComponent
+    DatatableComponent,
+    IndianNumberFormatPipe,
+    NumberToWordsPipe
   ]
 })
 export class SharedModule { }

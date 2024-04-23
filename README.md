@@ -55,6 +55,7 @@ ng g s modules/main/core/services/module
 --------------------------------------------------------------------------------------------------
 
 ng g s shared/services/socket/socket
+ng g s shared/services/socket/socket
 
 --------------------------------------------------------------------------------------------------
 
@@ -78,6 +79,13 @@ ng g s shared/services/common/common
 ng g s shared/services/field/field
 ng g s shared/services/calculator/calculator
 ng g s shared/services/chart/chart
+
+ng g s shared/services/numbertowordsservice/numbertowordsservice
+
+ng generate pipe shared/pipe/indianNumberFormat/indianNumberFormat
+ng generate pipe shared/pipe/numberToWords/numberToWords
+
+
 --------------------------------------------------------------------------------------------------
 
 ng g m modules/school --routing=true

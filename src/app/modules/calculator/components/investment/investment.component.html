@@ -49,7 +49,8 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Investment Monthly Amount </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ this.form.amount.value || 0 | currency : 'INR' }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ this.form.amount.value || 0 | indianNumberFormat  }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{  this.form.amount.value || 0 | numberToWords   }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -63,6 +64,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Investment  </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastInvestmentData.totalMonthlyAmount || 0 | currency : 'INR' }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastInvestmentData.totalMonthlyAmount || 0 | numberToWords   }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -76,6 +78,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Interest  </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastInvestmentData.totalMonthlyInterest || 0 | currency : 'INR' }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastInvestmentData.totalMonthlyInterest || 0 | numberToWords   }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -89,6 +92,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Lumsum Amount</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastInvestmentData.totalExtraAmount || 0 | currency : 'INR' }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastInvestmentData.totalExtraAmount || 0 | numberToWords   }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -102,6 +106,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Amount </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastInvestmentData.totalAmount || 0 | currency:'INR'}}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastInvestmentData.totalAmount || 0 | numberToWords   }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
