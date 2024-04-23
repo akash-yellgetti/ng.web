@@ -117,7 +117,7 @@
             
         </div>
     
-    <div class="col-xl-4 col-lg-5">
+    <div class="col-xl-12 col-lg-12">
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -125,7 +125,9 @@
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                <app-chart [options]="pieChartOptions" [updateFlag]="updateFlag"></app-chart>
+                <app-chart [options]="lineChartOptions" [updateFlag]="updateFlag"></app-chart>
+                <!-- <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
+                style="width: 100%; height: 400px; display: block;"></highcharts-chart> -->
             </div>
         </div>
     </div>

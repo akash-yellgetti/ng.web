@@ -28,39 +28,57 @@ export class NumberToWordsService {
       num = Math.abs(num);
     }
 
-    if (Math.floor(num / 10000000) > 0) {
-      words += this.convertToWords(Math.floor(num / 10000000)) + ' crore ';
-      num %= 10000000;
+    // Split the number into integer and decimal parts
+    let integerPart = Math.floor(num);
+    const decimalPart = Math.round((num - integerPart) * 100);
+
+    // Convert the integer part
+    if (integerPart >= 10000000) {
+      words += this.convertToWords(Math.floor(integerPart / 10000000)) + ' crore ';
+      integerPart %= 10000000;
     }
 
-    if (Math.floor(num / 100000) > 0) {
-      words += this.convertToWords(Math.floor(num / 100000)) + ' lakh ';
-      num %= 100000;
+    if (integerPart >= 100000) {
+      words += this.convertToWords(Math.floor(integerPart / 100000)) + ' lakh ';
+      integerPart %= 100000;
     }
 
-    if (Math.floor(num / 1000) > 0) {
-      words += this.convertToWords(Math.floor(num / 1000)) + ' thousand ';
-      num %= 1000;
+    if (integerPart >= 1000) {
+      words += this.convertToWords(Math.floor(integerPart / 1000)) + ' thousand ';
+      integerPart %= 1000;
     }
 
-    if (Math.floor(num / 100) > 0) {
-      words += this.convertToWords(Math.floor(num / 100)) + ' hundred ';
-      num %= 100;
+    if (integerPart >= 100) {
+      words += this.convertToWords(Math.floor(integerPart / 100)) + ' hundred ';
+      integerPart %= 100;
     }
 
-    if (num > 0) {
+    if (integerPart > 0) {
       if (words !== '') {
         words += 'and ';
       }
 
-      if (num < 10) {
-        words += this.ones[num];
-      } else if (num < 20) {
-        words += this.teens[num - 10];
+      if (integerPart < 10) {
+        words += this.ones[integerPart];
+      } else if (integerPart < 20) {
+        words += this.teens[integerPart - 10];
       } else {
-        words += this.tens[Math.floor(num / 10)];
-        if ((num % 10) > 0) {
-          words += '-' + this.ones[num % 10];
+        words += this.tens[Math.floor(integerPart / 10)];
+        if ((integerPart % 10) > 0) {
+          words += '-' + this.ones[integerPart % 10];
+        }
+      }
+    }
+
+    // Convert the decimal part
+    if (decimalPart > 0) {
+      words += ' point ';
+      if (decimalPart < 10) {
+        words += this.ones[decimalPart];
+      } else {
+        words += this.tens[Math.floor(decimalPart / 10)];
+        if ((decimalPart % 10) > 0) {
+          words += '-' + this.ones[decimalPart % 10];
         }
       }
     }

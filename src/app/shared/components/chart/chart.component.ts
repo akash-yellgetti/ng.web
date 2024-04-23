@@ -59,11 +59,16 @@ export class ChartComponent implements OnInit {
   ngOnInit(): void {
     // this.chartOptions.series = this.options.series;
     this.chartOptions = { ...this.chartOptions, ...this.options}
-    console.log(this.chartOptions)
+    // console.log(this.chartOptions)
   }
 
   ngOnChanges(changes: SimpleChanges) {
     // changes.prop contains the old and the new value...
-    console.log(changes)
+    // console.log(changes)
+
+    // console.log(this.options)
+
+    this.chartOptions = { ...this.chartOptions, ...this.options}
+    // console.log(this.chartOptions)
   }
 }

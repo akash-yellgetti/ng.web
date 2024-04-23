@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CalculatorService } from 'src/app/shared/services/calculator/calculator.service';
 import * as _ from 'lodash';
+import { CHART_OPTIONS_ONE } from 'src/app/shared/components/chart/chart-options';
 @Component({
   selector: 'app-investment',
   templateUrl: './investment.component.html',
@@ -38,7 +39,21 @@ export class InvestmentComponent implements OnInit {
       verticalAlign: 'middle',
       borderWidth: 1
   }
-};;
+  };;
+  public lineChartOptions: any = {
+    chart: {
+        type: 'line'
+    },
+    title: {
+        text: 'Monthly Temperature Trends'
+    },
+   
+    series: [
+      { name: 'Tokyo', data: [7, 6, 9, 14, 18] },
+      { name: 'New York', data: [2, 3, 5, 8, 12] },
+      { name: 'London', data: [3, 4, 6, 10, 15] }
+    ]
+  };
   form: any = {
     amount: {
       value: 22500
@@ -180,35 +195,46 @@ export class InvestmentComponent implements OnInit {
   public investmentData: any = [];
 
   
-  constructor(public calculatorService: CalculatorService) { }
+  constructor(public calculatorService: CalculatorService, private cdr: ChangeDetectorRef)  { }
 
   ngOnInit(): void {
   }
 
   calculate = () => {
     const form = this.form;
-    this.investmentData = this.calculatorService.investmentTable(Number(form.amount.value), Number(form.rate.value), Number(form.tenure.value), Number(form.growthRate.value), Number(form.additionalAmount.value));
+    const investmentData: any = this.calculatorService.investmentTable(Number(form.amount.value), Number(form.rate.value), Number(form.tenure.value), Number(form.growthRate.value), Number(form.additionalAmount.value));
+    this.investmentData = investmentData;
     const last = _.last(this.investmentData);
     this.lastInvestmentData = last;
-    this.pieChartOptions.series[0].data = [
-      { name: 'totalMonthlyAmount', y: _.get(last, 'totalMonthlyAmount', 0) },
-      { name: 'totalExtraAmount', y: _.get(last, 'totalExtraAmount', 0) },
-      { name: 'totalMonthlyInterest', y: _.get(last, 'totalMonthlyInterest', 0) },
-    ];
+
+    this.lineChartOptions.series = [];
+    this.cdr.detectChanges();
+    // this.lineChartOptions.series = [
+    //   { name: 'totalMonthlyAmount', data: _.map(investmentData, 'totalMonthlyAmount') },
+    //   { name: 'totalExtraAmount', data: _.map(investmentData, 'totalMonthlyAmount') },
+    //   { name: 'totalMonthlyInterest', data: _.map(investmentData, 'totalMonthlyAmount') },
+    // ];
+    const lineChartOptions = JSON.parse(JSON.stringify(CHART_OPTIONS_ONE));
+    lineChartOptions.series = [
+        { name: 'monthlySum', data: _.map(investmentData, 'monthlySum') },
+        { name: 'totalExtraAmount', data: _.map(investmentData, 'totalMonthlyAmount') },
+        { name: 'monthlyInterest', data: _.map(investmentData, 'monthlyInterest') },
+      ];
+    this.lineChartOptions = JSON.parse(JSON.stringify(lineChartOptions));
     this.updateFlag = !this.updateFlag;
-    // [
-    //   {
-    //     name: 'totalMonthlyAmount',
-    //     data: [_.get(last, 'totalMonthlyAmount', 0)]
-    //   },
-    //   {
-    //     name: 'totalExtraAmount',
-    //     data: [_.get(last, 'totalExtraAmount', 0)]
-    //   },
-    //   {
-    //     name: 'totalMonthlyInterest',
-    //     data: [_.get(last, 'totalMonthlyInterest', 0)]
-    //   },
+    // // [
+    // //   {
+    // //     name: 'totalMonthlyAmount',
+    // //     data: [_.get(last, 'totalMonthlyAmount', 0)]
+    // //   },
+    // //   {
+    // //     name: 'totalExtraAmount',
+    // //     data: [_.get(last, 'totalExtraAmount', 0)]
+    // //   },
+    // //   {
+    // //     name: 'totalMonthlyInterest',
+    // //     data: [_.get(last, 'totalMonthlyInterest', 0)]
+    // //   },
       
     // ]
     
