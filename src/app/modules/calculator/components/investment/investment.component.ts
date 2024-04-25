@@ -216,9 +216,12 @@ export class InvestmentComponent implements OnInit {
     // ];
     const lineChartOptions = JSON.parse(JSON.stringify(CHART_OPTIONS_ONE));
     lineChartOptions.series = [
-        { name: 'monthlySum', data: _.map(investmentData, 'monthlySum') },
-        { name: 'totalExtraAmount', data: _.map(investmentData, 'totalMonthlyAmount') },
-        { name: 'monthlyInterest', data: _.map(investmentData, 'monthlyInterest') },
+        // { name: 'monthlySum', data: _.map(investmentData, 'monthlySum') },
+        // { name: 'totalExtraAmount', data: _.map(investmentData, 'totalMonthlyAmount') },
+        // { name: 'monthlyInterest', data: _.map(investmentData, 'monthlyInterest') },
+        { name: 'totalMonthlyAmount', data: _.map(investmentData, 'totalMonthlyAmount') },
+        { name: 'totalMonthlyInterest', data: _.map(investmentData, 'totalMonthlyInterest') },
+        { name: 'totalAmount', data: _.map(investmentData, 'monthlyInterest') },
       ];
     this.lineChartOptions = JSON.parse(JSON.stringify(lineChartOptions));
     this.updateFlag = !this.updateFlag;

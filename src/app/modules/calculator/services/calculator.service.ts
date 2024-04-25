@@ -57,42 +57,6 @@ export class CalculatorService {
     return sipAmount.toFixed(2); // Round the result to 2 decimal places
   }
 
-  sipTable = (sipAmount: number, rate: number,tenure: any) => {
-
-    const decimalRate = rate / 100;
-    const monthlyRate = decimalRate / 12;
-
-    const numberOfMonths = tenure * 12;
-    
-    const data = [];
-    let initialAmount = 0;
-    let monthlyAmount = 0;
-    let monthlySum = 0;
-    let monthlyInterest = 0;
-    let totalAmount = 0;
-    let totalInvestmentAmount = 0;
-    for(let i = 0; i < numberOfMonths; i++) {
-
-      initialAmount = totalAmount;
-      monthlyAmount = this.round2Decimal(sipAmount);
-      monthlySum = this.round2Decimal(initialAmount + monthlyAmount);
-      monthlyInterest = this.round2Decimal(monthlySum * monthlyRate);
-      totalAmount = this.round2Decimal(monthlySum + monthlyInterest);
-      totalInvestmentAmount += this.round2Decimal(monthlyAmount);
-
-      data.push({
-        initialAmount,
-        monthlyAmount,
-        monthlySum,
-        monthlyInterest,
-        totalAmount,
-        totalInvestmentAmount
-      })
-    }
-
-    return data;
-  }
-
   investmentTable = (sipAmount: number, rate: number, tenure: any, growthRate: number = 0, additionAmount = 0) => {
 
     const decimalRate = rate / 100;
@@ -250,4 +214,86 @@ export class CalculatorService {
   percentageValue = (total: number, percentage: number) => {
     return (total * percentage) / 100;
   }
+
+  calculateSIPAmount = (goalAmount: number, annualReturn: number, investmentPeriodYears: number, yearlyIncrementPercentage: number) => {
+    // Validate inputs
+    if (goalAmount <= 0 || investmentPeriodYears <= 0 || annualReturn <= 0 || yearlyIncrementPercentage < 0) {
+      console.error("Invalid input values. All values must be positive.");
+      return -1;
+    }
+
+    // Convert annual return to monthly rate
+    // Convert rate to decimal and calculate monthly rate
+    const decimalRate = annualReturn / 100;
+    const monthlyReturn = decimalRate / 12;
+
+    // Calculate SIP amount with yearly increment using the formula:
+    // SIP = (FV * r) / [(1 + r)^n - 1] * (1 + g)
+    // Where:
+    // FV = Future value (goal amount)
+    // r = Monthly return rate
+    // n = Total number of months (investment period in years * 12)
+    // g = Yearly increment percentage (converted to monthly increment rate)
+    let futureValue = goalAmount;
+    const months = investmentPeriodYears * 12;
+    const yearlyIncrementRate = yearlyIncrementPercentage / 100; // Convert percentage to decimal
+
+    let SIPAmount = 0;
+    let totalInvested = 0;
+
+    for (let i = 1; i <= investmentPeriodYears; i++) {
+        // Calculate SIP amount for the current year
+        const monthlyIncrementRate = Math.pow(1 + yearlyIncrementRate, 1 / 12) - 1;
+        const currentYearSIP = (futureValue * monthlyReturn) / ((Math.pow(1 + monthlyReturn, months) - 1) * (1 + monthlyIncrementRate));
+
+        // Accumulate total invested amount
+        totalInvested += currentYearSIP * 12;
+
+        // Update future value for the next year
+        futureValue -= currentYearSIP * 12;
+
+        // Increment SIP amount for next year
+        SIPAmount += currentYearSIP;
+
+        // Update future value for the next year
+        futureValue *= 1 + yearlyIncrementRate;
+    }
+
+    return { SIPAmount, totalInvested };
+  }
+
+  calculateFIRENumber = (currentAge: number, retirementAge: number, lifeExpectancy: number, currentMonthlyIncome: number, incomeGrowthYearly: number, currentExpense: number, expenseGrowthYearly: number) => {
+    // Validate inputs
+    if (currentAge >= retirementAge || retirementAge >= lifeExpectancy || currentMonthlyIncome <= 0 || incomeGrowthYearly <= 0 || currentExpense <= 0 || expenseGrowthYearly <= 0) {
+        console.error("Invalid input values. Please ensure age and financial values are valid.");
+        return -1;
+    }
+
+    let yearsToRetirement = retirementAge - currentAge;
+    let savingsNeeded = 0;
+    let monthlySavings = 0;
+
+    // Project income and expenses until retirement
+    for (let i = 0; i < yearsToRetirement; i++) {
+        // Calculate income and expense for the current year
+        const year = currentAge + i;
+        const annualIncome = currentMonthlyIncome * 12 * Math.pow(1 + incomeGrowthYearly, i);
+        const annualExpense = currentExpense * 12 * Math.pow(1 + expenseGrowthYearly, i);
+
+        // Calculate savings (annual surplus)
+        const annualSavings = annualIncome - annualExpense;
+
+        // Accumulate savings needed for retirement
+        savingsNeeded += annualSavings;
+
+        // Accumulate monthly savings (for future investment)
+        monthlySavings += annualSavings / 12;
+    }
+
+    // Calculate FIRE number (total investments needed at retirement)
+    const FIRENumber = monthlySavings * 12 * yearsToRetirement;
+
+    return FIRENumber;
+  }
+
 }

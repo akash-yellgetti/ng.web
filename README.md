@@ -106,6 +106,7 @@ ng g m modules/calculator --routing=true
 ng g c modules/calculator/components/loan --module=calculator
 ng g c modules/calculator/components/investment --module=calculator
 ng g c modules/calculator/components/fire --module=calculator
+ng g c modules/calculator/components/goal --module=calculator
 
 ng g s modules/calculator/services/calculator
 --------------------------------------------------------------------------------------------------

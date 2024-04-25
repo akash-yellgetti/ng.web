@@ -1,1 +1,73 @@
-<p>fire works!</p>
+<!-- Content Row -->
+
+
+<div class="row">
+
+    <!-- Pie Chart -->
+    <div class="col-xl-4 col-lg-5">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">FIRE Calculator</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+
+                <div class="form-group">
+                    <label for="amount">Age</label>
+                    <input type="text" class="form-control" id="amount" placeholder="Enter amount"
+                        [(ngModel)]="form.age.value" />
+                </div>
+                <div class="form-group">
+                    <label for="rate">Retirement Age</label>
+                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                        [(ngModel)]="form.retirementAge.value" />
+                </div>
+                <div class="form-group">
+                    <label for="rate">Life expectancy</label>
+                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                        [(ngModel)]="form.lifeExpectancy.value" />
+                </div>
+                <div class="form-group">
+                    <label for="tenure">Current Income</label>
+                    <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                        [(ngModel)]="form.currentIncome.value" />
+                </div>
+                <div class="form-group">
+                    <label for="tenure">Income Growth </label>
+                    <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                        [(ngModel)]="form.currentIncomegrowth.value" />
+                </div>
+                <div class="form-group">
+                    <label for="tenure">Current Expense</label>
+                    <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                        [(ngModel)]="form.currentExpense.value" />
+                </div>
+                <div class="form-group">
+                    <label for="tenure">Expense Growth </label>
+                    <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                        [(ngModel)]="form.currentExpensegrowth.value" />
+                </div>
+                
+                <button type="submit" class="btn btn-primary" (click)="calculate()">Submit</button>
+            </div>
+        </div>
+    </div>
+     
+</div>
+<div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12 col-lg-12">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">FIRE Overview</h6>
+                
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <app-datatable [columns]="fireColumns" [data]="fireData"></app-datatable>
+            </div>
+        </div>
+    </div>
+</div>

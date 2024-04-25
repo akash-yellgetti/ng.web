@@ -9,6 +9,7 @@ import { ModuleService } from '../../core/services/module.service';
 import { setting } from '../../../../shared/json/setting.json';
 import { SocketService } from '../../../../shared/services/socket/socket.service';
 import { ToastrService } from 'ngx-toastr';
+import { menu } from './menu.json';
 
 @Component({
   selector: 'app-layout',
@@ -16,6 +17,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
+  menus: any = menu;
   public mainTitle: string = 'Dashboard';
   public isCollapsed: any = false;
   public user: any = null;
