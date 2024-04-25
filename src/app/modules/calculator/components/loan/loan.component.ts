@@ -3,7 +3,7 @@ import { CalculatorService } from '../../services/calculator.service';
 import { ChartService } from 'src/app/shared/services/chart/chart.service';
 import * as _ from 'lodash';
 import { data } from 'jquery';
-import { CHART_OPTIONS_ONE } from 'src/app/shared/components/chart/chart-options';
+import { CHART_OPTIONS_ONE, lineChartOptions, stackedBarChartOptions } from 'src/app/shared/components/chart/chart-options';
 @Component({
   selector: 'app-loan',
   templateUrl: './loan.component.html',
@@ -100,22 +100,8 @@ export class LoanComponent implements OnInit {
       borderWidth: 1
   }
   };;
-  public lineChartOptions: any = {
-    chart: {
-        type: 'line'
-    },
-    title: {
-        text: 'Monthly Temperature Trends'
-    },
-   
-    series: [
-      { name: 'Tokyo', data: [7, 6, 9, 14, 18] },
-      { name: 'New York', data: [2, 3, 5, 8, 12] },
-      { name: 'New York', data: [4, 3, 2, 8, 7] },
-      { name: 'London', data: [3, 4, 6, 10, 15] },
-      { name: 'London', data: [5, 4, 6, 8, 11] }
-  ]
-  };
+  // public lineChartOptions: any =  JSON.parse(JSON.stringify(lineChartOptions));
+  public stackedBarChartOptions: any =  JSON.parse(JSON.stringify(stackedBarChartOptions));
   updateFlag: any = 0;
   InstallmentAmount: any = 0;
   form: any = {
@@ -165,16 +151,18 @@ export class LoanComponent implements OnInit {
     last.totalAmount = form.amount.value + last.totalInterest;
     this.lastLoanData = last;
     
-    const lineChartOptions = JSON.parse(JSON.stringify(CHART_OPTIONS_ONE));
-    lineChartOptions.series = [
-        { name: 'totalPrincipal', data: _.map(data, 'totalPrincipal') },
-        { name: 'totalInterest', data: _.map(data, 'totalInterest') },
-        { name: 'balance', data: _.map(data, 'balance') },
-        { name: 'totalAmount', data: _.map(investmentData, 'totalAmount') },
-        { name: 'totalMonthlyInterest', data: _.map(investmentData, 'totalMonthlyInterest') },
+    const stackedBarChartOptionss = JSON.parse(JSON.stringify(stackedBarChartOptions));
+    stackedBarChartOptionss.series = [
+        { name: 'principal', data: _.map(data, 'principal') },
+        { name: 'interest', data: _.map(data, 'interest') },
+        { name: 'partPayment', data: _.map(data, 'partPayment') },
+        // { name: 'balance', data: _.map(data, 'balance') },
+        // { name: 'totalAmount', data: _.map(investmentData, 'totalAmount') },
+        // { name: 'monthlyInterest', data: _.map(investmentData, 'monthlyInterest') },
+        // { name: 'monthlyAmount', data: _.map(investmentData, 'monthlyAmount') },
       ];
-    this.lineChartOptions = JSON.parse(JSON.stringify(lineChartOptions));
-    this.updateFlag = !this.updateFlag;
+    this.stackedBarChartOptions = JSON.parse(JSON.stringify(stackedBarChartOptionss));
+    // this.updateFlag = !this.updateFlag;
 
     // this.pieChartOptions.series[0].data = [
     //   { name: 'totalPrincipal', y: _.get(last, 'totalPrincipal', 0) },
