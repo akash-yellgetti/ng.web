@@ -9,6 +9,7 @@ import { GoalComponent } from './components/goal/goal.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { RoutineSchedulerComponent } from './components/routine-scheduler/routine-scheduler.component';
 import { FireComponent } from './components/fire/fire.component';
+import { FinancialComponent } from './components/financial/financial.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FireComponent } from './components/fire/fire.component';
     GoalComponent,
     TransactionComponent,
     RoutineSchedulerComponent,
-    FireComponent
+    FireComponent,
+    FinancialComponent
   ],
   imports: [
     CommonModule,

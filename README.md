@@ -117,6 +117,7 @@ ng g c modules/personal/components/goal --module=personal
 ng g c modules/personal/components/fire --module=personal
 ng g c modules/personal/components/transaction --module=personal
 ng g c modules/personal/components/investment --module=personal
+ng g c modules/personal/components/financial --module=personal
 ng g c modules/personal/components/routine-scheduler --module=personal
 
 ng generate component schedule-calculator
