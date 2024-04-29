@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CalculatorService } from 'src/app/shared/services/calculator/calculator.service';
 import * as _ from 'lodash';
-import { CHART_OPTIONS_ONE } from 'src/app/shared/components/chart/chart-options';
+import { CHART_OPTIONS_ONE, stackedBarChartOptions } from 'src/app/shared/components/chart/chart-options';
 @Component({
   selector: 'app-investment',
   templateUrl: './investment.component.html',
@@ -54,6 +54,7 @@ export class InvestmentComponent implements OnInit {
       { name: 'London', data: [3, 4, 6, 10, 15] }
     ]
   };
+  public stackedBarChartOptions: any =  JSON.parse(JSON.stringify(stackedBarChartOptions));
   form: any = {
     amount: {
       value: 22500
@@ -214,16 +215,28 @@ export class InvestmentComponent implements OnInit {
     //   { name: 'totalExtraAmount', data: _.map(investmentData, 'totalMonthlyAmount') },
     //   { name: 'totalMonthlyInterest', data: _.map(investmentData, 'totalMonthlyAmount') },
     // ];
-    const lineChartOptions = JSON.parse(JSON.stringify(CHART_OPTIONS_ONE));
-    lineChartOptions.series = [
-        // { name: 'monthlySum', data: _.map(investmentData, 'monthlySum') },
-        // { name: 'totalExtraAmount', data: _.map(investmentData, 'totalMonthlyAmount') },
+    const stackedBarChartOptionss = JSON.parse(JSON.stringify(stackedBarChartOptions));
+    stackedBarChartOptionss.series = [
+      { name: 'monthlyInterest', data: _.map(investmentData, 'monthlyInterest') },
+      { name: 'monthlyAmount', data: _.map(investmentData, 'monthlyAmount') },
+        // { name: 'partPayment', data: _.map(investmentData, 'partPayment') },
+        // { name: 'balance', data: _.map(data, 'balance') },
+        // { name: 'totalAmount', data: _.map(investmentData, 'totalAmount') },
         // { name: 'monthlyInterest', data: _.map(investmentData, 'monthlyInterest') },
-        { name: 'totalMonthlyAmount', data: _.map(investmentData, 'totalMonthlyAmount') },
-        { name: 'totalMonthlyInterest', data: _.map(investmentData, 'totalMonthlyInterest') },
-        { name: 'totalAmount', data: _.map(investmentData, 'monthlyInterest') },
+        // { name: 'monthlyAmount', data: _.map(investmentData, 'monthlyAmount') },
       ];
-    this.lineChartOptions = JSON.parse(JSON.stringify(lineChartOptions));
+    this.stackedBarChartOptions = JSON.parse(JSON.stringify(stackedBarChartOptionss));
+    
+    // const lineChartOptions = JSON.parse(JSON.stringify(CHART_OPTIONS_ONE));
+    // lineChartOptions.series = [
+    //     // { name: 'monthlySum', data: _.map(investmentData, 'monthlySum') },
+    //     // { name: 'totalExtraAmount', data: _.map(investmentData, 'totalMonthlyAmount') },
+    //     // { name: 'monthlyInterest', data: _.map(investmentData, 'monthlyInterest') },
+    //     { name: 'totalMonthlyAmount', data: _.map(investmentData, 'totalMonthlyAmount') },
+    //     { name: 'totalMonthlyInterest', data: _.map(investmentData, 'totalMonthlyInterest') },
+    //     // { name: 'totalAmount', data: _.map(investmentData, 'totalAmount') },
+    //   ];
+    // this.lineChartOptions = JSON.parse(JSON.stringify(lineChartOptions));
     this.updateFlag = !this.updateFlag;
     // // [
     // //   {

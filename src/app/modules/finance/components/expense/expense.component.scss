@@ -1,52 +1,52 @@
-@import "../../../../../assets/styles/index.scss";
-// .container {
-// 	display: flex;
-// 	justify-content: space-between;
+// @import "../../../../../assets/styles/index.scss";
+// // .container {
+// // 	display: flex;
+// // 	justify-content: space-between;
+// // }
+
+// .small-card-square {
+//     min-width: 150px;
+//     min-height: 150px;
+//     margin-bottom: 15px;
 // }
 
-.small-card-square {
-    min-width: 150px;
-    min-height: 150px;
-    margin-bottom: 15px;
-}
+
+// .mat-tab-nav-bar-budget-light {
+//     // background-color: $color-secondary-light;
+//     display: flex;
+//     justify-content: space-between;
+//     align-content: stretch;
+// }
+
+// a {
+//     color: #000000;
+// }
 
 
-.mat-tab-nav-bar-budget-light {
-    // background-color: $color-secondary-light;
-    display: flex;
-    justify-content: space-between;
-    align-content: stretch;
-}
+// .mat-tab-link {
+//     opacity: 1;
+// }
 
-a {
-    color: #000000;
-}
+// .income-tabs {
+//     padding: 15px;
+//     padding-bottom: 5px;
+// }
 
-
-.mat-tab-link {
-    opacity: 1;
-}
-
-.income-tabs {
-    padding: 15px;
-    padding-bottom: 5px;
-}
-
-::ng-deep {
-    .income-tabs {
-        border: none !important;
-        .mat-tab-link {
-            height: auto;
-            border-radius: 24px;
-            opacity: 1;
-            padding: 6px 24px;
-            &.mat-tab-label-active {
-                background-color: $color-primary;
-                color: #ffffff;
-            }
-        }
-        .mat-ink-bar {
-            display: none;
-        }
-    }
-}
+// ::ng-deep {
+//     .income-tabs {
+//         border: none !important;
+//         .mat-tab-link {
+//             height: auto;
+//             border-radius: 24px;
+//             opacity: 1;
+//             padding: 6px 24px;
+//             &.mat-tab-label-active {
+//                 background-color: $color-primary;
+//                 color: #ffffff;
+//             }
+//         }
+//         .mat-ink-bar {
+//             display: none;
+//         }
+//     }
+// }
