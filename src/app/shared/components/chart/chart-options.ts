@@ -102,8 +102,6 @@ export const stackedBarChartOptions = {
       text: 'Major trophies for some English teams',
       align: 'left'
   },
-  
-  
   legend: {
       align: 'left',
       x: 70,
@@ -140,6 +138,30 @@ export const stackedBarChartOptions = {
     name: 'SL',
     data: [3, 2, 4, 5]
 }]
+};
+
+export const columnChartOptions = {
+  chart: {
+      type: 'column'
+  },
+  series: [
+      {
+          name: 'Corn',
+          data: [406292, 260000, 107000, 68300, 27500, 14500]
+      },
+      {
+          name: 'Wheat',
+          data: [51086, 136000, 5500, 141000, 107180, 77000]
+      },
+      {
+          name: 'Wheat',
+          data: [51086, 136000, 5500, 141000, 107180, 77000]
+      },
+      {
+          name: 'Wheat',
+          data: [51086, 136000, 5500, 141000, 107180, 77000]
+      }
+  ]
 };
 
 

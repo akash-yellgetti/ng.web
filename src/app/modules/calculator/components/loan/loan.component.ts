@@ -3,7 +3,7 @@ import { CalculatorService } from '../../services/calculator.service';
 import { ChartService } from 'src/app/shared/services/chart/chart.service';
 import * as _ from 'lodash';
 import { data } from 'jquery';
-import { CHART_OPTIONS_ONE, lineChartOptions, stackedBarChartOptions } from 'src/app/shared/components/chart/chart-options';
+import { CHART_OPTIONS_ONE, columnChartOptions, lineChartOptions, stackedBarChartOptions } from 'src/app/shared/components/chart/chart-options';
 @Component({
   selector: 'app-loan',
   templateUrl: './loan.component.html',
@@ -144,7 +144,7 @@ export class LoanComponent implements OnInit {
     form.emi.value = emiAmount;
     const data: any = this.calculatorService.emiTable(Number(form.amount.value), Number(form.rate.value), Number(form.tenure.value), Number(form.emi.value), Number(form.growthRate.value), parseFloat(form.additionalAmount.value));
     const sipAmount = Number(form.emi.value) * 0.30;
-    const investmentData = this.calculatorService.investmentTable(sipAmount, 12, Number(parseInt((data.length/12).toString())), 10, 100000);
+    const investmentData = this.calculatorService.investmentTable(sipAmount, 12, Number(parseInt((data.length/12).toString())), 0, 0);
     const finalData = _.values(_.merge(_.keyBy(data, 'month'), _.keyBy(investmentData, 'month')));
     this.loanData = finalData;
     const last: any = _.last(data);
@@ -153,10 +153,14 @@ export class LoanComponent implements OnInit {
     
     const stackedBarChartOptionss = JSON.parse(JSON.stringify(stackedBarChartOptions));
     stackedBarChartOptionss.series = [
-        { name: 'principal', data: _.map(data, 'principal') },
-        { name: 'interest', data: _.map(data, 'interest') },
-        { name: 'partPayment', data: _.map(data, 'partPayment') },
-        // { name: 'balance', data: _.map(data, 'balance') },
+        // { name: 'principal', data: _.map(data, 'principal') },
+        // { name: 'interest', data: _.map(data, 'interest') },
+        { name: 'totalMonthlyInterest', data: _.map(investmentData, 'totalMonthlyInterest') },
+        { name: 'totalInterest', data: _.map(data, 'totalInterest') },
+        // { name: 'partPayment', data: _.map(data, 'partPayment') },
+        // { name: 'totalLoanAmount', data: _.map(data, 'totalLoanAmount') },
+        { name: 'totalAmount', data: _.map(investmentData, 'totalAmount') },
+        { name: 'balance', data: _.map(data, 'balance') },
         // { name: 'totalAmount', data: _.map(investmentData, 'totalAmount') },
         // { name: 'monthlyInterest', data: _.map(investmentData, 'monthlyInterest') },
         // { name: 'monthlyAmount', data: _.map(investmentData, 'monthlyAmount') },

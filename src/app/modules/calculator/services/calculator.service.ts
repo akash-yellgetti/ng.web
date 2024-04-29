@@ -121,33 +121,6 @@ export class CalculatorService {
     return this.round2Decimal(maxLoanAmount);
   }
 
-  emiGrid = (principal: number, emi: any,  rate: number, tenure: number, extraAmount = 0) => {
-    const emiTable = [];
-    let balance = principal;
-    emi = parseFloat(emi) || parseFloat(this.emi(balance, rate, tenure));
-    let totalInterest = 0;
-    while(balance > 0) {
-      const principal = this.round2Decimal(balance);
-      const interest = this.round2Decimal((balance * rate) / (12 * 100));
-      const principalPayment = this.round2Decimal(emi - interest);
-      totalInterest += this.round2Decimal(interest);
-      balance -= this.round2Decimal(principalPayment);
-      balance -= extraAmount;
-
-      emiTable.push({
-        principal,
-        emi,
-        principalPayment,
-        interest,
-        extraAmount,
-        balance,
-        totalInterest
-      })
-    }
-
-    return emiTable;
-  }
-
 
   emi = (principal: number, rate: number, tenure: number) => {
     // Convert rate to decimal and calculate monthly rate
@@ -173,6 +146,7 @@ export class CalculatorService {
     let totalPrincipal = 0;
     let totalInterest = 0;
     let totalPartPayment = 0;
+    let totalLoanAmount = 0;
     while(balance > 0) {
       emi = i % 13 === 0 && i !== 0 ? emi + this.round2Decimal((emi * emiGrowthRate) / 100) : emi;
       const loanAmount = this.round2Decimal(balance);
@@ -184,6 +158,7 @@ export class CalculatorService {
       balance -= this.round2Decimal(principal);
       let partPayment = i % 12 === 0 ? additionalAmount : 0; 
       totalPartPayment = partPayment > 0 ? totalPartPayment + partPayment : totalPartPayment; 
+      totalLoanAmount += partPayment > 0 ? emi + partPayment : emi;
       balance -= partPayment;
       balance = this.round2Decimal(balance);
       emiTable.push({
@@ -196,7 +171,8 @@ export class CalculatorService {
         totalInterest,
         partPayment,
         totalPartPayment,
-        balance
+        balance,
+        totalLoanAmount
       })
       i++;
     }

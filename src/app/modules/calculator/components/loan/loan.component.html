@@ -4,7 +4,7 @@
 <div class="row">
 
     <!-- Pie Chart -->
-    <div class="col-xl-3 col-lg-3">
+    <div class="col-xl-4 col-lg-4">
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -12,7 +12,7 @@
             </div>
             <!-- Card Body -->
             <div class="card-body">
-  
+
                 <div class="form-group">
                     <label for="amount">Amount</label>
                     <input type="text" class="form-control" id="amount" placeholder="Enter amount"
@@ -48,7 +48,7 @@
         </div>
     </div>
 
-    <div class="col-xl-9 col-lg-9">
+    <div class="col-xl-8 col-lg-8">
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -62,15 +62,17 @@
         </div>
     </div>
     <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-    
+    <div class="col-xl-2 col-lg-6 mb-4">
+
         <div class="card border-left-primary shadow mb-3">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Loan Monthly Emi </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.form.emi.value || 0 | currency:'INR'}}</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.form.emi.value || 0 | numberToWords }}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.form.emi.value || 0 |
+                            currency:'INR'}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.form.emi.value || 0 | numberToWords
+                            }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -79,14 +81,17 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-2 col-lg-6 mb-4">
         <div class="card border-left-primary shadow mb-3">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Interest Payable </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalInterest || 0 | indianNumberFormat}}</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalInterest || 0 | numberToWords }}</div>
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Interest Payable
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalInterest || 0 |
+                            indianNumberFormat}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalInterest || 0 |
+                            numberToWords }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -94,15 +99,18 @@
                 </div>
             </div>
         </div>
-        </div>
-        <div class="col-xl-3 col-md-6 mb-4">
+    </div>
+    <div class="col-xl-2 col-lg-6 mb-4">
         <div class="card border-left-primary shadow mb-3">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Part Payment Payable</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalPartPayment || 0 | currency:'INR'}}</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalPartPayment || 0 | numberToWords }}</div>
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Part Payment
+                            Payable</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalPartPayment || 0 |
+                            currency:'INR'}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalPartPayment || 0 |
+                            numberToWords }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -110,15 +118,18 @@
                 </div>
             </div>
         </div>
-        </div>
-        <div class="col-xl-3 col-md-6 mb-4">
+    </div>
+    <div class="col-xl-2 col-lg-6 mb-4">
         <div class="card border-left-primary shadow mb-3">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Payment (Principal + Interest) </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalAmount || 0 |  indianNumberFormat  }}</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalAmount || 0 | numberToWords }}</div>
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Payment (Principal
+                            + Interest) </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalAmount || 0 |
+                            indianNumberFormat }}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ this.lastLoanData.totalAmount || 0 |
+                            numberToWords }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -126,20 +137,20 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
-    
 
-  </div>
-  <div class="row">
+
+</div>
+<div class="row">
     <!-- Area Chart -->
     <div class="col-xl-12 col-lg-12">
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Loan Overview</h6>
-                 
+
             </div>
             <!-- Card Body -->
             <div class="card-body">
@@ -147,4 +158,4 @@
             </div>
         </div>
     </div>
-  </div>
+</div>
