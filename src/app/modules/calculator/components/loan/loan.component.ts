@@ -153,14 +153,14 @@ export class LoanComponent implements OnInit {
     
     const stackedBarChartOptionss = JSON.parse(JSON.stringify(stackedBarChartOptions));
     stackedBarChartOptionss.series = [
-        // { name: 'principal', data: _.map(data, 'principal') },
-        // { name: 'interest', data: _.map(data, 'interest') },
-        { name: 'totalMonthlyInterest', data: _.map(investmentData, 'totalMonthlyInterest') },
-        { name: 'totalInterest', data: _.map(data, 'totalInterest') },
-        // { name: 'partPayment', data: _.map(data, 'partPayment') },
+      { name: 'interest', data: _.map(data, 'interest') },
+      { name: 'principal', data: _.map(data, 'principal') },
+      { name: 'partPayment', data: _.map(data, 'partPayment') },
+        // { name: 'totalMonthlyInterest', data: _.map(investmentData, 'totalMonthlyInterest') },
+        // { name: 'totalInterest', data: _.map(data, 'totalInterest') },
         // { name: 'totalLoanAmount', data: _.map(data, 'totalLoanAmount') },
-        { name: 'totalAmount', data: _.map(investmentData, 'totalAmount') },
-        { name: 'balance', data: _.map(data, 'balance') },
+        // { name: 'totalAmount', data: _.map(investmentData, 'totalAmount') },
+        // { name: 'balance', data: _.map(data, 'balance') },
         // { name: 'totalAmount', data: _.map(investmentData, 'totalAmount') },
         // { name: 'monthlyInterest', data: _.map(investmentData, 'monthlyInterest') },
         // { name: 'monthlyAmount', data: _.map(investmentData, 'monthlyAmount') },
