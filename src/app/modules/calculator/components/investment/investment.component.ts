@@ -219,7 +219,7 @@ export class InvestmentComponent implements OnInit {
     stackedBarChartOptionss.series = [
       { name: 'monthlyInterest', data: _.map(investmentData, 'monthlyInterest') },
       { name: 'monthlyAmount', data: _.map(investmentData, 'monthlyAmount') },
-        // { name: 'partPayment', data: _.map(investmentData, 'partPayment') },
+      { name: 'extraAmount', data: _.map(investmentData, 'extraAmount') },
         // { name: 'balance', data: _.map(data, 'balance') },
         // { name: 'totalAmount', data: _.map(investmentData, 'totalAmount') },
         // { name: 'monthlyInterest', data: _.map(investmentData, 'monthlyInterest') },
