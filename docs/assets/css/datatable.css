@@ -32,3 +32,10 @@ div.dataTables_length {
   .dt-buttons > .btn {
     padding: 2px 12px;
   }
+
+  .dt-buttons > .btn.btn-secondary {
+    color: #fff;
+    background-color: #4e73df;
+    border-color: #4e73df;
+  }
+  
