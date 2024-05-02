@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CalculatorService } from 'src/app/shared/services/calculator/calculator.service';
 import * as _ from 'lodash';
-import { CHART_OPTIONS_ONE, stackedBarChartOptions } from 'src/app/shared/components/chart/chart-options';
+import { CHART_OPTIONS_ONE, pieChartOptions, stackedBarChartOptions } from 'src/app/shared/components/chart/chart-options';
 @Component({
   selector: 'app-investment',
   templateUrl: './investment.component.html',
@@ -9,37 +9,7 @@ import { CHART_OPTIONS_ONE, stackedBarChartOptions } from 'src/app/shared/compon
 })
 export class InvestmentComponent implements OnInit {
   updateFlag: any = 0;
-  public pieChartOptions: any = { 
-    
-    chart: {
-        type: 'pie',
-        renderTo: 'pie-chart-container'
-    },
-    title: {
-        text: 'Browser Market Share'
-    },
-    series: [{
-        name: 'Investment',
-        data: []
-    }],
-    plotOptions: {
-      pie: {
-          allowPointSelect: true,
-          cursor: 'pointer',
-          dataLabels: {
-              enabled: true,
-              format: '<b>{point.name} ({point.y}) </b>: {point.percentage:.1f} %'
-          }
-      }
-  },
-  legend: {
-      enabled: true,
-      layout: 'vertical',
-      align: 'right',
-      verticalAlign: 'middle',
-      borderWidth: 1
-  }
-  };;
+  public pieChartOptions: any = JSON.parse(JSON.stringify(pieChartOptions));;
   public lineChartOptions: any = {
     chart: {
         type: 'line'

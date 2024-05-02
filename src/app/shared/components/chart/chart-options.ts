@@ -15,29 +15,16 @@ export const pieChartOptions = {
       'Source:<a href="https://www.mdpi.com/2072-6643/11/3/684/htm" target="_default">MDPI</a>'
   },
   plotOptions: {
-      series: {
-          allowPointSelect: true,
-          cursor: 'pointer',
-          dataLabels: [{
-              enabled: true,
-              distance: 20
-          }, {
-              enabled: true,
-              distance: -40,
-              format: '{point.percentage:.1f}%',
-              style: {
-                  fontSize: '1.2em',
-                  textOutline: 'none',
-                  opacity: 0.7
-              },
-              filter: {
-                  operator: '>',
-                  property: 'percentage',
-                  value: 10
-              }
-          }]
-      }
-  },
+    pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+            enabled: true,
+            format: '<b>{point.name} </b>: {point.percentage:.1f} %'
+        }
+    }
+},
+  
   series: [
       {
           name: 'Percentage',
@@ -165,6 +152,13 @@ export const columnChartOptions = {
 };
 
 
+export const barChartOptions = {
+}
+
+export const areaChartOptions = {
+}
+
+ 
 export const CHART_OPTIONS_ONE = {
     chart: {
       zoomType: 'xy',
