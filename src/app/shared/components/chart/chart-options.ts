@@ -4,9 +4,7 @@ export const pieChartOptions = {
   chart: {
       type: 'pie'
   },
-  title: {
-      text: 'Egg Yolk Composition'
-  },
+  
   tooltip: {
       valueSuffix: '%'
   },
@@ -85,10 +83,7 @@ export const stackedBarChartOptions = {
   chart: {
       type: 'column'
   },
-  title: {
-      text: 'Major trophies for some English teams',
-      align: 'left'
-  },
+  
   legend: {
       align: 'left',
       x: 70,
@@ -208,9 +203,7 @@ export const CHART_OPTIONS_ONE = {
     chart: {
       type: 'column'
     },
-    title: {
-      text: 'Stacked bar chart'
-    },
+    
     xAxis: {
       type: 'category',
       categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
