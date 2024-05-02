@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CalculatorService } from '../../services/calculator.service';
+import { pieChartOptions } from 'src/app/shared/components/chart/chart-options';
 
 @Component({
   selector: 'app-future',
@@ -72,6 +73,8 @@ export class FutureComponent implements OnInit {
     }
      
   ];
+  public pieChartOptions: any = JSON.parse(JSON.stringify(pieChartOptions));;
+  updateFlag: any = 0;
   constructor(public calculatorService: CalculatorService, private cdr: ChangeDetectorRef)  { }
 
   ngOnInit(): void {
@@ -88,6 +91,14 @@ export class FutureComponent implements OnInit {
     this.form.increasedValue.value = futureValue - amount.value;
     // console.log(futureValue)
     const presentValue = this.calculatorService.principalValue(Number(futureValue), Number(rate.value), Number(tenure.value));
+    const pieChartOptionss = JSON.parse(JSON.stringify(pieChartOptions));
+    
+    pieChartOptionss.series[0].data = [
+      { name: 'amount', y: amount.value },
+      { name: 'interest', y: this.form.increasedValue.value },
+      
+    ];
+    this.pieChartOptions = JSON.parse(JSON.stringify(pieChartOptionss));
     console.log(presentValue)
   }
 
