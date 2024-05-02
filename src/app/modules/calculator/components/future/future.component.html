@@ -1,1 +1,79 @@
-<p>future works!</p>
+<!-- Content Row -->
+
+<div class="row">
+    <!-- Pie Chart -->
+    <div class="col-xl-4 col-lg-4">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Goal Calculator</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="amount">Current Value</label>
+                    <input type="text" class="form-control" id="amount" placeholder="Enter amount"
+                        [(ngModel)]="form.amount.value" />
+                </div>
+                <div class="form-group">
+                    <label for="rate">Rate of inflation (p.a)</label>
+                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                        [(ngModel)]="form.rate.value" />
+                </div>
+                <div class="form-group">
+                    <label for="tenure">Tenure</label>
+                    <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                        [(ngModel)]="form.tenure.value" />
+                </div>
+           
+                <button type="submit" class="btn btn-primary" (click)="calculate()">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow mb-3">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Increased Value
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            {{ this.form.increasedValue.value || 0 | indianNumberFormat }}
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            {{ this.form.increasedValue.value || 0 | numberToWords }}
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card border-left-primary shadow mb-3">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Future Value
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            {{ this.form.futureValue.value || 0 | indianNumberFormat }}
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            {{ this.form.futureValue.value || 0 | numberToWords }}
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     
+   
+</div>

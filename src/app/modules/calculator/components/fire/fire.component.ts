@@ -18,14 +18,14 @@ export class FireComponent implements OnInit {
       value: 85
     },
     currentIncome: {
-      value: 150000
+      value: 1800000
     },
     currentIncomegrowth: {
       value: 10
     },
     
     currentExpense: {
-      value: 50000
+      value: 1200000
     },
     currentExpensegrowth: {
       value: 6

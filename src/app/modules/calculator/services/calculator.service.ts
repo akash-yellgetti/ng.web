@@ -17,12 +17,11 @@ export class CalculatorService {
   futureValue = (principal: number, rate: number, tenure: number) => {
     // Convert rate to decimal and calculate monthly rate
     const decimalRate = rate / 100;
-    const monthlyRate = decimalRate / 12;
-  
+
     // Calculate future value using the formula
-    const futureValue = principal * Math.pow(1 + monthlyRate, tenure);
+    const futureValue = principal * Math.pow(1 + decimalRate, tenure);
   
-    return futureValue.toFixed(2); // Round the result to 2 decimal places
+    return Math.round(Number(futureValue.toFixed(2))); // Round the result to 2 decimal places
   }
 
    /*
