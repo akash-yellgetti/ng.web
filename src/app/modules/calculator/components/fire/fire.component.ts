@@ -12,7 +12,7 @@ export class FireComponent implements OnInit {
       value: 30
     },
     retirementAge: {
-      value: 40
+      value: 45
     },
     lifeExpectancy: {
       value: 85

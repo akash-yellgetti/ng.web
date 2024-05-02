@@ -7,6 +7,7 @@ import { InvestmentComponent } from './components/investment/investment.componen
 import { SharedModule } from '../..//shared/shared.module';
 import { FireComponent } from './components/fire/fire.component';
 import { GoalComponent } from './components/goal/goal.component';
+import { FutureComponent } from './components/future/future.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { GoalComponent } from './components/goal/goal.component';
     LoanComponent,
     InvestmentComponent,
     FireComponent,
-    GoalComponent
+    GoalComponent,
+    FutureComponent
   ],
   imports: [
     CommonModule,

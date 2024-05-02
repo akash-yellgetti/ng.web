@@ -4,6 +4,7 @@ import { LoanComponent } from './components/loan/loan.component';
 import { InvestmentComponent } from './components/investment/investment.component';
 import { FireComponent } from './components/fire/fire.component';
 import { GoalComponent } from './components/goal/goal.component';
+import { FutureComponent } from './components/future/future.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'goal',
     component: GoalComponent
+  },
+  {
+    path: 'future',
+    component: FutureComponent
   },
   {
     path: 'fire',
