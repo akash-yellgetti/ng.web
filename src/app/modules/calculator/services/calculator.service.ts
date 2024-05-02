@@ -34,12 +34,11 @@ export class CalculatorService {
   principalValue = (futureValue: number, rate: number, tenure: number) => {
     // Convert rate to decimal and calculate monthly rate
     const decimalRate = rate / 100;
-    const monthlyRate = decimalRate / 12;
-  
+    
     // Calculate future value using the formula
-    const principalValue = futureValue * Math.pow(1 + monthlyRate, tenure);
+    const principalValue = futureValue / Math.pow(1 + decimalRate, tenure);
   
-    return principalValue.toFixed(2); // Round the result to 2 decimal places
+    return Math.round(Number(principalValue.toFixed(2))); // Round the result to 2 decimal places
   }
 
   SIPAmount = (goalAmount: number, rate: number, tenure: number) => {

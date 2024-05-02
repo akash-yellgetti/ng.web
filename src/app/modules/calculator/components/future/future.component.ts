@@ -87,6 +87,8 @@ export class FutureComponent implements OnInit {
     this.form.futureValue.value = futureValue;
     this.form.increasedValue.value = futureValue - amount.value;
     // console.log(futureValue)
+    const presentValue = this.calculatorService.principalValue(Number(futureValue), Number(rate.value), Number(tenure.value));
+    console.log(presentValue)
   }
 
 }
