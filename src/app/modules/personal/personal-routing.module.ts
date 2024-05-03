@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BudgetComponent } from './components/budget/budget.component';
 import { RoutineComponent } from './components/routine/routine.component';
-import { GoalComponent } from './components/goal/goal.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { RoutineSchedulerComponent } from './components/routine-scheduler/routine-scheduler.component';
 import { FireComponent } from './components/fire/fire.component';
@@ -24,14 +23,6 @@ const routes: Routes = [
   {
     path: 'routine-scheduler',
     component: RoutineSchedulerComponent
-  },
-  {
-    path: 'goal',
-    component: GoalComponent
-  },
-  {
-    path: 'loan',
-    component: GoalComponent
   },
   {
     path: 'fire',

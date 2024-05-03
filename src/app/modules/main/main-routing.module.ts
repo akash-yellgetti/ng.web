@@ -44,20 +44,12 @@ const routes: Routes = [
           loadChildren: () => import('../lessons/course.module').then(m => m.CourseModule)
       },
       {
-          path: 'school',
-          loadChildren: () => import('../school/school.module').then(m => m.SchoolModule)
-      },
-      {
           path: 'personal',
           loadChildren: () => import('../personal/personal.module').then(m => m.PersonalModule)
       },
       {
         path: 'calculator',
         loadChildren: () => import('../calculator/calculator.module').then(m => m.CalculatorModule)
-      },
-      {
-          path: 'tradingview',
-          loadChildren: () => import('../tradingview/tradingview.module').then(m => m.TradingviewModule)
       },
       // { path: '',   redirectTo: '/dashboard', pathMatch: 'full' }, // redirect to `first-component`
       // { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
