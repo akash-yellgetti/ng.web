@@ -111,7 +111,7 @@ export class CalculatorService {
     let totalAmount = 0;
     let extraAmount = 0;
     let totalExtraAmount = 0;
-    for(let i = 1; i < numberOfMonths; i++) {
+    for(let i = 1; i <= numberOfMonths; i++) {
       sipAmount = i%12 === 0 ? sipAmount + (sipAmount * growthdecimalRate) : sipAmount;
       initialAmount = totalAmount;
       monthlyAmount = this.round2Decimal(sipAmount);

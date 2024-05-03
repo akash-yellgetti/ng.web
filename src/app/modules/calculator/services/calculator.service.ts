@@ -7,6 +7,15 @@ export class CalculatorService {
 
   constructor() { }
 
+  corpusAmount = (monthlySavings: number, rate: number) => {
+    // Convert rate to decimal and calculate monthly rate
+    const decimalRate = rate / 100;
+
+    // Calculate corpus amount using the formula
+    const corpusAmount = monthlySavings * 12 / decimalRate;
+
+    return  Number(corpusAmount.toFixed(2)); // Round the result to 2 decimal places
+  }
   /*
   Get FV = Future Value (Goal Amount)
   ---------------------------------------------------
@@ -21,7 +30,7 @@ export class CalculatorService {
     // Calculate future value using the formula
     const futureValue = principal * Math.pow(1 + decimalRate, tenure);
   
-    return Math.round(Number(futureValue.toFixed(2))); // Round the result to 2 decimal places
+    return  Number(futureValue.toFixed(2)); // Round the result to 2 decimal places
   }
 
    /*
@@ -38,7 +47,7 @@ export class CalculatorService {
     // Calculate future value using the formula
     const principalValue = futureValue / Math.pow(1 + decimalRate, tenure);
   
-    return Math.round(Number(principalValue.toFixed(2))); // Round the result to 2 decimal places
+    return  Number(principalValue.toFixed(2)); // Round the result to 2 decimal places
   }
 
   SIPAmount = (goalAmount: number, rate: number, tenure: number) => {
@@ -52,7 +61,7 @@ export class CalculatorService {
     // Calculate SIP amount using the formula
     const sipAmount = goalAmount * (monthlyRate / (Math.pow(1 + monthlyRate, numberOfMonths) - 1));
   
-    return sipAmount.toFixed(2); // Round the result to 2 decimal places
+    return Number(sipAmount.toFixed(2)); // Round the result to 2 decimal places
   }
 
   investmentTable = (sipAmount: number, rate: number, tenure: any, growthRate: number = 0, additionAmount = 0) => {
@@ -73,7 +82,7 @@ export class CalculatorService {
     let totalAmount = 0;
     let extraAmount = 0;
     let totalExtraAmount = 0;
-    for(let i = 1; i < numberOfMonths; i++) {
+    for(let i = 1; i <= numberOfMonths; i++) {
       sipAmount = i%12 === 0 ? sipAmount + (sipAmount * growthdecimalRate) : sipAmount;
       initialAmount = totalAmount;
       monthlyAmount = this.round2Decimal(sipAmount);
@@ -145,7 +154,7 @@ export class CalculatorService {
     let totalInterest = 0;
     let totalPartPayment = 0;
     let totalLoanAmount = 0;
-    while(balance > 0) {
+    while(balance > 0 && i <= tenure * 12) {
       emi = i % 13 === 0 && i !== 0 ? emi + this.round2Decimal((emi * emiGrowthRate) / 100) : emi;
       const loanAmount = this.round2Decimal(balance);
       const interest = this.round2Decimal((balance * rate) / (12 * 100));
@@ -179,7 +188,7 @@ export class CalculatorService {
   }
 
   round2Decimal = (value: any) => {
-    return parseFloat(value.toFixed(2));
+    return Number(value.toFixed(2));
   }
 
   percentage = (value: number, total: number) => {
