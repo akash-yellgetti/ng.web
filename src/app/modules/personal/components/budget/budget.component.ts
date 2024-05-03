@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { budget } from 'src/app/shared/json/budet.json';
 import * as _ from 'lodash';
+import { pieChartOptions } from 'src/app/shared/components/chart/chart-options';
 
 @Component({
   selector: 'app-budget',
@@ -76,6 +77,8 @@ export class BudgetComponent implements OnInit {
   }]
   }
   chartOptions1: any = {};
+  public pieChartOptions: any = JSON.parse(JSON.stringify(pieChartOptions));;
+  updateFlag: any = 0;
   constructor() { 
     this.chartOptions1 = {...this.chartOptions}
   }
