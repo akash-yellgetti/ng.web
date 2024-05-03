@@ -84,6 +84,7 @@ ng g s shared/services/numbertowordsservice/numbertowordsservice
 
 ng generate pipe shared/pipe/indianNumberFormat/indianNumberFormat
 ng generate pipe shared/pipe/numberToWords/numberToWords
+ng generate pipe shared/pipe/monthsToYears/monthsToYears
 
 
 --------------------------------------------------------------------------------------------------

@@ -8,6 +8,7 @@ import { ChartComponent } from './components/chart/chart.component';
 import { DatatableComponent } from './components/datatable/datatable.component';
 import { IndianNumberFormatPipe } from './pipe/indianNumberFormat/indian-number-format.pipe';
 import { NumberToWordsPipe } from './pipe/numberToWords/number-to-words.pipe';
+import { MonthsToYearsPipe } from './pipe/monthsToYears/months-to-years.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NumberToWordsPipe } from './pipe/numberToWords/number-to-words.pipe';
     ChartComponent,
     DatatableComponent,
     IndianNumberFormatPipe,
-    NumberToWordsPipe
+    NumberToWordsPipe,
+    MonthsToYearsPipe
   ],
   imports: [
     MaterialModule,
@@ -31,7 +33,8 @@ import { NumberToWordsPipe } from './pipe/numberToWords/number-to-words.pipe';
     ChartComponent,
     DatatableComponent,
     IndianNumberFormatPipe,
-    NumberToWordsPipe
+    NumberToWordsPipe,
+    MonthsToYearsPipe
   ]
 })
 export class SharedModule { }
