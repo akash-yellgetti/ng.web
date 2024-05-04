@@ -7,7 +7,6 @@ import { RoutineComponent } from './components/routine/routine.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { RoutineSchedulerComponent } from './components/routine-scheduler/routine-scheduler.component';
-import { FireComponent } from './components/fire/fire.component';
 import { FinancialComponent } from './components/financial/financial.component';
 
 
@@ -17,7 +16,6 @@ import { FinancialComponent } from './components/financial/financial.component';
     RoutineComponent,
     TransactionComponent,
     RoutineSchedulerComponent,
-    FireComponent,
     FinancialComponent
   ],
   imports: [

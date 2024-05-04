@@ -48,6 +48,16 @@
                     <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
                         [(ngModel)]="form.currentExpensegrowth.value" />
                 </div>
+                <div class="form-group">
+                    <label for="tenure">Rate of Return (p.a) on investment pre retirement </label>
+                    <input type="text" class="form-control" id="tenure" placeholder="Enter ROI"
+                        [(ngModel)]="form.investmentRoipre.value" />
+                </div>
+                <div class="form-group">
+                    <label for="tenure">Rate of Return (p.a) on investment post retirement </label>
+                    <input type="text" class="form-control" id="tenure" placeholder="Enter ROI"
+                        [(ngModel)]="form.investmentRoipost.value" />
+                </div>
                 
                 <button type="submit" class="btn btn-primary" (click)="calculate()">Submit</button>
             </div>

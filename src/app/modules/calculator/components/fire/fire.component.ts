@@ -31,6 +31,12 @@ export class FireComponent implements OnInit {
     currentExpensegrowth: {
       value: 6
     },
+    investmentRoipre: {
+      value: 12
+    },
+    investmentRoipost: {
+      value: 8
+    },
   }
  
 
