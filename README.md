@@ -79,6 +79,8 @@ ng g s shared/services/common/common
 ng g s shared/services/field/field
 ng g s shared/services/calculator/calculator
 ng g s shared/services/chart/chart
+ng g s shared/services/chart-js/chart-js
+ng g s shared/services/chart-google/chart-google
 
 ng g s shared/services/numbertowordsservice/numbertowordsservice
 
@@ -100,6 +102,9 @@ ng g c modules/tradingview/components/alerts --module=tradingview
 ng g c modules/tradingview/components/trades --module=tradingview
 --------------------------------------------------------------------------------------------------
 ng g c shared/components/datatable --module=shared
+ng g c shared/components/chart/chart --module=shared
+ng g c shared/components/chart-js/chart-js --module=shared
+ng g c shared/components/chart-google/chart-google --module=shared
 --------------------------------------------------------------------------------------------------
 
 
