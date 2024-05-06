@@ -73,29 +73,29 @@
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-3 mb-4">
-        <div class="card border-left-info shadow h-100" (click)="refreshDatatableAndChart('want')">
+        <div class="card border-left-warning shadow h-100" (click)="refreshDatatableAndChart('want')">
             <div class="card-body card-body-custom">
                 <div class="row no-gutters align-items-center">
                     <div class="col">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Want
-                            <button type="button" class="btn btn-info btn-circle float-right">
+                            <button type="button" class="btn btn-warning btn-circle float-right">
                                 <i class="fas fa-plus fa-2x"></i>
                             </button>
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-info">
+                        <div class="h5 mb-0 font-weight-bold text-warning">
                             $ {{ categoryWise.want || 0 | indianNumberFormat }}
                         </div>
 
                         <div class="row no-gutters align-items-center">
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 80%"
                                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <div class="h5 mb-0 font-weight-bold text-info">80%</div>
+                                <div class="h5 mb-0 font-weight-bold text-warning">80%</div>
                             </div>
                         </div>
                     </div>
