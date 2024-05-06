@@ -12,7 +12,7 @@ export class CalculatorService {
     const decimalRate = rate / 100;
 
     // Calculate corpus amount using the formula
-    const corpusAmount = monthlySavings * 12 / decimalRate;
+    const corpusAmount = monthlySavings / decimalRate;
 
     return  Number(corpusAmount.toFixed(2)); // Round the result to 2 decimal places
   }

@@ -63,11 +63,7 @@
             </div>
         </div>
     </div>
-     
-</div>
-<div class="row">
-    <!-- Area Chart -->
-    <div class="col-xl-12 col-lg-12">
+    <div class="col-xl-6 col-lg-5">
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -76,8 +72,53 @@
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                <app-datatable [columns]="fireColumns" [data]="fireData"></app-datatable>
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Monthly Income At Time Of Retirement</td>
+                        <td>
+                            {{result.monthlyIncomeAtRetirement || 0 | indianNumberFormat}} <br>
+                            {{result.monthlyIncomeAtRetirement || 0 | numberToWords }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Monthly Expense At Time Of Retirement</td>
+                        <td>
+                            {{result.monthlyExpenseAtRetirement || 0 | indianNumberFormat}} <br>
+                            {{result.monthlyExpenseAtRetirement || 0 | numberToWords }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Monthly Investment Required To Achieve Normal FIRE Corpus</td>
+                        <td>
+                            {{result.SIPAmount || 0 | indianNumberFormat}} <br>
+                            {{result.SIPAmount || 0 | numberToWords }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Lean FIRE Retirement Corpus Required</td>
+                        <td>
+                            {{result.leanFireCorpusRequired || 0 | indianNumberFormat}} <br>
+                            {{result.leanFireCorpusRequired || 0 | numberToWords }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Normal FIRE Retirement Corpus Required</td>
+                        <td>
+                            {{result.normalFireCorpusRequired || 0 | indianNumberFormat}} <br>
+                            {{result.normalFireCorpusRequired || 0 | numberToWords }}
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fat FIRE Retirement Corpus Required</td>
+                        <td>
+                            {{result.fatFireCorpusRequired || 0 | indianNumberFormat}} <br>
+                            {{result.fatFireCorpusRequired || 0 | numberToWords }}
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
+        
     </div>
 </div>

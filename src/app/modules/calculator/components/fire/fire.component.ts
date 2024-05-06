@@ -8,25 +8,25 @@ import { months } from 'moment';
   styleUrls: ['./fire.component.scss']
 })
 export class FireComponent implements OnInit {
+  result: any = {};
   form: any = {
     age: {
-      value: 35
+      value: 30
     },
     retirementAge: {
-      value: 60
+      value: 40
     },
     lifeExpectancy: {
       value: 80
     },
     currentIncome: {
-      value: 35000
+      value: 100000
     },
     currentIncomegrowth: {
       value: 10
     },
-    
     currentExpense: {
-      value: 1200000
+      value: 50000
     },
     currentExpensegrowth: {
       value: 6
@@ -92,7 +92,7 @@ export class FireComponent implements OnInit {
   }
 
   calculate = () => {
-    const { age, retirementAge, lifeExpectancy, currentIncome, currentIncomegrowth,  currentExpense, currentExpensegrowth }: any = this.form;
+    const { age, retirementAge, lifeExpectancy, currentIncome, currentIncomegrowth,  currentExpense, currentExpensegrowth, investmentRoipre, investmentRoipost }: any = this.form;
     // const fireNumber = this.calculatorService.calculateFIRENumber(
     //   Number(this.form.age.value),
     //   Number(this.form.retirementAge.value),
@@ -104,13 +104,31 @@ export class FireComponent implements OnInit {
     // )
     // console.log(fireNumber)
     const tenureToRetirement: number = Number(retirementAge.value) - Number(age.value);
-    const monthlyIncomeAtRetirement: number = this.calculatorService.futureValue(Number(currentIncome.value), Number(currentExpensegrowth.value), tenureToRetirement);
-    console.log(monthlyIncomeAtRetirement)
+    const monthlyIncomeAtRetirement: number = this.calculatorService.futureValue(Number(currentIncome.value), Number(currentIncomegrowth.value), tenureToRetirement);
+    console.log('monthlyIncomeAtRetirement', monthlyIncomeAtRetirement)
+    this.result.monthlyIncomeAtRetirement = monthlyIncomeAtRetirement;
     const annualIncomeAtRetirement: number = Number((monthlyIncomeAtRetirement * 12).toFixed(2));
-    console.log(annualIncomeAtRetirement)
-    const corpusRequired: number = this.calculatorService.corpusAmount(monthlyIncomeAtRetirement, Number(currentExpensegrowth.value));
-    console.log(corpusRequired)
-    const retirementTenure: number = Number(lifeExpectancy.value) - Number(retirementAge.value);
+    console.log('annualIncomeAtRetirement', annualIncomeAtRetirement)
+    const monthlyExpenseAtRetirement: number = this.calculatorService.futureValue(Number(currentExpense.value), Number(currentExpensegrowth.value), tenureToRetirement);
+    this.result.monthlyExpenseAtRetirement = monthlyExpenseAtRetirement;
+    console.log('monthlyExpenseAtRetirement', monthlyExpenseAtRetirement)
+    const annualExpenseAtRetirement: number = Number((monthlyExpenseAtRetirement * 12).toFixed(2));
+    console.log('annualExpenseAtRetirement', annualExpenseAtRetirement)
+    const normalFireCorpusRequired: number = this.calculatorService.corpusAmount(annualExpenseAtRetirement, 4);
+    console.log('normalFireCorpusRequired', normalFireCorpusRequired)
+    this.result.normalFireCorpusRequired = normalFireCorpusRequired;
+    const leanFireCorpusRequired: number = this.calculatorService.corpusAmount(annualExpenseAtRetirement, 5);
+    console.log('leanFireCorpusRequired', leanFireCorpusRequired)
+    this.result.leanFireCorpusRequired = leanFireCorpusRequired;
+    const fatFireCorpusRequired: number = this.calculatorService.corpusAmount(annualExpenseAtRetirement, 3);
+    console.log('fatFireCorpusRequired', fatFireCorpusRequired)
+    this.result.fatFireCorpusRequired = fatFireCorpusRequired;
+    const SIPAmount = this.calculatorService.SIPAmount(normalFireCorpusRequired, Number(investmentRoipre.value), tenureToRetirement);
+    console.log('SIPAmount', SIPAmount)
+    this.result.SIPAmount = SIPAmount;
+    
+    
+    // const retirementTenure: number = Number(lifeExpectancy.value) - Number(retirementAge.value);
   }
 
 }
