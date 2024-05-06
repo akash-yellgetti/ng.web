@@ -1,0 +1,63 @@
+<div class="login-wrapper d-flex align-items">
+  <div class="login-container">
+    <section class="login bg-white">
+      <div class="contain header">
+        <h1 class="title">Login</h1>
+      </div>
+      <div class="contain form">
+        <form [formGroup]="loginForm" novalidate>
+          <div class="form-row">
+            <div class="col-12">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <mat-form-field appearance="outline" class="w-100">
+                  <input matInput placeholder="Email" formControlName="email">
+                  <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                  <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+                    Email is <strong>required</strong>
+                  </mat-error>
+                  <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+                    Email is <strong>invalid</strong>
+                  </mat-error>
+                  <!-- <mat-hint>Hint</mat-hint> -->
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label for="password">Password</label>
+                <mat-form-field appearance="outline" class="w-100">
+                  <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                    Password is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="form-row form-action d-flex align-items">
+            <div class="col">
+              <a href="javascript:void(0)" class="text-secondary" routerLink="/auth/forgot-password">Forgot password?</a>
+            </div>
+            <div class="col margin-left">
+              <button type="submit" class="common-btn btn-fill login-btn" (click)="login()">Login</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="other-login">
+        <p class="sub-title">Dont have an account? <a href="javascript:void(0)"
+          routerLink="/auth/registration">Register</a></p>
+      </div>      
+      <div class="social-media">
+        <p class="d-flex"><span class="divider"></span><i>Or</i><span class="divider"></span></p>
+        <button type="button" class="btn btn-icon"> <i class="bi bi-google"></i> </button>
+        <button type="button" class="btn btn-icon"> <i class="bi bi-facebook"></i> </button>
+      </div>
+    </section>
+  </div>
+</div>

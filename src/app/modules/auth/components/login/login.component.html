@@ -1,63 +1,67 @@
-<div class="login-wrapper d-flex align-items">
-  <div class="login-container">
-    <section class="login bg-white">
-      <div class="contain header">
-        <h1 class="title">Login</h1>
-      </div>
-      <div class="contain form">
-        <form [formGroup]="loginForm" novalidate>
-          <div class="form-row">
-            <div class="col-12">
-              <div class="form-group">
-                <label for="email">Email</label>
-                <mat-form-field appearance="outline" class="w-100">
-                  <input matInput placeholder="Email" formControlName="email">
-                  <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-                  <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
-                    Email is <strong>required</strong>
-                  </mat-error>
-                  <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
-                    Email is <strong>invalid</strong>
-                  </mat-error>
-                  <!-- <mat-hint>Hint</mat-hint> -->
-                </mat-form-field>
+
+<body class="bg-gradient-primary">
+
+  <div class="container">
+
+      <!-- Outer Row -->
+      <div class="row justify-content-center">
+
+          <div class="col-xl-10 col-lg-12 col-md-9">
+
+              <div class="card o-hidden border-0 shadow-lg my-5">
+                  <div class="card-body p-0">
+                      <!-- Nested Row within Card Body -->
+                      <div class="row">
+                          <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                          <div class="col-lg-6">
+                              <div class="p-5">
+                                  <div class="text-center">
+                                      <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                  </div>
+                                  <div class="user">
+                                      <div class="form-group">
+                                          <input type="email" class="form-control form-control-user"
+                                              id="exampleInputEmail" aria-describedby="emailHelp" [(ngModel)]="form.email.value"
+                                              placeholder="Enter Email Address...">
+                                      </div>
+                                      <div class="form-group">
+                                          <input type="password" class="form-control form-control-user" [(ngModel)]="form.password.value"
+                                              id="exampleInputPassword" placeholder="Password">
+                                      </div>
+                                      <div class="form-group">
+                                          <div class="custom-control custom-checkbox small">
+                                              <input type="checkbox" class="custom-control-input" id="customCheck"  >
+                                              <label class="custom-control-label" for="customCheck">Remember
+                                                  Me</label>
+                                          </div>
+                                      </div>
+                                      <button class="btn btn-primary btn-user btn-block" (click)="login()">
+                                          Login
+                                      </button>
+                                      <hr>
+                                      <a href="index.html" class="btn btn-google btn-user btn-block">
+                                          <i class="fab fa-google fa-fw"></i> Login with Google
+                                      </a>
+                                      <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                          <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                      </a>
+                                    </div>
+                                  <hr>
+                                  <div class="text-center">
+                                      <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                  </div>
+                                  <div class="text-center">
+                                      <a class="small" href="register.html">Create an Account!</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
-            </div>
-            <div class="col-12">
-              <div class="form-group">
-                <label for="password">Password</label>
-                <mat-form-field appearance="outline" class="w-100">
-                  <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password">
-                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                    [attr.aria-pressed]="hide">
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                  </button>
-                  <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
-                    Password is <strong>required</strong>
-                  </mat-error>
-                </mat-form-field>
-              </div>
-            </div>
+
           </div>
-          <div class="form-row form-action d-flex align-items">
-            <div class="col">
-              <a href="javascript:void(0)" class="text-secondary" routerLink="/auth/forgot-password">Forgot password?</a>
-            </div>
-            <div class="col margin-left">
-              <button type="submit" class="common-btn btn-fill login-btn" (click)="login()">Login</button>
-            </div>
-          </div>
-        </form>
+
       </div>
-      <div class="other-login">
-        <p class="sub-title">Dont have an account? <a href="javascript:void(0)"
-          routerLink="/auth/registration">Register</a></p>
-      </div>      
-      <div class="social-media">
-        <p class="d-flex"><span class="divider"></span><i>Or</i><span class="divider"></span></p>
-        <button type="button" class="btn btn-icon"> <i class="bi bi-google"></i> </button>
-        <button type="button" class="btn btn-icon"> <i class="bi bi-facebook"></i> </button>
-      </div>
-    </section>
+
   </div>
-</div>
+  </body>

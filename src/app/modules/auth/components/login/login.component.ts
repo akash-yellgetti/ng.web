@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   public isCollapsed: any = false;
   public fields: any = [];
   public loginForm: any;
+  public form: any;
   public deviceInfo: any;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -42,8 +43,10 @@ export class LoginComponent implements OnInit {
     private deviceService: DeviceDetectorService,
     private route: Router) {
     // this.fields = forms.login;
-    this.fields = forms.login;
-    this.loginForm = this.fb.group(this.fieldService.getFormGroupFields(this.fields))
+    // this.fields = forms.login;
+
+    // this.loginForm = this.fb.group(this.fieldService.getFormGroupFields(this.fields))
+    this.form = forms.loginForm;
     this.deviceInfo = this.deviceService.getDeviceInfo();
   }
 
@@ -77,12 +80,14 @@ export class LoginComponent implements OnInit {
 
   login = (): any => {
 
-    if (this.loginForm.invalid) {
-      return;
-    }
+    // if (this.loginForm.invalid) {
+    //   return;
+    // }
 
-    const controls: any = this.loginForm.controls;
-    const params = this.fieldService.json(controls);
+    
+    // const controls: any = this.loginForm.controls;
+    const params = this.fieldService.json(this.form);
+    console.log(params)
     const myObserver: any = {
       next: async(res: any) => {
         // console.log('Observer got a next value: ' + res);

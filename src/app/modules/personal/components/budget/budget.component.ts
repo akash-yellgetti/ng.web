@@ -10,7 +10,7 @@ import { pieChartOptions } from 'src/app/shared/components/chart/chart-options';
 })
 export class BudgetComponent implements OnInit {
   public data: any = budget;
-  public budgetData: any = budget;
+  public budgetData: any = [];
   public budgetColumn: any = [
     {
       'name': 'date',
@@ -82,7 +82,7 @@ export class BudgetComponent implements OnInit {
   constructor() { 
     this.chartOptions1 = {...this.chartOptions}
   }
-
+  categoryWise: any = {};
   ngOnInit(): void {
       this.chartOptions.series = [{
         name: 'Category',
@@ -95,7 +95,35 @@ export class BudgetComponent implements OnInit {
         colorByPoint: true,
         data: this.getChartDataFormat(this.data, 'subCategory', 'amount')
       }];
+
+      // console.log(this.data)
+      const categoryWise = _.reduce(_.groupBy(this.data, 'category'), (o: any, v, k) => {
+        o[k] = _.sum(_.map(v, 'amount'));
+        return o;
+      }, {});
+      // console.log(categoryWise)
+      this.categoryWise = categoryWise;
+
+      // this.budgetData = _.f this.data;
+      this.refreshDatatableAndChart('income');
   }
+
+refreshDatatableAndChart = (category: string) => {
+    this.budgetData = _.filter(this.data, (v) => {
+      return v.category === category;
+    });
+    // this.chartOptions.series = [{
+    //   name: 'Category',
+    //   colorByPoint: true,
+    //   data: this.getChartDataFormat(this.budgetData, 'category', 'amount')
+    // }];
+    // this.chartOptions1.series = [{
+    //   name: 'Type',
+    //   colorByPoint: true,
+    //   data: this.getChartDataFormat(this.budgetData, 'subCategory', 'amount')
+    // }];
+    // this.updateFlag++;
+}
 
   getChartDataFormat = (data: any, groupByKey: any, sumKey: any) => {
     return _.map(_.groupBy(data, groupByKey), (v,idx) => { return { name: idx, 

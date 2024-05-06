@@ -1,6 +1,7 @@
 
 div.dataTables_length {
     float: left;
+    margin-right: 5px;
   }
   
 
@@ -22,12 +23,12 @@ div.dataTables_length {
 
   div.dataTables_filter {
     float: right;
-    margin-right: 5px;
+    /* margin-right: 5px; */
   }
 
-  div.dt-buttons {
+  /* div.dt-buttons {
     float: right;
-  }
+  } */
 
   .dt-buttons > .btn {
     padding: 2px 12px;

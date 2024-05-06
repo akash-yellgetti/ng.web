@@ -93,6 +93,14 @@ const items: any = [
     },
     {
       date: 5,
+      category: 'want',
+      subCategory: 'invest',
+      title: 'PPF',
+      description: 'Child Education',
+      amount: 5000,
+    },
+    {
+      date: 5,
       category: 'investment',
       subCategory: 'invest',
       title: 'PPF',
