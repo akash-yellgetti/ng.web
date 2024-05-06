@@ -11,17 +11,18 @@
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-3 mb-4">
 
-        <div class="card border-left-success shadow h-100 " (click)="refreshDatatableAndChart('income')" >
+        <div class="card border-left-success shadow h-100 " (click)="refreshDatatableAndChart('income')">
             <div class="card-body card-body-custom">
                 <div class="row no-gutters align-items-center">
                     <div class="col  ">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1"> 
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Income
                             <button type="button" class="btn btn-success btn-circle float-right">
                                 <i class="fas fa-plus fa-2x  "></i>
-                            </button>  
+                            </button>
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-success  ">$ {{ categoryWise.income || 0 | indianNumberFormat }}</div>
+                        <div class="h5 mb-0 font-weight-bold text-success  ">$ {{ categoryWise.income || 0 |
+                            indianNumberFormat }}</div>
                         <div class="row no-gutters align-items-center">
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
@@ -41,17 +42,18 @@
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-3 mb-4">
-        <div class="card border-left-danger shadow h-100 " (click)="refreshDatatableAndChart('expense')" >
+        <div class="card border-left-danger shadow h-100 " (click)="refreshDatatableAndChart('expense')">
             <div class="card-body card-body-custom">
                 <div class="row no-gutters align-items-center">
                     <div class="col  ">
-                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1"> 
+                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                             Expense
                             <button type="button" class="btn btn-danger btn-circle float-right">
                                 <i class="fas fa-plus fa-2x  "></i>
-                            </button>  
+                            </button>
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-danger  ">$ {{ categoryWise.expense || 0 | indianNumberFormat }}</div>
+                        <div class="h5 mb-0 font-weight-bold text-danger  ">$ {{ categoryWise.expense || 0 |
+                            indianNumberFormat }}</div>
                         <div class="row no-gutters align-items-center">
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
@@ -63,27 +65,28 @@
                                 <div class="h5 mb-0 font-weight-bold text-danger">70%</div>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
- 
+
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-3 mb-4">
-        <div class="card border-left-info shadow h-100 " (click)="refreshDatatableAndChart('want')" >
+        <div class="card border-left-info shadow h-100 " (click)="refreshDatatableAndChart('want')">
             <div class="card-body card-body-custom">
                 <div class="row no-gutters align-items-center">
                     <div class="col ">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1"> 
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                             Want
                             <button type="button" class="btn btn-info btn-circle float-right">
                                 <i class="fas fa-plus fa-2x  "></i>
-                            </button>  
+                            </button>
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-info  ">$ {{ categoryWise.want || 0 | indianNumberFormat }}</div>
-                            
-                        
+                        <div class="h5 mb-0 font-weight-bold text-info  ">$ {{ categoryWise.want || 0 |
+                            indianNumberFormat }}</div>
+
+
                         <div class="row no-gutters align-items-center">
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
@@ -95,8 +98,8 @@
                                 <div class="h5 mb-0  font-weight-bold text-info">80%</div>
                             </div>
                         </div>
-                        
-                    </div> 
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -104,19 +107,20 @@
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-3 mb-4">
-        <div class="card border-left-primary shadow h-100 " (click)="refreshDatatableAndChart('investment')" >
+        <div class="card border-left-primary shadow h-100 " (click)="refreshDatatableAndChart('investment')">
             <div class="card-body card-body-custom">
                 <div class="row no-gutters align-items-center">
                     <div class="col ">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> 
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Investment
                             <button type="button" class="btn btn-primary btn-circle float-right">
                                 <i class="fas fa-plus fa-2x  "></i>
-                            </button>  
+                            </button>
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-primary  ">$ {{ categoryWise.investment || 0 | indianNumberFormat }}</div>
+                        <div class="h5 mb-0 font-weight-bold text-primary  ">$ {{ categoryWise.investment || 0 |
+                            indianNumberFormat }}</div>
                         <div class="row no-gutters align-items-center">
-                            
+
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
                                     <div class="progress-bar bg-primary" role="progressbar" style="width: 90%"
@@ -127,7 +131,7 @@
                                 <div class="h5 mb-0  font-weight-bold text-primary">90%</div>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -135,23 +139,21 @@
 </div>
 
 <div class="row">
-    
-    <div class="col-xl-3 col-lg-3 mb-4" >
+
+    <div class="col-xl-3 col-lg-3 mb-4">
         <app-chart-google class="shadow"></app-chart-google>
     </div>
-    <div class="col-xl-9" >
+    <div class="col-xl-9">
         <!-- Area Chart -->
-    <div class="col-xl-12 col-lg-12">
-        <div class="card shadow mb-4">
-            <!-- Card Body -->
-            <div class="card-body">
-                <app-datatable [columns]="budgetColumn" [data]="budgetData"></app-datatable>
+        <div class="col-xl-12 col-lg-12">
+            <div class="card shadow mb-4">
+                <!-- Card Body -->
+                <div class="card-body">
+                    <app-datatable [columns]="budgetColumn" [data]="budgetData"></app-datatable>
+                </div>
             </div>
         </div>
-    </div>
-        
+
     </div>
 </div>
 <!-- Content Row -->
- 
- 
