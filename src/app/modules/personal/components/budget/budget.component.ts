@@ -10,6 +10,23 @@ import { pieChartOptions } from 'src/app/shared/components/chart/chart-options';
 })
 export class BudgetComponent implements OnInit {
   public data: any = budget;
+  public form: any = {
+    category: {
+      value: 'income'
+    },
+    subcategory: {
+      value: 'salary'
+    },
+    title: {
+      value: 'BTS salary'
+    },
+    description: {
+      value: '#salary'
+    },
+    amount: {
+      value: 100000
+    }
+  };
   public budgetData: any = [];
   public budgetColumn: any = [
     {
@@ -128,6 +145,10 @@ refreshDatatableAndChart = (category: string) => {
   getChartDataFormat = (data: any, groupByKey: any, sumKey: any) => {
     return _.map(_.groupBy(data, groupByKey), (v,idx) => { return { name: idx, 
       y: _.sumBy(v, sumKey) }})
+  }
+
+  save = () => {
+    
   }
 
 }

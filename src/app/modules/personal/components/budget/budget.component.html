@@ -15,8 +15,8 @@
                     <div class="col">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Income
-                            <button type="button" class="btn btn-success btn-circle float-right">
-                                <i class="fas fa-plus fa-2x"></i>
+                            <button type="button" class="btn btn-success btn-circle float-right" data-toggle="modal" data-target="#addBudgetModal">
+                                <i class="fas fa-plus"></i>
                             </button>
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-success">
@@ -47,8 +47,8 @@
                     <div class="col">
                         <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                             Expense
-                            <button type="button" class="btn btn-danger btn-circle float-right">
-                                <i class="fas fa-plus fa-2x"></i>
+                            <button type="button" class="btn btn-danger btn-circle float-right" data-toggle="modal" data-target="#addBudgetModal">
+                                <i class="fas fa-plus"></i>
                             </button>
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-danger">
@@ -79,8 +79,8 @@
                     <div class="col">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Want
-                            <button type="button" class="btn btn-warning btn-circle float-right">
-                                <i class="fas fa-plus fa-2x"></i>
+                            <button type="button" class="btn btn-warning btn-circle float-right" data-toggle="modal" data-target="#addBudgetModal">
+                                <i class="fas fa-plus"></i>
                             </button>
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-warning">
@@ -112,8 +112,8 @@
                     <div class="col">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Investment
-                            <button type="button" class="btn btn-primary btn-circle float-right">
-                                <i class="fas fa-plus fa-2x"></i>
+                            <button type="button" class="btn btn-primary btn-circle float-right" data-toggle="modal" data-target="#addBudgetModal">
+                                <i class="fas fa-plus"></i>
                             </button>
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-primary">
@@ -154,3 +154,49 @@
     </div>
 </div>
 <!-- Content Row -->
+
+
+<!-- Add Budget Modal-->
+<div class="modal fade" id="addBudgetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="amount">category</label>
+                    <input type="text" class="form-control" id="amount" placeholder="Enter amount"
+                        [(ngModel)]="form.category.value" />
+                </div>
+                <div class="form-group">
+                    <label for="rate">subcategory Age</label>
+                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                        [(ngModel)]="form.subcategory.value" />
+                </div>
+                <div class="form-group">
+                    <label for="rate">Title</label>
+                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                        [(ngModel)]="form.title.value" />
+                </div>
+                <div class="form-group">
+                    <label for="rate">Description</label>
+                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                        [(ngModel)]="form.description.value" />
+                </div>
+                <div class="form-group">
+                    <label for="rate">Amount</label>
+                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                        [(ngModel)]="form.amount.value" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" type="button" data-dismiss="modal" (click)="save()" >Save</a>
+            </div>
+        </div>
+    </div>
+</div>
