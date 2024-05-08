@@ -113,10 +113,7 @@ export const stackedBarChartOptions = {
   }, {
       name: 'CL',
       data: [0, 2, 6, 3]
-  }, {
-    name: 'SL',
-    data: [3, 2, 4, 5]
-}]
+  } ]
 };
 
 export const columnChartOptions = {
