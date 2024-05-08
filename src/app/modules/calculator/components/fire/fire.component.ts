@@ -91,6 +91,10 @@ export class FireComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit() {
+    this.calculate();
+  }
+
   calculate = () => {
     const { age, retirementAge, lifeExpectancy, currentIncome, currentIncomegrowth,  currentExpense, currentExpensegrowth, investmentRoipre, investmentRoipost }: any = this.form;
     // const fireNumber = this.calculatorService.calculateFIRENumber(

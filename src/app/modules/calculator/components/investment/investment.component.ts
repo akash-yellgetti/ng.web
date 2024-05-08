@@ -171,6 +171,10 @@ export class InvestmentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit() {
+    this.calculate();
+  }
+
   calculate = () => {
     const form = this.form;
     const investmentData: any = this.calculatorService.investmentTable(Number(form.amount.value), Number(form.rate.value), Number(form.tenure.value), Number(form.growthRate.value), Number(form.additionalAmount.value));

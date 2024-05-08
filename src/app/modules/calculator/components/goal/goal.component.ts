@@ -83,6 +83,10 @@ export class GoalComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit() {
+    this.calculate();
+  }
+
   calculate = () => {
     const { amount, rate, tenure, sip, growthRate, additionalAmount } = this.form;
     const SIPAmount = this.calculatorService.SIPAmount(Number(amount.value), Number(rate.value), Number(tenure.value));

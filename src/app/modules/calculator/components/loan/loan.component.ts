@@ -132,6 +132,10 @@ export class LoanComponent implements OnInit {
   ngOnInit(): void {
     // console.log(this.lineChartOptions)
   }
+
+  ngAfterViewInit() {
+    this.calculate();
+  }
  
   getChartDataFormat = (data: any, groupByKey: any, sumKey: any) => {
     return _.map(_.groupBy(data, groupByKey), (v,idx) => { return { name: idx, 

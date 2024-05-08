@@ -80,6 +80,10 @@ export class FutureComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit() {
+    this.calculate();
+  }
+
   calculate = () => {
     const { amount, rate, tenure, sip, growthRate, additionalAmount } = this.form;
     const futureValue = this.calculatorService.futureValue(
