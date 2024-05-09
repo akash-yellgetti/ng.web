@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CalculatorService } from '../../services/calculator.service';
 import { ChartService } from 'src/app/shared/services/chart/chart.service';
 import * as _ from 'lodash';
-import { data } from 'jquery';
+import { FieldService } from '../../../../shared/services/field/field.service';
 import { CHART_OPTIONS_ONE, columnChartOptions, lineChartOptions, stackedBarChartOptions } from 'src/app/shared/components/chart/chart-options';
 @Component({
   selector: 'app-loan',
@@ -125,9 +125,13 @@ export class LoanComponent implements OnInit {
     },
     
   }
-  
-  
-  constructor(public chartService: ChartService, public calculatorService: CalculatorService) { }
+
+  constructor(
+    public chartService: ChartService, 
+    public calculatorService: CalculatorService, 
+    private cdr: ChangeDetectorRef,
+    private fieldService: FieldService
+  )  { }
 
   ngOnInit(): void {
     // console.log(this.lineChartOptions)

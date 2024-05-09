@@ -16,7 +16,8 @@
                 [attr.data-target]="'#' + category.name">
                 {{ category.title }}
               </a>
-              <button type="submit" class="btn btn-primary float-right">
+              <button type="submit" class="btn btn-primary float-right" data-toggle="modal"
+               data-target="#addPlannerModal">
                 Add
               </button>
             </div>
@@ -59,3 +60,49 @@
     </div>
   </div>
   <!-- Content Row -->
+
+  <!-- Add Budget Modal-->
+<div class="modal fade" id="addPlannerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+              </button>
+          </div>
+          <div class="modal-body">
+               
+              <div class="form-group">
+                  <label for="rate">Title</label>
+                  <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                      [(ngModel)]="form.title.value" />
+              </div>
+              <div class="form-group">
+                  <label for="rate">Description</label>
+                  <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                      [(ngModel)]="form.description.value" />
+              </div>
+              <div class="form-group">
+                  <label for="rate">Amount</label>
+                  <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                      [(ngModel)]="form.amount.value" />
+              </div>
+              <div class="form-group">
+                <label for="rate">Rate</label>
+                <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                    [(ngModel)]="form.rate.value" />
+            </div>
+            <div class="form-group">
+              <label for="rate">Tenure</label>
+              <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                  [(ngModel)]="form.tenure.value" />
+          </div>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+              <a class="btn btn-primary" type="button" data-dismiss="modal" (click)="save()" >Save</a>
+          </div>
+      </div>
+  </div>
+</div>

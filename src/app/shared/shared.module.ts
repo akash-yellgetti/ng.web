@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MaterialModule } from './modules/material.module';
 import { NgxModule } from './modules/ngx.module';
-import { BreadcrumbsComponent } from '../modules/main/components/breadcrumbs/breadcrumbs.component';
+import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { ChartComponent } from './components/chart/chart.component';

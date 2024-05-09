@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { budget } from 'src/app/shared/json/budet.json';
+import { ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
-import { pieChartOptions } from 'src/app/shared/components/chart/chart-options';
+import { pieChartOptions } from '../../../../shared/components/chart/chart-options';
+import { BudgetService } from '../../services/api/budget/budget.service';
+import { FieldService } from '../../../../shared/services/field/field.service';
 
 @Component({
   selector: 'app-budget',
@@ -9,7 +12,7 @@ import { pieChartOptions } from 'src/app/shared/components/chart/chart-options';
   styleUrls: ['./budget.component.scss'],
 })
 export class BudgetComponent implements OnInit {
-  public data: any = budget;
+  public data: any = [];
   public form: any = {
     category: {
       value: 'income',
@@ -30,19 +33,14 @@ export class BudgetComponent implements OnInit {
   public budgetData: any = [];
   public budgetColumn: any = [
     {
-      name: 'date',
-      title: 'date',
-      data: 'date',
-    },
-    {
       name: 'category',
       title: 'category',
       data: 'category',
     },
     {
-      name: 'subCategory',
-      title: 'subCategory',
-      data: 'subCategory',
+      name: 'subcategory',
+      title: 'subcategory',
+      data: 'subcategory',
     },
     {
       name: 'title',
@@ -60,79 +58,23 @@ export class BudgetComponent implements OnInit {
       data: 'amount',
     },
   ];
-  chartOptions: any = {
-    series: [
-      {
-        name: 'Brands',
-        colorByPoint: true,
-        data: [
-          {
-            name: 'Chrome',
-            y: 70.67,
-            // sliced: true,
-            // selected: true
-          },
-          {
-            name: 'Edge',
-            y: 14.77,
-          },
-          {
-            name: 'Firefox',
-            y: 4.86,
-          },
-          {
-            name: 'Safari',
-            y: 2.63,
-          },
-          {
-            name: 'Internet Explorer',
-            y: 1.53,
-          },
-          {
-            name: 'Opera',
-            y: 1.4,
-          },
-          {
-            name: 'Sogou Explorer',
-            y: 0.84,
-          },
-          {
-            name: 'QQ',
-            y: 0.51,
-          },
-          {
-            name: 'Other',
-            y: 2.6,
-          },
-        ],
-      },
-    ],
-  };
-  chartOptions1: any = {};
-  public pieChartOptions: any = JSON.parse(JSON.stringify(pieChartOptions));
-  updateFlag: any = 0;
-  constructor() {
-    this.chartOptions1 = { ...this.chartOptions };
-  }
+   
   categoryWise: any = {};
+  chartOptions: any = {
+    data: [],
+  };
+  updateFlag: any = true;
+  constructor(
+    private cdr: ChangeDetectorRef, 
+    private activatedRoute: ActivatedRoute,
+    private fieldService: FieldService,
+    private budgetService: BudgetService
+  ) {
+    
+  }
+  
   ngOnInit(): void {
-    this.chartOptions.series = [
-      {
-        name: 'Category',
-        colorByPoint: true,
-        data: this.getChartDataFormat(this.data, 'category', 'amount'),
-      },
-    ];
-
-    this.chartOptions1.series = [
-      {
-        name: 'Type',
-        colorByPoint: true,
-        data: this.getChartDataFormat(this.data, 'subCategory', 'amount'),
-      },
-    ];
-
-    // console.log(this.data)
+    this.data = this.activatedRoute.snapshot.data.budget.data;
     const categoryWise = _.reduce(
       _.groupBy(this.data, 'category'),
       (o: any, v, k) => {
@@ -141,10 +83,7 @@ export class BudgetComponent implements OnInit {
       },
       {}
     );
-    // console.log(categoryWise)
     this.categoryWise = categoryWise;
-
-    // this.budgetData = _.f this.data;
     this.refreshDatatableAndChart('income');
   }
 
@@ -152,17 +91,13 @@ export class BudgetComponent implements OnInit {
     this.budgetData = _.filter(this.data, (v) => {
       return v.category === category;
     });
-    // this.chartOptions.series = [{
-    //   name: 'Category',
-    //   colorByPoint: true,
-    //   data: this.getChartDataFormat(this.budgetData, 'category', 'amount')
-    // }];
-    // this.chartOptions1.series = [{
-    //   name: 'Type',
-    //   colorByPoint: true,
-    //   data: this.getChartDataFormat(this.budgetData, 'subCategory', 'amount')
-    // }];
-    // this.updateFlag++;
+    this.chartOptions = null;
+    this.chartOptions = { data: [] };
+    this.chartOptions.data = _.reduce(this.budgetData, (a: any, v: any, k) => {
+      a.push([v.title, v.amount]);
+      return a;
+    }, []);
+    this.cdr.detectChanges();
   };
 
   getChartDataFormat = (data: any, groupByKey: any, sumKey: any) => {
@@ -171,5 +106,10 @@ export class BudgetComponent implements OnInit {
     });
   };
 
-  save = () => {};
+  save = () => {
+    const json = this.fieldService.json(this.form);
+    this.budgetService.createBudget(json).subscribe((res) => {
+      console.log(res);
+    })
+  };
 }

@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CalculatorService } from 'src/app/shared/services/calculator/calculator.service';
 import * as _ from 'lodash';
 import { CHART_OPTIONS_ONE, pieChartOptions, stackedBarChartOptions } from 'src/app/shared/components/chart/chart-options';
+import { FieldService } from '../../../../shared/services/field/field.service';
 @Component({
   selector: 'app-investment',
   templateUrl: './investment.component.html',
@@ -166,7 +167,11 @@ export class InvestmentComponent implements OnInit {
   public investmentData: any = [];
 
   
-  constructor(public calculatorService: CalculatorService, private cdr: ChangeDetectorRef)  { }
+  constructor(
+    public calculatorService: CalculatorService, 
+    private cdr: ChangeDetectorRef,
+    private fieldService: FieldService
+  )  { }
 
   ngOnInit(): void {
   }

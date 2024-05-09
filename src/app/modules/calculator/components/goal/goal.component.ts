@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CalculatorService } from '../../services/calculator.service';
 import * as _ from 'lodash';
 import { pieChartOptions } from '../../../../shared/components/chart/chart-options';
+import { FieldService } from '../../../../shared/services/field/field.service';
 
 @Component({
   selector: 'app-goal',
@@ -78,7 +79,11 @@ export class GoalComponent implements OnInit {
   public goalData: any = [];
   public pieChartOptions: any = JSON.parse(JSON.stringify(pieChartOptions));;
   updateFlag: any = 0;
-  constructor(public calculatorService: CalculatorService, private cdr: ChangeDetectorRef)  { }
+  constructor(
+    public calculatorService: CalculatorService, 
+    private cdr: ChangeDetectorRef,
+    private fieldService: FieldService
+  )  { }
 
   ngOnInit(): void {
   }

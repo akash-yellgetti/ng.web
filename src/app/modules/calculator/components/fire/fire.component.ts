@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CalculatorService } from '../../services/calculator.service';
 import { months } from 'moment';
+import { FieldService } from '../../../../shared/services/field/field.service';
 
 @Component({
   selector: 'app-fire',
@@ -86,7 +87,11 @@ export class FireComponent implements OnInit {
     }
      
   ];
-  constructor(public calculatorService: CalculatorService, private cdr: ChangeDetectorRef)  { }
+  constructor(
+    public calculatorService: CalculatorService, 
+    private cdr: ChangeDetectorRef,
+    private fieldService: FieldService
+  )  { }
 
   ngOnInit(): void {
   }
@@ -96,6 +101,7 @@ export class FireComponent implements OnInit {
   }
 
   calculate = () => {
+    const json = this.fieldService.json(this.form);
     const { age, retirementAge, lifeExpectancy, currentIncome, currentIncomegrowth,  currentExpense, currentExpensegrowth, investmentRoipre, investmentRoipost }: any = this.form;
     // const fireNumber = this.calculatorService.calculateFIRENumber(
     //   Number(this.form.age.value),

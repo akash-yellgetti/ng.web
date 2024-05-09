@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'planner',
-    resolve: { data: PlannerResolver },
+    resolve: { planner: PlannerResolver },
     component: PlannerComponent
   },
   {
