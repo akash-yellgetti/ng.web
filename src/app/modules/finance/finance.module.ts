@@ -2,27 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FinanceRoutingModule } from './finance-routing.module';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { LoanComponent } from './components/loan/loan.component';
 import { BudgetComponent } from './components/budget/budget.component';
-import { BudgetCommonComponent } from './components/budget-common/budget-common.component';
-import { IncomeComponent } from './components/income/income.component';
-import { ExpenseComponent } from './components/expense/expense.component';
-import { ExpenseCommonComponent } from './components/expense-common/expense-common.component';
+import { PlannerComponent } from './components/planner/planner.component';
+import { IncomeTaxComponent } from './components/income-tax/income-tax.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    DashboardComponent,
-    LoanComponent,
     BudgetComponent,
-    BudgetCommonComponent,
-    IncomeComponent,
-    ExpenseComponent,
-    ExpenseCommonComponent
+    PlannerComponent,
+    IncomeTaxComponent
   ],
   imports: [
+    CommonModule,
     SharedModule,
     FinanceRoutingModule
   ]

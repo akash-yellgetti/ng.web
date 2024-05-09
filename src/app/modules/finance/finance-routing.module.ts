@@ -1,125 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BudgetCommonComponent } from './components/budget-common/budget-common.component';
 import { BudgetComponent } from './components/budget/budget.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ExpenseCommonComponent } from './components/expense-common/expense-common.component';
-import { ExpenseComponent } from './components/expense/expense.component';
-import { IncomeComponent } from './components/income/income.component';
-import { LoanComponent } from './components/loan/loan.component';
+import { PlannerComponent } from './components/planner/planner.component';
+import { IncomeTaxComponent } from './components/income-tax/income-tax.component';
+
 
 const routes: Routes = [
   {
-    path: 'dashboard',
-    component: DashboardComponent
+    path: 'budget',
+    component: BudgetComponent
   },
   {
-    path: 'budget',
-    component: BudgetComponent,
-    children: [
-      {
-        path: 'income',
-        component: IncomeComponent,
-        children:  [
-
-          {
-            path: 'salary',
-            component: ExpenseCommonComponent
-          },
-          {
-            path: 'business',
-            component: ExpenseCommonComponent
-          },
-          {
-            path: 'rental',
-            component: ExpenseCommonComponent
-          },
-        ]
-      },
-      {
-        path: 'expense',
-        component: ExpenseComponent,
-        children:  [
-
-          {
-            path: 'house-hold',
-            component: ExpenseCommonComponent
-          },
-
-          {
-            path: 'insurance',
-            component: ExpenseCommonComponent
-          },
-          {
-            path: 'donation',
-            component: ExpenseCommonComponent
-          },
-
-          {
-            path: 'gift',
-            component: ExpenseCommonComponent
-          },
-          {
-            path: 'insurance',
-            component: ExpenseCommonComponent
-          },
-          {
-            path: 'investment',
-            component: ExpenseCommonComponent
-          },
-
-          {
-            path: 'transportation',
-            component: ExpenseCommonComponent
-          },
-          {
-            path: 'entertainment',
-            component: ExpenseCommonComponent
-          },
-          {
-            path: 'personal-care',
-            component: ExpenseCommonComponent
-          },
-          {
-            path: 'pets',
-            component: ExpenseCommonComponent
-          },
-          {
-            path: 'food',
-            component: ExpenseCommonComponent
-          },
-          {
-            path: 'insurance',
-            component: ExpenseCommonComponent
-          },
-          {
-            path: 'loan',
-            component: ExpenseCommonComponent
-          },
-          {
-            path: 'credit-card',
-            component: ExpenseCommonComponent
-          },
-          {
-            path: 'vehicle',
-            component: ExpenseCommonComponent
-          },
-          {
-            path: 'saving',
-            component: ExpenseCommonComponent
-          },
-          {
-            path: 'taxes',
-            component: ExpenseCommonComponent
-          },
-          {
-            path: 'legal',
-            component: ExpenseCommonComponent
-          }
-        ]
-       
-      },
-    ]
+    path: 'planner',
+    component: PlannerComponent
+  },
+  {
+    path: 'income-tax',
+    component: IncomeTaxComponent
   }
 ];
 

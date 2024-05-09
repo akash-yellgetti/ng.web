@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TransactionComponent } from './transaction.component';
+import { IncomeTaxComponent } from './income-tax.component';
 
-describe('TransactionComponent', () => {
-  let component: TransactionComponent;
-  let fixture: ComponentFixture<TransactionComponent>;
+describe('IncomeTaxComponent', () => {
+  let component: IncomeTaxComponent;
+  let fixture: ComponentFixture<IncomeTaxComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TransactionComponent ]
+      declarations: [ IncomeTaxComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TransactionComponent);
+    fixture = TestBed.createComponent(IncomeTaxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

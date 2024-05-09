@@ -1,42 +1,203 @@
-<div class="container-fluid d-flex d-gap-15">
-  <div class="w-30 d-flex d-gap-15 d-wrap">
-    <div class="w-100 d-flex d-gap-15 expense-tabs">
-      <mat-card class="w-50 default-font  " *ngFor="let t of tabs"  (click)="switchTab(t.key)" [ngClass]="{ 'active': t.key == tab.key }" >
-        <p class="title">{{t.title}}</p>
-        <div class="d-flex align-items">
-          <span class="salary"><i class="fa-solid fa-indian-rupee-sign"></i> 22,000</span>
-          <button class="common-btn btn-fill"><i class="fa-solid fa-plus"></i></button>
-        </div>        
-      </mat-card>
+<p>budget works!</p>
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Budget Planner</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+</div>
+
+<!-- Content Row -->
+<div class="row">
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-3 mb-4">
+        <div class="card border-left-success shadow h-100" (click)="refreshDatatableAndChart('income')">
+            <div class="card-body card-body-custom">
+                <div class="row no-gutters align-items-center">
+                    <div class="col">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Income
+                            <button type="button" class="btn btn-success btn-circle float-right" data-toggle="modal" data-target="#addBudgetModal">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-success">
+                            $ {{ categoryWise.income || 0 | indianNumberFormat }}
+                        </div>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col">
+                                <div class="progress progress-sm mr-2">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 50%"
+                                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="h5 mb-0 font-weight-bold text-success">50%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="w-100 d-flex d-gap-15">
-      <mat-card class="w-100 h-350"> Graph </mat-card>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-3 mb-4">
+        <div class="card border-left-danger shadow h-100" (click)="refreshDatatableAndChart('expense')">
+            <div class="card-body card-body-custom">
+                <div class="row no-gutters align-items-center">
+                    <div class="col">
+                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                            Expense
+                            <button type="button" class="btn btn-danger btn-circle float-right" data-toggle="modal" data-target="#addBudgetModal">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-danger">
+                            $ {{ categoryWise.expense || 0 | indianNumberFormat }}
+                        </div>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col">
+                                <div class="progress progress-sm mr-2">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 70%"
+                                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="h5 mb-0 font-weight-bold text-danger">70%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="w-100 d-flex d-wrap expense-items">
-      <mat-card class="h-100 expense-card" *ngFor="let c of tab.children" (click)="selectCategory(c.key)"  [ngClass]="{ 'border-active': data && data.key && data.key === c.key }"  >
-        {{ c.title }}
-      </mat-card>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-3 mb-4">
+        <div class="card border-left-warning shadow h-100" (click)="refreshDatatableAndChart('want')">
+            <div class="card-body card-body-custom">
+                <div class="row no-gutters align-items-center">
+                    <div class="col">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Want
+                            <button type="button" class="btn btn-warning btn-circle float-right" data-toggle="modal" data-target="#addBudgetModal">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-warning">
+                            $ {{ categoryWise.want || 0 | indianNumberFormat }}
+                        </div>
+
+                        <div class="row no-gutters align-items-center">
+                            <div class="col">
+                                <div class="progress progress-sm mr-2">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 80%"
+                                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="h5 mb-0 font-weight-bold text-warning">80%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="w-70 d-flex d-wrap d-gap-15" *ngIf="data" >
-    <div class="bradcrumbs">
-      <app-breadcrumbs></app-breadcrumbs>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-3 mb-4">
+        <div class="card border-left-primary shadow h-100" (click)="refreshDatatableAndChart('investment')">
+            <div class="card-body card-body-custom">
+                <div class="row no-gutters align-items-center">
+                    <div class="col">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Investment
+                            <button type="button" class="btn btn-primary btn-circle float-right" data-toggle="modal" data-target="#addBudgetModal">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-primary">
+                            $ {{ categoryWise.investment || 0 | indianNumberFormat }}
+                        </div>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col">
+                                <div class="progress progress-sm mr-2">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 90%"
+                                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="h5 mb-0 font-weight-bold text-primary">90%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <mat-card class="w-100 expense-common-card" *ngFor="let item of data.children">
-      <mat-card-header>
-        <mat-icon mat-card-avatar [style.font-size.px]="24" class="expense-icon"
-          >home</mat-icon
-        >
-        <mat-card-title> {{ item.title }} </mat-card-title>
-        <mat-card-subtitle>
-          {{ item.description || "description" }}
-        </mat-card-subtitle>
-        <div fxFlex></div>
-        <div style="flex-grow: 1"></div>
-        <span class="currency-amount">{{
-          item.amount | currency : "&#8377; "
-        }}</span>
-      </mat-card-header>
-    </mat-card>
-  </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-3 col-lg-3 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <app-chart-google class="shadow"></app-chart-google>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-9">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <app-datatable [columns]="budgetColumn" [data]="budgetData"></app-datatable>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Content Row -->
+
+
+<!-- Add Budget Modal-->
+<div class="modal fade" id="addBudgetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="amount">category</label>
+                    <input type="text" class="form-control" id="amount" placeholder="Enter amount"
+                        [(ngModel)]="form.category.value" />
+                </div>
+                <div class="form-group">
+                    <label for="rate">subcategory Age</label>
+                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                        [(ngModel)]="form.subcategory.value" />
+                </div>
+                <div class="form-group">
+                    <label for="rate">Title</label>
+                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                        [(ngModel)]="form.title.value" />
+                </div>
+                <div class="form-group">
+                    <label for="rate">Description</label>
+                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                        [(ngModel)]="form.description.value" />
+                </div>
+                <div class="form-group">
+                    <label for="rate">Amount</label>
+                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                        [(ngModel)]="form.amount.value" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" type="button" data-dismiss="modal" (click)="save()" >Save</a>
+            </div>
+        </div>
+    </div>
 </div>

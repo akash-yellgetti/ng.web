@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { pieChartOptions } from 'src/app/shared/components/chart/chart-options';
 
 @Component({
-  selector: 'app-financial',
-  templateUrl: './financial.component.html',
-  styleUrls: ['./financial.component.scss']
+  selector: 'app-planner',
+  templateUrl: './planner.component.html',
+  styleUrls: ['./planner.component.scss']
 })
-export class FinancialComponent implements OnInit {
+export class PlannerComponent implements OnInit {
   categories = [
     {
       name: 'Loan',

@@ -40,14 +40,6 @@ const routes: Routes = [
   {
     path: 'habits',
     component: HabitsComponent
-  },
-  {
-    path: 'finance',
-    loadChildren: () => import('../finance/finance.module').then(m => m.FinanceModule)
-  },
-  {
-    path: 'personal-finance',
-    component: PersonalFinanceComponent
   }
 ];
 

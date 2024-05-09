@@ -1,244 +1,175 @@
 import { Component, OnInit } from '@angular/core';
-import { ModuleService } from '../../../main/core/services/module.service';
+import { budget } from 'src/app/shared/json/budet.json';
 import * as _ from 'lodash';
+import { pieChartOptions } from 'src/app/shared/components/chart/chart-options';
 
 @Component({
   selector: 'app-budget',
   templateUrl: './budget.component.html',
-  styleUrls: ['./budget.component.scss', '../expense-common/expense-common.component.scss']
+  styleUrls: ['./budget.component.scss'],
 })
 export class BudgetComponent implements OnInit {
-  public tabs: any = [
+  public data: any = budget;
+  public form: any = {
+    category: {
+      value: 'income',
+    },
+    subcategory: {
+      value: 'salary',
+    },
+    title: {
+      value: 'BTS salary',
+    },
+    description: {
+      value: '#salary',
+    },
+    amount: {
+      value: 100000,
+    },
+  };
+  public budgetData: any = [];
+  public budgetColumn: any = [
     {
-      title: 'Income',
-      description: '',
-      key: 'income',
-      link: './income',
-      children: [
-        {
-          title: 'Salary',
-          description: 'Salary',
-          link: './salary',
-          key: 'salary',
-        },
-        {
-          title: 'Business',
-          description: 'Business',
-          link: './business',
-          key: 'business',
-        },
-        {
-          title: 'Rental',
-          description: 'Rental',
-          link: './rental',
-          key: 'rental',
-        }
-      ]
+      name: 'date',
+      title: 'date',
+      data: 'date',
     },
     {
-      title: 'Expense',
-      description: '',
-      key: 'expense',
-      link: './expense',
-      children: [
-        {
-          title: 'House-Hold',
-          description: 'House-Hold',
-          key: 'house-hold',
-          link: './house-hold',
-          children: [
-            {
-              "type": "house-hold",
-              "amount": 10000,
-              "title": "Amma",
-              "description": "Daily-Expense",
-          },
-          {
-              "type": "house-hold",
-              "amount": 5000,
-              "title": "D-Mart",
-              "description": "Monthly Groceries",
-          },
-          {
-              "type": "house-hold",
-              "amount": 5000,
-              "title": "Akash",
-              "description": "Personal Expense",
-          },
-          {
-              "type": "house-hold",
-              "amount": 5000,
-              "title": "Panu",
-              "description": "Personal Expense",
-          },
-          {
-              "title": "Mortgage or rent",
-              "description": "Description",
-              "amount": 0,
-              "type": "house-hold"
-          }, {
-              "title": "Phone",
-              "description": "Description",
-              "amount": 0,
-              "type": "house-hold"
-          }, {
-              "title": "Electricity",
-              "description": "Description",
-              "amount": 0,
-              "type": "house-hold"
-          }, {
-              "title": "Gas",
-              "description": "Description",
-              "amount": 0,
-              "type": "house-hold"
-          }, {
-              "title": "Water and sewer",
-              "description": "Description",
-              "amount": 0,
-              "type": "house-hold"
-          }, {
-              "title": "Cable",
-              "description": "Description",
-              "amount": 0,
-              "type": "house-hold"
-          }, {
-              "title": "Waste removal",
-              "description": "Description",
-              "amount": 0,
-              "type": "house-hold"
-          }, {
-              "title": "Maintenance or repairs",
-              "description": "Description",
-              "amount": 0,
-              "type": "house-hold"
-          }, {
-              "title": "Supplies",
-              "description": "Description",
-              "amount": 0,
-              "type": "house-hold"
-          }, {
-              "title": "Other",
-              "description": "Description",
-              "amount": 0,
-              "type": "house-hold"
-          }
-          ]
-        },
-        {
-          title: 'Loan',
-          description: 'Loan',
-          link: './loan',
-          key : 'loan',
-        },
-        {
-          title: 'Transportation',
-          description: 'Transportation',
-          link: './transportation',
-          key : 'transportation',
-        },
-        {
-          title: 'Insurance',
-          description: 'Insurance',
-          link: './insurance',
-          key : 'insurance',
-        },
-        {
-          title: 'Food',
-          description: 'Food',
-          link: './food',
-          key : 'food',
-        },
-        {
-          title: 'Pets',
-          description: 'Pets',
-          link: './pets',
-          key : 'pets',
-        },
-        {
-          title: 'Personal-Care',
-          description: 'Personal-Care',
-          link: './personal-care',
-          key : 'personal-care',
-        },
-        {
-          title: 'Entertainment',
-          description: 'Entertainment',
-          link: './entertainment',
-          key : 'entertainment',
-        },
-        {
-          title: 'Gift',
-          description: 'Gift',
-          link: './gift',
-          key : 'gift',
-        },
-        {
-          title: 'Donation',
-          description: 'Donation',
-          link: './donation',
-          key : 'donation',
-        },
-        {
-          title: 'Credit-Card',
-          description: 'Credit-Card',
-          link: './credit-card',
-          key : 'credit-card',
-        },
-        {
-          title: 'Vehicle',
-          description: 'Vehicle',
-          link: './vehicle',
-          key : 'vehicle',
-        },
-        {
-          title: 'Investment',
-          description: 'Investment',
-          link: './investment',
-          key : 'investment',
-        },
-          // {
-        //   title: 'Saving',
-        // description: 'Saving',
-        //   link: './saving',
-        //   key : 'saving',
-        // },
-        // {
-        //   title: 'Taxes',
-        // description: 'Taxes',
-        //   link: './taxes',
-        //   key : 'taxes',
-        // },
-        // {
-        //   title: 'Legal',
-        // description: 'Legal',
-        //   link: './legal',
-        //   key : 'legal',
-        // }
-      ]
-    }
-    
+      name: 'category',
+      title: 'category',
+      data: 'category',
+    },
+    {
+      name: 'subCategory',
+      title: 'subCategory',
+      data: 'subCategory',
+    },
+    {
+      name: 'title',
+      title: 'title',
+      data: 'title',
+    },
+    {
+      name: 'description',
+      title: 'description',
+      data: 'description',
+    },
+    {
+      name: 'amount',
+      title: 'amount',
+      data: 'amount',
+    },
   ];
-  public tab: any = null;
-  data: any = null;
-  numbers: any = [];
-  constructor(public moduleService: ModuleService) { 
-    this.numbers = Array(10).fill(4).map((x,i)=>i);
-    this.moduleService.mainTitle.next("Budget");
-    this.switchTab('income');
+  chartOptions: any = {
+    series: [
+      {
+        name: 'Brands',
+        colorByPoint: true,
+        data: [
+          {
+            name: 'Chrome',
+            y: 70.67,
+            // sliced: true,
+            // selected: true
+          },
+          {
+            name: 'Edge',
+            y: 14.77,
+          },
+          {
+            name: 'Firefox',
+            y: 4.86,
+          },
+          {
+            name: 'Safari',
+            y: 2.63,
+          },
+          {
+            name: 'Internet Explorer',
+            y: 1.53,
+          },
+          {
+            name: 'Opera',
+            y: 1.4,
+          },
+          {
+            name: 'Sogou Explorer',
+            y: 0.84,
+          },
+          {
+            name: 'QQ',
+            y: 0.51,
+          },
+          {
+            name: 'Other',
+            y: 2.6,
+          },
+        ],
+      },
+    ],
+  };
+  chartOptions1: any = {};
+  public pieChartOptions: any = JSON.parse(JSON.stringify(pieChartOptions));
+  updateFlag: any = 0;
+  constructor() {
+    this.chartOptions1 = { ...this.chartOptions };
   }
-
-
+  categoryWise: any = {};
   ngOnInit(): void {
-    
+    this.chartOptions.series = [
+      {
+        name: 'Category',
+        colorByPoint: true,
+        data: this.getChartDataFormat(this.data, 'category', 'amount'),
+      },
+    ];
+
+    this.chartOptions1.series = [
+      {
+        name: 'Type',
+        colorByPoint: true,
+        data: this.getChartDataFormat(this.data, 'subCategory', 'amount'),
+      },
+    ];
+
+    // console.log(this.data)
+    const categoryWise = _.reduce(
+      _.groupBy(this.data, 'category'),
+      (o: any, v, k) => {
+        o[k] = _.sum(_.map(v, 'amount'));
+        return o;
+      },
+      {}
+    );
+    // console.log(categoryWise)
+    this.categoryWise = categoryWise;
+
+    // this.budgetData = _.f this.data;
+    this.refreshDatatableAndChart('income');
   }
 
-  switchTab = (key: string) => {
-    this.tab = _.find(this.tabs, {  key });
-    this.data = null;
-  }
+  refreshDatatableAndChart = (category: string) => {
+    this.budgetData = _.filter(this.data, (v) => {
+      return v.category === category;
+    });
+    // this.chartOptions.series = [{
+    //   name: 'Category',
+    //   colorByPoint: true,
+    //   data: this.getChartDataFormat(this.budgetData, 'category', 'amount')
+    // }];
+    // this.chartOptions1.series = [{
+    //   name: 'Type',
+    //   colorByPoint: true,
+    //   data: this.getChartDataFormat(this.budgetData, 'subCategory', 'amount')
+    // }];
+    // this.updateFlag++;
+  };
 
-  selectCategory = (key: string) => {
-    this.data = _.find(this.tab.children, {  key }) ||  { children: [] };
-  }
+  getChartDataFormat = (data: any, groupByKey: any, sumKey: any) => {
+    return _.map(_.groupBy(data, groupByKey), (v, idx) => {
+      return { name: idx, y: _.sumBy(v, sumKey) };
+    });
+  };
 
+  save = () => {};
 }

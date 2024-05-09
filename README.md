@@ -117,6 +117,15 @@ ng g c modules/calculator/components/future --module=calculator
 
 ng g s modules/calculator/services/calculator
 --------------------------------------------------------------------------------------------------
+
+
+
+ng g m modules/finance --routing=true
+ng g c modules/finance/components/budget --module=finance
+ng g c modules/finance/components/planner --module=finance
+ng g c modules/finance/components/income-tax --module=finance
+
+--------------------------------------------------------------------------------------------------
 ng g m modules/personal --routing=true
 ng g c modules/personal/components/budget --module=personal
 ng g c modules/personal/components/routine --module=personal
