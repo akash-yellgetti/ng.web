@@ -125,6 +125,13 @@ ng g c modules/finance/components/budget --module=finance
 ng g c modules/finance/components/planner --module=finance
 ng g c modules/finance/components/income-tax --module=finance
 
+
+ng g s modules/finance/services/api/budget/budget
+ng g s modules/finance/services/api/planner/planner
+
+ng g r modules/finance/resolver/budget/budget
+ng g r modules/finance/resolver/planner/planner 
+
 --------------------------------------------------------------------------------------------------
 ng g m modules/personal --routing=true
 ng g c modules/personal/components/budget --module=personal
