@@ -1,4 +1,4 @@
 export const setting = {
-    // uri: 'https://api-web-bxum.onrender.com'
-    uri: 'http://localhost:5001'
+    uri: 'https://api-web-uv4l.onrender.com'
+    // uri: 'http://localhost:5001'
 }

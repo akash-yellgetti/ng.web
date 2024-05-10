@@ -37,6 +37,11 @@ npx cap run android
 
 --------------------------------------------------------------------------------------------------
 
+ng g m modules/auth --routing=true
+ng g c modules/auth/components/login --module=auth
+ng g c modules/auth/components/registration --module=auth
+ng g c modules/auth/components/forgot-password --module=auth
+
 --------------------------------------------------------------------------------------------------
 
 
