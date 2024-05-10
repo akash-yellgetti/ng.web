@@ -1,9 +1,13 @@
+timestamp() {
+  date +"datetime:- %Y%m%d %H:%M:%S" # current time
+}
+
 rm -rf docs
 rm -rf android/app/src/main/assets/public
 ng build --aot
 git checkout -- docs/CNAME
 git add -A
-git commit -m "New Build #1"
+git commit -m "New Build #"+timestamp 
 # rm -rf ../nginx/html/
 # cp -r docs ../nginx/html
 
