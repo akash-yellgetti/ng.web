@@ -6,6 +6,7 @@ import { FieldService } from '../../../../shared/services/field/field.service';
 import { AuthService } from '../../services/auth/auth.service';
 import * as _ from 'lodash';
 import Swal from 'sweetalert2'
+import { forms } from 'src/app/shared/json/forms.json';
 
 @Component({
   selector: 'app-registration',
@@ -17,6 +18,7 @@ export class RegistrationComponent implements OnInit {
 
   public isCollapsed: any = false;
   // emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  public form: any;
   public registrationForm = this.fb.group({
     firstName: [null, Validators.required],
     lastName: [null, Validators.required],
@@ -44,23 +46,26 @@ export class RegistrationComponent implements OnInit {
   public confirm_password: string = '';
   public fields: any;
   constructor(private fb: FormBuilder, private route: Router, private storageService: LocalStorageService,
-    private fieldService: FieldService, private authService: AuthService) { }
+    private fieldService: FieldService, private authService: AuthService) {
+    this.form = forms.registrationForm;
+  }
 
   ngOnInit(): void {
     // this.fields = _.get(form, 'default.fields');
   }
 
   generateOTP = (): any => {
-    this.registrationForm.markAllAsTouched();
-    if (this.registrationForm.invalid) {
-      return;
-    }
-    const controls = this.registrationForm.controls;
-    const errors = this.fieldService.validate(controls, this.fields);
-    if (errors.length > 0) {
-      return false;
-    }
-    const params: any = this.fieldService.json(controls);
+    // this.registrationForm.markAllAsTouched();
+    // if (this.registrationForm.invalid) {
+    //   return;
+    // }
+    // const controls = this.registrationForm.controls;
+    // const errors = this.fieldService.validate(controls, this.fields);
+    // if (errors.length > 0) {
+    //   return false;
+    // }
+    const params = this.fieldService.json(this.form);
+    // const params: any = this.fieldService.json(controls);
     params.type = this.flag.otpFlag;
 
     this.authService.generateOTP(params).subscribe((res: any) => {
@@ -73,15 +78,16 @@ export class RegistrationComponent implements OnInit {
   }
 
   verify = (): any => {
-    if (this.registrationForm.invalid) {
-      return;
-    }
-    const controls = this.registrationForm.controls;
-    const errors = this.fieldService.validate(controls, this.fields);
-    if (errors.length > 0) {
-      return false;
-    }
-    const params: any = this.fieldService.json(controls);
+    // if (this.registrationForm.invalid) {
+    //   return;
+    // }
+    // const controls = this.registrationForm.controls;
+    // const errors = this.fieldService.validate(controls, this.fields);
+    // if (errors.length > 0) {
+    //   return false;
+    // }
+    // const params: any = this.fieldService.json(controls);
+    const params = this.fieldService.json(this.form);
     params.type = this.flag.otpFlag;
 
     this.authService.verifyOTP(params).subscribe((res: any) => {
@@ -94,12 +100,12 @@ export class RegistrationComponent implements OnInit {
   }
 
   register = () => {
-    if (this.registrationForm.invalid) {
-      return;
-    }
+    // if (this.registrationForm.invalid) {
+    //   return;
+    // }
 
-    const controls = this.registrationForm.controls;
-    const params: any = this.fieldService.json(controls);
+    // const controls = this.registrationForm.controls;
+    const params = this.fieldService.json(this.form);
     params.type = this.flag.otpFlag;
 
     const myObserver: any = {

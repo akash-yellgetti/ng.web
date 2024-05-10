@@ -51,7 +51,13 @@ export const forms = {
             "validations": "required",
             "value": "",
         },
-        
+        no: {
+            "name": "no",
+            "label": "Mobile No",
+            "type": "date",
+            "validations": "required",
+            "value": "",
+        },
         email: {
             "name": "email",
             "label": "Email",
@@ -65,7 +71,14 @@ export const forms = {
             "type": "text",
             "validations": "required",
             "value": "",
-        }
+        },
+        confirmPassword: {
+            "name": "confirmPassword",
+            "label": "confirmPassword",
+            "type": "text",
+            "validations": "required",
+            "value": "",
+        },
     },
     // login: [
     //     {

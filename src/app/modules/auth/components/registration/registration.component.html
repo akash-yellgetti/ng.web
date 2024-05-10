@@ -12,34 +12,60 @@
                           <div class="text-center">
                               <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                           </div>
-                          <form class="user">
+                          <!-- <form class="user"> -->
                               <div class="form-group row">
                                   <div class="col-sm-6 mb-3 mb-sm-0">
-                                      <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                      <input type="text" class="form-control form-control-user" [(ngModel)]="form.firstName.value" 
                                           placeholder="First Name">
                                   </div>
                                   <div class="col-sm-6">
-                                      <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                      <input type="text" class="form-control form-control-user" id="exampleLastName" [(ngModel)]="form.lastName.value" 
                                           placeholder="Last Name">
                                   </div>
                               </div>
                               <div class="form-group">
-                                  <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                      placeholder="Email Address">
+                                <input type="email" class="form-control form-control-user" id="exampleInputEmail" [(ngModel)]="form.email.value" 
+                                    placeholder="Email Address">
                               </div>
-                              <div class="form-group row">
+                              <div class="form-group row" >
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" [(ngModel)]="form.dob.value" 
+                                        id="exampleInputPassword" placeholder="Date Of Birth">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control form-control-user"  [(ngModel)]="form.gender.value" 
+                                        id="exampleRepeatPassword" placeholder="Gender">
+                                </div>
+                              </div>
+                              <div class="form-group row" >
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user"  [(ngModel)]="form.mobileNo.value"
+                                        placeholder="Mobile No">
+                                </div>
+                                <div class="col-sm-6" *ngIf="flag.verifyOtp">
+                                    <input type="text" class="form-control form-control-user" [(ngModel)]="form.no.value" placeholder="OTP">
+                                </div>
+                              </div>
+                               
+                              <div class="form-group row" *ngIf="flag.register">
                                   <div class="col-sm-6 mb-3 mb-sm-0">
-                                      <input type="password" class="form-control form-control-user"
+                                      <input type="password" class="form-control form-control-user" [(ngModel)]="form.password.value"
                                           id="exampleInputPassword" placeholder="Password">
                                   </div>
                                   <div class="col-sm-6">
-                                      <input type="password" class="form-control form-control-user"
+                                      <input type="password" class="form-control form-control-user" [(ngModel)]="form.confirmPassword.value"
                                           id="exampleRepeatPassword" placeholder="Repeat Password">
                                   </div>
                               </div>
-                              <a (click)="register()" class="btn btn-primary btn-user btn-block">
+                              <a (click)="register()" class="btn btn-primary btn-user btn-block" *ngIf="flag.register">
                                   Register Account
                               </a>
+                              <a (click)="verify()" class="btn btn-primary btn-user btn-block" *ngIf="flag.verifyOtp">
+                                Verify OTP
+                            </a>
+                            <a (click)="generateOTP()" class="btn btn-primary btn-user btn-block" *ngIf="flag.requestOtp">
+                                Generate OTP
+                            </a>
                               <hr>
                               <a routerLink="/auth/login" class="btn btn-google btn-user btn-block">
                                   <i class="fab fa-google fa-fw"></i> Register with Google
@@ -47,7 +73,7 @@
                               <a routerLink="/auth/login" class="btn btn-facebook btn-user btn-block">
                                   <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
                               </a>
-                          </form>
+                          <!-- </form> -->
                           <hr>
                           <div class="text-center">
                               <a class="small" routerLink="/auth/forgot-password">Forgot Password?</a>
