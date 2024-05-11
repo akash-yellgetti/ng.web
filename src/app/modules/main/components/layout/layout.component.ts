@@ -32,7 +32,7 @@ export class LayoutComponent {
 
   constructor(private breakpointObserver: BreakpointObserver, private localStorageService: LocalStorageService, 
     private route: Router, 
-    private socketService: SocketService, 
+    // private socketService: SocketService, 
     private toastr: ToastrService, 
     public moduleService: ModuleService) {
     this.moduleService.mainTitle.subscribe((r: any) => {
@@ -44,13 +44,13 @@ export class LayoutComponent {
     // this.socketService.emit('main');
     // this.socketService.join('main');
     // this.socketService.join('notification');
-    this.socketService.getNotification()
-    .subscribe((notification: any) => {
-      // console.log(r)
-      const data = notification.data;
-      // console.log(data)
-      this.toastr.info(data.description, data.title)
-    })
+    // this.socketService.getNotification()
+    // .subscribe((notification: any) => {
+    //   // console.log(r)
+    //   const data = notification.data;
+    //   // console.log(data)
+    //   this.toastr.info(data.description, data.title)
+    // })
     // this.socketService.getMessage().subscribe((r) => {
     //   console.log('message', r)
     // })

@@ -80,12 +80,12 @@ export class LoginComponent implements OnInit {
 
   login = (): any => {
 
-    // if (this.loginForm.invalid) {
-    //   return;
-    // }
+    const errors = this.fieldService.validateForm(this.form);
+    if (Object.keys(errors).length > 0 ){
+      this.fieldService.setToastr(errors)
+      return false;
+    }
 
-    
-    // const controls: any = this.loginForm.controls;
     const params = this.fieldService.json(this.form);
     console.log(params)
     const myObserver: any = {

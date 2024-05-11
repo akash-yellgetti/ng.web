@@ -4,7 +4,7 @@ import { pieChartOptions } from '../../../../shared/components/chart/chart-optio
 import { BudgetService } from '../../services/api/budget/budget.service';
 import { FieldService } from '../../../../shared/services/field/field.service';
 import { PlannerService } from '../../services/api/planner/planner.service';
-
+import * as _ from 'lodash';
 @Component({
   selector: 'app-planner',
   templateUrl: './planner.component.html',
@@ -12,7 +12,6 @@ import { PlannerService } from '../../services/api/planner/planner.service';
 })
 export class PlannerComponent implements OnInit {
   public form: any = {
-    
     type: {
       value: 'loan',
     },
@@ -29,33 +28,39 @@ export class PlannerComponent implements OnInit {
       value: 9,
     },
     tenure: {
-      value: 100000,
+      value: 15,
     },
   };
-  categories = [
+  public categories: any = [
     {
-      name: 'Loan',
+      name: 'loan',
       title: 'Loan',
+      items: []
     },
     {
       name: 'goal',
-      title: 'goal'
+      title: 'Goal',
+      items: []
     },
     {
       name: 'credit-card',
-      title: 'Credit-Card'
+      title: 'Credit-Card',
+      items: []
     },
     {
       name: 'investment',
-      title: 'Investment'
+      title: 'Investment',
+      items: []
     },
     {
       name: 'lended',
-      title: 'Lended'
+      title: 'Lended',
+      items: []
     },
     {
       name: 'borrowed',
-      title: 'Borrowed'
+      title: 'Borrowed',
+      items: []
     },
     
   ]
@@ -74,8 +79,16 @@ export class PlannerComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.data = this.activatedRoute.snapshot.data.planner.data;
-    console.log(this.data);  
+    this.data = _.map(this.categories, (item: any) => {
+      
+      const items: any[] = _.filter(this.activatedRoute.snapshot.data.planner.data, { type: item.name }) || [];
+      _.set(item, 'items', items || []);
+      _.set(item, 'total', _.sumBy(items, 'amount'));
+      // console.log(item.items);
+      return item;
+    }) 
+    console.log(this.data); 
+    
   }
 
   save = () => {

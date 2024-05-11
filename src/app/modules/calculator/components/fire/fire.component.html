@@ -1,124 +1,152 @@
-<!-- Content Row -->
-
-
 <div class="row">
-
-    <!-- Pie Chart -->
-    <div class="col-xl-4 col-lg-5">
+    <div class="col-xl-4 col-lg-4">
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">FIRE Calculator</h6>
+                <h6 class="m-0 font-weight-bold text-primary">
+                    Financial Independence Retirement Early (FIRE) Calculator
+                </h6>
             </div>
             <!-- Card Body -->
             <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label for="amount">Current Age</label>
+                            <input type="text" class="form-control" id="amount" placeholder="Enter amount"
+                                [(ngModel)]="form.age.value" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label for="rate">Retirement Age</label>
+                            <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                                [(ngModel)]="form.retirementAge.value" />
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label for="rate">Life expectancy</label>
+                            <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                                [(ngModel)]="form.lifeExpectancy.value" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label for="tenure">Current Monthly Income</label>
+                            <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                                [(ngModel)]="form.currentIncome.value" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label for="tenure">Annual Income Growth </label>
+                            <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                                [(ngModel)]="form.currentIncomegrowth.value" />
+                        </div>
+                    </div>
 
-                <div class="form-group">
-                    <label for="amount">Age</label>
-                    <input type="text" class="form-control" id="amount" placeholder="Enter amount"
-                        [(ngModel)]="form.age.value" />
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label for="tenure">Current Monthly Expense</label>
+                            <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                                [(ngModel)]="form.currentExpense.value" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label for="tenure">Expense Growth (Inflation) </label>
+                            <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                                [(ngModel)]="form.currentExpensegrowth.value" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label for="tenure">Rate of Return (p.a) on investment pre retirement
+                        </label>
+                        <input type="text" class="form-control" id="tenure" placeholder="Enter ROI"
+                            [(ngModel)]="form.investmentRoipre.value" />
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="rate">Retirement Age</label>
-                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
-                        [(ngModel)]="form.retirementAge.value" />
+                <div class="col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label for="tenure">Rate of Return (p.a) on investment post retirement
+                        </label>
+                        <input type="text" class="form-control" id="tenure" placeholder="Enter ROI"
+                            [(ngModel)]="form.investmentRoipost.value" />
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="rate">Life expectancy</label>
-                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
-                        [(ngModel)]="form.lifeExpectancy.value" />
+
+                    <button type="submit" class="btn btn-primary" (click)="calculate()">
+                        Submit
+                    </button>
                 </div>
-                <div class="form-group">
-                    <label for="tenure">Current Monthly Income</label>
-                    <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
-                        [(ngModel)]="form.currentIncome.value" />
-                </div>
-                <div class="form-group">
-                    <label for="tenure">Income Growth </label>
-                    <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
-                        [(ngModel)]="form.currentIncomegrowth.value" />
-                </div>
-                <div class="form-group">
-                    <label for="tenure">Current Monthly Expense</label>
-                    <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
-                        [(ngModel)]="form.currentExpense.value" />
-                </div>
-                <div class="form-group">
-                    <label for="tenure">Expense Growth </label>
-                    <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
-                        [(ngModel)]="form.currentExpensegrowth.value" />
-                </div>
-                <div class="form-group">
-                    <label for="tenure">Rate of Return (p.a) on investment pre retirement </label>
-                    <input type="text" class="form-control" id="tenure" placeholder="Enter ROI"
-                        [(ngModel)]="form.investmentRoipre.value" />
-                </div>
-                <div class="form-group">
-                    <label for="tenure">Rate of Return (p.a) on investment post retirement </label>
-                    <input type="text" class="form-control" id="tenure" placeholder="Enter ROI"
-                        [(ngModel)]="form.investmentRoipost.value" />
-                </div>
-                
-                <button type="submit" class="btn btn-primary" (click)="calculate()">Submit</button>
             </div>
         </div>
     </div>
-    <div class="col-xl-6 col-lg-5">
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">FIRE Overview</h6>
-                
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                <table class="table table-bordered">
-                    <tr>
-                        <td>Monthly Income At Time Of Retirement</td>
-                        <td>
-                            {{result.monthlyIncomeAtRetirement || 0 | indianNumberFormat}} <br>
-                            {{result.monthlyIncomeAtRetirement || 0 | numberToWords }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Monthly Expense At Time Of Retirement</td>
-                        <td>
-                            {{result.monthlyExpenseAtRetirement || 0 | indianNumberFormat}} <br>
-                            {{result.monthlyExpenseAtRetirement || 0 | numberToWords }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Monthly Investment Required To Achieve Normal FIRE Corpus</td>
-                        <td>
-                            {{result.SIPAmount || 0 | indianNumberFormat}} <br>
-                            {{result.SIPAmount || 0 | numberToWords }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Lean FIRE Retirement Corpus Required</td>
-                        <td>
-                            {{result.leanFireCorpusRequired || 0 | indianNumberFormat}} <br>
-                            {{result.leanFireCorpusRequired || 0 | numberToWords }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Normal FIRE Retirement Corpus Required</td>
-                        <td>
-                            {{result.normalFireCorpusRequired || 0 | indianNumberFormat}} <br>
-                            {{result.normalFireCorpusRequired || 0 | numberToWords }}
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Fat FIRE Retirement Corpus Required</td>
-                        <td>
-                            {{result.fatFireCorpusRequired || 0 | indianNumberFormat}} <br>
-                            {{result.fatFireCorpusRequired || 0 | numberToWords }}
-                        </td>
-                    </tr>
-                </table>
+        <div class="col-xl-6 col-lg-5">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">FIRE Overview</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Monthly Income At Time Of Retirement</td>
+                            <td>
+                                {{
+                                result.monthlyIncomeAtRetirement || 0 | indianNumberFormat
+                                }}
+                                <br />
+                                {{ result.monthlyIncomeAtRetirement || 0 | numberToWords }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Monthly Expense At Time Of Retirement</td>
+                            <td>
+                                {{
+                                result.monthlyExpenseAtRetirement || 0 | indianNumberFormat
+                                }}
+                                <br />
+                                {{ result.monthlyExpenseAtRetirement || 0 | numberToWords }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Monthly Investment Required To Achieve Normal FIRE Corpus</td>
+                            <td>
+                                {{ result.SIPAmount || 0 | indianNumberFormat }} <br />
+                                {{ result.SIPAmount || 0 | numberToWords }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lean FIRE Retirement Corpus Required</td>
+                            <td>
+                                {{ result.leanFireCorpusRequired || 0 | indianNumberFormat }}
+                                <br />
+                                {{ result.leanFireCorpusRequired || 0 | numberToWords }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Normal FIRE Retirement Corpus Required</td>
+                            <td>
+                                {{ result.normalFireCorpusRequired || 0 | indianNumberFormat }}
+                                <br />
+                                {{ result.normalFireCorpusRequired || 0 | numberToWords }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Fat FIRE Retirement Corpus Required</td>
+                            <td>
+                                {{ result.fatFireCorpusRequired || 0 | indianNumberFormat }}
+                                <br />
+                                {{ result.fatFireCorpusRequired || 0 | numberToWords }}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
-        
-    </div>
+    
 </div>

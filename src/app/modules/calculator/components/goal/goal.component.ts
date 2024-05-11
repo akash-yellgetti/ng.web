@@ -12,13 +12,13 @@ import { FieldService } from '../../../../shared/services/field/field.service';
 export class GoalComponent implements OnInit {
   form: any = {
     amount: {
-      value: 10000000
+      value: 50000000
     },
     rate: {
-      value: 12
+      value: 15
     },
     tenure: {
-      value: 6
+      value: 15
     },
     sip: {
       value: 0

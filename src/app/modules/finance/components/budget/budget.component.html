@@ -20,7 +20,8 @@
                             </button>
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-success">
-                            $ {{ categoryWise.income || 0 | indianNumberFormat }}
+                            ₹ {{ categoryWise.income || 0 | indianNumberFormat }} <br>
+                            <div class="text-xs text-success"> {{ categoryWise.income || 0 | numberToWords }}</div>
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col">
@@ -52,7 +53,8 @@
                             </button>
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-danger">
-                            $ {{ categoryWise.expense || 0 | indianNumberFormat }}
+                            ₹ {{ categoryWise.expense || 0 | indianNumberFormat }} <br>
+                            <div class="text-xs text-danger"> {{ categoryWise.expense || 0 | numberToWords }}</div>
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col">
@@ -84,7 +86,8 @@
                             </button>
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-warning">
-                            $ {{ categoryWise.want || 0 | indianNumberFormat }}
+                            ₹ {{ categoryWise.want || 0 | indianNumberFormat }}<br>
+                            <div class="text-xs text-warning"> {{ categoryWise.want || 0 | numberToWords }}</div>
                         </div>
 
                         <div class="row no-gutters align-items-center">
@@ -117,7 +120,8 @@
                             </button>
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-primary">
-                            $ {{ categoryWise.investment || 0 | indianNumberFormat }}
+                            ₹ {{ categoryWise.investment || 0 | indianNumberFormat }}<br>
+                            <div class="text-xs text-primary"> {{ categoryWise.investment || 0 | numberToWords }}</div>
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col">

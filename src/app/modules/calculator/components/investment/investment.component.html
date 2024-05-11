@@ -10,33 +10,48 @@
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                <div class="form-group">
-                    <label for="amount">Amount</label>
-                    <input type="text" class="form-control" id="amount" placeholder="Enter amount"
-                        [(ngModel)]="form.amount.value" />
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input type="text" class="form-control" id="amount" placeholder="Enter amount"
+                                [(ngModel)]="form.amount.value" />
+                            <div class="mt-1 text-l text-primary">{{ form.amount.value || 0 | numberToWords }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label for="rate">Rate</label>
+                            <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+                                [(ngModel)]="form.rate.value" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label for="tenure">Tenure</label>
+                            <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                                [(ngModel)]="form.tenure.value" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label for="tenure">Annual step up</label>
+                            <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                                [(ngModel)]="form.growthRate.value" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label for="tenure">Annual Lumsum Addition</label>
+                            <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                                [(ngModel)]="form.additionalAmount.value" />
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="rate">Rate</label>
-                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
-                        [(ngModel)]="form.rate.value" />
-                </div>
-                <div class="form-group">
-                    <label for="tenure">Tenure</label>
-                    <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
-                        [(ngModel)]="form.tenure.value" />
-                </div>
-                <div class="form-group">
-                    <label for="tenure">Growth Rate</label>
-                    <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
-                        [(ngModel)]="form.growthRate.value" />
-                </div>
-                <div class="form-group">
-                    <label for="tenure">Lumsum Addition Yearly</label>
-                    <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
-                        [(ngModel)]="form.additionalAmount.value" />
-                </div>
-                <button type="submit" class="btn btn-primary" (click)="calculate()">
-                    Submit
+
+                <button class="btn btn-primary w-100" (click)="calculate()">
+                    Calculate
                 </button>
             </div>
         </div>

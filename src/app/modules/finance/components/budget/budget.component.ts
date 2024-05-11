@@ -58,7 +58,7 @@ export class BudgetComponent implements OnInit {
       data: 'amount',
     },
   ];
-   
+  category: string = 'income';
   categoryWise: any = {};
   chartOptions: any = {
     data: [],
@@ -75,6 +75,12 @@ export class BudgetComponent implements OnInit {
   
   ngOnInit(): void {
     this.data = this.activatedRoute.snapshot.data.budget.data;
+    
+    this.refreshDatatableAndChart('income');
+  }
+
+  refreshDatatableAndChart = (category: string) => {
+    this.category = category;
     const categoryWise = _.reduce(
       _.groupBy(this.data, 'category'),
       (o: any, v, k) => {
@@ -84,10 +90,6 @@ export class BudgetComponent implements OnInit {
       {}
     );
     this.categoryWise = categoryWise;
-    this.refreshDatatableAndChart('income');
-  }
-
-  refreshDatatableAndChart = (category: string) => {
     this.budgetData = _.filter(this.data, (v) => {
       return v.category === category;
     });
@@ -110,6 +112,10 @@ export class BudgetComponent implements OnInit {
     const json = this.fieldService.json(this.form);
     this.budgetService.createBudget(json).subscribe((res) => {
       console.log(res);
+      this.budgetService.getDetail().subscribe((d: any) => {
+        this.data = d.data;
+        this.refreshDatatableAndChart(this.category);
+      })
     })
   };
 }

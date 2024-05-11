@@ -26,6 +26,9 @@ export class ValidationService {
       case 'required':
         return this.isRequired(field.value)
         break;
+      case 'email':
+        return this.isEmail(field.value)
+        break;
     
       default:
         break;

@@ -1,108 +1,125 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Financial Planner</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-        class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-  </div>
-  
-  <div class="row">
-    <div class="col-xl-3 col-lg-3">
-      <div id="accordion">
-        <div class="card shadow border-left-primary mb-3" *ngFor="let category of categories; let i = index"
-          [attr.data-index]="i">
-          <div class="card-header" [attr.id]="i">
-            <div class="mb-1">
-              <a class="btn font-weight-bold text-primary text-uppercase collapsed" data-toggle="collapse"
-                [attr.data-target]="'#' + category.name">
-                {{ category.title }}
-              </a>
-              <button type="submit" class="btn btn-primary float-right" data-toggle="modal"
-               data-target="#addPlannerModal">
-                Add
-              </button>
+  <h1 class="h3 mb-0 text-gray-800">Financial Planner</h1>
+  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+      class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+</div>
+
+<div class="row">
+  <div class="col-xl-3 col-lg-3">
+    <div id="accordion">
+      <div class="card shadow border-left-primary mb-3" *ngFor="let category of categories; let i = index"
+        [attr.data-index]="i">
+        <div class="card-header" [attr.id]="i">
+          <div class="row no-gutters align-items-center">
+            <div class="col">
+              <div class="h5 font-weight-bold text-primary mb-1">
+                <a data-toggle="collapse" [attr.data-target]="'#' + category.name"> {{ category.title }} </a>
+                <button type="button" class="btn btn-primary btn-circle float-right" data-toggle="modal"
+                  data-target="#addPlannerModal">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <div class="text-l mb-0 font-weight-bold text-primary">
+                ₹ {{ category.total | indianNumberFormat }}
+              </div>
+
             </div>
           </div>
-          <div [attr.id]="category.name" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-            <div class="card-body p-0">
-              <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
-                    blandit.</p>
-                  <small>Donec id elit non mi porta.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small class="text-muted">3 days ago</small>
-                  </div>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
-                    blandit.</p>
-                  <small class="text-muted">Donec id elit non mi porta.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small class="text-muted">3 days ago</small>
-                  </div>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
-                    blandit.</p>
-                  <small class="text-muted">Donec id elit non mi porta.</small>
-                </a>
-              </div>
+
+        </div>
+        <div [attr.id]="category.name" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+          <div class="card-body p-0">
+            <div class="list-group">
+
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
+                *ngFor="let item of category?.items;">
+
+                <div class="d-flex w-100 justify-content-between" *ngIf="item && item?.title">
+                  <h5 class="mb-1">{{ item?.title }}</h5>
+                  <small> Emi: {{ item.emi }} </small>
+                </div>
+                <small> Amount: {{ item.amount }} <strong class="text-primary">|</strong> Tenure: {{ item.tenure }} |
+                  Rate Of Interest: {{ item.tenure }} </small>
+
+              </a>
+
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- Content Row -->
-
-  <!-- Add Budget Modal-->
-<div class="modal fade" id="addPlannerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-              </button>
-          </div>
-          <div class="modal-body">
-               
-              <div class="form-group">
-                  <label for="rate">Title</label>
-                  <input type="text" class="form-control" id="rate" placeholder="Enter rate"
-                      [(ngModel)]="form.title.value" />
-              </div>
-              <div class="form-group">
-                  <label for="rate">Description</label>
-                  <input type="text" class="form-control" id="rate" placeholder="Enter rate"
-                      [(ngModel)]="form.description.value" />
-              </div>
-              <div class="form-group">
-                  <label for="rate">Amount</label>
-                  <input type="text" class="form-control" id="rate" placeholder="Enter rate"
-                      [(ngModel)]="form.amount.value" />
-              </div>
-              <div class="form-group">
-                <label for="rate">Rate</label>
-                <input type="text" class="form-control" id="rate" placeholder="Enter rate"
-                    [(ngModel)]="form.rate.value" />
-            </div>
-            <div class="form-group">
-              <label for="rate">Tenure</label>
-              <input type="text" class="form-control" id="rate" placeholder="Enter rate"
-                  [(ngModel)]="form.tenure.value" />
-          </div>
-          </div>
-          <div class="modal-footer">
-              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-              <a class="btn btn-primary" type="button" data-dismiss="modal" (click)="save()" >Save</a>
-          </div>
+  <div class="col-xl-3">
+    <div class="card shadow mb-3">
+      <div class="card-body  ">
+        <h5 class="card-title"> Assets </h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
+      <div class="card-footer bg-transparent border-success"> Total</div>
+    </div>
+  </div>
+  <div class="col-xl-3">
+    <div class="card shadow mb-3">
+      <div class="card-body  ">
+        <h5 class="card-title"> Liability </h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+      <div class="card-footer bg-transparent border-success"> Total</div>
+    </div>
+  </div>
+  <div class="col-xl-3">
+    <div class="card shadow mb-3">
+      <div class="card-body  ">
+        <h5 class="card-title"> Assets </h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+      <div class="card-footer bg-transparent border-success"> Total</div>
+    </div>
+  </div>
+   
+</div>
+<!-- Content Row -->
+
+<!-- Add Budget Modal-->
+<div class="modal fade" id="addPlannerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Add  </h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="form-group">
+          <label for="rate">Title</label>
+          <input type="text" class="form-control" id="rate" placeholder="Enter rate" [(ngModel)]="form.title.value" />
+        </div>
+        <div class="form-group">
+          <label for="rate">Description</label>
+          <input type="text" class="form-control" id="rate" placeholder="Enter rate"
+            [(ngModel)]="form.description.value" />
+        </div>
+        <div class="form-group">
+          <label for="rate">Amount</label>
+          <input type="text" class="form-control" id="rate" placeholder="Enter rate" [(ngModel)]="form.amount.value" />
+        </div>
+        <div class="form-group">
+          <label for="rate">Rate</label>
+          <input type="text" class="form-control" id="rate" placeholder="Enter rate" [(ngModel)]="form.rate.value" />
+        </div>
+        <div class="form-group">
+          <label for="rate">Tenure</label>
+          <input type="text" class="form-control" id="rate" placeholder="Enter rate" [(ngModel)]="form.tenure.value" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-primary" type="button" data-dismiss="modal" (click)="save()">Save</a>
+      </div>
+    </div>
   </div>
 </div>

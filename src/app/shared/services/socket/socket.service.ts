@@ -10,15 +10,6 @@ export class SocketService {
 
   constructor(public socket: Socket,public storage: LocalStorageService,
     private toastr: ToastrService) {
-      // this.connected();
-      // this.socket.fromEvent('userSocketId').subscribe((id: any) => {
-      //   let user = this.storage.retrieve('user');
-      //   user = {...user, userSocketId: id, deviceId: '12345' };
-      //   // console.log('userSocketId', id)
-      //   this.storage.store('user', user);
-      //   this.connected();
-      //   this.toastr.info(id, 'User Socket Id')
-      // })
       this.socket.fromEvent('getUserDetails').subscribe((data: any) => {
         // console.log(data)
         let user = this.storage.retrieve('user');
