@@ -2,13 +2,19 @@ import { Injectable } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as _ from 'lodash';
+import { ValidationService } from '../validation/validation.service';
+import { Toast, ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FieldService {
 
-  constructor(private _snackBar: MatSnackBar) { }
+  constructor(
+    private _snackBar: MatSnackBar, 
+    public toastr: ToastrService, 
+    public validationSevice: ValidationService
+  ) { }
 
   getFormGroupFields = (data: any) => {
     return _.cloneDeep(_.chain(data)
@@ -54,6 +60,55 @@ export class FieldService {
 
   validate = (data: any, fields: any) => {
     return _.reject(_.flatten(_.values(_.mapValues(data, 'errors'))), _.isEmpty);
+  }
+
+  validateForm = (form: any) => {
+    const self = this;
+    let errors: any = {};
+    form = _.map(_.cloneDeep(form), (r) => {
+      const validations = r.validations ? r.validations.split('|') : [];
+      const errs = self.validationSevice.validate(validations, r);
+      if(_.size(errs) > 0) {
+        // const d: any = {}
+        // d[r.name] = errs;
+        // errors = [...errors, [ { ...d } ]];
+        errors[r.name] = errs;
+      }
+      form.errors = errs;
+      return form;
+    });
+    
+    return errors;
+  }
+
+  setToastr = (errors: any) => {
+    for (const ind in errors) {
+      const error = errors[ind];
+      for (const errI in error) {
+        // console.log(ind, error[errI])
+        this.toastr.error(error[errI], ind)
+        console.log(error[errI], ind)
+        // this.toastr.error(error[errI]);
+      }
+    }
+  }
+
+
+  validateField = (field: any, value: any) => {
+    switch (field.type) {
+      case 'required':
+        return Validators.email;
+        break;
+      case 'password':
+        return Validators.minLength(6);
+        break;
+      case 'confirmPassword':
+        return Validators.minLength(6);
+        break;
+      default:
+        return null
+        break;
+    }
   }
 
   displayErrors = (errors: any) => {

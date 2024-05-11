@@ -61,6 +61,7 @@ ng g s modules/main/core/services/module
 
 ng g s shared/services/socket/socket
 ng g s shared/services/socket/socket
+ng g s shared/services/validation/validation
 
 --------------------------------------------------------------------------------------------------
 

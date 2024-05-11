@@ -1,0 +1,43 @@
+Auth
+    - Login
+    - Registration
+    - Forgot
+    
+
+User
+    - Profile
+        - Change Passowrd
+
+    - Setting
+        - Category
+
+
+Finance
+    -> Budget
+    -> Financial Planner
+        -> Loan
+            Home Loan -> 75L 9% 15year
+            Home Loan -> 2L 10% 2year
+        -> Goal
+            Retirement -> 5cr 12% 2year
+            Child -> 5cr 10% 2year
+        -> Credit
+        -> Investment
+        -> Lended
+        -> Borrowed
+
+
+
+    -> Income - Tax Planner
+        -> Salaried
+            -> Income
+            -> Deduction
+
+
+
+    -> Transaction analyser
+        -> Banks Upload
+        -> Credit
+        -> debit
+            -> Category wise monthly data analysi and compare
+
