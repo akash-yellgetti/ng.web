@@ -74,7 +74,7 @@ export const forms = {
         },
         confirmPassword: {
             "name": "confirmPassword",
-            "label": "confirmPassword",
+            "label": "Confirm Password",
             "type": "text",
             "validations": "required",
             "value": "",

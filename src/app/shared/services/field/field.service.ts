@@ -69,10 +69,7 @@ export class FieldService {
       const validations = r.validations ? r.validations.split('|') : [];
       const errs = self.validationSevice.validate(validations, r);
       if(_.size(errs) > 0) {
-        // const d: any = {}
-        // d[r.name] = errs;
-        // errors = [...errors, [ { ...d } ]];
-        errors[r.name] = errs;
+        errors[r.label] = errs;
       }
       form.errors = errs;
       return form;
@@ -85,10 +82,7 @@ export class FieldService {
     for (const ind in errors) {
       const error = errors[ind];
       for (const errI in error) {
-        // console.log(ind, error[errI])
-        this.toastr.error(error[errI], ind)
-        console.log(error[errI], ind)
-        // this.toastr.error(error[errI]);
+        this.toastr.error(error[errI], ind);
       }
     }
   }

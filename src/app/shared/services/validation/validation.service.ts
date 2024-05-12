@@ -13,7 +13,7 @@ export class ValidationService {
       if (validations[i]) {
         const validation = validations[i];
         if(!this.checkValidation(validation, field)) {
-          errors.push(validation);
+          errors.push(this.getValidationMessage(validation, field.label));
         }
       }
     }
@@ -35,6 +35,20 @@ export class ValidationService {
     }
 
     return false;
+  }
+
+  getValidationMessage = (key: string, label: string) => {
+    switch (key) {
+      case 'required':
+        return 'This '+label+' is required';
+        break;
+      case 'email':
+        return 'Invalid Email Address';
+        break;
+      default:
+        return null
+        break;
+    }
   }
 
   isRequired(value: any): boolean {
