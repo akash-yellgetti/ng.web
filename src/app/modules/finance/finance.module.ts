@@ -6,13 +6,15 @@ import { BudgetComponent } from './components/budget/budget.component';
 import { PlannerComponent } from './components/planner/planner.component';
 import { IncomeTaxComponent } from './components/income-tax/income-tax.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TransactionComponent } from './components/transaction/transaction.component';
 
 
 @NgModule({
   declarations: [
     BudgetComponent,
     PlannerComponent,
-    IncomeTaxComponent
+    IncomeTaxComponent,
+    TransactionComponent
   ],
   imports: [
     CommonModule,

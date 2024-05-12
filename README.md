@@ -130,6 +130,7 @@ ng g m modules/finance --routing=true
 ng g c modules/finance/components/budget --module=finance
 ng g c modules/finance/components/planner --module=finance
 ng g c modules/finance/components/income-tax --module=finance
+ng g c modules/finance/components/transaction --module=finance
 
 
 ng g s modules/finance/services/api/budget/budget

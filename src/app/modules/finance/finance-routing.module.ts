@@ -5,6 +5,7 @@ import { PlannerComponent } from './components/planner/planner.component';
 import { IncomeTaxComponent } from './components/income-tax/income-tax.component';
 import { BudgetResolver } from './resolver/budget/budget.resolver';
 import { PlannerResolver } from './resolver/planner/planner.resolver';
+import { TransactionComponent } from './components/transaction/transaction.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'income-tax',
     component: IncomeTaxComponent
+  },
+  {
+    path: 'transaction',
+    component: TransactionComponent
   }
 ];
 

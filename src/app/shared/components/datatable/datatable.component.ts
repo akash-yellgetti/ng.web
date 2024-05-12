@@ -70,12 +70,21 @@ export class DatatableComponent implements OnInit, AfterViewInit {
 
     this.dataTable = $('#'+this.id).DataTable({
       dom: 'lBfrtip',
-      buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+      buttons: ['copy', 'csv', 'excel', 'pdf', 'print', {
+        text: 'Delete',
+        action: function (e: any, dt: any, node: any, config: any) {
+          console.log(e)
+          // dt.ajax.reload();
+        }
+      }],
       lengthMenu: [
         [10, 15, 20, 25, 50,   -1],
         [10, 15, 20, 25, 50,  'All']
       ],
-      pageLength: 15,
+      pageLength: 10,
+      select: {
+        style: 'multi'
+      },
       data: [], // Initialize with empty data
       columns: this.columns
     });
