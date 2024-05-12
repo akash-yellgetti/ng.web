@@ -362,7 +362,7 @@ template {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.2;
 }
 
@@ -9798,8 +9798,9 @@ a:focus {
 
 #wrapper #content-wrapper {
   background-color: #f8f9fc;
-  width: 100%;
+  width: calc(100% - 14rem);
   overflow-x: hidden;
+  margin-left: auto;
 }
 
 #wrapper #content-wrapper #content {
@@ -11277,5 +11278,11 @@ footer.sticky-footer .copyright {
 }
 
 body.sidebar-toggled footer.sticky-footer {
+  width: 100%;
+}
+
+.row {
+  gap: 0;
+  padding: 0;
   width: 100%;
 }

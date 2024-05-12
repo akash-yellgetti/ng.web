@@ -33,8 +33,9 @@
               "src/assets"
             ],
             "styles": [
+              "./src/assets/styles.scss",
               "./src/assets/vendor/fontawesome-free/css/all.min.css",
-              "./src/assets/css/sb-admin-2.min.css",
+              "./src/assets/css/sb-admin-2.css",
               "./src/assets/css/datatable.css",
               "./src/assets/vendor/datatables/dataTables.bootstrap4.min.css",
               "./src/assets/vendor/datatables/buttons.bootstrap4.min.css",

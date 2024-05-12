@@ -10,11 +10,16 @@ import { ConversationsResolver } from './resolver/conversations/conversations.re
 import { ConversationHistoryResolver } from './resolver/conversation-history/conversation-history.resolver';
 import { ChatWindowComponent } from './components/chat-window/chat-window.component';
 import { NotificationsResolver } from './resolver/notifications/notifications.resolver';
+import { CategoriesComponent } from './components/categories/categories.component'
 
 const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent
+  },
+  {
+    path: 'categories',
+    component: CategoriesComponent
   },
   {
     path: 'chat',

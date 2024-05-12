@@ -11,6 +11,7 @@ import { FamilyComponent } from './components/family/family.component';
 import { HabitsComponent } from './components/habits/habits.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ChatWindowComponent } from './components/chat-window/chat-window.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ChatWindowComponent } from './components/chat-window/chat-window.compon
     NotificationComponent,
     FamilyComponent,
     HabitsComponent,
-    ChatWindowComponent
+    ChatWindowComponent,
+    CategoriesComponent
   ],
   imports: [
     CommonModule,
