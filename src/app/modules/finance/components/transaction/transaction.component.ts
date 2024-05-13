@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { transactionData } from '../../../../shared/json/bank-statement.json';
 import * as moment from 'moment';
 import * as _ from 'lodash';
+import { ChartType } from 'angular-google-charts';
 
 @Component({
   selector: 'app-transaction',
@@ -10,7 +11,21 @@ import * as _ from 'lodash';
 })
 export class TransactionComponent implements OnInit {
   public transactionData = transactionData;
-  constructor() {
+  public chartOptions: any = { 
+    type: ChartType.ColumnChart,
+    columnNames: ['Month', 'Income', 'Expense'] ,
+    data: []
+   };
+
+   public chartOptions2: any = {
+    type: ChartType.PieChart,
+    columnNames: ['type', 'Amount'] ,
+    data: []
+
+   }
+  public updateFlag: any = true;
+  
+  constructor(private cdr: ChangeDetectorRef) {
     this.formatDatatoMonthYear();
    }
 
@@ -20,7 +35,10 @@ export class TransactionComponent implements OnInit {
       const parsedDate = moment(data.transactionDate, 'DD/MM/YYYY');
 
       // Format the parsed date to "DD-MMM-YYYY" (e.g., "01-Apr-2023")
-      const monthYear = parsedDate.format('MM-YYYY');
+      const monthYear = parsedDate.format('MMM-YYYY');
+      const month = parsedDate.format('MM');
+      const year = parsedDate.format('YYYY');
+      // Format the parsed date to "DD-MMM-YYYY" (e.g., "01-Apr-2023")
 
       // return formattedDate;
       // const transactionDate = new Date(Date.parse(data.transactionDate));
@@ -29,7 +47,9 @@ export class TransactionComponent implements OnInit {
       // const monthYear = `${month}-${year}`;
       return {
         ...data,
-        monthYear
+        monthYear,
+        month,
+        year
       };
     })
 
@@ -45,9 +65,63 @@ export class TransactionComponent implements OnInit {
 
     console.log('transactionOverviewData', transactionOverviewData);
     // console.log(this.transactionData)
+
+    // this.chartOptions = { data: [] };
+
+    this.chartOptions = null;
+    this.chartOptions = { type: ChartType.ColumnChart,  columnNames: ['Month', 'Income', 'Expense'] ,
+      width: 1500,  
+      height: 500,  
+    data: [] };
+    this.chartOptions.data = _.reduce(transactionOverviewData, (a: any, v: any, k) => {
+      a.push([k, v.income, v.expense]);
+      return a;
+    }, []);
+
+    console.log('this.chartOptions', this.chartOptions);
+    // this.cdr.detectChanges();
   }
 
+
+
   ngOnInit(): void {
+  }
+
+  refreshDatatableAndChart = (category: string) => {
+    
+  };
+
+
+  getChild = (child: any) => {
+    // console.log('child', child);
+    // this.chartOptions.data[child.row + 1][child.column] = child.value;
+    // console.log(this.chartOptions.data[child.selection[0].row]);
+    let data: any = _.filter(this.transactionData, (o: any) => {
+      return o.monthYear === this.chartOptions.data[child.selection[0].row][0];
+    })
+
+    data = _.map(data, (r: any) => {
+      _.set(r, 'type', _.first(_.split(r.remarks, '/')));
+      return r;
+    })
+
+    data = _.groupBy(data, 'type');
+
+
+    // console.log('data', data);
+
+    this.chartOptions2 = null;
+    this.chartOptions2 = { type: ChartType.PieChart,  columnNames: ['Type', 'Amount'] ,
+      width: 500,  
+      height: 500,  
+    data: [] };
+    this.chartOptions2.data = _.reduce(data, (a: any, v: any, k) => {
+      a.push([k, _.sumBy(v, 'deposit')]);
+      return a;
+    }, []);
+
+    console.log('this.chartOptions2', this.chartOptions2);
+
   }
 
 }

@@ -5,5 +5,7 @@
    [columns]="options.columnNames"
    [options]="options.chartOptions"
    [width]="options.width"
-   [height]="options.height">
+   [height]="options.height"
+   (select)="onSelect($event)"
+   >
 </google-chart>

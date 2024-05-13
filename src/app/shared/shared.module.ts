@@ -9,7 +9,7 @@ import { DatatableComponent } from './components/datatable/datatable.component';
 import { IndianNumberFormatPipe } from './pipe/indianNumberFormat/indian-number-format.pipe';
 import { NumberToWordsPipe } from './pipe/numberToWords/number-to-words.pipe';
 import { MonthsToYearsPipe } from './pipe/monthsToYears/months-to-years.pipe';
-import { ChartGoogleComponent } from './components/chart-google/chart-google/chart-google.component';
+import { ChartGoogleComponent } from './components/chart-google/chart-google.component';
 import { ChartJsComponent } from './components/chart-js/chart-js/chart-js.component';
 import { GoogleChartsModule } from 'angular-google-charts';
 @NgModule({

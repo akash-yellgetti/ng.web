@@ -61,7 +61,14 @@ export class BudgetComponent implements OnInit {
   category: string = 'income';
   categoryWise: any = {};
   chartOptions: any = {
+    type: 'PieChart',
     data: [],
+    columnNames:  ['Year', 'Income','Expense'],
+    chartOptions: { 
+      
+    },
+    width: 1500,
+    height: 400
   };
   updateFlag: any = true;
   constructor(
