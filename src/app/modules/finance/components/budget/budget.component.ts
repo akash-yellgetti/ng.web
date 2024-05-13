@@ -125,4 +125,12 @@ export class BudgetComponent implements OnInit {
       })
     })
   };
+
+  delete = (data: any) => {
+    console.log(data)
+  }
+
+  edit = (data: any) => {
+    console.log(data)
+  }
 }

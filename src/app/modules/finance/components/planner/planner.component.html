@@ -37,10 +37,10 @@
 
                 <div class="d-flex w-100 justify-content-between" *ngIf="item && item?.title">
                   <h5 class="mb-1">{{ item?.title }}</h5>
-                  <small> Emi: {{ item.emi }} </small>
+                  <span class="badge rounded-pill border border-primary p-2 "> Emi: {{ item.amount }} </span> 
+                  
                 </div>
-                <small> Amount: {{ item.amount }} <strong class="text-primary">|</strong> Tenure: {{ item.tenure }} |
-                  Rate Of Interest: {{ item.tenure }} </small>
+                <small> | Amount: {{ item.amount }} | Tenure: {{ item.tenure }} | Rate Of Interest: {{ item.tenure }} | </small>
 
               </a>
 

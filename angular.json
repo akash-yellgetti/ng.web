@@ -33,12 +33,12 @@
               "src/assets"
             ],
             "styles": [
-              "./src/assets/styles.scss",
               "./src/assets/vendor/fontawesome-free/css/all.min.css",
               "./src/assets/css/sb-admin-2.css",
               "./src/assets/css/datatable.css",
               "./src/assets/vendor/datatables/dataTables.bootstrap4.min.css",
               "./src/assets/vendor/datatables/buttons.bootstrap4.min.css",
+              "./src/assets/vendor/datatables/select.dataTables.css",
               "./node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
@@ -48,6 +48,7 @@
               "./src/assets/js/sb-admin-2.min.js",
               "./src/assets/vendor/datatables/jquery.dataTables.min.js",
               "./src/assets/vendor/datatables/dataTables.bootstrap4.min.js",
+              "./src/assets/vendor/datatables/dataTables.select.js",
               "./src/assets/vendor/datatables/dataTables.buttons.min.js",
               "./src/assets/vendor/datatables/buttons.html5.min.js",
               "./src/assets/vendor/datatables/buttons.bootstrap4.min.js",

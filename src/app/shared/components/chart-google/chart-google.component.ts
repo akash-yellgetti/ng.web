@@ -37,8 +37,8 @@ export class ChartGoogleComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    // this.options = { ...this.chartSetting, ...this.options}
-    console.log(this.options)
+    this.options = { ...this.chartSetting, ...this.options}
+    // console.log(this.options)
   }
 
   ngOnChanges(changes: SimpleChanges) {

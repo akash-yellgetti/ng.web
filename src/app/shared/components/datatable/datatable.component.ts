@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, SimpleChanges, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
 declare var $: any;
 
 @Component({
@@ -12,6 +12,8 @@ export class DatatableComponent implements OnInit, AfterViewInit {
   dataTable: any;
   @Input() columns: any;
   @Input() data: any;
+  @Output() toParentDataTableDelete: EventEmitter<any> = new EventEmitter();
+  @Output() toParentDataTableEdit: EventEmitter<any> = new EventEmitter();
   public id: any = Math.random().toString(36).substring(7);
 
   constructor() { 
@@ -41,19 +43,6 @@ export class DatatableComponent implements OnInit, AfterViewInit {
   }
 
   loadData() {
-    // Simulate fetching data (replace with actual HTTP call)
-    // const data = [
-    //   { id: 1, name: 'John Doe', age: 30 },
-    //   { id: 2, name: 'Jane Smith', age: 25 },
-    //   // Add more data as needed
-    // ];
-
-    // Use setTimeout to simulate async data loading
-    // setTimeout(() => {
-    //   // Initialize DataTable after data is loaded
-    //   this.initializeDataTable();
-    // }, 0);
-
     if(this.dataTable) { 
       // Fetch and set data for DataTable
       this.dataTable.clear();
@@ -63,32 +52,45 @@ export class DatatableComponent implements OnInit, AfterViewInit {
   }
 
   initializeDataTable() {
-    // if ($.fn.DataTable.isDataTable('#example')) {
-    //   // Destroy existing DataTable if it exists
-    //   this.dataTable.destroy();
-    // ...
-
+    const self = this;
     this.dataTable = $('#'+this.id).DataTable({
       dom: 'lBfrtip',
-      buttons: ['copy', 'csv', 'excel', 'pdf', 'print', {
+      buttons: ['copy', 'csv', 'excel', 'pdf', 'print', 
+      {
         text: 'Delete',
         action: function (e: any, dt: any, node: any, config: any) {
-          console.log(e)
-          // dt.ajax.reload();
+          const rows = dt.rows({ selected: true }).data();
+          const rowsData = [];
+          for (let i = 0; i < rows.length; i++) {
+            rowsData.push(rows[i]);
+          }
+          self.toParentDataTableDelete.emit(rowsData);
+        }
+      },
+      {
+        text: 'Edit',
+        action: function (e: any, dt: any, node: any, config: any) {
+          const rows = dt.rows({ selected: true }).data();
+          if (rows.length > 1) {
+            alert('Please select only one row to edit');
+            return;
+          }
+          self.toParentDataTableEdit.emit(rows[0]);
         }
       }],
-      lengthMenu: [
-        [10, 15, 20, 25, 50,   -1],
-        [10, 15, 20, 25, 50,  'All']
-      ],
-      pageLength: 10,
-      select: {
-        style: 'multi'
-      },
+      // lengthMenu: [
+      //   [10, 15, 20, 25, 50,   -1],
+      //   [10, 15, 20, 25, 50,  'All']
+      // ],
+      // pageLength: 10,
+      select: true,
       data: [], // Initialize with empty data
       columns: this.columns
     });
 
+        
+  
+ 
     // ...
     // Fetch and set data for DataTable
     this.dataTable.clear();
