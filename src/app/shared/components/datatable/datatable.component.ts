@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 declare var $: any;
 
 @Component({
@@ -16,7 +17,7 @@ export class DatatableComponent implements OnInit, AfterViewInit {
   @Output() toParentDataTableEdit: EventEmitter<any> = new EventEmitter();
   public id: any = Math.random().toString(36).substring(7);
 
-  constructor() { 
+  constructor(private toastr: ToastrService) { 
     
   }
 
@@ -72,7 +73,8 @@ export class DatatableComponent implements OnInit, AfterViewInit {
         action: function (e: any, dt: any, node: any, config: any) {
           const rows = dt.rows({ selected: true }).data();
           if (rows.length > 1) {
-            alert('Please select only one row to edit');
+            // alert('Please select only one row to edit');
+            self.toastr.error('Please select only one row to edit');
             return;
           }
           self.toParentDataTableEdit.emit(rows[0]);

@@ -15,10 +15,10 @@ export class GoalComponent implements OnInit {
       value: 50000000
     },
     rate: {
-      value: 15
+      value: 12
     },
     tenure: {
-      value: 15
+      value: 20
     },
     sip: {
       value: 0
@@ -33,45 +33,45 @@ export class GoalComponent implements OnInit {
   goalColumns: any = [
     {
       data: 'month',
-      title: 'month',
+      title: 'Month',
     },
     {
       data: 'initialAmount',
-      title: 'initialAmount',
+      title: 'Initial Amount',
     },
     {
       data: 'monthlyAmount',
-      title: 'monthlyAmount',
+      title: 'SIP Amount',
     },
-    {
-      data: 'totalMonthlyAmount',
-      title: 'totalMonthlyAmount',
-    },
-    {
-      data: 'monthlySum',
-      title: 'monthlySum',
-    },
+    // {
+    //   data: 'totalMonthlyAmount',
+    //   title: 'totalMonthlyAmount',
+    // },
+    // {
+    //   data: 'monthlySum',
+    //   title: 'monthlySum',
+    // },
     
     {
       data: 'monthlyInterest',
-      title: 'monthlyInterest',
+      title: 'Monthly Interest',
     },
-    {
-      data: 'totalMonthlyInterest',
-      title: 'totalMonthlyInterest',
-    },
+    // {
+    //   data: 'totalMonthlyInterest',
+    //   title: 'totalMonthlyInterest',
+    // },
     {
       data: 'extraAmount',
-      title: 'extraAmount',
+      title: 'Annual Additional Amount',
     },
-    {
-      data: 'totalExtraAmount',
-      title: 'totalExtraAmount',
-    },
+    // {
+    //   data: 'totalExtraAmount',
+    //   title: 'totalExtraAmount',
+    // },
     
     {
       data: 'totalAmount',
-      title: 'totalAmount',
+      title: 'Total Amount',
     }
      
   ];

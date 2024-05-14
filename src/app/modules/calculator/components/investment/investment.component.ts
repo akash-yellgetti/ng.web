@@ -28,7 +28,7 @@ export class InvestmentComponent implements OnInit {
   public stackedBarChartOptions: any =  JSON.parse(JSON.stringify(stackedBarChartOptions));
   form: any = {
     amount: {
-      value: 22500
+      value: 30000
     },
     rate: {
       value: 12
@@ -44,80 +44,7 @@ export class InvestmentComponent implements OnInit {
     },
     
   }
-  investment: any = {
-
-    sip: {
-      form: {
-        monthlyAmount: {
-          value: 25000
-        },
-        roi: {
-          value: 12
-        },
-        tenure: {
-          value: 10
-        },
-        growth: {
-          value: 10
-        },
-        extra: {
-          value: 2
-        },
-      },
-      result: {
-
-      }
-    },
-
-    stepUpSip: {
-      form: {
-        monthlyAmount: {
-          value: 25000
-        },
-        roi: {
-          value: 12
-        },
-        tenure: {
-          value: 10
-        },
-        growth: {
-          value: 10
-        },
-        extra: {
-          value: 2
-        },
-      },
-      result: {
-        
-      }
-    },
-
-    loan: {
-      form: {
-        monthlyAmount: {
-          value: 25000
-        },
-        roi: {
-          value: 12
-        },
-        tenure: {
-          value: 10
-        },
-        growth: {
-          value: 10
-        },
-        extra: {
-          value: 2
-        },
-      },
-      result: {
-        
-      }
-    },
- 
-
-  }
-
+  
   investmentColumns: any = [
     {
       data: 'month',

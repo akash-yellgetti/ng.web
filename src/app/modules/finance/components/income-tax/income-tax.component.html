@@ -7,33 +7,214 @@
 <div class="row">
     <!-- Pie Chart -->
     <div class="col-xl-4 col-lg-4">
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Income Details</h6>
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Income Details
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                    data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <!--   Income Details -->
+                                <!-- Gross Income From Salary -->
+                                <div class="form-group">
+                                    <label for="grossIncome">Gross Income From Salary</label>
+                                    <input type="text" id="grossIncome" name="grossIncome" class="form-control">
+                                </div>
+
+                                <!-- Income From Interest -->
+                                <div class="form-group">
+                                    <label for="interestIncome">Income From Interest</label>
+                                    <input type="text" id="interestIncome" name="interestIncome" class="form-control">
+                                </div>
+
+                                <!-- Rental Income Received -->
+                                <div class="form-group">
+                                    <label for="rentalIncome">Rental Income Received</label>
+                                    <input type="text" id="rentalIncome" name="rentalIncome" class="form-control">
+                                </div>
+
+                                <!-- Income From Other Sources (Interest, Dividend, etc.) -->
+                                <div class="form-group">
+                                    <label for="otherIncome">Income From Other Sources (Interest, Dividend,
+                                        etc.)</label>
+                                    <input type="text" id="otherIncome" name="otherIncome" class="form-control">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                <form class="row">
-                    <div class="mb-3 col-12">
-                        <label class="form-label"> Annual Income </label>
-                        <input type="text" class="form-control" placeholder="Annual Income" />
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                        <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Deductions
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <h5>Under 80C</h5>
+                                </div> 
+
+                                <!-- Life Insurance Premium -->
+                                <div class="form-group">
+                                    <label for="lifeInsurancePremium">Life Insurance Premium</label>
+                                    <input type="text" id="lifeInsurancePremium" name="lifeInsurancePremium"
+                                        class="form-control">
+                                </div>
+
+                                <!-- Public Provident Fund -->
+                                <div class="form-group">
+                                    <label for="ppf">Public Provident Fund</label>
+                                    <input type="text" id="ppf" name="ppf" class="form-control">
+                                </div>
+
+                                <!-- Contribution to Provident Fund -->
+                                <div class="form-group">
+                                    <label for="pfContribution">Contribution to Provident Fund</label>
+                                    <input type="text" id="pfContribution" name="pfContribution" class="form-control">
+                                </div>
+
+                                <!-- Tax Saving Fixed Deposit -->
+                                <div class="form-group">
+                                    <label for="taxSavingFD">Tax Saving Fixed Deposit</label>
+                                    <input type="text" id="taxSavingFD" name="taxSavingFD" class="form-control">
+                                </div>
+
+                                <!-- Repayment of Principal on Housing Loan -->
+                                <div class="form-group">
+                                    <label for="housingLoanRepayment">Repayment of Principal on Housing Loan</label>
+                                    <input type="text" id="housingLoanRepayment" name="housingLoanRepayment"
+                                        class="form-control">
+                                </div>
+
+                                <!-- ULIP/ Tax Saving Investment Plans -->
+                                <div class="form-group">
+                                    <label for="ulip">ULIP/ Tax Saving Investment Plans</label>
+                                    <input type="text" id="ulip" name="ulip" class="form-control">
+                                </div>
+
+                                <!-- Equity Linked Savings Schemes (ELSS) -->
+                                <div class="form-group">
+                                    <label for="elss">Equity Linked Savings Schemes (ELSS)</label>
+                                    <input type="text" id="elss" name="elss" class="form-control">
+                                </div>
+
+                                <!-- Employee Contribution to NPS u/s 80CCD(1) -->
+                                <div class="form-group">
+                                    <label for="npsContribution">Employee Contribution to NPS u/s 80CCD(1)</label>
+                                    <input type="text" id="npsContribution" name="npsContribution" class="form-control">
+                                </div>
+
+                                <!-- Tuition Fees -->
+                                <div class="form-group">
+                                    <label for="tuitionFees">Tuition Fees</label>
+                                    <input type="text" id="tuitionFees" name="tuitionFees" class="form-control">
+                                </div>
+
+                                <!-- Other Tax Saving Investments u/s 80C -->
+                                <div class="form-group">
+                                    <label for="otherTaxSaving">Other Tax Saving Investments u/s 80C</label>
+                                    <input type="text" id="otherTaxSaving" name="otherTaxSaving" class="form-control">
+                                </div>
+
+                                <!-- Under 80D -->
+                                <!-- For Self & Family -->
+                                <div class="form-group">
+                                    <h5>Under 80D</h5>
+                                </div>
+
+                                <!-- Preventive Checkup -->
+                                <div class="form-group">
+                                    <label for="preventiveCheckup">Preventive Checkup</label>
+                                    <input type="text" id="preventiveCheckup" name="preventiveCheckup"
+                                        class="form-control">
+                                </div>
+
+                                <!-- For Parents below 60 Years -->
+                                <div class="form-group">
+                                    <label for="parentsBelow60">For Parents below 60 Years</label>
+                                    <input type="text" id="parentsBelow60" name="parentsBelow60" class="form-control">
+                                </div>
+
+                                <!-- For Parents above 60 Years -->
+                                <div class="form-group">
+                                    <label for="parentsAbove60">For Parents above 60 Years</label>
+                                    <input type="text" id="parentsAbove60" name="parentsAbove60" class="form-control">
+                                </div>
+
+                                 
+                                <div class="form-group">
+                                    <h5>Other Deductions</h5>
+                                </div>
+
+
+                                <!-- HRA u/s 10 (13A) -->
+                                <div class="form-group">
+                                    <label for="hra">HRA u/s 10 (13A)</label>
+                                    <input type="text" id="hra" name="hra" class="form-control">
+                                </div>
+
+                                <!-- Employee Contribution to NPS u/s 80CCD(1B) -->
+                                <div class="form-group">
+                                    <label for="npsContribution1B">Employee Contribution to NPS u/s 80CCD(1B)</label>
+                                    <input type="text" id="npsContribution1B" name="npsContribution1B"
+                                        class="form-control">
+                                </div>
+
+                                <!-- Interest on Housing Loan Section 24 -->
+                                <div class="form-group">
+                                    <label for="housingLoanInterest">Interest on Housing Loan Section 24</label>
+                                    <input type="text" id="housingLoanInterest" name="housingLoanInterest"
+                                        class="form-control">
+                                </div>
+
+                                <!-- Savings Account Interest (Section 80TTA) -->
+                                <div class="form-group">
+                                    <label for="savingsAccountInterest">Savings Account Interest (Section 80TTA)</label>
+                                    <input type="text" id="savingsAccountInterest" name="savingsAccountInterest"
+                                        class="form-control">
+                                </div>
+
+                                <!-- Professional Tax -->
+                                <div class="form-group">
+                                    <label for="professionalTax">Professional Tax</label>
+                                    <input type="text" id="professionalTax" name="professionalTax" class="form-control">
+                                </div>
+
+                                <!-- Donation u/s 80G -->
+                                <div class="form-group">
+                                    <label for="donation">Donation u/s 80G</label>
+                                    <input type="text" id="donation" name="donation" class="form-control">
+                                </div>
+
+                                <!-- Others -->
+                                <div class="form-group">
+                                    <label for="others">Others</label>
+                                    <input type="text" id="others" name="others" class="form-control">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-3 col-12">
-                        <label class="form-label"> Interest Income</label>
-                        <input type="text" class="form-control" placeholder="Annual Interest Income" />
-                    </div>
-                    <div class="mb-3 col-12">
-                        <label class="form-label"> Other Sources </label>
-                        <input type="text" class="form-control" placeholder="Other Income Sources" />
-                    </div>
-                    
-                    <div class="col-12">
-                        <button class="btn btn-success w-100">Calculate</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
+
     </div>
     <div class="col-xl-8 col-lg-8">
         <div class="card shadow mb-4">
@@ -43,9 +224,9 @@
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                 <table class="table table-bordered">
+                <table class="table table-bordered">
                     <tr>
-                        <th width="60%" >Detail</th>
+                        <th width="60%">Detail</th>
                         <th>Old Regime</th>
                         <th>New Regime</th>
                     </tr>
@@ -54,7 +235,7 @@
                         <th>Old Regime</th>
                         <th>New Regime</th>
                     </tr>
-                 </table>
+                </table>
             </div>
         </div>
     </div>

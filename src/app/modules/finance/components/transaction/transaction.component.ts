@@ -70,8 +70,8 @@ export class TransactionComponent implements OnInit {
 
     this.chartOptions = null;
     this.chartOptions = { type: ChartType.ColumnChart,  columnNames: ['Month', 'Income', 'Expense'] ,
-      width: 1500,  
-      height: 500,  
+      width: 1000,  
+      height: 310,  
     data: [] };
     this.chartOptions.data = _.reduce(transactionOverviewData, (a: any, v: any, k) => {
       a.push([k, v.income, v.expense]);
@@ -93,11 +93,13 @@ export class TransactionComponent implements OnInit {
 
 
   getChild = (child: any) => {
+    const selection = child.selection[0];
+    const columns = ['deposit', 'withdrawal'];
     // console.log('child', child);
     // this.chartOptions.data[child.row + 1][child.column] = child.value;
     // console.log(this.chartOptions.data[child.selection[0].row]);
     let data: any = _.filter(this.transactionData, (o: any) => {
-      return o.monthYear === this.chartOptions.data[child.selection[0].row][0];
+      return o.monthYear === this.chartOptions.data[selection.row][0];
     })
 
     data = _.map(data, (r: any) => {
@@ -116,7 +118,7 @@ export class TransactionComponent implements OnInit {
       height: 500,  
     data: [] };
     this.chartOptions2.data = _.reduce(data, (a: any, v: any, k) => {
-      a.push([k, _.sumBy(v, 'deposit')]);
+      a.push([k, _.sumBy(v, columns[selection.column - 1])]);
       return a;
     }, []);
 

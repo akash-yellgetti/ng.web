@@ -32,29 +32,29 @@ export class BudgetComponent implements OnInit {
   };
   public budgetData: any = [];
   public budgetColumn: any = [
-    {
-      name: 'category',
-      title: 'category',
-      data: 'category',
-    },
+    // {
+    //   name: 'category',
+    //   title: 'category',
+    //   data: 'category',
+    // },
     {
       name: 'subcategory',
-      title: 'subcategory',
+      title: 'Category',
       data: 'subcategory',
     },
     {
       name: 'title',
-      title: 'title',
+      title: 'Title',
       data: 'title',
     },
     {
       name: 'description',
-      title: 'description',
+      title: 'Description',
       data: 'description',
     },
     {
       name: 'amount',
-      title: 'amount',
+      title: 'Amount',
       data: 'amount',
     },
   ];
@@ -118,16 +118,27 @@ export class BudgetComponent implements OnInit {
   save = () => {
     const json = this.fieldService.json(this.form);
     this.budgetService.createBudget(json).subscribe((res) => {
-      console.log(res);
-      this.budgetService.getDetail().subscribe((d: any) => {
-        this.data = d.data;
-        this.refreshDatatableAndChart(this.category);
-      })
+      this.refreshData();
     })
   };
 
+  refreshData = () => {
+    this.budgetService.getDetail().subscribe((d: any) => {
+      this.data = d.data;
+      this.refreshDatatableAndChart(this.category);
+    });
+  }
+
   delete = (data: any) => {
     console.log(data)
+    const promises = [];
+    
+    for (const d of data) {
+      promises.push(this.budgetService.deleteBudget({ id: d._id }).toPromise());
+    }
+
+    const result = Promise.all(promises);
+    this.refreshData();
   }
 
   edit = (data: any) => {

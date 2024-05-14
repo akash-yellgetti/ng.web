@@ -84,69 +84,136 @@
             </div>
         </div>
     </div>
-        <div class="col-xl-6 col-lg-5">
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">FIRE Overview</h6>
-                </div>
-                <!-- Card Body -->
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-4 col-lg-4 mb-4">
+            <div class="card border-left-primary shadow mb-3">
                 <div class="card-body">
-                    <table class="table table-bordered">
-                        <tr>
-                            <td>Monthly Income At Time Of Retirement</td>
-                            <td>
-                                {{
-                                result.monthlyIncomeAtRetirement || 0 | indianNumberFormat
-                                }}
-                                <br />
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="h6 font-weight-bold text-primary text-uppercase mb-1">
+                                Monthly Income At Time Of Retirement
+                            </div>
+                            <div class="h6 mb-0 font-weight-bold text-gray-800">
+                                {{ result.monthlyIncomeAtRetirement || 0 | indianNumberFormat }}
+                            </div>
+                            <div class="text-xs mb-0 font-weight-bold text-gray-800">
                                 {{ result.monthlyIncomeAtRetirement || 0 | numberToWords }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Monthly Expense At Time Of Retirement</td>
-                            <td>
-                                {{
-                                result.monthlyExpenseAtRetirement || 0 | indianNumberFormat
-                                }}
-                                <br />
-                                {{ result.monthlyExpenseAtRetirement || 0 | numberToWords }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Monthly Investment Required To Achieve Normal FIRE Corpus</td>
-                            <td>
-                                {{ result.SIPAmount || 0 | indianNumberFormat }} <br />
-                                {{ result.SIPAmount || 0 | numberToWords }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Lean FIRE Retirement Corpus Required</td>
-                            <td>
-                                {{ result.leanFireCorpusRequired || 0 | indianNumberFormat }}
-                                <br />
-                                {{ result.leanFireCorpusRequired || 0 | numberToWords }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Normal FIRE Retirement Corpus Required</td>
-                            <td>
-                                {{ result.normalFireCorpusRequired || 0 | indianNumberFormat }}
-                                <br />
-                                {{ result.normalFireCorpusRequired || 0 | numberToWords }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Fat FIRE Retirement Corpus Required</td>
-                            <td>
-                                {{ result.fatFireCorpusRequired || 0 | indianNumberFormat }}
-                                <br />
-                                {{ result.fatFireCorpusRequired || 0 | numberToWords }}
-                            </td>
-                        </tr>
-                    </table>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="card border-left-primary shadow mb-3">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="h6 font-weight-bold text-primary text-uppercase mb-1">
+                                Monthly Expense At Time Of Retirement
+                            </div>
+                            <div class="h6 mb-0 font-weight-bold text-gray-800">
+                                {{ result.monthlyExpenseAtRetirement || 0 | indianNumberFormat }}
+                            </div>
+                            <div class="text-xs mb-0 font-weight-bold text-gray-800">
+                                {{ result.monthlyExpenseAtRetirement || 0 | numberToWords }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card border-left-primary shadow mb-3">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="h6 font-weight-bold text-primary text-uppercase mb-1">
+                                Monthly Investment Required To Achieve Normal FIRE Corpus
+                            </div>
+                            <div class="h6 mb-0 font-weight-bold text-gray-800">
+                                {{ result.SIPAmount || 0 | indianNumberFormat }}
+                            </div>
+                            <div class="text-xs mb-0 font-weight-bold text-gray-800">
+                                {{ result.SIPAmount || 0 | numberToWords }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+           
         </div>
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-4 col-lg-4 mb-4">
+            <div class="card border-left-primary shadow mb-3">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="h6 font-weight-bold text-primary text-uppercase mb-1">
+                                Lean FIRE Retirement Corpus Required
+                            </div>
+                            <div class="h6 mb-0 font-weight-bold text-gray-800">
+                                {{ result.leanFireCorpusRequired || 0 | indianNumberFormat }}
+                            </div>
+                            <div class="text-xs mb-0 font-weight-bold text-gray-800">
+                                {{ result.leanFireCorpusRequired || 0 | numberToWords }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card border-left-primary shadow mb-3">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="h6 font-weight-bold text-primary text-uppercase mb-1">
+                                Normal FIRE Retirement Corpus Required
+                            </div>
+                            <div class="h6 mb-0 font-weight-bold text-gray-800">
+                                {{ result.normalFireCorpusRequired || 0 | indianNumberFormat }}
+                            </div>
+                            <div class="text-xs mb-0 font-weight-bold text-gray-800">
+                                {{ result.normalFireCorpusRequired || 0 | numberToWords }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card border-left-primary shadow mb-3">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="h6 font-weight-bold text-primary text-uppercase mb-1">
+                                Fat FIRE Retirement Corpus Required
+                            </div>
+                            <div class="h6 mb-0 font-weight-bold text-gray-800">
+                                {{ result.fatFireCorpusRequired || 0 | indianNumberFormat }}
+                            </div>
+                            <div class="text-xs mb-0 font-weight-bold text-gray-800">
+                                {{ result.fatFireCorpusRequired || 0 | numberToWords }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+           
+        </div>
+   
     
 </div>

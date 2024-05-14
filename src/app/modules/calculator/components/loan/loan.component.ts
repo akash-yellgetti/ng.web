@@ -15,44 +15,43 @@ export class LoanComponent implements OnInit {
   public loanColumns: any = [
     {
       data: 'month',
-      title: 'month',
-    }
-    ,{
-      data: 'loanAmount',
-      title: 'loanAmount',
-    }
-    ,{
+      title: 'Month',
+    },
+    // {
+    //   data: 'loanAmount',
+    //   title: 'loanAmount',
+    // },
+    {
       data: 'emi',
-      title: 'emi',
-    }
-    
-    ,{
+      title: 'EMI Amount',
+    },
+    {
       data: 'principal',
-      title: 'principal',
-    }
-    ,{
-      data: 'totalPrincipal',
-      title: 'totalPrincipal',
-    }
-    ,{
+      title: 'Principal',
+    },
+    // {
+    //   data: 'totalPrincipal',
+    //   title: 'totalPrincipal',
+    // },
+    {
       data: 'interest',
-      title: 'interest',
-    }
-    ,{
-      data: 'totalInterest',
-      title: 'totalInterest',
-    }
-    ,{
+      title: 'Interest',
+    },
+    // {
+    //   data: 'totalInterest',
+    //   title: 'totalInterest',
+    // },
+    {
       data: 'partPayment',
-      title: 'partPayment',
-    }
-    ,{
-      data: 'totalPartPayment',
-      title: 'totalPartPayment',
-    }
-    ,{
+      title: 'Annual Part Payment',
+    },
+    // {
+    //   data: 'totalPartPayment',
+    //   title: 'totalPartPayment',
+    // },
+    {
       data: 'balance',
-      title: 'balance',
+      title: 'Balance',
     }
     
   //   {

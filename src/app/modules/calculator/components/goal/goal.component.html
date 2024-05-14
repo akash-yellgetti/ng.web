@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12">
                         <div class="form-group">
-                            <label for="amount">Amount</label>
+                            <label for="amount">Goal Amount</label>
                             <input type="text" class="form-control" id="amount" placeholder="Enter amount"
                                 [(ngModel)]="form.amount.value" />
                             <div class="mt-1 text-l text-primary">{{ form.amount.value || 0 | numberToWords }}</div>
@@ -18,14 +18,14 @@
                     </div>
                     <div class="col-md-6 col-lg-6">
                         <div class="form-group">
-                            <label for="rate">Rate</label>
+                            <label for="rate">Rate of Return (p.a)</label>
                             <input type="text" class="form-control" id="rate" placeholder="Enter rate"
                                 [(ngModel)]="form.rate.value" />
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6">
                         <div class="form-group">
-                            <label for="tenure">Tenure</label>
+                            <label for="tenure">Tenure In Years</label>
                             <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
                                 [(ngModel)]="form.tenure.value" />
                         </div>
@@ -35,20 +35,21 @@
                             <label for="sipAmount">SIP Amount</label>
                             <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
                                 [(ngModel)]="form.sip.value" />
+                            <div class="mt-1 text-l text-primary">{{ form.sip.value || 0 | numberToWords }}</div>
                         </div>
                     </div>
 
                     <div class="col-md-6 col-lg-6">
                         <div class="form-group">
-                            <label for="tenure">Growth Rate In Emi Yearly</label>
+                            <label for="tenure">Growth Rate In SIP Yearly</label>
                             <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
                                 [(ngModel)]="form.growthRate.value" />
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6">
                         <div class="form-group">
-                            <label for="tenure">Lumsum Part Payment Yearly</label>
-                            <input type="text" class="form-control" id="tenure" placeholder="Enter tenure"
+                            <label for="tenure">Annual Addition Amount</label>
+                            <input type="text" class="form-control" id="tenure" placeholder="Enter Annual Addition Amoun"
                                 [(ngModel)]="form.additionalAmount.value" />
                         </div>
                     </div>
@@ -75,24 +76,19 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-4 col-md-4 mb-4">
         <div class="card border-left-primary shadow mb-3">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        <div class="h6 font-weight-bold text-primary text-uppercase mb-1">
                             Total Investment
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            {{
-                            this.lastInvestmentData.totalMonthlyAmount || 0
-                            | indianNumberFormat
-                            }}
+                        <div class="h6 mb-0 font-weight-bold text-gray-800">
+                            {{ this.lastInvestmentData.totalMonthlyAmount || 0 | indianNumberFormat }}
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            {{
-                            this.lastInvestmentData.totalMonthlyAmount || 0 | numberToWords
-                            }}
+                        <div class="text-xs mb-0 font-weight-bold text-gray-800">
+                            {{ this.lastInvestmentData.totalMonthlyAmount || 0 | numberToWords }}
                         </div>
                     </div>
                     <div class="col-auto">
@@ -101,25 +97,19 @@
                 </div>
             </div>
         </div>
-
+    
         <div class="card border-left-primary shadow mb-3">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        <div class="h6 font-weight-bold text-primary text-uppercase mb-1">
                             Total Interest
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            {{
-                            this.lastInvestmentData.totalMonthlyInterest || 0
-                            | indianNumberFormat
-                            }}
+                        <div class="h6 mb-0 font-weight-bold text-gray-800">
+                            {{ this.lastInvestmentData.totalMonthlyInterest || 0 | indianNumberFormat }}
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            {{
-                            this.lastInvestmentData.totalMonthlyInterest || 0
-                            | numberToWords
-                            }}
+                        <div class="text-xs mb-0 font-weight-bold text-gray-800">
+                            {{ this.lastInvestmentData.totalMonthlyInterest || 0 | numberToWords }}
                         </div>
                     </div>
                     <div class="col-auto">
@@ -128,24 +118,19 @@
                 </div>
             </div>
         </div>
-
+     
         <div class="card border-left-primary shadow mb-3">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        <div class="h6 font-weight-bold text-primary text-uppercase mb-1">
                             Total Lumsum Amount
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            {{
-                            this.lastInvestmentData.totalExtraAmount || 0
-                            | indianNumberFormat
-                            }}
+                        <div class="h6 mb-0 font-weight-bold text-gray-800">
+                            {{ this.lastInvestmentData.totalExtraAmount || 0 | indianNumberFormat }}
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            {{
-                            this.lastInvestmentData.totalExtraAmount || 0 | numberToWords
-                            }}
+                        <div class="text-xs mb-0 font-weight-bold text-gray-800">
+                            {{ this.lastInvestmentData.totalExtraAmount || 0 | numberToWords }}
                         </div>
                     </div>
                     <div class="col-auto">
@@ -154,20 +139,18 @@
                 </div>
             </div>
         </div>
-
+     
         <div class="card border-left-primary shadow mb-3">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        <div class="h6 font-weight-bold text-primary text-uppercase mb-1">
                             Total Amount
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            {{
-                            this.lastInvestmentData.totalAmount || 0 | indianNumberFormat
-                            }}
+                        <div class="h6 mb-0 font-weight-bold text-gray-800">
+                            {{ this.lastInvestmentData.totalAmount || 0 | indianNumberFormat }}
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                        <div class="text-xs mb-0 font-weight-bold text-gray-800">
                             {{ this.lastInvestmentData.totalAmount || 0 | numberToWords }}
                         </div>
                     </div>
