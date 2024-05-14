@@ -68,6 +68,7 @@ ng g s shared/services/validation/validation
 
 ng g c modules/user/components/chat-window --module=user
 ng g c modules/user/components/contact --module=user
+ng g c modules/user/components/setting --module=user
 
 ng g r modules/user/resolver/notifications/notifications
 ng g r modules/user/resolver/conversations/conversations

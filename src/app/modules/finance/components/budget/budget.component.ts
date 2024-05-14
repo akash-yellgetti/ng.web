@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 import { pieChartOptions } from '../../../../shared/components/chart/chart-options';
 import { BudgetService } from '../../services/api/budget/budget.service';
 import { FieldService } from '../../../../shared/services/field/field.service';
+import { forms } from 'src/app/shared/json/forms.json';
 
 @Component({
   selector: 'app-budget',
@@ -13,23 +14,7 @@ import { FieldService } from '../../../../shared/services/field/field.service';
 })
 export class BudgetComponent implements OnInit {
   public data: any = [];
-  public form: any = {
-    category: {
-      value: 'income',
-    },
-    subcategory: {
-      value: 'salary',
-    },
-    title: {
-      value: 'BTS salary',
-    },
-    description: {
-      value: '#salary',
-    },
-    amount: {
-      value: 100000,
-    },
-  };
+  public form: any = forms.budgetForm;
   public budgetData: any = [];
   public budgetColumn: any = [
     // {
@@ -115,11 +100,20 @@ export class BudgetComponent implements OnInit {
     });
   };
 
-  save = () => {
+  save = (): void => {
+
+    const errors = this.fieldService.validateForm(this.form);
+    if (Object.keys(errors).length > 0 ){
+      this.fieldService.setToastr(errors)
+      return;
+    }
+
     const json = this.fieldService.json(this.form);
     this.budgetService.createBudget(json).subscribe((res) => {
       this.refreshData();
-    })
+    });
+
+    // return true; // Add this line to return a value
   };
 
   refreshData = () => {

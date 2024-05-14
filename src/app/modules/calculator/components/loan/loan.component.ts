@@ -4,6 +4,7 @@ import { ChartService } from 'src/app/shared/services/chart/chart.service';
 import * as _ from 'lodash';
 import { FieldService } from '../../../../shared/services/field/field.service';
 import { CHART_OPTIONS_ONE, columnChartOptions, lineChartOptions, stackedBarChartOptions } from 'src/app/shared/components/chart/chart-options';
+import { forms } from 'src/app/shared/json/forms.json';
 @Component({
   selector: 'app-loan',
   templateUrl: './loan.component.html',
@@ -103,27 +104,7 @@ export class LoanComponent implements OnInit {
   public stackedBarChartOptions: any =  JSON.parse(JSON.stringify(stackedBarChartOptions));
   updateFlag: any = 0;
   InstallmentAmount: any = 0;
-  form: any = {
-    amount: {
-      value: 7500000
-    },
-    rate: {
-      value: 8.6
-    },
-    tenure: {
-      value: 15
-    },
-    emi: {
-      value: 0
-    },
-    growthRate: {
-      value: 0
-    },
-    additionalAmount: {
-      value: 0
-    },
-    
-  }
+  form: any = forms.loanForm;
 
   constructor(
     public chartService: ChartService, 
@@ -147,6 +128,11 @@ export class LoanComponent implements OnInit {
 
   calculate = () => {
     const form = this.form;
+    const errors = this.fieldService.validateForm(form);
+    if (Object.keys(errors).length > 0 ){
+      this.fieldService.setToastr(errors)
+      return;
+    }
     const emiAmount: any = parseFloat(form.emi.value) === 0 ? this.calculatorService.emi(form.amount.value, form.rate.value, form.tenure.value) : parseFloat(form.emi.value);
     form.emi.value = emiAmount;
     const data: any = this.calculatorService.emiTable(Number(form.amount.value), Number(form.rate.value), Number(form.tenure.value), Number(form.emi.value), Number(form.growthRate.value), parseFloat(form.additionalAmount.value));
@@ -162,37 +148,9 @@ export class LoanComponent implements OnInit {
     stackedBarChartOptionss.series = [
       { name: 'interest', data: _.map(data, 'interest') },
       { name: 'principal', data: _.map(data, 'principal') },
-      { name: 'partPayment', data: _.map(data, 'partPayment') },
-        // { name: 'totalMonthlyInterest', data: _.map(investmentData, 'totalMonthlyInterest') },
-        // { name: 'totalInterest', data: _.map(data, 'totalInterest') },
-        // { name: 'totalLoanAmount', data: _.map(data, 'totalLoanAmount') },
-        // { name: 'totalAmount', data: _.map(investmentData, 'totalAmount') },
-        // { name: 'balance', data: _.map(data, 'balance') },
-        // { name: 'totalAmount', data: _.map(investmentData, 'totalAmount') },
-        // { name: 'monthlyInterest', data: _.map(investmentData, 'monthlyInterest') },
-        // { name: 'monthlyAmount', data: _.map(investmentData, 'monthlyAmount') },
+      { name: 'partPayment', data: _.map(data, 'partPayment') }, 
       ];
     this.stackedBarChartOptions = JSON.parse(JSON.stringify(stackedBarChartOptionss));
-    // this.updateFlag = !this.updateFlag;
-
-    // this.pieChartOptions.series[0].data = [
-    //   { name: 'totalPrincipal', y: _.get(last, 'totalPrincipal', 0) },
-    //   { name: 'totalInterest', y: _.get(last, 'totalInterest', 0) },
-    //   { name: 'totalPartPayment', y: _.get(last, 'totalPartPayment', 0) },
-    // ];
-    // // this.lineChartOptions.xAxis.categories = _.map(this.loanData, 'month');
-    // this.lineChartOptions.series = [
-    //   {
-    //     name: 'principal',
-    //     data: _.map(this.loanData, 'principal')
-    //   },
-    //   {
-    //     name: 'interest',
-    //     data: _.map(this.loanData, 'interest')
-    //   }
-    // ]
-    // console.log(this.lineChartOptions)
-    // this.updateFlag = !this.updateFlag;
-    
+     
   }
 }

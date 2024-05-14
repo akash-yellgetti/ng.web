@@ -5,32 +5,14 @@ import { BudgetService } from '../../services/api/budget/budget.service';
 import { FieldService } from '../../../../shared/services/field/field.service';
 import { PlannerService } from '../../services/api/planner/planner.service';
 import * as _ from 'lodash';
+import { forms } from 'src/app/shared/json/forms.json';
 @Component({
   selector: 'app-planner',
   templateUrl: './planner.component.html',
   styleUrls: ['./planner.component.scss']
 })
 export class PlannerComponent implements OnInit {
-  public form: any = {
-    type: {
-      value: 'loan',
-    },
-    title: {
-      value: 'Home Loan',
-    },
-    description: {
-      value: '#HL',
-    },
-    amount: {
-      value: 100000,
-    },
-    rate: {
-      value: 9,
-    },
-    tenure: {
-      value: 15,
-    },
-  };
+  public form: any = forms.plannerForm;
   public categories: any = [
     {
       name: 'loan',
@@ -96,6 +78,11 @@ export class PlannerComponent implements OnInit {
   }
 
   save = () => {
+    const errors = this.fieldService.validateForm(this.form);
+    if (Object.keys(errors).length > 0 ){
+      this.fieldService.setToastr(errors)
+      return;
+    }
     const json = this.fieldService.json(this.form);
     this.plannerService.createPlanner(json).subscribe((res: any) => {
       console.log(res);

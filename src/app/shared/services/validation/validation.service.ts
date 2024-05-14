@@ -52,7 +52,7 @@ export class ValidationService {
   }
 
   isRequired(value: any): boolean {
-    return value !== undefined && value !== '' && value !== null;
+    return value !== undefined && value !== '' && value !== null && value !== 0;
   }
 
   isMinLength(value: any, length: number): boolean {

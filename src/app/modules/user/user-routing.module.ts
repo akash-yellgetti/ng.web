@@ -2,15 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChatComponent } from './components/chat/chat.component';
 import { FamilyComponent } from './components/family/family.component';
-import { HabitsComponent } from './components/habits/habits.component';
 import { NotificationComponent } from './components/notification/notification.component';
-import { PersonalFinanceComponent } from './components/personal-finance/personal-finance.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ConversationsResolver } from './resolver/conversations/conversations.resolver';
 import { ConversationHistoryResolver } from './resolver/conversation-history/conversation-history.resolver';
 import { ChatWindowComponent } from './components/chat-window/chat-window.component';
 import { NotificationsResolver } from './resolver/notifications/notifications.resolver';
 import { CategoriesComponent } from './components/categories/categories.component'
+import { SettingComponent } from './components/setting/setting.component';
 
 const routes: Routes = [
   {
@@ -43,8 +42,8 @@ const routes: Routes = [
     component: FamilyComponent
   },
   {
-    path: 'habits',
-    component: HabitsComponent
+    path: 'setting',
+    component: SettingComponent
   }
 ];
 

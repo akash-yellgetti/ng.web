@@ -93,8 +93,9 @@ export class GoalComponent implements OnInit {
   }
 
   calculate = () => {
+    const form = this.fieldService.json(this.form);
     const { amount, rate, tenure, sip, growthRate, additionalAmount } = this.form;
-    const SIPAmount = this.calculatorService.SIPAmount(Number(amount.value), Number(rate.value), Number(tenure.value));
+    const SIPAmount = this.calculatorService.SIPAmount(Number(amount.value)-(Number(additionalAmount.value) * Number(tenure.value)), Number(rate.value), Number(tenure.value));
     sip.value = SIPAmount;
     console.log(SIPAmount);
     const goalData: any = this.calculatorService.investmentTable(Number(SIPAmount), Number(rate.value), Number(tenure.value), Number(growthRate.value), Number(additionalAmount.value));

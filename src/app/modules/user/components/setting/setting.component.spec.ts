@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HabitsComponent } from './habits.component';
+import { SettingComponent } from './setting.component';
 
-describe('HabitsComponent', () => {
-  let component: HabitsComponent;
-  let fixture: ComponentFixture<HabitsComponent>;
+describe('SettingComponent', () => {
+  let component: SettingComponent;
+  let fixture: ComponentFixture<SettingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HabitsComponent ]
+      declarations: [ SettingComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HabitsComponent);
+    fixture = TestBed.createComponent(SettingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
