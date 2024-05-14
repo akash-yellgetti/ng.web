@@ -141,7 +141,7 @@ export class LoanComponent implements OnInit {
     // const finalData = _.values(_.merge(_.keyBy(data, 'month'), _.keyBy(investmentData, 'month')));
     this.loanData = data;
     const last: any = _.last(data);
-    last.totalAmount = form.amount.value + last.totalInterest;
+    last.totalAmount = Number(form.amount.value) + Number(last.totalInterest);
     this.lastLoanData = last;
     
     const stackedBarChartOptionss = JSON.parse(JSON.stringify(stackedBarChartOptions));
