@@ -129,6 +129,10 @@ export class BudgetComponent implements OnInit {
     });
   }
 
+  addBudget = (value: any) => {
+    this.form.category.value = value;
+  }
+
   delete = (data: any) => {
     console.log(data)
     const promises = [];

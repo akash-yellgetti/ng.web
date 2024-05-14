@@ -16,7 +16,7 @@
               <div class="h5 font-weight-bold text-primary mb-1">
                 <a data-toggle="collapse" [attr.data-target]="'#' + category.name"> {{ category.title }} </a>
                 <button type="button" class="btn btn-primary btn-circle float-right" data-toggle="modal"
-                  data-target="#addPlannerModal">
+                  data-target="#addPlannerModal" (click)="addPlanner(category)" >
                   <i class="fas fa-plus"></i>
                 </button>
               </div>

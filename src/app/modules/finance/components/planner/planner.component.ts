@@ -91,6 +91,10 @@ export class PlannerComponent implements OnInit {
     
   }
 
+  addPlanner = (category: any) => {
+    this.form.type.value = category.name;
+  }
+
   save = () => {
     const json = this.fieldService.json(this.form);
     this.plannerService.createPlanner(json).subscribe((res: any) => {
