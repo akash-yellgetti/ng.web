@@ -165,38 +165,18 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <h5 class="modal-title" id="exampleModalLabel"> Add {{ category | titlecase  }} </h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                    <label for="amount">category</label>
-                    <input type="text" class="form-control" id="amount" placeholder="Enter amount"
-                        [(ngModel)]="form.category.value" />
+                <div class="row">
+                  <div class="col-lg-{{ f.value.col }}" *ngFor="let f of form | keys; index as i;">
+                    <app-field [field]="f.value" [key]="f.key"></app-field>
+                  </div>
                 </div>
-                <div class="form-group">
-                    <label for="rate">subcategory Age</label>
-                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
-                        [(ngModel)]="form.subcategory.value" />
-                </div>
-                <div class="form-group">
-                    <label for="rate">Title</label>
-                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
-                        [(ngModel)]="form.title.value" />
-                </div>
-                <div class="form-group">
-                    <label for="rate">Description</label>
-                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
-                        [(ngModel)]="form.description.value" />
-                </div>
-                <div class="form-group">
-                    <label for="rate">Amount</label>
-                    <input type="text" class="form-control" id="rate" placeholder="Enter rate"
-                        [(ngModel)]="form.amount.value" />
-                </div>
-            </div>
+              </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary" type="button" data-dismiss="modal" (click)="save()" >Save</a>

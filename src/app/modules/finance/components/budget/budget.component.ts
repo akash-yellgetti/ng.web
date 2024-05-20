@@ -48,11 +48,11 @@ export class BudgetComponent implements OnInit {
   chartOptions: any = {
     type: 'PieChart',
     data: [],
-    columnNames:  ['Year', 'Income','Expense'],
+    columnNames:  [ 'Income','Expense'],
     chartOptions: { 
       
     },
-    width: 1500,
+    width: 400,
     height: 400
   };
   updateFlag: any = true;
@@ -85,12 +85,15 @@ export class BudgetComponent implements OnInit {
     this.budgetData = _.filter(this.data, (v) => {
       return v.category === category;
     });
+    const chartOptions = { ...this.chartOptions };
+    // console.log(this.budgetData)
     this.chartOptions = null;
-    this.chartOptions = { data: [] };
+    this.chartOptions = { ...chartOptions, data: [] };
     this.chartOptions.data = _.reduce(this.budgetData, (a: any, v: any, k) => {
       a.push([v.title, v.amount]);
       return a;
     }, []);
+    console.log(this.chartOptions)
     this.cdr.detectChanges();
   };
 

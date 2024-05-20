@@ -1,4 +1,5 @@
-<google-chart #chart
+<div *ngIf="options && options.data && options.data.length > 0" >
+   <google-chart #chart
    [title]="options.title"
    [type]="options.type"
    [data]="options.data"
@@ -8,4 +9,5 @@
    [height]="options.height"
    (select)="onSelect($event)"
    >
-</google-chart>
+   </google-chart>
+</div>
