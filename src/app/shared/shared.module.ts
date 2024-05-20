@@ -12,6 +12,8 @@ import { MonthsToYearsPipe } from './pipe/monthsToYears/months-to-years.pipe';
 import { ChartGoogleComponent } from './components/chart-google/chart-google.component';
 import { ChartJsComponent } from './components/chart-js/chart-js/chart-js.component';
 import { GoogleChartsModule } from 'angular-google-charts';
+import { FieldComponent } from './components/field/field.component';
+import { KeysPipe } from './pipe/keys/keys.pipe';
 @NgModule({
   declarations: [
     BreadcrumbsComponent,
@@ -22,7 +24,9 @@ import { GoogleChartsModule } from 'angular-google-charts';
     NumberToWordsPipe,
     MonthsToYearsPipe,
     ChartGoogleComponent,
-    ChartJsComponent
+    ChartJsComponent,
+    FieldComponent,
+    KeysPipe
   ],
   imports: [
     MaterialModule,
@@ -39,9 +43,11 @@ import { GoogleChartsModule } from 'angular-google-charts';
     ChartJsComponent,
     ChartGoogleComponent,
     DatatableComponent,
+    FieldComponent,
     IndianNumberFormatPipe,
     NumberToWordsPipe,
-    MonthsToYearsPipe
+    MonthsToYearsPipe,
+    KeysPipe
   ]
 })
 export class SharedModule { }

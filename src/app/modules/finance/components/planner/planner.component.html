@@ -16,7 +16,7 @@
               <div class="h5 font-weight-bold text-primary mb-1">
                 <a data-toggle="collapse" [attr.data-target]="'#' + category.name"> {{ category.title }} </a>
                 <button type="button" class="btn btn-primary btn-circle float-right" data-toggle="modal"
-                  data-target="#addPlannerModal" (click)="addPlanner(category)" >
+                  data-target="#addPlannerModal" (click)="addPlanner(category)">
                   <i class="fas fa-plus"></i>
                 </button>
               </div>
@@ -32,18 +32,13 @@
           <div class="card-body p-0">
             <div class="list-group">
 
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
-                *ngFor="let item of category?.items;">
-
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let item of category?.items;">
                 <div class="d-flex w-100 justify-content-between" *ngIf="item && item?.title">
                   <h5 class="mb-1">{{ item?.title }}</h5>
-                  <span class="badge rounded-pill border border-primary p-2 "> Emi: {{ item.amount }} </span> 
-                  
+                  <span class="badge rounded-pill border border-primary p-2 "> Emi: {{ item.amount }} </span>
                 </div>
                 <small> | Amount: {{ item.amount }} | Tenure: {{ item.tenure }} | Rate Of Interest: {{ item.tenure }} | </small>
-
               </a>
-
             </div>
           </div>
         </div>
@@ -92,7 +87,7 @@
       <div class="card-footer bg-transparent border-success"> Total</div>
     </div> -->
   </div>
-   
+
 </div>
 <!-- Content Row -->
 
@@ -102,38 +97,21 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"> Add  </h5>
+        <h5 class="modal-title" id="exampleModalLabel"> Add </h5>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
       </div>
       <div class="modal-body">
-
-        <div class="form-group">
-          <label for="rate">Title</label>
-          <input type="text" class="form-control" id="rate" placeholder="Enter rate" [(ngModel)]="form.title.value" />
-        </div>
-        <div class="form-group">
-          <label for="rate">Description</label>
-          <input type="text" class="form-control" id="rate" placeholder="Enter rate"
-            [(ngModel)]="form.description.value" />
-        </div>
-        <div class="form-group">
-          <label for="rate">Amount</label>
-          <input type="text" class="form-control" id="rate" placeholder="Enter rate" [(ngModel)]="form.amount.value" />
-        </div>
-        <div class="form-group">
-          <label for="rate">Rate of Return (p.a)</label>
-          <input type="text" class="form-control" id="rate" placeholder="Enter rate" [(ngModel)]="form.rate.value" />
-        </div>
-        <div class="form-group">
-          <label for="tenure">Tenure (In-Years)</label>
-          <input type="text" class="form-control" id="rate" placeholder="Enter rate" [(ngModel)]="form.tenure.value" />
+        <div class="row">
+          <div class="col-lg-{{ f.value.col }}" *ngFor="let f of form | keys; index as i;">
+            <app-field [field]="f.value" [key]="f.key"></app-field>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        <a class="btn btn-primary" type="button" data-dismiss="modal" (click)="save()">Save</a>
+        <a class="btn btn-primary"  (click)="save()">Save</a>
       </div>
     </div>
   </div>

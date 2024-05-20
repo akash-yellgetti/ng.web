@@ -59,13 +59,6 @@ ng g s modules/main/core/services/module
 
 --------------------------------------------------------------------------------------------------
 
-ng g s shared/services/socket/socket
-ng g s shared/services/socket/socket
-ng g s shared/services/validation/validation
-
---------------------------------------------------------------------------------------------------
-
-
 ng g c modules/user/components/chat-window --module=user
 ng g c modules/user/components/contact --module=user
 ng g c modules/user/components/setting --module=user
@@ -82,6 +75,18 @@ ng g s modules/user/services/contact/contact
 
 --------------------------------------------------------------------------------------------------
 
+
+ng g c shared/components/datatable --module=shared
+ng g c shared/components/field/field --module=shared
+ng g c shared/components/chart/chart --module=shared
+ng g c shared/components/chart-js/chart-js --module=shared
+ng g c shared/components/chart-google/chart-google --module=shared
+
+ng g s shared/services/socket/socket
+ng g s shared/services/socket/socket
+ng g s shared/services/validation/validation
+
+
 ng g s shared/services/common/common
 ng g s shared/services/field/field
 ng g s shared/services/calculator/calculator
@@ -94,6 +99,7 @@ ng g s shared/services/numbertowordsservice/numbertowordsservice
 ng generate pipe shared/pipe/indianNumberFormat/indianNumberFormat
 ng generate pipe shared/pipe/numberToWords/numberToWords
 ng generate pipe shared/pipe/monthsToYears/monthsToYears
+ng generate pipe shared/pipe/keys/keys
 
 
 --------------------------------------------------------------------------------------------------
@@ -108,12 +114,6 @@ ng g m modules/tradingview --routing=true
 ng g c modules/tradingview/components/alerts --module=tradingview
 ng g c modules/tradingview/components/trades --module=tradingview
 --------------------------------------------------------------------------------------------------
-ng g c shared/components/datatable --module=shared
-ng g c shared/components/chart/chart --module=shared
-ng g c shared/components/chart-js/chart-js --module=shared
-ng g c shared/components/chart-google/chart-google --module=shared
---------------------------------------------------------------------------------------------------
-
 
 ng g m modules/calculator --routing=true
 ng g c modules/calculator/components/loan --module=calculator

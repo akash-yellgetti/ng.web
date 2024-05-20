@@ -1,0 +1,15 @@
+<div [ngSwitch]="field.fieldtype">
+  <div class="form-group " *ngSwitchCase="'text'">
+    <label for="{{field.name}}">{{field.label}}</label>
+    <input type="{{field.fieldtype}}" class="form-control" id="{{field.name}}" placeholder="Enter {{field.label}}"
+    [(ngModel)]="field.value">
+    <div class="invalid-feedback" required>
+      Please choose a username.
+    </div>
+  </div>
+  <div class="form-group" *ngSwitchCase="'number'">
+    <label>{{field.label}}</label>
+    <input type="{{field.fieldtype}}" class="form-control" id="name" placeholder="Enter {{field.label}}"
+      [(ngModel)]="field.value">
+  </div>
+</div>

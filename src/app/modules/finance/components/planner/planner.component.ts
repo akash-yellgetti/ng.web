@@ -6,6 +6,9 @@ import { FieldService } from '../../../../shared/services/field/field.service';
 import { PlannerService } from '../../services/api/planner/planner.service';
 import * as _ from 'lodash';
 import { forms } from 'src/app/shared/json/forms.json';
+
+declare var $: any;
+
 @Component({
   selector: 'app-planner',
   templateUrl: './planner.component.html',
@@ -79,6 +82,7 @@ export class PlannerComponent implements OnInit {
 
   save = () => {
     const errors = this.fieldService.validateForm(this.form);
+    console.log(errors)
     if (Object.keys(errors).length > 0 ){
       this.fieldService.setToastr(errors)
       return;
@@ -86,6 +90,7 @@ export class PlannerComponent implements OnInit {
     const json = this.fieldService.json(this.form);
     this.plannerService.createPlanner(json).subscribe((res: any) => {
       console.log(res);
+      $('#addPlannerModal').modal('hide');
     })
   };
 
