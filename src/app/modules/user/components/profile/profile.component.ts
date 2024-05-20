@@ -9,6 +9,7 @@ import { FieldService } from 'src/app/shared/services/field/field.service';
 import { setting } from '../../../../shared/json/setting.json';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import Swal from 'sweetalert2'
+import { forms } from 'src/app/shared/json/forms.json';
 
 @Component({
   selector: 'app-profile',
@@ -16,6 +17,8 @@ import Swal from 'sweetalert2'
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+  public form: any = forms.profileForm;
+  public changePasswordForm: any = forms.changePasswordForm;
   @ViewChild('editProfileImagesDialog', { static: true })
   editProfileImagesTemplate!: TemplateRef<any>;
   user: any;
