@@ -13,4 +13,9 @@ export class FieldComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  handleFileInput = (event: any, field: any) => {
+    const file = event.target.files[0];
+    field.value = file;
+    field.file = file;
+  }
 }

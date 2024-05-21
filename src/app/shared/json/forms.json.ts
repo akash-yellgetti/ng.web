@@ -1,3 +1,4 @@
+import { transactionData } from './bank-statement.json';
 import { budget } from './budet.json';
 
 export const forms = {
@@ -155,6 +156,35 @@ export const forms = {
       datatype: 'alphanumberic',
       name: 'confirmPassword',
       label: 'Confirm New Password',
+      value: '',
+      validations: 'required',
+    },
+  },
+  transactionForm: {
+    title: {
+      fieldtype: 'text',
+      col: '12',
+      datatype: 'alphanumberic',
+      name: 'title',
+      label: 'Title',
+      value: '',
+      validations: 'required',
+    },
+    description: {
+      fieldtype: 'text',
+      datatype: 'alphanumberic',
+      name: 'description',
+      col: '12',
+      label: 'Description',
+      value: '',
+      validations: 'required',
+    },
+    file: {
+      fieldtype: 'file',
+      datatype: 'alphanumberic',
+      name: 'file',
+      col: '12',
+      label: 'File',
       value: '',
       validations: 'required',
     },

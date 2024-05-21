@@ -1,8 +1,12 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { transactionData } from '../../../../shared/json/bank-statement.json';
 import * as moment from 'moment';
 import * as _ from 'lodash';
 import { ChartType } from 'angular-google-charts';
+import { ActivatedRoute } from '@angular/router';
+import { transactionData } from '../../../../shared/json/bank-statement.json';
+import { forms } from '../../../../shared/json/forms.json';
+import { FieldService } from '../../../../shared/services/field/field.service';
+import { PlannerService } from '../../services/api/planner/planner.service';
 
 @Component({
   selector: 'app-transaction',
@@ -10,6 +14,7 @@ import { ChartType } from 'angular-google-charts';
   styleUrls: ['./transaction.component.scss']
 })
 export class TransactionComponent implements OnInit {
+  public form = forms.transactionForm;
   public transactionData = transactionData;
   public chartOptions: any = { 
     type: ChartType.ColumnChart,
@@ -25,7 +30,12 @@ export class TransactionComponent implements OnInit {
    }
   public updateFlag: any = true;
   
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor(
+    private cdr: ChangeDetectorRef, 
+    private activatedRoute: ActivatedRoute,
+    private fieldService: FieldService,
+    private plannerService: PlannerService
+    ) {
     this.formatDatatoMonthYear();
    }
 
@@ -123,6 +133,18 @@ export class TransactionComponent implements OnInit {
     }, []);
 
     console.log('this.chartOptions2', this.chartOptions2);
+
+  }
+
+  analyse = () => {
+    const errors = this.fieldService.validateForm(this.form);
+    console.log(errors)
+    if (Object.keys(errors).length > 0 ){
+      this.fieldService.setToastr(errors)
+      return;
+    }
+    const json = this.fieldService.json(this.form);
+    console.log(json);
 
   }
 
