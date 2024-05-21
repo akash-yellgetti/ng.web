@@ -6,6 +6,7 @@ import { pieChartOptions } from '../../../../shared/components/chart/chart-optio
 import { BudgetService } from '../../services/api/budget/budget.service';
 import { FieldService } from '../../../../shared/services/field/field.service';
 import { forms } from 'src/app/shared/json/forms.json';
+import { CalculatorService } from 'src/app/shared/services/calculator/calculator.service';
 
 @Component({
   selector: 'app-budget',
@@ -59,6 +60,7 @@ export class BudgetComponent implements OnInit {
   constructor(
     private cdr: ChangeDetectorRef, 
     private activatedRoute: ActivatedRoute,
+    private calculationService: CalculatorService,
     private fieldService: FieldService,
     private budgetService: BudgetService
   ) {
@@ -124,6 +126,16 @@ export class BudgetComponent implements OnInit {
       this.data = d.data;
       this.refreshDatatableAndChart(this.category);
     });
+  }
+
+  getPercentage = (category: string) => {
+    const total = this.categoryWise.income;
+    return this.calculationService.getPercentage(Number(this.categoryWise[category]), Number(total));
+  }
+
+  getIncomeUtilization = () => {
+    const total = Number(this.categoryWise?.expense || 0) + Number(this.categoryWise?.want || 0) + Number(this.categoryWise?.investment || 0);
+    return this.calculationService.getPercentage(total, Number(this.categoryWise.income));
   }
 
   addBudget = (value: any) => {

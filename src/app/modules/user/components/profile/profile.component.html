@@ -1,5 +1,20 @@
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-3">
+    <div class="card shadow mb-4">
+      <div class="card-header">
+        Profile Details
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-{{ f.value.col }}" *ngFor="let f of form | keys; index as i;">
+            <app-field [field]="f.value" [key]="f.key"></app-field>
+          </div>
+        </div>
+      </div>
+    </div>  
+
+  </div>
+  <div class="col-md-6">
     <div class="card shadow mb-4">
       <div class="card-header">
         Profile Details
@@ -12,19 +27,7 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card shadow mb-4">
-      <div class="card-header">
-        Change Password
-      </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-lg-{{ f.value.col }}" *ngFor="let f of changePasswordForm | keys; index as i;">
-            <app-field [field]="f.value" [key]="f.key"></app-field>
-          </div>
-        </div>
-      </div>
-    </div>
+  
+   
   </div>
 </div>

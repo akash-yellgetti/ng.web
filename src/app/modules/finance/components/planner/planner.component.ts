@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { pieChartOptions } from '../../../../shared/components/chart/chart-options';
+import { pieChartOptions } from '../../../../shared/components/chart-google/chart-google.json';
 import { BudgetService } from '../../services/api/budget/budget.service';
 import { FieldService } from '../../../../shared/services/field/field.service';
 import { PlannerService } from '../../services/api/planner/planner.service';
@@ -20,17 +20,9 @@ export class PlannerComponent implements OnInit {
   public categories: any =  plannerCategories;
   data: any = [];
   public pieChartOptions: any = JSON.parse(JSON.stringify(pieChartOptions));;
-  public assetsChartOptions: any = {
-    type: 'PieChart',
-    title: '',
-    data: [],
-    columnNames:  [ 'Title','Amount'],
-    chartOptions: { 
-      
-    },
-    width: 350,
-    height: 200
-  };;
+  public assetsChartOptions: any = JSON.parse(JSON.stringify(pieChartOptions));
+  public liabilityChartOptions: any = JSON.parse(JSON.stringify(pieChartOptions));
+  public goalChartOptions: any = JSON.parse(JSON.stringify(pieChartOptions));
   updateFlag: any = 0;
    
 

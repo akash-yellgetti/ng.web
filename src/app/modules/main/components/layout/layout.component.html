@@ -27,12 +27,12 @@
           <hr class="sidebar-divider">
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#personal"
-                aria-expanded="true" aria-controls="personal">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#finance"
+                aria-expanded="true" aria-controls="finance">
                 <i class="fas fa-fw fa-folder"></i>
-                <span>Personal</span>
+                <span>Finance</span>
             </a>
-            <div id="personal" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div id="finance" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" routerLink="./finance/budget">Budget Planner</a>
                     <a class="collapse-item" routerLink="./finance/planner">Financial Planner</a>
@@ -261,6 +261,10 @@
                                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                   Profile
                               </a>
+                              <a class="dropdown-item" routerLink="./user/categories">
+                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                categories
+                            </a>
                               <a class="dropdown-item" routerLink="./user/setting">
                                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                   Settings

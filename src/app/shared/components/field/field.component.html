@@ -1,4 +1,8 @@
 <div [ngSwitch]="field.fieldtype">
+  <div class="form-group" *ngSwitchCase="'header'">
+    <h5 class="mt-1" >{{field.label}}</h5>
+    <hr class="m-0">
+  </div>
   <div class="form-group " *ngSwitchCase="'text'">
     <label for="{{field.name}}">{{field.label}}</label>
     <input type="{{field.fieldtype}}" class="form-control" id="{{field.name}}" placeholder="Enter {{field.label}}"

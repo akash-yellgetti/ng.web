@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CalculatorService } from '../../services/calculator.service';
-import { ChartService } from 'src/app/shared/services/chart/chart.service';
+import { ChartService } from '../../../../shared/services/chart/chart.service';
 import * as _ from 'lodash';
 import { FieldService } from '../../../../shared/services/field/field.service';
-import { CHART_OPTIONS_ONE, columnChartOptions, lineChartOptions, stackedBarChartOptions } from 'src/app/shared/components/chart/chart-options';
+import { CHART_OPTIONS_ONE, columnChartOptions, lineChartOptions, stackedBarChartOptions } from '../../../../shared/components/chart/chart-options';
 import { forms } from 'src/app/shared/json/forms.json';
 @Component({
   selector: 'app-loan',

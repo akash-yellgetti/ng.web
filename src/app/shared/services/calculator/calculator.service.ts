@@ -244,10 +244,11 @@ export class CalculatorService {
     return parseFloat(value.toFixed(2));
   }
 
-  percentage = (value: number, total: number) => {
+  getPercentage = (value: number, total: number) => {
+    return this.round2Decimal((value / total) * 100);
   }
 
   percentageValue = (total: number, percentage: number) => {
-    return (total * percentage) / 100;
+    return this.round2Decimal((total * percentage) / 100);
   }
 }

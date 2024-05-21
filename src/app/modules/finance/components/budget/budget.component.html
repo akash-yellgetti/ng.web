@@ -26,12 +26,12 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 50%"
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: {{getIncomeUtilization()}}%"
                                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <div class="h5 mb-0 font-weight-bold text-success">50%</div>
+                                <div class="h5 mb-0 font-weight-bold text-success">{{ getIncomeUtilization() + '%' }}</div>
                             </div>
                         </div>
                     </div>
@@ -59,12 +59,12 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 70%"
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: {{getPercentage('expense') }}%"
                                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <div class="h5 mb-0 font-weight-bold text-danger">70%</div>
+                                <div class="h5 mb-0 font-weight-bold text-danger">{{ getPercentage('expense') + '%' }}</div>
                             </div>
                         </div>
                     </div>
@@ -93,12 +93,12 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 80%"
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: {{getPercentage('want')}}%"
                                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <div class="h5 mb-0 font-weight-bold text-warning">80%</div>
+                                <div class="h5 mb-0 font-weight-bold text-warning">{{ getPercentage('want') + '%' }}</div>
                             </div>
                         </div>
                     </div>
@@ -126,12 +126,12 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 90%"
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: {{getPercentage('investment')}}%"
                                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <div class="h5 mb-0 font-weight-bold text-primary">90%</div>
+                                <div class="h5 mb-0 font-weight-bold text-primary">{{ getPercentage('investment') + '%' }}</div>
                             </div>
                         </div>
                     </div>
