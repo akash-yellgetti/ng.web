@@ -23,11 +23,11 @@ export class BudgetComponent implements OnInit {
     //   title: 'category',
     //   data: 'category',
     // },
-    {
-      name: 'subcategory',
-      title: 'Category',
-      data: 'subcategory',
-    },
+    // {
+    //   name: 'subcategory',
+    //   title: 'Category',
+    //   data: 'subcategory',
+    // },
     {
       name: 'title',
       title: 'Title',
@@ -44,6 +44,8 @@ export class BudgetComponent implements OnInit {
       data: 'amount',
     },
   ];
+  type: string = 'income';
+  typeWise: any = {};
   category: string = 'income';
   categoryWise: any = {};
   chartOptions: any = {
@@ -73,19 +75,19 @@ export class BudgetComponent implements OnInit {
     this.refreshDatatableAndChart('income');
   }
 
-  refreshDatatableAndChart = (category: string) => {
-    this.category = category;
-    const categoryWise = _.reduce(
-      _.groupBy(this.data, 'category'),
+  refreshDatatableAndChart = (type: string) => {
+    this.type = type;
+    const typeWise = _.reduce(
+      _.groupBy(this.data, 'type'),
       (o: any, v, k) => {
         o[k] = _.sum(_.map(v, 'amount'));
         return o;
       },
       {}
     );
-    this.categoryWise = categoryWise;
+    this.typeWise = typeWise;
     this.budgetData = _.filter(this.data, (v) => {
-      return v.category === category;
+      return v.type === type;
     });
     const chartOptions = { ...this.chartOptions };
     // console.log(this.budgetData)
@@ -128,14 +130,14 @@ export class BudgetComponent implements OnInit {
     });
   }
 
-  getPercentage = (category: string) => {
-    const total = this.categoryWise.income;
-    return this.calculationService.getPercentage(Number(this.categoryWise[category]), Number(total)) || 0;
+  getPercentage = (type: string) => {
+    const total = this.typeWise.income;
+    return this.calculationService.getPercentage(Number(this.typeWise[type]), Number(total)) || 0;
   }
 
   getIncomeUtilization = () => {
-    const total = Number(this.categoryWise?.expense || 0) + Number(this.categoryWise?.want || 0) + Number(this.categoryWise?.investment || 0);
-    return this.calculationService.getPercentage(total, Number(this.categoryWise.income))  || 0;
+    const total = Number(this.typeWise?.expense || 0) + Number(this.typeWise?.want || 0) + Number(this.typeWise?.investment || 0);
+    return this.calculationService.round2Decimal(100 - this.calculationService.getPercentage(total, Number(this.typeWise.income)))  || 0;
   }
 
   addBudget = (value: any) => {

@@ -194,7 +194,7 @@ export const forms = {
   },
   budgetForm: {
     type: {
-      fieldtype: 'text',
+      fieldtype: 'hidden',
       datatype: 'alpha',
       col: '12',
       name: 'type',
