@@ -190,12 +190,13 @@ export class CalculatorService {
   round2Decimal = (value: any) => {
     return Number(value.toFixed(2));
   }
-
-  percentage = (value: number, total: number) => {
+    
+  getPercentage = (value: number, total: number) => {
+    return this.round2Decimal((value / total) * 100);
   }
-
-  percentageValue = (total: number, percentage: number) => {
-    return (total * percentage) / 100;
+    
+  getPercentageValue = (total: number, percentage: number) => {
+    return this.round2Decimal((total * percentage) / 100);
   }
 
   calculateSIPAmount = (goalAmount: number, annualReturn: number, investmentPeriodYears: number, yearlyIncrementPercentage: number) => {
@@ -278,5 +279,7 @@ export class CalculatorService {
 
     return FIRENumber;
   }
+
+
 
 }

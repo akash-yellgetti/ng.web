@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { incomeTaxCategories } from './income-tax.json';
+import { incomeTaxCategories, incomeTaxSlabs } from './income-tax.json';
+import { CalculatorService } from 'src/app/modules/calculator/services/calculator.service';
+
 
 @Component({
   selector: 'app-income-tax',
@@ -8,6 +10,7 @@ import { incomeTaxCategories } from './income-tax.json';
 })
 export class IncomeTaxComponent implements OnInit {
   public categories: any =  incomeTaxCategories;
+  public incomeTaxSlabs: any = incomeTaxSlabs;
   form: any = {
     amount: {
       value: 10000000
@@ -28,11 +31,15 @@ export class IncomeTaxComponent implements OnInit {
       value: 0
     },
   }
-  constructor() { }
+  constructor(private calculatorService: CalculatorService) { }
 
   ngOnInit(): void {
   }
 
-  calculate() {}
+  getSlabIncomeTaxValue = (amount: number, slab: any) => {
+    const value = slab.to - slab.from;
+    console.log(slab.from, slab.to, 'value', value)
+    return Math.round(this.calculatorService.getPercentageValue(value, slab.rate));
+  }
 
 }

@@ -6,7 +6,8 @@ import { pieChartOptions } from '../../../../shared/components/chart/chart-optio
 import { BudgetService } from '../../services/api/budget/budget.service';
 import { FieldService } from '../../../../shared/services/field/field.service';
 import { forms } from 'src/app/shared/json/forms.json';
-import { CalculatorService } from 'src/app/shared/services/calculator/calculator.service';
+import { CalculatorService } from 'src/app/modules/calculator/services/calculator.service';
+
 
 @Component({
   selector: 'app-budget',

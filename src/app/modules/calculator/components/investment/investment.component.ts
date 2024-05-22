@@ -1,8 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { CalculatorService } from 'src/app/shared/services/calculator/calculator.service';
+
 import * as _ from 'lodash';
 import { CHART_OPTIONS_ONE, pieChartOptions, stackedBarChartOptions } from 'src/app/shared/components/chart/chart-options';
 import { FieldService } from '../../../../shared/services/field/field.service';
+import { CalculatorService } from '../../services/calculator.service';
 @Component({
   selector: 'app-investment',
   templateUrl: './investment.component.html',

@@ -247,3 +247,79 @@ export const incomeTaxCategories = [
     },
   },
 ];
+
+export const incomeTaxSlabs = [
+  {
+    from: 0,
+    to: 250000,
+    oldrate: 0,
+    rate: 0,
+  },
+  {
+    from: 250001,
+    to: 300000,
+    oldrate: 0,
+    rate: 0,
+  },
+  {
+    from: 300001,
+    to: 500000,
+    oldrate: 0,
+    rate: 5,
+  },
+  {
+    from: 500001,
+    to: 600000,
+    oldrate: 5,
+    rate: 5,
+  },
+  {
+    from: 600001,
+    to: 750000,
+    oldrate: 10,
+    rate2023: 10,
+    rate: 10,
+  },
+  {
+    from: 750001,
+    to: 900000,
+    oldrate: 10,
+    rate2023: 10,
+    rate: 10,
+  },
+  {
+    from: 900001,
+    to: 1000000,
+    oldrate: 15,
+    rate2023: 15,
+    rate: 15,
+  },
+  {
+    from: 1000001,
+    to: 1200000,
+    oldrate: 15,
+    rate2023: 15,
+    rate: 15,
+  },
+  {
+    from: 1200001,
+    to: 1250000,
+    oldrate: 20,
+    rate2023: 20,
+    rate: 20,
+  },
+  {
+    from: 1250001,
+    to: 1500000,
+    oldrate: 20,
+    rate2023: 20,
+    rate: 20,
+  },
+  {
+    from: 1500001,
+    to: 1000000000,
+    oldrate: 30,
+    rate2023: 30,
+    rate: 30,
+  }
+]
