@@ -1,80 +1,80 @@
 Date,Description,Credit,Debit,Balance
-01/01/2023,Opening Balance,,,5000.00
-01/03/2023,Salary Deposit,3000.00,,8000.00
-01/05/2023,Grocery Store,,150.00,7850.00
-01/10/2023,Electricity Bill,,75.00,7775.00
-01/15/2023,Online Shopping,,200.00,7575.00
-01/20/2023,Transfer to Savings Account,,500.00,7075.00
-01/25/2023,Dining Out,,100.00,6975.00
-01/28/2023,Interest Credit,5.00,,6980.00
-02/03/2023,Salary Deposit,3000.00,,9980.00
-02/05/2023,Car Payment,,300.00,9680.00
-02/10/2023,Grocery Store,,160.00,9520.00
-02/15/2023,Phone Bill,,90.00,9430.00
-02/20/2023,Transfer to Savings Account,,500.00,8930.00
-02/25/2023,Dining Out,,120.00,8810.00
-02/28/2023,Interest Credit,6.00,,8816.00
-03/03/2023,Salary Deposit,3000.00,,11816.00
-03/05/2023,Health Insurance,,250.00,11566.00
-03/10/2023,Grocery Store,,170.00,11396.00
-03/15/2023,Utility Bill,,95.00,11301.00
-03/20/2023,Transfer to Savings Account,,500.00,10801.00
-03/25/2023,Dining Out,,130.00,10671.00
-03/28/2023,Interest Credit,6.50,,10677.50
-04/03/2023,Salary Deposit,3000.00,,13677.50
-04/05/2023,Car Payment,,300.00,13377.50
-04/10/2023,Grocery Store,,180.00,13197.50
-04/15/2023,Internet Bill,,70.00,13127.50
-04/20/2023,Transfer to Savings Account,,500.00,12627.50
-04/25/2023,Dining Out,,140.00,12487.50
-04/28/2023,Interest Credit,7.00,,12494.50
-05/03/2023,Salary Deposit,3000.00,,15494.50
-05/05/2023,Health Insurance,,250.00,15244.50
-05/10/2023,Grocery Store,,190.00,15054.50
-05/15/2023,Phone Bill,,100.00,14954.50
-05/20/2023,Transfer to Savings Account,,500.00,14454.50
-05/25/2023,Dining Out,,150.00,14304.50
-05/28/2023,Interest Credit,7.50,,14312.00
-06/03/2023,Salary Deposit,3000.00,,17312.00
-06/05/2023,Car Payment,,300.00,17012.00
-06/10/2023,Grocery Store,,200.00,16812.00
-06/15/2023,Utility Bill,,110.00,16702.00
-06/20/2023,Transfer to Savings Account,,500.00,16202.00
-06/25/2023,Dining Out,,160.00,16042.00
-06/28/2023,Interest Credit,8.00,,16050.00
-07/03/2023,Salary Deposit,3000.00,,19050.00
-07/05/2023,Health Insurance,,250.00,18800.00
-07/10/2023,Grocery Store,,210.00,18590.00
-07/15/2023,Internet Bill,,75.00,18515.00
-07/20/2023,Transfer to Savings Account,,500.00,18015.00
-07/25/2023,Dining Out,,170.00,17845.00
-07/28/2023,Interest Credit,8.50,,17853.50
-08/03/2023,Salary Deposit,3000.00,,20853.50
-08/05/2023,Car Payment,,300.00,20553.50
-08/10/2023,Grocery Store,,220.00,20333.50
-08/15/2023,Phone Bill,,110.00,20223.50
-08/20/2023,Transfer to Savings Account,,500.00,19723.50
-08/25/2023,Dining Out,,180.00,19543.50
-08/28/2023,Interest Credit,9.00,,19552.50
-09/03/2023,Salary Deposit,3000.00,,22552.50
-09/05/2023,Health Insurance,,250.00,22302.50
-09/10/2023,Grocery Store,,230.00,22072.50
-09/15/2023,Utility Bill,,120.00,21952.50
-09/20/2023,Transfer to Savings Account,,500.00,21452.50
-09/25/2023,Dining Out,,190.00,21262.50
-09/28/2023,Interest Credit,9.50,,21272.00
-10/03/2023,Salary Deposit,3000.00,,24272.00
-10/05/2023,Car Payment,,300.00,23972.00
-10/10/2023,Grocery Store,,240.00,23732.00
-10/15/2023,Internet Bill,,80.00,23652.00
-10/20/2023,Transfer to Savings Account,,500.00,23152.00
-10/25/2023,Dining Out,,200.00,22952.00
-10/28/2023,Interest Credit,10.00,,22962.00
-11/03/2023,Salary Deposit,3000.00,,25962.00
-11/05/2023,Health Insurance,,250.00,25712.00
-11/10/2023,Grocery Store,,250.00,25462.00
-11/15/2023,Phone Bill,,120.00,25342.00
-11/20/2023,Transfer to Savings Account,,500.00,24842.00
-11/25/2023,Dining Out,,210.00,24632.00
-11/28/2023,Interest Credit,10.50,,24642.50
-12/03/2023,Salary Deposit,3000.00,,27642.50
+01-01-2023,Opening Balance,,,5000
+01-03-2023,Salary Deposit,3000,,8000
+01-05-2023,Grocery Store,,150,7850
+01-10-2023,Electricity Bill,,75,7775
+01/15/2023,Online Shopping,,200,7575
+01/20/2023,Transfer to Savings Account,,500,7075
+01/25/2023,Dining Out,,100,6975
+01/28/2023,Interest Credit,5,,6980
+02-03-2023,Salary Deposit,3000,,9980
+02-05-2023,Car Payment,,300,9680
+02-10-2023,Grocery Store,,160,9520
+02/15/2023,Phone Bill,,90,9430
+02/20/2023,Transfer to Savings Account,,500,8930
+02/25/2023,Dining Out,,120,8810
+02/28/2023,Interest Credit,6,,8816
+03-03-2023,Salary Deposit,3000,,11816
+03-05-2023,Health Insurance,,250,11566
+03-10-2023,Grocery Store,,170,11396
+03/15/2023,Utility Bill,,95,11301
+03/20/2023,Transfer to Savings Account,,500,10801
+03/25/2023,Dining Out,,130,10671
+03/28/2023,Interest Credit,6.5,,10677.5
+04-03-2023,Salary Deposit,3000,,13677.5
+04-05-2023,Car Payment,,300,13377.5
+04-10-2023,Grocery Store,,180,13197.5
+04/15/2023,Internet Bill,,70,13127.5
+04/20/2023,Transfer to Savings Account,,500,12627.5
+04/25/2023,Dining Out,,140,12487.5
+04/28/2023,Interest Credit,7,,12494.5
+05-03-2023,Salary Deposit,3000,,15494.5
+05-05-2023,Health Insurance,,250,15244.5
+05-10-2023,Grocery Store,,190,15054.5
+05/15/2023,Phone Bill,,100,14954.5
+05/20/2023,Transfer to Savings Account,,500,14454.5
+05/25/2023,Dining Out,,150,14304.5
+05/28/2023,Interest Credit,7.5,,14312
+06-03-2023,Salary Deposit,3000,,17312
+06-05-2023,Car Payment,,300,17012
+06-10-2023,Grocery Store,,200,16812
+06/15/2023,Utility Bill,,110,16702
+06/20/2023,Transfer to Savings Account,,500,16202
+06/25/2023,Dining Out,,160,16042
+06/28/2023,Interest Credit,8,,16050
+07-03-2023,Salary Deposit,3000,,19050
+07-05-2023,Health Insurance,,250,18800
+07-10-2023,Grocery Store,,210,18590
+07/15/2023,Internet Bill,,75,18515
+07/20/2023,Transfer to Savings Account,,500,18015
+07/25/2023,Dining Out,,170,17845
+07/28/2023,Interest Credit,8.5,,17853.5
+08-03-2023,Salary Deposit,3000,,20853.5
+08-05-2023,Car Payment,,300,20553.5
+08-10-2023,Grocery Store,,220,20333.5
+08/15/2023,Phone Bill,,110,20223.5
+08/20/2023,Transfer to Savings Account,,500,19723.5
+08/25/2023,Dining Out,,180,19543.5
+08/28/2023,Interest Credit,9,,19552.5
+09-03-2023,Salary Deposit,3000,,22552.5
+09-05-2023,Health Insurance,,250,22302.5
+09-10-2023,Grocery Store,,230,22072.5
+09/15/2023,Utility Bill,,120,21952.5
+09/20/2023,Transfer to Savings Account,,500,21452.5
+09/25/2023,Dining Out,,190,21262.5
+09/28/2023,Interest Credit,9.5,,21272
+10-03-2023,Salary Deposit,3000,,24272
+10-05-2023,Car Payment,,300,23972
+10-10-2023,Grocery Store,,240,23732
+10/15/2023,Internet Bill,,80,23652
+10/20/2023,Transfer to Savings Account,,500,23152
+10/25/2023,Dining Out,,200,22952
+10/28/2023,Interest Credit,10,,22962
+11-03-2023,Salary Deposit,3000,,25962
+11-05-2023,Health Insurance,,250,25712
+11-10-2023,Grocery Store,,250,25462
+11/15/2023,Phone Bill,,120,25342
+11/20/2023,Transfer to Savings Account,,500,24842
+11/25/2023,Dining Out,,210,24632
+11/28/2023,Interest Credit,10.5,,24642.5
+12-03-2023,Salary Deposit,3000,,27642.5

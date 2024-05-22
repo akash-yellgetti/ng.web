@@ -81,7 +81,7 @@
                     <div class="col">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Want
-                            <button type="button" class="btn btn-warning btn-circle float-right" data-toggle="modal" data-target="#addBudgetModal" (click)="addBudget('want')">
+                            <button type="button" class="btn btn-warning btn-circle float-right" data-toggle="modal" data-target="#addBudgetModal" (click)="addBudget('goal')">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
@@ -173,7 +173,7 @@
             <div class="modal-body">
                 <div class="row">
                   <div class="col-lg-{{ f.value.col }}" *ngFor="let f of form | keys; index as i;">
-                    <app-field [field]="f.value" [key]="f.key"></app-field>
+                    <app-field [field]="f.value" [form]="form"  [key]="f.key"></app-field>
                   </div>
                 </div>
               </div>

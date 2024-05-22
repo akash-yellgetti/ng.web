@@ -11,6 +11,16 @@
       Please choose a username.
     </div>
   </div>
+  <div class="form-group " *ngSwitchCase="'select-ajax'">
+    <label for="{{field.name}}">{{field.label}}</label>
+    <select class="form-control" id="{{field.name}}" [(ngModel)]="field.value" (ngModelChange)="triggerSelect($event)"  >
+      <option value="" disabled selected>Select {{field.label}}</option>
+      <option *ngFor="let option of field.options"  [value]="option.key" >{{option.value}}</option>
+    </select>
+    <div class="invalid-feedback" required>
+      Please choose a username.
+    </div>
+  </div>
   <div class="form-group" *ngSwitchCase="'number'">
     <label>{{field.label}}</label>
     <input type="{{field.fieldtype}}" class="form-control" id="{{field.name}}" placeholder="Enter {{field.label}}" [(ngModel)]="field.value">

@@ -1,5 +1,8 @@
+import { ajax } from 'jquery';
 import { transactionData } from './bank-statement.json';
 import { budget } from './budet.json';
+import { method } from 'lodash';
+import { trigger } from '@angular/animations';
 
 export const forms = {
   loginForm: {
@@ -190,23 +193,57 @@ export const forms = {
     },
   },
   budgetForm: {
-    category: {
-      fieldtype: 'hidden',
+    type: {
+      fieldtype: 'text',
       datatype: 'alpha',
       col: '12',
+      name: 'type',
+      label: 'Type',
+      value: '',
+      validations: 'required',
+    },
+    category: {
+      fieldtype: 'select-ajax',
+      datatype: 'alpha',
+      col: '6',
       name: 'category',
       label: 'Category',
       value: '',
       validations: 'required',
+      ajax: {
+        uri: '/categories/list',
+        data: {
+          parentCode: '',
+        },
+        option: {
+          key: 'code',
+          value: 'title',
+        },
+      },
+      options: [],
+      triggerSelect: 'subcategory',
+      
     },
     subcategory: {
-      fieldtype: 'text',
+      fieldtype: 'select-ajax',
       datatype: 'alpha',
-      col: '12',
+      col: '6',
       name: 'subcategory',
       label: 'Sub Category',
       value: '',
       validations: 'required',
+      ajax: {
+        uri: '/categories/list',
+        data: {
+          parentCode: '',
+        },
+        option: {
+          key: 'code',
+          value: 'title',
+        },
+      },
+      options: [],
+      trigger: '',
     },
     title: {
       fieldtype: 'text',

@@ -4,17 +4,27 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import * as _ from 'lodash';
 import { ValidationService } from '../validation/validation.service';
 import { Toast, ToastrService } from 'ngx-toastr';
+import { CommonService } from '../common/common.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { LocalStorageService } from 'ngx-webstorage';
+import { catchError, map } from 'rxjs/operators';
+import { Observable, Observer } from 'rxjs';
+import { setting } from '../../json/setting.json';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FieldService {
+export class FieldService extends CommonService {
 
   constructor(
-    private _snackBar: MatSnackBar, 
+    protected _snackBar: MatSnackBar,
+    protected http: HttpClient,
+    protected storage: LocalStorageService,
     public toastr: ToastrService, 
     public validationSevice: ValidationService
-  ) { }
+  ) {
+    super(_snackBar, http, storage);
+  }
 
   getFormGroupFields = (data: any) => {
     return _.cloneDeep(_.chain(data)
@@ -125,6 +135,21 @@ export class FieldService {
       }, {})
 
       .value();
+  }
+
+  getSelectData = (field: any): any => {
+    const url = setting['uri'] + field.ajax.uri;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: this.getAuthToken(),
+    });
+    const options = { headers: headers };
+    const params = JSON.stringify(field.ajax.data);
+
+    return this.http.post(url, params, options).pipe(
+      map((data: any) => data),
+      catchError(this.handleError));
   }
 }
 

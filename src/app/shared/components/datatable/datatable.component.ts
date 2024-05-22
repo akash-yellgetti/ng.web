@@ -34,6 +34,8 @@ export class DatatableComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+
+    
     this.initializeDataTable();
   }
 
@@ -53,22 +55,26 @@ export class DatatableComponent implements OnInit, AfterViewInit {
   }
 
   initializeDataTable() {
-    const self = this;
-    this.dataTable = $('#'+this.id).DataTable({
-      dom: 'lBfrtip',
-      buttons: ['copy', 'csv', 'excel', 'pdf', 'print', 
-      {
-        text: 'Delete',
-        action: function (e: any, dt: any, node: any, config: any) {
-          const rows = dt.rows({ selected: true }).data();
-          const rowsData = [];
-          for (let i = 0; i < rows.length; i++) {
-            rowsData.push(rows[i]);
+    const buttons: any = ['copy', 'csv', 'excel', 'pdf', 'print']
+
+
+
+    if (this.toParentDataTableDelete.observers.length > 0) {
+        buttons.push({
+          text: 'Delete',
+          action: function (e: any, dt: any, node: any, config: any) {
+            const rows = dt.rows({ selected: true }).data();
+            const rowsData = [];
+            for (let i = 0; i < rows.length; i++) {
+              rowsData.push(rows[i]);
+            }
+            self.toParentDataTableDelete.emit(rowsData);
           }
-          self.toParentDataTableDelete.emit(rowsData);
-        }
-      },
-      {
+        });
+    }
+
+    if (this.toParentDataTableEdit.observers.length > 0) {
+      buttons.push({
         text: 'Edit',
         action: function (e: any, dt: any, node: any, config: any) {
           const rows = dt.rows({ selected: true }).data();
@@ -79,7 +85,15 @@ export class DatatableComponent implements OnInit, AfterViewInit {
           }
           self.toParentDataTableEdit.emit(rows[0]);
         }
-      }],
+      });
+    }
+
+    
+    
+    const self = this;
+    this.dataTable = $('#'+this.id).DataTable({
+      dom: 'lBfrtip',
+      buttons,
       // lengthMenu: [
       //   [10, 15, 20, 25, 50,   -1],
       //   [10, 15, 20, 25, 50,  'All']

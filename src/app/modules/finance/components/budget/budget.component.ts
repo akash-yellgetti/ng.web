@@ -130,16 +130,22 @@ export class BudgetComponent implements OnInit {
 
   getPercentage = (category: string) => {
     const total = this.categoryWise.income;
-    return this.calculationService.getPercentage(Number(this.categoryWise[category]), Number(total));
+    return this.calculationService.getPercentage(Number(this.categoryWise[category]), Number(total)) || 0;
   }
 
   getIncomeUtilization = () => {
     const total = Number(this.categoryWise?.expense || 0) + Number(this.categoryWise?.want || 0) + Number(this.categoryWise?.investment || 0);
-    return this.calculationService.getPercentage(total, Number(this.categoryWise.income));
+    return this.calculationService.getPercentage(total, Number(this.categoryWise.income))  || 0;
   }
 
   addBudget = (value: any) => {
-    this.form.category.value = value;
+    const form = this.form;
+    this.form = null
+    this.cdr.detectChanges();
+    this.form = form;
+    this.form.type.value = value;
+    this.form.category.ajax.data.parentCode = value;
+    this.cdr.detectChanges();
   }
 
   delete = (data: any) => {
