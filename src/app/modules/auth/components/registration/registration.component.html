@@ -32,13 +32,17 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user"
+                                    <input type="date" class="form-control form-control-user"
                                         [(ngModel)]="form.dob.value" id="exampleInputPassword"
                                         placeholder="Date Of Birth">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user"
-                                        [(ngModel)]="form.gender.value" id="exampleRepeatPassword" placeholder="Gender">
+                                    <select class="form-control form-control-user" [(ngModel)]="form.gender.value" place>
+                                        <option value="" disabled selected>Select Gender</option>
+                                        <option value="f">Female</option>
+                                        <option value="m">Male</option>
+                                        <option value="t" >Transgender</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">

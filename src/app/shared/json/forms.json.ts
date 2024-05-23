@@ -39,9 +39,23 @@ export const forms = {
     gender: {
       name: 'gender',
       label: 'Gender',
-      type: 'text',
+      type: 'select',
       validations: 'required',
       value: '',
+      options: [
+        {
+          key: 'f',
+          value: 'Female',
+        },
+        {
+          key: 'm',
+          value: 'Male',
+        },
+        {
+          key: 't',
+          value: 'Transgender',
+        }
+      ]
     },
     dob: {
       name: 'dob',
