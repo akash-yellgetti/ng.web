@@ -65,17 +65,17 @@ export class RegistrationComponent implements OnInit {
       this.fieldService.setToastr(errors)
       return false;
     }
-    // const params = this.fieldService.json(this.form);
-    // // const params: any = this.fieldService.json(controls);
-    // params.type = this.flag.otpFlag;
+    const params = this.fieldService.json(this.form);
+    // const params: any = this.fieldService.json(controls);
+    params.type = this.flag.otpFlag;
 
-    // this.authService.generateOTP(params).subscribe((res: any) => {
-    //   if (res && res.status) {
-    //     this.flag.requestOtp = false;
-    //     this.flag.verifyOtp = true;
-    //     this.flag.mobileNo = true;
-    //   }
-    // });
+    this.authService.generateOTP(params).subscribe((res: any) => {
+      if (res && res.status) {
+        this.flag.requestOtp = false;
+        this.flag.verifyOtp = true;
+        this.flag.mobileNo = true;
+      }
+    });
   }
 
   verify = (): any => {
@@ -88,6 +88,11 @@ export class RegistrationComponent implements OnInit {
     //   return false;
     // }
     // const params: any = this.fieldService.json(controls);
+    const errors = this.fieldService.validateForm(this.form);
+    if (Object.keys(errors).length > 0 ){
+      this.fieldService.setToastr(errors)
+      return false;
+    }
     const params = this.fieldService.json(this.form);
     params.type = this.flag.otpFlag;
 

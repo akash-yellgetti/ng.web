@@ -7,12 +7,12 @@ export class ValidationService {
 
   constructor() { }
 
-  validate = (validations: any[], field: any) => {
+  validate = (validations: any[], field: any, form: any) => {
     const errors = [];
     for (const i in validations) {
       if (validations[i]) {
-        const validation = validations[i];
-        if(!this.checkValidation(validation, field)) {
+        const validation: any = validations[i];
+        if(!this.checkValidation(validation, field, form)) {
           errors.push(this.getValidationMessage(validation, field.label));
         }
       }
@@ -21,10 +21,14 @@ export class ValidationService {
     return errors;
   }
 
-  checkValidation = (validation: string, field: any) => {
+  checkValidation = (validationString: any, field: any, form: any) => {
+    const validation: any = validationString.indexOf(':') > -1 ? validationString.split(':')[0] : validationString;
     switch (validation) {
       case 'required':
         return this.isRequired(field.value)
+        break;
+      case 'required_if':
+        return this.isRequired_if(field.value, form[validationString.split(':')[1]].value)
         break;
       case 'email':
         return this.isEmail(field.value)
@@ -53,6 +57,10 @@ export class ValidationService {
 
   isRequired(value: any): boolean {
     return value !== undefined && value !== '' && value !== null && value !== 0;
+  }
+
+  isRequired_if(value: any, field: any): boolean {
+    return field && this.isRequired(field) ? this.isRequired(value) : true;
   }
 
   isMinLength(value: any, length: number): boolean {

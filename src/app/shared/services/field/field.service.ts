@@ -77,7 +77,7 @@ export class FieldService extends CommonService {
     let errors: any = {};
     form = _.map(_.cloneDeep(form), (r) => {
       const validations = r.validations ? r.validations.split('|') : [];
-      const errs = self.validationSevice.validate(validations, r);
+      const errs = self.validationSevice.validate(validations, r, form);
       if(_.size(errs) > 0) {
         errors[r.label] = errs;
       }
