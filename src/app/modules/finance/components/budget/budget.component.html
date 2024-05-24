@@ -8,7 +8,7 @@
         <div class="card-header">
             <div class="h6 font-weight-bold text-info mb-0">
             Total Income: {{ typeWise.income || 0 | indianNumberFormat }}
-            <div class="text-xs text-info"> {{ typeWise.incomeBalance || 0 | numberToWords }}</div>
+            <div class="text-xs text-info"> {{ typeWise.income || 0 | numberToWords }}</div>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
                     <div class="col">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Income balance
-                            <button type="button" class="btn btn-success btn-circle float-right" data-toggle="modal" data-target="#addBudgetModal" (click)="addBudget('income')">
+                            <button type="button" class="btn btn-success btn-circle float-right"   (click)="addBudget('income')">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
@@ -57,7 +57,7 @@
                     <div class="col">
                         <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                             Expense
-                            <button type="button" class="btn btn-danger btn-circle float-right" data-toggle="modal" data-target="#addBudgetModal" (click)="addBudget('expense')">
+                            <button type="button" class="btn btn-danger btn-circle float-right" (click)="addBudget('expense')">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
@@ -90,7 +90,7 @@
                     <div class="col">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Want
-                            <button type="button" class="btn btn-warning btn-circle float-right" data-toggle="modal" data-target="#addBudgetModal" (click)="addBudget('goal')">
+                            <button type="button" class="btn btn-warning btn-circle float-right"   (click)="addBudget('goal')">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
@@ -124,7 +124,7 @@
                     <div class="col">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Investment
-                            <button type="button" class="btn btn-primary btn-circle float-right" data-toggle="modal" data-target="#addBudgetModal"  (click)="addBudget('investment')">
+                            <button type="button" class="btn btn-primary btn-circle float-right"   (click)="addBudget('investment')">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
@@ -170,7 +170,7 @@
 
 
 <!-- Add Budget Modal-->
-<div class="modal fade" id="addBudgetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" #budgetForm id="addBudgetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

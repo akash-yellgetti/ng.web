@@ -7,6 +7,7 @@ import { AuthService } from '../../services/auth/auth.service';
 import * as _ from 'lodash';
 import Swal from 'sweetalert2'
 import { forms } from 'src/app/shared/json/forms.json';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registration',
@@ -45,7 +46,11 @@ export class RegistrationComponent implements OnInit {
   public password: string = '';
   public confirm_password: string = '';
   public fields: any;
-  constructor(private fb: FormBuilder, private route: Router, private storageService: LocalStorageService,
+  constructor(
+    private fb: FormBuilder, 
+    private route: Router, 
+    private toastr: ToastrService,
+    private storageService: LocalStorageService,
     private fieldService: FieldService, private authService: AuthService) {
     this.form = forms.registrationForm;
   }
@@ -74,20 +79,12 @@ export class RegistrationComponent implements OnInit {
         this.flag.requestOtp = false;
         this.flag.verifyOtp = true;
         this.flag.mobileNo = true;
+        this.toastr.success('OTP Sent Successfully');
       }
     });
   }
 
   verify = (): any => {
-    // if (this.registrationForm.invalid) {
-    //   return;
-    // }
-    // const controls = this.registrationForm.controls;
-    // const errors = this.fieldService.validate(controls, this.fields);
-    // if (errors.length > 0) {
-    //   return false;
-    // }
-    // const params: any = this.fieldService.json(controls);
     const errors = this.fieldService.validateForm(this.form);
     if (Object.keys(errors).length > 0 ){
       this.fieldService.setToastr(errors)
@@ -101,16 +98,15 @@ export class RegistrationComponent implements OnInit {
         this.flag.requestOtp = false;
         this.flag.verifyOtp = false;
         this.flag.register = true;
+        this.toastr.success(res.message);
+        this.toastr.success('Please fill the password and confirm password to register');
+      } else {
+        this.toastr.error(res.message);
       }
     });
   }
 
   register = () => {
-    // if (this.registrationForm.invalid) {
-    //   return;
-    // }
-
-    // const controls = this.registrationForm.controls;
     const params = this.fieldService.json(this.form);
     params.type = this.flag.otpFlag;
 

@@ -33,6 +33,9 @@ export class ValidationService {
       case 'email':
         return this.isEmail(field.value)
         break;
+      case 'same':
+        return this.isSame(field.value, form[validationString.split(':')[1]].value)
+        break;
     
       default:
         break;
@@ -60,6 +63,10 @@ export class ValidationService {
   }
 
   isRequired_if(value: any, field: any): boolean {
+    return field && this.isRequired(field) ? this.isRequired(value) : true;
+  }
+
+  isSame(value: any, field: any): boolean {
     return field && this.isRequired(field) ? this.isRequired(value) : true;
   }
 

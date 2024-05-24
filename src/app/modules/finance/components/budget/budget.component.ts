@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { budget } from '../../../../shared/json/budet.json';
 import { ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
@@ -8,7 +8,9 @@ import { FieldService } from '../../../../shared/services/field/field.service';
 import { forms } from '../../../../shared/json/forms.json';
 import { CalculatorService } from 'src/app/modules/calculator/services/calculator.service';
 import { LoaderService } from '../../../../shared/services/loader/loader.service';
+import { ToastrService } from 'ngx-toastr';
 
+declare var $: any;
 
 @Component({
   selector: 'app-budget',
@@ -16,6 +18,7 @@ import { LoaderService } from '../../../../shared/services/loader/loader.service
   styleUrls: ['./budget.component.scss'],
 })
 export class BudgetComponent implements OnInit {
+  @ViewChild ('budgetForm') budgetForm: any;
   public data: any = [];
   public form: any = forms.budgetForm;
   public budgetData: any = [];
@@ -64,6 +67,7 @@ export class BudgetComponent implements OnInit {
   constructor(
     private cdr: ChangeDetectorRef, 
     private activatedRoute: ActivatedRoute,
+    private toastr: ToastrService,
     private loaderService: LoaderService,
     private calculationService: CalculatorService,
     private fieldService: FieldService,
@@ -120,7 +124,11 @@ export class BudgetComponent implements OnInit {
 
     const json = this.fieldService.json(this.form);
     this.budgetService.createBudget(json).subscribe((res) => {
-      this.refreshData();
+      if(res && res.status) {
+        this.toastr.success('Budget Record Created Successfully');
+        this.refreshData();
+      }
+      
     });
 
     // return true; // Add this line to return a value
@@ -146,12 +154,15 @@ export class BudgetComponent implements OnInit {
   }
 
   addBudget = (value: any) => {
-    const form = this.form;
+    // console.log(this.budgetForm.nativeElement)
+    let form = _.cloneDeep(this.form);
     this.form = null
     this.cdr.detectChanges();
+    form = this.fieldService.resetForm(form);
+    form.type.value = value;
+    form.category.ajax.data.parentCode = value;
     this.form = form;
-    this.form.type.value = value;
-    this.form.category.ajax.data.parentCode = value;
+    $(this.budgetForm.nativeElement).modal('show');
     this.cdr.detectChanges();
   }
 

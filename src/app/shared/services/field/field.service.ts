@@ -26,50 +26,12 @@ export class FieldService extends CommonService {
     super(_snackBar, http, storage);
   }
 
-  getFormGroupFields = (data: any) => {
-    return _.cloneDeep(_.chain(data)
-      .reduce((o: any, v, k) => {
-        const validionsData = v && v.validations ? v.validations.split('|') : [];
-        const validations = _.chain(validionsData).map((r) => {
-          return this.getValidator(r);
-        }).value();
-
-        o[v.name] = [null, validations];
-        return o;
-      }, {})
-      .value());
-  }
-
-  getValidator = (key: string) => {
-    switch (key) {
-      case 'required':
-        return Validators.required;
-        break;
-      case 'email':
-        return Validators.email;
-        break;
-      default:
-        return null
-        break;
-    }
-  }
-
-  getValidatorMessage = (key: string) => {
-    switch (key) {
-      case 'required':
-        return;
-        break;
-      case 'email':
-        return Validators.email;
-        break;
-      default:
-        return null
-        break;
-    }
-  }
-
-  validate = (data: any, fields: any) => {
-    return _.reject(_.flatten(_.values(_.mapValues(data, 'errors'))), _.isEmpty);
+  resetForm = (form: any) => {
+    return _.reduce(_.cloneDeep(form), (o: any, v: any, k) => {
+      v.value = '';
+      o[k] = v;
+      return o;
+    }, {});
   }
 
   validateForm = (form: any) => {
@@ -94,24 +56,6 @@ export class FieldService extends CommonService {
       for (const errI in error) {
         this.toastr.error(error[errI], ind);
       }
-    }
-  }
-
-
-  validateField = (field: any, value: any) => {
-    switch (field.type) {
-      case 'required':
-        return Validators.email;
-        break;
-      case 'password':
-        return Validators.minLength(6);
-        break;
-      case 'confirmPassword':
-        return Validators.minLength(6);
-        break;
-      default:
-        return null
-        break;
     }
   }
 
