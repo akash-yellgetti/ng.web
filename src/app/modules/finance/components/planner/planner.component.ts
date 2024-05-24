@@ -7,6 +7,7 @@ import { PlannerService } from '../../services/api/planner/planner.service';
 import * as _ from 'lodash';
 import { forms } from 'src/app/shared/json/forms.json';
 import { plannerCategories } from './planner.json';
+import { LoaderService } from 'src/app/shared/services/loader/loader.service';
 
 declare var $: any;
 
@@ -29,6 +30,7 @@ export class PlannerComponent implements OnInit {
   constructor(
     private cdr: ChangeDetectorRef, 
     private activatedRoute: ActivatedRoute,
+    private loaderService: LoaderService,
     private fieldService: FieldService,
     private plannerService: PlannerService
   ) {
@@ -44,6 +46,7 @@ export class PlannerComponent implements OnInit {
       // console.log(item.items);
       return item;
     }) 
+    this.loaderService.hideLoader();
     // console.log(this.data); 
     this.refreshDatatableAndChart('investment');
   }

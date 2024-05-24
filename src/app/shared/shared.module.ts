@@ -14,6 +14,7 @@ import { ChartJsComponent } from './components/chart-js/chart-js/chart-js.compon
 import { GoogleChartsModule } from 'angular-google-charts';
 import { FieldComponent } from './components/field/field.component';
 import { KeysPipe } from './pipe/keys/keys.pipe';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 @NgModule({
   declarations: [
     BreadcrumbsComponent,
@@ -26,7 +27,8 @@ import { KeysPipe } from './pipe/keys/keys.pipe';
     ChartGoogleComponent,
     ChartJsComponent,
     FieldComponent,
-    KeysPipe
+    KeysPipe,
+    SpinnerComponent
   ],
   imports: [
     MaterialModule,
@@ -38,6 +40,7 @@ import { KeysPipe } from './pipe/keys/keys.pipe';
     MaterialModule,
     NgxModule,
     // HighchartsChartModule,
+    SpinnerComponent,
     BreadcrumbsComponent,
     ChartComponent,
     ChartJsComponent,

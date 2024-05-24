@@ -1,12 +1,21 @@
 <!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
+<div class="d-sm-flex align-items-center justify-content-between mb-3">
     <h1 class="h3 mb-0 text-gray-800">Budget Planner</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+    <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fas fa-download fa-sm text-white-50"></i> Generate Report
+    </a> -->
+    <div class="card shadow border-left-info  ">
+        <div class="card-header">
+            <div class="h6 font-weight-bold text-info mb-0">
+            Total Income: {{ typeWise.income || 0 | indianNumberFormat }}
+            <div class="text-xs text-info"> {{ typeWise.incomeBalance || 0 | numberToWords }}</div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Content Row -->
-<div class="row">
+<div class="d-sm-flex align-items-center justify-content-between mb-3">
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-3 mb-4">
         <div class="card border-left-success shadow h-100" (click)="refreshDatatableAndChart('income')">
@@ -14,14 +23,14 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Income
+                            Income balance
                             <button type="button" class="btn btn-success btn-circle float-right" data-toggle="modal" data-target="#addBudgetModal" (click)="addBudget('income')">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-success">
-                            ₹ {{ typeWise.income || 0 | indianNumberFormat }} <br>
-                            <div class="text-xs text-success"> {{ typeWise.income || 0 | numberToWords }}</div>
+                            ₹ {{ typeWise.incomeBalance || 0 | indianNumberFormat }} <br>
+                            <div class="text-xs text-success"> {{ typeWise.incomeBalance || 0 | numberToWords }}</div>
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col">

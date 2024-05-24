@@ -1,12 +1,13 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { budget } from 'src/app/shared/json/budet.json';
+import { budget } from '../../../../shared/json/budet.json';
 import { ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 import { pieChartOptions } from '../../../../shared/components/chart/chart-options';
 import { BudgetService } from '../../services/api/budget/budget.service';
 import { FieldService } from '../../../../shared/services/field/field.service';
-import { forms } from 'src/app/shared/json/forms.json';
+import { forms } from '../../../../shared/json/forms.json';
 import { CalculatorService } from 'src/app/modules/calculator/services/calculator.service';
+import { LoaderService } from '../../../../shared/services/loader/loader.service';
 
 
 @Component({
@@ -63,6 +64,7 @@ export class BudgetComponent implements OnInit {
   constructor(
     private cdr: ChangeDetectorRef, 
     private activatedRoute: ActivatedRoute,
+    private loaderService: LoaderService,
     private calculationService: CalculatorService,
     private fieldService: FieldService,
     private budgetService: BudgetService
@@ -72,7 +74,7 @@ export class BudgetComponent implements OnInit {
   
   ngOnInit(): void {
     this.data = this.activatedRoute.snapshot.data.budget.data;
-    
+    this.loaderService.hideLoader();
     this.refreshDatatableAndChart('income');
   }
 
@@ -137,8 +139,10 @@ export class BudgetComponent implements OnInit {
   }
 
   getIncomeUtilization = () => {
-    const total = Number(this.typeWise?.expense || 0) + Number(this.typeWise?.want || 0) + Number(this.typeWise?.investment || 0);
-    return this.calculationService.round2Decimal(100 - this.calculationService.getPercentage(total, Number(this.typeWise.income)))  || 0;
+    const totalSpend = Number(this.typeWise?.expense || 0) + Number(this.typeWise?.want || 0) + Number(this.typeWise?.investment || 0);
+    this.typeWise.incomeBalance = Number(this.typeWise.income) - Number(totalSpend);
+    console.log('totalSpend', );
+    return this.calculationService.round2Decimal(this.calculationService.getPercentage(totalSpend, Number(this.typeWise.income)))  || 0;
   }
 
   addBudget = (value: any) => {

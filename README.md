@@ -76,17 +76,23 @@ ng g s modules/user/services/contact/contact
 --------------------------------------------------------------------------------------------------
 
 
+ng g c shared/components/spinner --module=shared
 ng g c shared/components/datatable --module=shared
 ng g c shared/components/field/field --module=shared
 ng g c shared/components/chart/chart --module=shared
 ng g c shared/components/chart-js/chart-js --module=shared
 ng g c shared/components/chart-google/chart-google --module=shared
 
+
+ng g i shared/interceptors/loader/loader
+ng g i shared/interceptors/jwt/jwt
+
 ng g s shared/services/socket/socket
 ng g s shared/services/socket/socket
 ng g s shared/services/validation/validation
 
 
+ng g s shared/services/loader/loader
 ng g s shared/services/common/common
 ng g s shared/services/field/field
 ng g s shared/services/calculator/calculator
