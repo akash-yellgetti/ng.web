@@ -31,9 +31,10 @@ export class RegistrationComponent implements OnInit {
     password: [null, []],
     confirmPassword: [null, []],
   });
-
+  public verifyOtpCount = 0;
   public flag = {
     requestOtp: true,
+    resendOtp: false,
     verifyOtp: false,
     mobileNo: false,
     register: false,
@@ -56,22 +57,20 @@ export class RegistrationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.fields = _.get(form, 'default.fields');
+  }
+
+  resendOTP = (): any => {
+    this.form.no.value = '';
+    this.generateOTP();
   }
 
   generateOTP = (): any => {
-    // this.registrationForm.markAllAsTouched();
-    // if (this.registrationForm.invalid) {
-    //   return;
-    // }
-    // const controls = this.registrationForm.controls;
     const errors = this.fieldService.validateForm(this.form);
     if (Object.keys(errors).length > 0 ){
       this.fieldService.setToastr(errors)
       return false;
     }
     const params = this.fieldService.json(this.form);
-    // const params: any = this.fieldService.json(controls);
     params.type = this.flag.otpFlag;
 
     this.authService.generateOTP(params).subscribe((res: any) => {
@@ -101,7 +100,17 @@ export class RegistrationComponent implements OnInit {
         this.toastr.success(res.message);
         this.toastr.success('Please fill the password and confirm password to register');
       } else {
-        this.toastr.error(res.message);
+        this.verifyOtpCount++;
+        if(this.verifyOtpCount >= 3){
+          this.flag.requestOtp = false;
+          this.flag.resendOtp = true;
+          this.flag.verifyOtp = false;
+          this.flag.mobileNo = false;
+          this.flag.register = false;
+          this.toastr.error('You have reached the maximum limit of OTP verification. Please try again later');
+        } else {
+          this.toastr.error(res.message);
+        }
       }
     });
   }

@@ -79,6 +79,10 @@
                                 *ngIf="flag.requestOtp">
                                 Generate OTP
                             </a>
+                            <a (click)="resendOTP()" class="btn btn-primary btn-user btn-block"
+                                *ngIf="flag.resendOtp">
+                                Rense OTP
+                            </a>
                             <!-- <hr>
                             <a routerLink="/auth/login" class="btn btn-google btn-user btn-block">
                                 <i class="fab fa-google fa-fw"></i> Register with Google
