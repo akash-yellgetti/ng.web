@@ -6,6 +6,7 @@ import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { setting } from 'src/app/shared/json/setting.json';
 import { CommonService } from '../../../../shared/services/common/common.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +14,11 @@ import { CommonService } from '../../../../shared/services/common/common.service
 export class ProfileService extends CommonService {
   constructor(
     protected _snackBar: MatSnackBar,
+    protected toastr: ToastrService,
     protected http: HttpClient,
     protected storage: LocalStorageService
   ) {
-    super(_snackBar, http, storage);
+    super(_snackBar, toastr, http, storage);
   }
 
   updateProfilePic = (data: any) => {

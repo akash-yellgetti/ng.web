@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LocalStorageService } from 'ngx-webstorage';
 import { setting } from 'src/app/shared/json/setting.json';
 import { catchError, map } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,11 @@ export class ContactService extends CommonService{
 
   constructor(
     protected _snackBar: MatSnackBar,
+    protected toastr: ToastrService,
     protected http: HttpClient,
     protected storage: LocalStorageService
   ) {
-    super(_snackBar, http, storage);
+    super(_snackBar, toastr, http, storage);
   }
 
   getContacts = () => {

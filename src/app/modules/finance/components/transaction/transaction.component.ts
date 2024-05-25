@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { transactionData } from '../../../../shared/json/bank-statement.json';
 import { forms } from '../../../../shared/json/forms.json';
 import { FieldService } from '../../../../shared/services/field/field.service';
-import { PlannerService } from '../../services/api/planner/planner.service';
+import { TransactionService } from '../../services/api/transaction/transaction.service';
 
 @Component({
   selector: 'app-transaction',
@@ -34,7 +34,7 @@ export class TransactionComponent implements OnInit {
     private cdr: ChangeDetectorRef, 
     private activatedRoute: ActivatedRoute,
     private fieldService: FieldService,
-    private plannerService: PlannerService
+    private transactionService: TransactionService
     ) {
     this.formatDatatoMonthYear();
    }
@@ -137,14 +137,24 @@ export class TransactionComponent implements OnInit {
   }
 
   analyse = () => {
-    const errors = this.fieldService.validateForm(this.form);
-    console.log(errors)
-    if (Object.keys(errors).length > 0 ){
-      this.fieldService.setToastr(errors)
-      return;
-    }
+    // const errors = this.fieldService.validateForm(this.form);
+    // console.log(errors)
+    // if (Object.keys(errors).length > 0 ){
+    //   this.fieldService.setToastr(errors)
+    //   return;
+    // }
     const json = this.fieldService.json(this.form);
-    console.log(json);
+    // console.log(json);
+    const formData = new FormData();
+    for (const i in json) {
+      if (json[i]) {
+        formData.append(i, json[i]);
+      }
+    }
+
+    this.transactionService.createTransaction(formData).subscribe((res) => {
+      // console.log(response);
+    })
 
   }
 

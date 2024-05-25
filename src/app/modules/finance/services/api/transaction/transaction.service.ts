@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 @Injectable({
   providedIn: 'root'
 })
-export class BudgetService extends CommonService {
+export class TransactionService extends CommonService {
 
   constructor(
     protected _snackBar: MatSnackBar,
@@ -22,7 +22,7 @@ export class BudgetService extends CommonService {
   }
 
   getDetail = () => {
-    const url = setting['uri'] + '/budget/detail';
+    const url = setting['uri'] + '/transaction/detail';
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.getAuthToken()
@@ -34,53 +34,19 @@ export class BudgetService extends CommonService {
       catchError(this.handleError));
   };
 
-  createBudget = (data: any) => {
-    const url = setting['uri'] + '/budget/create';
+  createTransaction = (formData: any) => {
+    const url = setting['uri'] + '/transaction/create';
 
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/json',
       Authorization: this.getAuthToken(),
     });
     const options = { headers: headers };
-    const params = JSON.stringify(data);
+    // const params = JSON.stringify(data);
 
-    return this.http.post(url, params, options).pipe(
+    return this.http.post(url, formData, options).pipe(
       map((data: any) => data),
       catchError(this.handleError)
     );
   };
-
-  updateBudget = (data: any) => {
-    const url = setting['uri'] + '/budget/update';
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: this.getAuthToken(),
-    });
-    const options = { headers: headers };
-    const params = JSON.stringify(data);
-
-    return this.http.post(url, params, options).pipe(
-      map((data: any) => data),
-      catchError(this.handleError)
-    );
-  };
-
-  deleteBudget = (data: any) => {
-    const url = setting['uri'] + '/budget/delete';
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: this.getAuthToken(),
-    });
-    const options = { headers: headers };
-    const params = JSON.stringify(data);
-
-    return this.http.post(url, params, options).pipe(
-      map((data: any) => data),
-      catchError(this.handleError)
-    );
-  };
-
-  
 }

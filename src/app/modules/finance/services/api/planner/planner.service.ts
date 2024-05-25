@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LocalStorageService } from 'ngx-webstorage';
 import { catchError, map } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Injectable({
@@ -14,10 +15,11 @@ export class PlannerService extends CommonService {
 
   constructor(
     protected _snackBar: MatSnackBar,
+    protected toastr: ToastrService,
     protected http: HttpClient,
     protected storage: LocalStorageService
   ) {
-    super(_snackBar, http, storage);
+    super(_snackBar, toastr, http, storage);
   }
 
   getDetail = () => {

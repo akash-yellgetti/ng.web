@@ -142,10 +142,12 @@ ng g c modules/finance/components/transaction --module=finance
 
 ng g s modules/finance/services/api/budget/budget
 ng g s modules/finance/services/api/planner/planner
+ng g s modules/finance/services/api/transaction/transaction
 ng g s modules/finance/services/api/income-tax/income-tax
 
 ng g r modules/finance/resolver/budget/budget
 ng g r modules/finance/resolver/planner/planner 
+ng g r modules/finance/resolver/transaction/transaction 
 
 --------------------------------------------------------------------------------------------------
 ng g m modules/personal --routing=true

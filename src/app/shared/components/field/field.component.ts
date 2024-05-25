@@ -31,9 +31,10 @@ export class FieldComponent implements OnInit {
   }
 
   handleFileInput = (event: any, field: any) => {
-    const file = event.target.files[0];
-    field.value = file;
-    field.file = file;
+    const file = event.target.files;
+    console.log(file)
+    field.value = _.first(file);
+    // field.file = file;
   }
 
   triggerSelect = (value: any) => {

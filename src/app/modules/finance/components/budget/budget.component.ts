@@ -127,6 +127,7 @@ export class BudgetComponent implements OnInit {
       if(res && res.status) {
         this.toastr.success('Budget Record Created Successfully');
         this.refreshData();
+        $(this.budgetForm.nativeElement).modal('toggle'); 
       }
       
     });
