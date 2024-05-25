@@ -1,195 +1,251 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-3">
-    <h1 class="h3 mb-0 text-gray-800">Budget Planner</h1>
-    <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+  <h1 class="h3 mb-0 text-gray-800">Budget Planner</h1>
+  <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
             class="fas fa-download fa-sm text-white-50"></i> Generate Report
     </a> -->
-    <div class="card shadow border-left-info  ">
-        <div class="card-header">
-            <div class="h6 font-weight-bold text-info mb-0">
-            Total Income: {{ typeWise.income || 0 | indianNumberFormat }}
-            <div class="text-xs text-info"> {{ typeWise.income || 0 | numberToWords }}</div>
-            </div>
-        </div>
+  <div class="card shadow border-left-info  ">
+    <div class="card-header">
+      <div class="h6 font-weight-bold text-info mb-0">
+        Total Income: {{ typeWise.income || 0 | indianNumberFormat }}
+        <div class="text-xs text-info"> {{ typeWise.income || 0 | numberToWords }}</div>
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- Content Row -->
 <div class="d-sm-flex align-items-center justify-content-between mb-3">
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-3 mb-4">
-        <div class="card border-left-success shadow h-100" (click)="refreshDatatableAndChart('income')"  [ngClass]="{'income-shadow': type === 'income' }" >
-            <div class="card-body card-body-custom">
-                <div class="row no-gutters align-items-center">
-                    <div class="col">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Income balance
-                            <button type="button" class="btn btn-success btn-circle float-right"   (click)="addBudget('income')">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-success">
-                            ₹ {{ typeWise.incomeBalance || 0 | indianNumberFormat }} <br>
-                            <div class="text-xs text-success"> {{ typeWise.incomeBalance || 0 | numberToWords }}</div>
-                        </div>
-                        <div class="row no-gutters align-items-center">
-                            <div class="col">
-                                <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: {{getIncomeUtilization()}}%"
-                                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <div class="h5 mb-0 font-weight-bold text-success">{{ getIncomeUtilization() + '%' }}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-3 col-md-3 mb-4">
+    <div class="card border-left-success shadow h-100" (click)="refreshDatatableAndChart('income')"
+      [ngClass]="{'income-shadow': type === 'income' }">
+      <div class="card-body card-body-custom">
+        <div class="row no-gutters align-items-center">
+          <div class="col">
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+              Income balance
+              <button type="button" class="btn btn-success btn-circle float-right" (click)="addBudget('income')">
+                <i class="fas fa-plus"></i>
+              </button>
             </div>
-        </div>
-    </div>
-
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-3 mb-4">
-        <div class="card border-left-danger shadow h-100" (click)="refreshDatatableAndChart('expense')" [ngClass]="{'danger-shadow': type === 'expense' }" >
-            <div class="card-body card-body-custom">
-                <div class="row no-gutters align-items-center">
-                    <div class="col">
-                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                            Expense
-                            <button type="button" class="btn btn-danger btn-circle float-right" (click)="addBudget('expense')">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-danger">
-                            ₹ {{ typeWise.expense || 0 | indianNumberFormat }} <br>
-                            <div class="text-xs text-danger"> {{ typeWise.expense || 0 | numberToWords }}</div>
-                        </div>
-                        <div class="row no-gutters align-items-center">
-                            <div class="col">
-                                <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: {{getPercentage('expense') }}%"
-                                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <div class="h5 mb-0 font-weight-bold text-danger">{{ getPercentage('expense') + '%' }}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="h5 mb-0 font-weight-bold text-success">
+              ₹ {{ typeWise.incomeBalance || 0 | indianNumberFormat }} <br>
+              <div class="text-xs text-success"> {{ typeWise.incomeBalance || 0 | numberToWords }}</div>
             </div>
-        </div>
-    </div>
-
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-3 mb-4">
-        <div class="card border-left-warning shadow h-100" (click)="refreshDatatableAndChart('goal')" [ngClass]="{'warning-shadow': type === 'goal' }" >
-            <div class="card-body card-body-custom">
-                <div class="row no-gutters align-items-center">
-                    <div class="col">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            Want
-                            <button type="button" class="btn btn-warning btn-circle float-right"   (click)="addBudget('goal')">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-warning">
-                            ₹ {{ typeWise.want || 0 | indianNumberFormat }}<br>
-                            <div class="text-xs text-warning"> {{ typeWise.want || 0 | numberToWords }}</div>
-                        </div>
-
-                        <div class="row no-gutters align-items-center">
-                            <div class="col">
-                                <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: {{getPercentage('goal')}}%"
-                                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <div class="h5 mb-0 font-weight-bold text-warning">{{ getPercentage('want') + '%' }}</div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row no-gutters align-items-center">
+              <div class="col">
+                <div class="progress progress-sm mr-2">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: {{getIncomeUtilization()}}%"
+                    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
+              </div>
+              <div class="col-auto">
+                <div class="h5 mb-0 font-weight-bold text-success">{{ getIncomeUtilization() + '%' }}</div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-3 mb-4">
-        <div class="card border-left-primary shadow h-100" (click)="refreshDatatableAndChart('investment')" [ngClass]="{'primary-shadow': type === 'investment' }" >
-            <div class="card-body card-body-custom">
-                <div class="row no-gutters align-items-center">
-                    <div class="col">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Investment
-                            <button type="button" class="btn btn-primary btn-circle float-right"   (click)="addBudget('investment')">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-primary">
-                            ₹ {{ typeWise.investment || 0 | indianNumberFormat }}<br>
-                            <div class="text-xs text-primary"> {{ typeWise.investment || 0 | numberToWords }}</div>
-                        </div>
-                        <div class="row no-gutters align-items-center">
-                            <div class="col">
-                                <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: {{getPercentage('investment')}}%"
-                                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <div class="h5 mb-0 font-weight-bold text-primary">{{ getPercentage('investment') + '%' }}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-3 col-md-3 mb-4">
+    <div class="card border-left-danger shadow h-100" (click)="refreshDatatableAndChart('expense')"
+      [ngClass]="{'danger-shadow': type === 'expense' }">
+      <div class="card-body card-body-custom">
+        <div class="row no-gutters align-items-center">
+          <div class="col">
+            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+              Expense
+              <button type="button" class="btn btn-danger btn-circle float-right" (click)="addBudget('expense')">
+                <i class="fas fa-plus"></i>
+              </button>
             </div>
+            <div class="h5 mb-0 font-weight-bold text-danger">
+              ₹ {{ typeWise.expense || 0 | indianNumberFormat }} <br>
+              <div class="text-xs text-danger"> {{ typeWise.expense || 0 | numberToWords }}</div>
+            </div>
+            <div class="row no-gutters align-items-center">
+              <div class="col">
+                <div class="progress progress-sm mr-2">
+                  <div class="progress-bar bg-danger" role="progressbar" style="width: {{getPercentage('expense') }}%"
+                    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="col-auto">
+                <div class="h5 mb-0 font-weight-bold text-danger">{{ getPercentage('expense') + '%' }}</div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-3 col-md-3 mb-4">
+    <div class="card border-left-warning shadow h-100" (click)="refreshDatatableAndChart('goal')"
+      [ngClass]="{'warning-shadow': type === 'goal' }">
+      <div class="card-body card-body-custom">
+        <div class="row no-gutters align-items-center">
+          <div class="col">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+              Want
+              <button type="button" class="btn btn-warning btn-circle float-right" (click)="addBudget('goal')">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="h5 mb-0 font-weight-bold text-warning">
+              ₹ {{ typeWise.want || 0 | indianNumberFormat }}<br>
+              <div class="text-xs text-warning"> {{ typeWise.want || 0 | numberToWords }}</div>
+            </div>
+
+            <div class="row no-gutters align-items-center">
+              <div class="col">
+                <div class="progress progress-sm mr-2">
+                  <div class="progress-bar bg-warning" role="progressbar" style="width: {{getPercentage('goal')}}%"
+                    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="col-auto">
+                <div class="h5 mb-0 font-weight-bold text-warning">{{ getPercentage('want') + '%' }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-3 col-md-3 mb-4">
+    <div class="card border-left-primary shadow h-100" (click)="refreshDatatableAndChart('investment')"
+      [ngClass]="{'primary-shadow': type === 'investment' }">
+      <div class="card-body card-body-custom">
+        <div class="row no-gutters align-items-center">
+          <div class="col">
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+              Investment
+              <button type="button" class="btn btn-primary btn-circle float-right" (click)="addBudget('investment')">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="h5 mb-0 font-weight-bold text-primary">
+              ₹ {{ typeWise.investment || 0 | indianNumberFormat }}<br>
+              <div class="text-xs text-primary"> {{ typeWise.investment || 0 | numberToWords }}</div>
+            </div>
+            <div class="row no-gutters align-items-center">
+              <div class="col">
+                <div class="progress progress-sm mr-2">
+                  <div class="progress-bar bg-primary" role="progressbar"
+                    style="width: {{getPercentage('investment')}}%" aria-valuenow="50" aria-valuemin="0"
+                    aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="col-auto">
+                <div class="h5 mb-0 font-weight-bold text-primary">{{ getPercentage('investment') + '%' }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="row">
-    <div class="col-xl-3 col-lg-3 mb-4">
-        <div class="card shadow mb-4">
-            <div class="card-body">
-                <app-chart-google class="shadow" [options]="chartOptions" [updateFlag]="updateFlag" ></app-chart-google>
-            </div>
-        </div>
+  <div class="col-xl-3 col-lg-3 mb-4">
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <app-chart-google class="shadow" [options]="chartOptions" [updateFlag]="updateFlag"></app-chart-google>
+      </div>
     </div>
-    <div class="col-xl-9">
-        <div class="card shadow mb-4">
-            <div class="card-body">
-                <app-datatable [columns]="budgetColumn" [data]="budgetData" (toParentDataTableDelete)="delete($event)" (toParentDataTableEdit)="edit($event)" ></app-datatable>
-            </div>
-        </div>
+  </div>
+  <div class="col-xl-9">
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <app-datatable [columns]="budgetColumn" [data]="budgetData" (toParentDataTableDelete)="delete($event)"
+          (toParentDataTableEdit)="edit($event)"></app-datatable>
+      </div>
     </div>
+  </div>
 </div>
 <!-- Content Row -->
 
 
 <!-- Add Budget Modal-->
-<div class="modal fade" #budgetForm id="addBudgetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Add {{ type | titlecase  }} </h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                  <div class="col-lg-{{ f.value.col }}" *ngFor="let f of form | keys; index as i;">
-                    <app-field [field]="f.value" [form]="form"  [key]="f.key"></app-field>
-                  </div>
-                </div>
+<div class="modal fade" #budgetForm id="addBudgetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Add {{ type | titlecase }} </h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+
+          <div class="col-md-6">
+            <div class="form-group ">
+              <label for="category"> Category </label>
+              <select class="form-control" id="category" [(ngModel)]="form.category.value"
+                (ngModelChange)="categoryTriggerSelect($event)">
+                <option value="" disabled selected>Select Category</option>
+                <option *ngFor="let option of form.category.options" [value]="option.key">{{option.value}}</option>
+              </select>
+              <div class="invalid-feedback" required>
+                Please choose a username.
               </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" type="button" data-dismiss="modal" (click)="save()" >Save</a>
             </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group ">
+              <label for="category"> Sub-Category </label>
+              <select class="form-control" id="category" [(ngModel)]="form.subcategory.value"
+                (ngModelChange)="subcategoryTriggerSelect($event)">
+                <option value="" disabled selected>Select Sub-Category</option>
+                <option *ngFor="let option of form.subcategory.options" [value]="option.key">{{option.value}}</option>
+              </select>
+              <div class="invalid-feedback" required>
+                Please choose a username.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="amount">Title</label>
+              <input type="text" class="form-control" id="amount" [(ngModel)]="form.title.value" name="amount"
+                placeholder="Enter Title" required>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="amount">Description</label>
+              <input type="text" class="form-control" id="amount" [(ngModel)]="form.description.value" name="amount"
+                placeholder="Enter Description" required>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="amount">Amount</label>
+              <input type="text" class="form-control" id="amount" [(ngModel)]="form.amount.value" name="amount"
+                placeholder="Enter Amount" required>
+            </div>
+          </div>
+
         </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-primary" type="button" data-dismiss="modal" (click)="save()">Save</a>
+      </div>
     </div>
+  </div>
 </div>

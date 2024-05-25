@@ -150,18 +150,50 @@ export class BudgetComponent implements OnInit {
     const totalSpend: number = Number(this.typeWise?.expense || 0) + Number(this.typeWise?.want || 0) + Number(this.typeWise?.investment || 0);
     const incomeBalance: number = Number(this.typeWise.income) - Number(totalSpend);
     this.typeWise.incomeBalance = incomeBalance;
-    console.log('totalSpend', );
+    // console.log('totalSpend', );
     return this.calculationService.round2Decimal(this.calculationService.getPercentage(incomeBalance, Number(this.typeWise.income)))  || 0;
+  }
+
+  getCategories = (category: any) => {
+    this.loaderService.showLoader();
+    this.fieldService.getSelectData(category).subscribe((res: any) => {
+      if(res && res.status) {
+        category.options = res.data.map( (r: any) => {
+          return {
+            key: r[category.ajax.option.key],
+            value: r[category.ajax.option.value],
+          };
+        });
+        this.loaderService.hideLoader();
+      }
+    });
+  }
+
+  categoryTriggerSelect = (value: any) => {
+    const self = this;
+    const field = self.form.category;
+    if(field.triggerSelect) {
+      self.form[field.triggerSelect].options = [];
+      const triggerfield = this.form[field.triggerSelect];
+      triggerfield.ajax.data.parentCode = field.value;
+      self.getCategories(triggerfield);
+    }
+     
+  }
+
+  subcategoryTriggerSelect = (value: any) => {
+     
   }
 
   addBudget = (value: any) => {
     // console.log(this.budgetForm.nativeElement)
     let form = _.cloneDeep(this.form);
-    this.form = null
-    this.cdr.detectChanges();
+    // this.form = null
+    // this.cdr.detectChanges();
     form = this.fieldService.resetForm(form);
     form.type.value = value;
     form.category.ajax.data.parentCode = value;
+    this.getCategories(form.category);
     this.form = form;
     this.type = value;
     $(this.budgetForm.nativeElement).modal('show');
