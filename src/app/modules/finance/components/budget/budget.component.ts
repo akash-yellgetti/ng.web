@@ -137,7 +137,7 @@ export class BudgetComponent implements OnInit {
   refreshData = () => {
     this.budgetService.getDetail().subscribe((d: any) => {
       this.data = d.data;
-      this.refreshDatatableAndChart(this.category);
+      this.refreshDatatableAndChart(this.type);
     });
   }
 
@@ -162,6 +162,7 @@ export class BudgetComponent implements OnInit {
     form.type.value = value;
     form.category.ajax.data.parentCode = value;
     this.form = form;
+    this.type = value;
     $(this.budgetForm.nativeElement).modal('show');
     this.cdr.detectChanges();
   }
