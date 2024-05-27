@@ -3,8 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../auth/guards/auth/auth.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { StepperComponent } from 'src/app/shared/components/stepper/stepper.component';
 
 const routes: Routes = [
+  {
+    path: 'entry',
+    component: StepperComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+  },
   {
     path: 'layout',
     component: LayoutComponent,

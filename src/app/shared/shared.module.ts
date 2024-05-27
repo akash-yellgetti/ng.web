@@ -15,6 +15,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
 import { FieldComponent } from './components/field/field.component';
 import { KeysPipe } from './pipe/keys/keys.pipe';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { StepperComponent } from './components/stepper/stepper.component';
 @NgModule({
   declarations: [
     BreadcrumbsComponent,
@@ -28,7 +29,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     ChartJsComponent,
     FieldComponent,
     KeysPipe,
-    SpinnerComponent
+    SpinnerComponent,
+    StepperComponent
   ],
   imports: [
     MaterialModule,

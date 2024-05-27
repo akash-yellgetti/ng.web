@@ -58,7 +58,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col">
             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-              Expense
+              Expense (Needs)
               <button type="button" class="btn btn-danger btn-circle float-right" (click)="addBudget('expense')">
                 <i class="fas fa-plus"></i>
               </button>
@@ -92,14 +92,14 @@
         <div class="row no-gutters align-items-center">
           <div class="col">
             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-              Want
+              Goal (Wants)
               <button type="button" class="btn btn-warning btn-circle float-right" (click)="addBudget('goal')">
                 <i class="fas fa-plus"></i>
               </button>
             </div>
             <div class="h5 mb-0 font-weight-bold text-warning">
-              ₹ {{ typeWise.want || 0 | indianNumberFormat }}<br>
-              <div class="text-xs text-warning"> {{ typeWise.want || 0 | numberToWords }}</div>
+              ₹ {{ typeWise.goal || 0 | indianNumberFormat }}<br>
+              <div class="text-xs text-warning"> {{ typeWise.goal || 0 | numberToWords }}</div>
             </div>
 
             <div class="row no-gutters align-items-center">
@@ -110,7 +110,7 @@
                 </div>
               </div>
               <div class="col-auto">
-                <div class="h5 mb-0 font-weight-bold text-warning">{{ getPercentage('want') + '%' }}</div>
+                <div class="h5 mb-0 font-weight-bold text-warning">{{ getPercentage('goal') + '%' }}</div>
               </div>
             </div>
           </div>

@@ -1,0 +1,38 @@
+<body class="bg-gradient-primary">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-10 col-lg-12 col-md-9">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <div class="row login-row">
+              <div class="col-lg-12">
+                <div class="p-2">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Welcome To Personal Finance App </h1>
+                  </div>
+                  <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+                    <ng-container   *ngFor="let step of form.steps; let i = index">
+                      <mat-step [class]="'custom-mat-step border border-primary'" [stepControl]="step.id" >
+                        <ng-template  matStepLabel>{{step.title}}</ng-template>
+                        <div class="row p-4">
+                          <div class="col-lg-{{ f.value.col }}" *ngFor="let f of step.fields | keys; index as i;">
+                            <app-field [field]="f.value" [key]="f.key"></app-field>
+                          </div>
+                        </div>
+                        <!-- {{ step.fields | json }}
+                        <app-field *ngFor="let field of step.fields | keys" [field]="field" [form]="step.fields"></app-field> -->
+
+
+                        
+                      </mat-step>
+                    </ng-container>
+                  </mat-stepper>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

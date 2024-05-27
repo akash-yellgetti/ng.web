@@ -148,7 +148,7 @@ export class BudgetComponent implements OnInit {
   }
 
   getIncomeUtilization = () => {
-    const totalSpend: number = Number(this.typeWise?.expense || 0) + Number(this.typeWise?.want || 0) + Number(this.typeWise?.investment || 0);
+    const totalSpend: number = Number(this.typeWise?.expense || 0) + Number(this.typeWise?.goal || 0) + Number(this.typeWise?.investment || 0);
     const incomeBalance: number = Number(this.typeWise.income) - Number(totalSpend);
     this.typeWise.incomeBalance = incomeBalance;
     // console.log('totalSpend', );

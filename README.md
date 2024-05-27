@@ -76,6 +76,7 @@ ng g s modules/user/services/contact/contact
 --------------------------------------------------------------------------------------------------
 
 
+ng g c shared/components/stepper --module=shared
 ng g c shared/components/spinner --module=shared
 ng g c shared/components/datatable --module=shared
 ng g c shared/components/field/field --module=shared
