@@ -3,21 +3,12 @@ export const stepperForm = {
     {
       id: 1,
       title: 'Personal Information',
-      content: '<h1>Step 1</h1><p>Step 1 content</p>',
       fields: {
-        age: {
-          fieldtype: 'number',
-          datatype: 'numeric',
-          col: '12',
-          name: 'age',
-          label: 'What is your age?',
-          value: '',
-          validations: 'required',
-        },
+         
         current_occupation: {
           fieldtype: 'text',
           datatype: 'string',
-          col: '12',
+          col: '6',
           name: 'current_occupation',
           label: 'What is your current occupation?',
           value: '',
@@ -26,7 +17,7 @@ export const stepperForm = {
         annual_income: {
           fieldtype: 'number',
           datatype: 'numeric',
-          col: '12',
+          col: '6',
           name: 'annual_income',
           label: 'What is your annual income?',
           value: '',
@@ -35,7 +26,7 @@ export const stepperForm = {
         marital_status: {
           fieldtype: 'select',
           datatype: 'string',
-          col: '12',
+          col: '6',
           name: 'marital_status',
           label: 'What is your marital status?',
           value: '',
@@ -45,12 +36,22 @@ export const stepperForm = {
         dependents: {
           fieldtype: 'number',
           datatype: 'numeric',
-          col: '12',
+          col: '6',
           name: 'dependents',
           label: 'Do you have any dependents? If yes, how many?',
           value: '',
           validations: 'required',
         },
+       
+
+        
+        
+      },
+    },
+    {
+      id: 2,
+      title: 'Financial Goals',
+      fields: {
         short_term_goals: {
           fieldtype: 'textarea',
           datatype: 'string',
@@ -87,6 +88,12 @@ export const stepperForm = {
           value: '',
           validations: 'required',
         },
+      }
+    },
+    {
+      id: 3,
+      title: 'Current Financial Situation',
+      fields: {
         savings_balance: {
           fieldtype: 'number',
           datatype: 'numeric',
@@ -132,6 +139,13 @@ export const stepperForm = {
           value: '',
           validations: 'required',
         },
+
+      }
+    },
+    {
+      id: 3,
+      title: 'Risk Appetite',
+      fields: {
         risk_tolerance: {
           fieldtype: 'select',
           datatype: 'string',
@@ -170,6 +184,13 @@ export const stepperForm = {
           value: '',
           validations: 'required',
         },
+
+      }
+    },
+    {
+      id: 3,
+      title: 'Investment Preferences',
+      fields: {
         investment_interest: {
           fieldtype: 'textarea',
           datatype: 'string',
@@ -207,6 +228,13 @@ export const stepperForm = {
           validations: 'required',
           options: ['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Annually']
         },
+        
+      }
+    },
+    {
+      id: 3,
+      title: 'Financial Knowledge and Experience',
+      fields: {
         investing_knowledge: {
           fieldtype: 'select',
           datatype: 'string',
@@ -235,6 +263,12 @@ export const stepperForm = {
           value: '',
           validations: 'required',
         },
+      }
+    },
+    {
+      id: 3,
+      title: 'Future Planning',
+      fields: {
         retirement_age: {
           fieldtype: 'number',
           datatype: 'numeric',
@@ -272,7 +306,13 @@ export const stepperForm = {
           value: '',
           validations: 'required',
         },
-        additional_information: {
+      }
+    },
+    {
+      id: 3,
+      title: 'Miscellaneous',
+      fields: {
+        additional_Information: {
           fieldtype: 'textarea',
           datatype: 'string',
           col: '12',
@@ -281,42 +321,7 @@ export const stepperForm = {
           value: '',
           validations: 'required',
         }
-      },
-    },
-    {
-      id: 2,
-      title: 'Financial Goals',
-      content: '<h1>Step 2</h1><p>Step 2 content</p>',
-    },
-    {
-      id: 3,
-      title: 'Current Financial Situation',
-      content: '<h1>Step 3</h1><p>Step 3 content</p>',
-    },
-    {
-      id: 3,
-      title: 'Risk Appetite',
-      content: '<h1>Step 3</h1><p>Step 3 content</p>',
-    },
-    {
-      id: 3,
-      title: 'Investment Preferences',
-      content: '<h1>Step 3</h1><p>Step 3 content</p>',
-    },
-    {
-      id: 3,
-      title: 'Financial Knowledge and Experience',
-      content: '<h1>Step 3</h1><p>Step 3 content</p>',
-    },
-    {
-      id: 3,
-      title: 'Future Planning',
-      content: '<h1>Step 3</h1><p>Step 3 content</p>',
-    },
-    {
-      id: 3,
-      title: 'Miscellaneous',
-      content: '<h1>Step 3</h1><p>Step 3 content</p>',
+      }
     },
   ],
 };

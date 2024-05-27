@@ -10,7 +10,7 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Welcome To Personal Finance App </h1>
                   </div>
-                  <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+                  <mat-stepper orientation="horizontal" [linear]="isLinear" #stepper>
                     <ng-container   *ngFor="let step of form.steps; let i = index">
                       <mat-step [class]="'custom-mat-step border border-primary'" [stepControl]="step.id" >
                         <ng-template  matStepLabel>{{step.title}}</ng-template>
