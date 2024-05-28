@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { stepperForm } from './stepper.forms.json';
+import { StepperOrientation } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-stepper',
@@ -14,11 +15,13 @@ import { stepperForm } from './stepper.forms.json';
   styleUrls: ['./stepper.component.scss'],
 })
 export class StepperComponent implements OnInit {
+  // orientation = 'horizontal';
+  public orientation: StepperOrientation = 'vertical';
   isLinear = false;
   public form: any = stepperForm;
 
   constructor(private _formBuilder: FormBuilder) {}
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
   }
 }

@@ -5,21 +5,31 @@ export const stepperForm = {
       title: 'Personal Information',
       fields: {
          
-        current_occupation: {
-          fieldtype: 'text',
+        employementType: {
+          fieldtype: 'select',
           datatype: 'string',
           col: '6',
-          name: 'current_occupation',
-          label: 'What is your current occupation?',
+          name: 'employementType',
+          label: 'What is your employement type?',
           value: '',
           validations: 'required',
+          options: [
+            {
+              key: "salaried",
+              value: "Salaried"
+            },
+            {
+              key: "self-employed",
+              value: "Self-Employed (Business)"
+            }
+          ]
         },
-        annual_income: {
+        annualIncome: {
           fieldtype: 'number',
           datatype: 'numeric',
           col: '6',
-          name: 'annual_income',
-          label: 'What is your annual income?',
+          name: 'annualIncome',
+          label: 'What is your employement annual income?',
           value: '',
           validations: 'required',
         },
@@ -31,16 +41,43 @@ export const stepperForm = {
           label: 'What is your marital status?',
           value: '',
           validations: 'required',
-          options: ['Single', 'Married', 'Divorced', 'Widowed']
+          options: [
+            {
+              key: 'single',
+              value: 'Single'
+            },
+            {
+              key: 'married',
+              value: 'Married'
+            },
+            {
+              key: 'divorced',
+              value: 'Divorced'
+            },
+            {
+              key: 'widowed',
+              value: 'Widowed'
+            }
+          ]
         },
         dependents: {
-          fieldtype: 'number',
+          fieldtype: 'select',
           datatype: 'numeric',
           col: '6',
           name: 'dependents',
           label: 'Do you have any dependents? If yes, how many?',
           value: '',
           validations: 'required',
+          options: [
+            {
+              key: 0,
+              value: "No"
+            },
+            {
+              key: 1,
+              value: "Yes"
+            }
+          ]
         },
        
 

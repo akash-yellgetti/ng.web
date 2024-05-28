@@ -44,14 +44,22 @@ export class ValidationService {
     return false;
   }
 
-  getValidationMessage = (key: string, label: string) => {
+  getValidationMessage = (key: string, label: string, options: any = []) => {
     switch (key) {
       case 'required':
-        return 'This '+label+' is required';
+        return `${label} is required.`;
         break;
       case 'email':
         return 'Invalid Email Address';
         break;
+      case 'number':
+        return `${label} must be a numeric value.`;
+        break;
+      case 'select':
+        return `${label} must be one of ${options.join(', ')}.`;
+        break;
+        
+        
       default:
         return null
         break;

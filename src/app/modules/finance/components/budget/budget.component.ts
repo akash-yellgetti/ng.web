@@ -78,6 +78,7 @@ export class BudgetComponent implements OnInit {
   
   ngOnInit(): void {
     this.data = this.activatedRoute.snapshot.data.budget.data;
+    this.fieldService.resetForm(this.form);
     this.loaderService.hideLoader();
     this.refreshDatatableAndChart('income');
   }
@@ -114,11 +115,14 @@ export class BudgetComponent implements OnInit {
     });
   };
 
-  save = (): void => {
+  save = () => {
+    const self = this;
 
-    const errors = this.fieldService.validateForm(this.form);
-    if (Object.keys(errors).length > 0 ){
-      this.fieldService.setToastr(errors)
+    const fieldServiceObj = this.fieldService.validateForm(this.form, false);
+    if (fieldServiceObj.getErrorsCount() > 0 ){
+      // const errors = fieldServiceObj.getErrors();
+      // this.fieldService.setToastr(errors);
+      self.form = fieldServiceObj.getFields();
       return;
     }
 
@@ -197,7 +201,7 @@ export class BudgetComponent implements OnInit {
     this.getCategories(form.category);
     this.form = form;
     this.type = value;
-    $(this.budgetForm.nativeElement).modal('show');
+    $('#addBudgetModal').modal('show');
     this.cdr.detectChanges();
   }
 

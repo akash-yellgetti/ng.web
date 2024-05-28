@@ -15,7 +15,8 @@ import { setting } from '../../json/setting.json';
   providedIn: 'root'
 })
 export class FieldService extends CommonService {
-
+  public fields: any = {};
+  public errors: any = {};
   constructor(
     protected _snackBar: MatSnackBar,
     public toastr: ToastrService, 
@@ -29,25 +30,42 @@ export class FieldService extends CommonService {
   resetForm = (form: any) => {
     return _.reduce(_.cloneDeep(form), (o: any, v: any, k) => {
       v.value = '';
+      v.errors = [];
       o[k] = v;
       return o;
     }, {});
   }
 
-  validateForm = (form: any) => {
+  validateForm = (form: any, returnErrors: any = true) => {
     const self = this;
+    self.fields = {};
+    self.errors = {};
     let errors: any = {};
-    form = _.map(_.cloneDeep(form), (r) => {
+    form = _.reduce(_.cloneDeep(form), (o: any, r, k) => {
       const validations = r.validations ? r.validations.split('|') : [];
       const errs = self.validationSevice.validate(validations, r, form);
       if(_.size(errs) > 0) {
         errors[r.label] = errs;
       }
-      form.errors = errs;
-      return form;
-    });
-    
-    return errors;
+      r.errors = errs;
+      o[k] = r;
+      return o;
+    }, {});
+    self.fields = form;
+    self.errors = errors; 
+    return returnErrors ? errors : self;
+  }
+
+  getErrorsCount = () => {
+    return _.size(this.errors);
+  }
+
+  getErrors = () => {
+    return this.errors;
+  }
+
+  getFields = () => {
+    return this.fields;
   }
 
   setToastr = (errors: any) => {

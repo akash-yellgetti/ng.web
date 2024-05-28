@@ -176,8 +176,7 @@
 
 
 <!-- Add Budget Modal-->
-<div class="modal fade" #budgetForm id="addBudgetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
+<div class="modal fade"   id="addBudgetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -187,31 +186,31 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="row">
+        <div class="row  ">
 
           <div class="col-md-6">
             <div class="form-group ">
               <label for="category"> Category </label>
-              <select class="form-control" id="category" [(ngModel)]="form.category.value"
+              <select class="form-control" [ngClass]="{'is-invalid':  form.category?.errors?.length > 0 }" id="category" [(ngModel)]="form.category.value"
                 (ngModelChange)="categoryTriggerSelect($event)">
                 <option value="" disabled selected>Select Category</option>
                 <option *ngFor="let option of form.category.options" [value]="option.key">{{option.value}}</option>
               </select>
-              <div class="invalid-feedback" required>
-                Please choose a username.
+              <div class="invalid-feedback" *ngFor="let error of form.category?.errors">
+                {{ error}}
               </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group ">
               <label for="category"> Sub-Category </label>
-              <select class="form-control" id="category" [(ngModel)]="form.subcategory.value"
+              <select class="form-control"  [ngClass]="{'is-invalid':  form.subcategory?.errors?.length > 0 }" id="subcategory" [(ngModel)]="form.subcategory.value"
                 (ngModelChange)="subcategoryTriggerSelect($event)">
                 <option value="" disabled selected>Select Sub-Category</option>
                 <option *ngFor="let option of form.subcategory.options" [value]="option.key">{{option.value}}</option>
               </select>
-              <div class="invalid-feedback" required>
-                Please choose a username.
+              <div class="invalid-feedback" *ngFor="let error of form.subcategory?.errors">
+                {{ error}}
               </div>
             </div>
           </div>
@@ -219,32 +218,44 @@
           <div class="col-md-12">
             <div class="form-group">
               <label for="amount">Title</label>
-              <input type="text" class="form-control" id="amount" [(ngModel)]="form.title.value" name="amount"
-                placeholder="Enter Title" required>
+              <input type="text" class="form-control" [ngClass]="{'is-invalid':  form.title?.errors?.length > 0 }" id="amount" [(ngModel)]="form.title.value"
+                name="title" placeholder="Enter Title">
+                <div class="invalid-feedback" *ngFor="let error of form.title?.errors">
+                  {{ error}}
+                </div>
             </div>
           </div>
 
           <div class="col-md-12">
             <div class="form-group">
-              <label for="amount">Description</label>
-              <input type="text" class="form-control" id="amount" [(ngModel)]="form.description.value" name="amount"
-                placeholder="Enter Description" required>
+              <label for="description">Description</label>
+              <input type="text" class="form-control" [ngClass]="{'is-invalid':  form.description?.errors?.length > 0 }" id="description" [(ngModel)]="form.description.value"
+              name="description" placeholder="Enter Title">
+              <div class="invalid-feedback" *ngFor="let error of form.description?.errors">
+                {{ error}}
+              </div>
             </div>
           </div>
 
           <div class="col-md-12">
             <div class="form-group">
               <label for="amount">Amount</label>
-              <input type="text" class="form-control" id="amount" [(ngModel)]="form.amount.value" name="amount"
-                placeholder="Enter Amount" required>
+               
+              <input type="text" class="form-control" [ngClass]="{'is-invalid':  form.amount?.errors?.length > 0 }" id="amount" [(ngModel)]="form.amount.value"
+              name="amount" placeholder="Enter Title">
+              <div class="invalid-feedback" *ngFor="let error of form.amount?.errors">
+                {{ error}}
+              </div>
             </div>
           </div>
 
         </div>
       </div>
       <div class="modal-footer">
+        <!-- <button class="btn btn-secondary" type="button"  >Cancel</button>
+        <button class="btn btn-primary" type="button" (click)="save()">Save</button> -->
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        <a class="btn btn-primary" type="button" (click)="save()">Save</a>
+        <a class="btn btn-primary"type="button" (click)="save()">Save</a>
       </div>
     </div>
   </div>

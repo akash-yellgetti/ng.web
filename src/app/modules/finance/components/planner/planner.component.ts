@@ -71,8 +71,6 @@ export class PlannerComponent implements OnInit {
 
 
   refreshDatatableAndChart = (type: string = 'investment') => {
-
-    
     const assetsChartOptions = { ...this.assetsChartOptions };
     // console.log(this.budgetData)
     this.assetsChartOptions = null;
