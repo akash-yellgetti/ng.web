@@ -22,7 +22,7 @@ export class PlannerComponent implements OnInit {
   data: any = [];
   public pieChartOptions: any = JSON.parse(JSON.stringify(pieChartOptions));;
   public assetsChartOptions: any = JSON.parse(JSON.stringify(pieChartOptions));
-  public liabilityChartOptions: any = JSON.parse(JSON.stringify(pieChartOptions));
+  public liabilitiesChartOptions: any = JSON.parse(JSON.stringify(pieChartOptions));
   public goalChartOptions: any = JSON.parse(JSON.stringify(pieChartOptions));
   updateFlag: any = 0;
    

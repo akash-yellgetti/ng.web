@@ -23,12 +23,12 @@ export const stepperForm = {
             },
           ],
         },
-        annualIncome: {
+        montlyIncome: {
           fieldtype: 'number',
           datatype: 'numeric',
           col: '6',
-          name: 'annualIncome',
-          label: 'What is your employement annual income?',
+          name: 'montlyIncome',
+          label: 'What is your employement montly income?',
           value: '',
           validations: 'required',
         },
@@ -139,35 +139,6 @@ export const stepperForm = {
           value: '',
           validations: 'required',
         },
-        outstanding_debts: {
-          fieldtype: 'textarea',
-          datatype: 'string',
-          col: '12',
-          name: 'outstanding_debts',
-          label:
-            'Do you have any outstanding debts? If yes, what type and amount?',
-          value: '',
-          validations: 'required',
-        },
-        monthly_expenditure: {
-          fieldtype: 'number',
-          datatype: 'numeric',
-          col: '12',
-          name: 'monthly_expenditure',
-          label: 'What is your current monthly expenditure?',
-          value: '',
-          validations: 'required',
-        },
-        existing_investments: {
-          fieldtype: 'textarea',
-          datatype: 'string',
-          col: '12',
-          name: 'existing_investments',
-          label:
-            'Do you have any existing investments? If yes, please specify (e.g., stocks, bonds, mutual funds, real estate).',
-          value: '',
-          validations: 'required',
-        },
         emergency_fund: {
           fieldtype: 'number',
           datatype: 'numeric',
@@ -178,6 +149,89 @@ export const stepperForm = {
           value: '',
           validations: 'required',
         },
+        outstanding_debts: {
+          fieldtype: 'checkbox',
+          datatype: 'string',
+          col: '12',
+          name: 'outstanding_debts',
+          label:
+            'Do you have any outstanding debts? If yes, what type and amount?',
+          value: '',
+          validations: 'required',
+          options: [
+            {
+              key: 'credit_card',
+              value: 'Credit Card',
+            },
+            {
+              key: 'student_loan',
+              value: 'Student Loan',
+            },
+            {
+              key: 'mortgage',
+              value: 'Mortgage',
+            },
+            {
+              key: 'personal_loan',
+              value: 'Personal Loan',
+            },
+            {
+              key: 'others',
+              value: 'Others',
+            },
+          ]
+        },
+        monthly_expenditure: {
+          fieldtype: 'number',
+          datatype: 'numeric',
+          col: '12',
+          name: 'monthly_expenditure',
+          label: 'What is your current monthly groceries expenditure?',
+          value: '',
+          validations: 'required',
+        },
+        existing_investments: {
+          fieldtype: 'checkbox',
+          datatype: 'string',
+          col: '12',
+          name: 'existing_investments',
+          label:
+            'Do you have any existing investments? If yes, please specify (e.g., stocks, bonds, mutual funds, real estate).',
+          value: '',
+          validations: 'required',
+          options: [
+            {
+              key: 'stocks',
+              value: 'Stocks',
+            },
+            {
+              key: 'bonds',
+              value: 'Bonds',
+            },
+            {
+              key: 'mutual funds',
+              value: 'Mutual Funds',
+            },
+            {
+              key: 'real estate',
+              value: 'Real Estate',
+            },
+            {
+              key: 'commodities',
+              value: 'Commodities',
+            },
+            {
+              key: 'cryptocurrencies',
+              value: 'Cryptocurrencies',
+            },
+            {
+              key: 'others',
+              value: 'Others',
+            },
+          
+          ]
+        },
+        
       },
     },
     {
