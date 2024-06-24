@@ -4,6 +4,7 @@ import { AuthGuard } from '../auth/guards/auth/auth.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { StepperComponent } from 'src/app/shared/components/stepper/stepper.component';
+import { EntryGuard } from 'src/app/shared/guards/entry/entry.guard';
 
 const routes: Routes = [
   {
@@ -15,8 +16,8 @@ const routes: Routes = [
   {
     path: 'layout',
     component: LayoutComponent,
-    canActivate: [AuthGuard],
-    canActivateChild: [AuthGuard],
+    canActivate: [AuthGuard, EntryGuard],
+    canActivateChild: [AuthGuard, EntryGuard],
     children: [
       {
         path: 'dashboard',

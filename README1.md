@@ -126,6 +126,7 @@ ng g s modules/auth/services/auth/auth
 ng g s modules/auth/services/auth/auth
 
 
+
 ng g s modules/comm/socket/socket
 
 
@@ -160,6 +161,10 @@ ng g c modules/finance/components/legal --module=finance
 ng g m shared
 ng g c shared/components/dialog --module=shared
 ng g c shared/components/chart --module=shared
+
+ng g guard shared/guards/entry/entry
+ng g guard shared/guards/auth/auth
+
 
 ng g s shared/services/field/field
 ng g s shared/services/socket/socket
