@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   Validators,
@@ -7,7 +7,8 @@ import {
 } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { stepperForm } from './stepper.forms.json';
-import { StepperOrientation } from '@angular/material/stepper';
+import { MatStepper, StepperOrientation } from '@angular/material/stepper';
+import { FieldService } from '../../services/field/field.service';
 
 @Component({
   selector: 'app-stepper',
@@ -15,13 +16,24 @@ import { StepperOrientation } from '@angular/material/stepper';
   styleUrls: ['./stepper.component.scss'],
 })
 export class StepperComponent implements OnInit {
-  // orientation = 'horizontal';
+  @ViewChild('stepper') stepper!: MatStepper;
   public orientation: StepperOrientation = 'vertical';
-  isLinear = false;
+  isLinear = true;
   public form: any = stepperForm;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private fieldService: FieldService) {}
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
+  }
+
+  goToNextStep(stepper: MatStepper, step: any) {
+    const errors = this.fieldService.validateForm(step.fields);
+    console.log(errors)
+    if (Object.keys(errors).length > 0 ){
+      this.fieldService.setToastr(errors)
+      return;
+    }
+    // const json = this.fieldService.json(this.form);
+    stepper.next();
   }
 }

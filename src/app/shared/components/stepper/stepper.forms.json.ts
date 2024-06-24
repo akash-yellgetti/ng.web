@@ -3,6 +3,7 @@ export const stepperForm = {
     {
       id: 1,
       title: 'Personal Information',
+      completed: false,
       fields: {
         employementType: {
           fieldtype: 'select',
@@ -83,6 +84,7 @@ export const stepperForm = {
     {
       id: 2,
       title: 'Financial Goals',
+      completed: false,
       fields: {
         goalLongTerm: {
           fieldtype: 'checkbox',

@@ -12,13 +12,14 @@
                   </div>
                   <mat-stepper [orientation]="orientation" [linear]="isLinear" #stepper>
                     <ng-container *ngFor="let step of form.steps; let i = index">
-                      <mat-step [class]="'custom-mat-step border border-primary'" [stepControl]="step.id">
+                      <mat-step [class]="'custom-mat-step border border-primary'" [stepControl]="step.id" >
                         <ng-template matStepLabel>{{ step.title }}</ng-template>
                         <div class="row p-4">
                           <div class="col-lg-{{ f.value.col }}" *ngFor="let f of step.fields | keys; index as i;">
                             <app-field [field]="f.value" [key]="f.key"></app-field>
                           </div>
                         </div>
+                        <button mat-button (click)="goToNextStep(stepper, step)">Next</button>
                       </mat-step>
                     </ng-container>
                   </mat-stepper>

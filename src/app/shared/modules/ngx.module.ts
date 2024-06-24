@@ -26,8 +26,12 @@ const config: SocketIoConfig = { url: setting.uri, options: { transports: ['poll
     SocketIoModule.forRoot(config),
     SlickCarouselModule,
     ToastrModule.forRoot({
+      timeOut: 5000,
       positionClass: 'toast-bottom-center',
-      progressBar: true
+      progressBar: true,
+      preventDuplicates: true,
+      newestOnTop: true,
+      closeButton: true
     }),
     CommonModule
   ], 

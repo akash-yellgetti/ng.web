@@ -72,7 +72,7 @@ export class FieldService extends CommonService {
     for (const ind in errors) {
       const error = errors[ind];
       for (const errI in error) {
-        this.toastr.error(error[errI], ind);
+        this.toastr.error(error[errI], 'Error');
       }
     }
   }
