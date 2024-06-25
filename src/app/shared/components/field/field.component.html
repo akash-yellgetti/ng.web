@@ -39,7 +39,7 @@
     <label>{{field.label}}</label>
     <ng-container *ngFor="let option of field.options">
       <div class="form-check">
-        <input type="{{field.fieldtype}}"  id="{{field.name}}" placeholder="Enter {{field.label}}" [(ngModel)]="field.value">
+        <input type="{{field.fieldtype}}"  id="{{field.name}}" placeholder="Enter {{field.label}}" [checked]="option.checked"   (change)="updateCheckboxValue($event, field, option)" >
         {{option.value}}
         </div>
     </ng-container>

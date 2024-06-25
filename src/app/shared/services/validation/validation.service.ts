@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import * as _ from 'lodash';
 @Injectable({
   providedIn: 'root'
 })
@@ -67,7 +67,7 @@ export class ValidationService {
   }
 
   isRequired(value: any): boolean {
-    return value !== undefined && value !== '' && value !== null && value !== 0;
+    return value !== undefined && value !== '' && value !== null && value !== 0 && _.size(value) > 0;
   }
 
   isRequired_if(value: any, field: any): boolean {

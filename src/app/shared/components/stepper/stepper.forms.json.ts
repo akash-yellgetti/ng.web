@@ -162,6 +162,47 @@ export const stepperForm = {
           validations: 'required',
           options: [
             {
+              key: 'personal_loans',
+              value: 'Personal Loans'
+            },
+            {
+              key: 'home_loans',
+              value: 'Home Loans'
+            },
+            {
+              key: 'vehicle_loans',
+              value: 'Vehicle Loans'
+            },
+            {
+              key: 'education_loans',
+              value: 'Education Loans'
+            },
+            {
+              key: 'business_loans',
+              value: 'Business Loans'
+            },
+            {
+              key: 'agricultural_loans',
+              value: 'Agricultural Loans'
+            },
+            {
+              key: 'gold_loans',
+              value: 'Gold Loans'
+            },
+            {
+              key: 'loan_against_property',
+              value: 'Loan Against Property (LAP)'
+            },
+            {
+              key: 'consumer_durable_loans',
+              value: 'Consumer Durable Loans'
+            },
+            {
+              key: 'mudra_loans',
+              value: 'Mudra Loans'
+            },            
+        
+            {
               key: 'credit_card',
               value: 'Credit Card',
             },

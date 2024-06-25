@@ -13,6 +13,9 @@ export class FieldComponent implements OnInit {
   constructor(private fieldService: FieldService) { }
 
   ngOnInit(): void {
+    if(this.field.fieldtype === 'checkbox') {
+      this.initializecheckboxField(this.field);
+    }
   }
 
   ngAfterViewInit() {
@@ -37,6 +40,20 @@ export class FieldComponent implements OnInit {
     // field.file = file;
   }
 
+  initializecheckboxField = (field: any) => {
+    field.options = _.map(field.options, (option: any) => {
+      option.checked = false;
+      return option;
+    });
+  }
+
+  updateCheckboxValue = (event: any,  field: any, option: any) => {
+    const o = _.find(field.options, { option });
+    option.checked = event.target.checked;
+    _.set(o, 'checked', event.target.checked);
+    field.value = _.filter(field.options, { checked: true }) || [];
+  }
+
   triggerSelect = (value: any) => {
     const field = this.field;
     if(field.triggerSelect) {
@@ -52,6 +69,5 @@ export class FieldComponent implements OnInit {
         });
       });
     }
-
   }
 }
