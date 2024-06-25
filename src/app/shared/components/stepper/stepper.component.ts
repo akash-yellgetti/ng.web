@@ -30,9 +30,13 @@ export class StepperComponent implements OnInit {
     const errors = this.fieldService.validateForm(step.fields);
     console.log(errors)
     if (Object.keys(errors).length > 0 ){
+      step.completed = false;
       this.fieldService.setToastr(errors)
       return;
     }
+
+    step.completed = true;
+
     // const json = this.fieldService.json(this.form);
     stepper.next();
   }
