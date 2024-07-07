@@ -41,7 +41,15 @@
       <div class="form-check">
         <input type="{{field.fieldtype}}"  id="{{field.name}}" placeholder="Enter {{field.label}}" [checked]="option.checked"   (change)="updateCheckboxValue($event, field, option)" >
         {{option.value}}
+      </div>
+      <ng-container *ngIf="option.checked">
+        <div class="row p-4" *ngIf="option.fields">
+          <div class="col-lg-{{ f.value.col }}" *ngFor="let f of option.fields | keys; index as i">
+            <app-field [field]="f.value" [key]="f.key"></app-field>
+          </div>
         </div>
+      </ng-container>
+        
     </ng-container>
     
   </div>
