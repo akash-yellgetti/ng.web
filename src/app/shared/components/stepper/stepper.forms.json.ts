@@ -135,6 +135,34 @@ export const stepperForm = {
               "value": "Saving Account"
             },
             {
+              "key": "ppf",
+              "value": "PPF"
+            },
+            {
+              "key": "epf",
+              "value": "ePF"
+            },
+            {
+              "key": "fd",
+              "value": "FD"
+            },
+            {
+              "key": "rd",
+              "value": "RD"
+            },
+            {
+              "key": "nps",
+              "value": "NPS"
+            },
+            {
+              "key": "gold",
+              "value": "Gold"
+            },
+            {
+              "key": "silve",
+              "value": "Silver"
+            },
+            {
               "key": "emergencyFund",
               "value": "Emergency Fund"
             },
