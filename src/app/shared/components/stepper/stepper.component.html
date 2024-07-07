@@ -9,11 +9,7 @@
                 <div class="p-2">
                   <mat-stepper [orientation]="orientation" [linear]="isLinear" #stepper>
                     <ng-container *ngFor="let step of form.steps; let i = index">
-                      <mat-step 
-                        
-                        >
-                         
-                          
+                      <mat-step>
                         <ng-template matStepLabel >
                           <!-- <span class="step-index">{{ i + 1 }}</span> -->
                           <span class="step-label" [ngClass]="{ 'display-none': i === 0 }">{{ step.title }}</span>

@@ -109,6 +109,10 @@ export const stepperForm = {
             {
               "key": "deposit-interest",
               "value": "Deposit Interest(FD,RD)"
+            },
+            {
+              "key": "side-hustle",
+              "value": "Side Hustle"
             }
             
           ]
