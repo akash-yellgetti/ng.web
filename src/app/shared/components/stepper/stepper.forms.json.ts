@@ -100,19 +100,63 @@ export const stepperForm = {
           "options": [
             {
               "key": "dividend",
-              "value": "Dividend"
+              "value": "Dividend",
+              "fields": {
+                "dividentAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "dividentAmount",
+                  "label": "Divident Monthly Income Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             },
             {
               "key": "rental",
-              "value": "Rental"
+              "value": "Rental",
+              "fields": {
+                "rentalAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "rentalAmount",
+                  "label": "Rental Monthly Income Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             },
             {
-              "key": "deposit-interest",
-              "value": "Deposit Interest(FD,RD)"
+              "key": "depositInterest",
+              "value": "Deposit Interest(FD,RD)",
+              "fields": {
+                "interestAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "depositInterest",
+                  "label": "Interest Monthly Income Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             },
             {
               "key": "side-hustle",
-              "value": "Side Hustle"
+              "value": "Side Hustle",
+              "fields": {
+                "sideHustleAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "sideHustleAmount",
+                  "label": "Side Hustle Monthly Income Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             }
             
           ]
@@ -136,67 +180,243 @@ export const stepperForm = {
           "options": [
             {
               "key": "saving",
-              "value": "Saving Account"
+              "value": "Saving Account",
+              "fields": {
+                "savingAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "savingAmount",
+                  "label": "Current Saving Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             },
             {
               "key": "ppf",
-              "value": "PPF"
+              "value": "PPF",
+              "fields": {
+                "ppfAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "ppfAmount",
+                  "label": "Current PPF Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             },
             {
               "key": "epf",
-              "value": "ePF"
-            },
-            {
-              "key": "fd",
-              "value": "FD"
-            },
-            {
-              "key": "rd",
-              "value": "RD"
+              "value": "ePF",
+              "fields": {
+                "epfAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "epfAmount",
+                  "label": "Current ePF Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             },
             {
               "key": "nps",
-              "value": "NPS"
+              "value": "NPS",
+              "fields": {
+                "fdAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "fdAmount",
+                  "label": "Current NPF Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
+            },
+            {
+              "key": "fd",
+              "value": "FD",
+              "fields": {
+                "fdAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "fdAmount",
+                  "label": "Current FD Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
+            },
+            {
+              "key": "rd",
+              "value": "RD",
+              "fields": {
+                "fdAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "fdAmount",
+                  "label": "Current RD Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             },
             {
               "key": "gold",
-              "value": "Gold"
+              "value": "Gold",
+              "fields": {
+                "fdAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "gold",
+                  "label": "Current Gold Quantity?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             },
             {
               "key": "silve",
-              "value": "Silver"
+              "value": "Silver",
+              "fields": {
+                "fdAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "gold",
+                  "label": "Current Silver Quantity?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             },
             {
               "key": "emergencyFund",
-              "value": "Emergency Fund"
+              "value": "Emergency Fund",
+              "fields": {
+                "fdAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "gold",
+                  "label": "Current Emergency Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             },
             {
               "key": "stocks",
-              "value": "Stocks"
+              "value": "Stocks",
+              "fields": {
+                "fdAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "gold",
+                  "label": "Current Stock Investment Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             },
             {
               "key": "bonds",
-              "value": "Bonds"
+              "value": "Bonds",
+              "fields": {
+                "fdAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "gold",
+                  "label": "Current Bond Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             },
             {
               "key": "mutual funds",
-              "value": "Mutual Funds"
+              "value": "Mutual Funds",
+              "fields": {
+                "fdAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "gold",
+                  "label": "Current Mutual Fund Investment Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             },
             {
               "key": "real estate",
-              "value": "Real Estate"
+              "value": "Real Estate",
+              "fields": {
+                "fdAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "gold",
+                  "label": "Current Real Estate Investment Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             },
             {
               "key": "commodities",
-              "value": "Commodities"
+              "value": "Commodities",
+              "fields": {
+                "fdAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "gold",
+                  "label": "Current Commodities Investment Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             },
             {
               "key": "cryptocurrencies",
-              "value": "Cryptocurrencies"
+              "value": "Cryptocurrencies",
+              "fields": {
+                "fdAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "gold",
+                  "label": "Current Cryptocurrencies Investment Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             },
             {
               "key": "others",
-              "value": "Others"
+              "value": "Others",
+              "fields": {
+                "fdAmount": {
+                  "fieldtype": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "gold",
+                  "label": "Current Cryptocurrencies Investment Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
             }
           ]
         }
