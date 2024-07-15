@@ -84,6 +84,11 @@ ng g c shared/components/chart/chart --module=shared
 ng g c shared/components/chart-js/chart-js --module=shared
 ng g c shared/components/chart-google/chart-google --module=shared
 
+ng g c shared/components/dynamic-stepper
+ng g c shared/components/dynamic-field
+
+
+dynamic-stepper.json.ts
 
 ng g i shared/interceptors/loader/loader
 ng g i shared/interceptors/jwt/jwt

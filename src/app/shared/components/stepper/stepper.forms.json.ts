@@ -10,13 +10,13 @@ export const stepperForm = {
       "fields": {
          
         "marital_status": {
-          "fieldtype": "select",
+          "type": "select",
           "datatype": "string",
           "col": "6",
           "name": "marital_status",
           "label": "What is your marital status?",
           "value": "",
-          "validations": "",
+          "validations": ["required"],
           "options": [
             {
               "key": "single",
@@ -37,13 +37,13 @@ export const stepperForm = {
           ]
         },
         "dependents": {
-          "fieldtype": "select",
+          "type": "select",
           "datatype": "numeric",
           "col": "6",
           "name": "dependents",
           "label": "Do you have any dependents? If yes, how many?",
           "value": "",
-          "validations": "",
+          "validations": ["required"],
           "options": [
             {
               "key": 0,
@@ -62,7 +62,7 @@ export const stepperForm = {
       "title": "Income",
       "fields": {
         "employementType": {
-          "fieldtype": "select",
+          "type": "select",
           "datatype": "string",
           "col": "6",
           "name": "employementType",
@@ -81,7 +81,7 @@ export const stepperForm = {
           ]
         },
         "montlyIncome": {
-          "fieldtype": "number",
+          "type": "number",
           "datatype": "numeric",
           "col": "6",
           "name": "montlyIncome",
@@ -90,20 +90,20 @@ export const stepperForm = {
           "validations": ""
         },
         "incomes": {
-          "fieldtype": "checkbox",
+          "type": "checkbox",
           "datatype": "string",
           "col": "12",
           "name": "outstanding_debts",
           "label": "Do you have any outstanding debts? If yes, what type and amount?",
           "value": "",
-          "validations": "",
+          "validations": ["required"],
           "options": [
             {
               "key": "dividend",
               "value": "Dividend",
               "fields": {
                 "dividentAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "dividentAmount",
@@ -118,7 +118,7 @@ export const stepperForm = {
               "value": "Rental",
               "fields": {
                 "rentalAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "rentalAmount",
@@ -133,7 +133,7 @@ export const stepperForm = {
               "value": "Deposit Interest(FD,RD)",
               "fields": {
                 "interestAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "depositInterest",
@@ -148,7 +148,7 @@ export const stepperForm = {
               "value": "Side Hustle",
               "fields": {
                 "sideHustleAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "sideHustleAmount",
@@ -170,20 +170,20 @@ export const stepperForm = {
       "title": "Current Net Worth",
       "fields": {
         "existing_investments": {
-          "fieldtype": "checkbox",
+          "type": "checkbox",
           "datatype": "string",
           "col": "12",
           "name": "existing_investments",
           "label": "Do you have any existing investments? If yes, please specify (e.g., stocks, bonds, mutual funds, real estate).",
           "value": "",
-          "validations": "",
+          "validations": ["required"],
           "options": [
             {
               "key": "saving",
               "value": "Saving Account",
               "fields": {
                 "savingAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "savingAmount",
@@ -198,7 +198,7 @@ export const stepperForm = {
               "value": "PPF",
               "fields": {
                 "ppfAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "ppfAmount",
@@ -213,7 +213,7 @@ export const stepperForm = {
               "value": "ePF",
               "fields": {
                 "epfAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "epfAmount",
@@ -228,7 +228,7 @@ export const stepperForm = {
               "value": "NPS",
               "fields": {
                 "fdAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "fdAmount",
@@ -243,7 +243,7 @@ export const stepperForm = {
               "value": "FD",
               "fields": {
                 "fdAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "fdAmount",
@@ -258,7 +258,7 @@ export const stepperForm = {
               "value": "RD",
               "fields": {
                 "fdAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "fdAmount",
@@ -273,7 +273,7 @@ export const stepperForm = {
               "value": "Gold",
               "fields": {
                 "fdAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "gold",
@@ -288,7 +288,7 @@ export const stepperForm = {
               "value": "Silver",
               "fields": {
                 "fdAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "gold",
@@ -303,7 +303,7 @@ export const stepperForm = {
               "value": "Emergency Fund",
               "fields": {
                 "fdAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "gold",
@@ -318,7 +318,7 @@ export const stepperForm = {
               "value": "Stocks",
               "fields": {
                 "fdAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "gold",
@@ -333,7 +333,7 @@ export const stepperForm = {
               "value": "Bonds",
               "fields": {
                 "fdAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "gold",
@@ -348,7 +348,7 @@ export const stepperForm = {
               "value": "Mutual Funds",
               "fields": {
                 "fdAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "gold",
@@ -363,7 +363,7 @@ export const stepperForm = {
               "value": "Real Estate",
               "fields": {
                 "fdAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "gold",
@@ -378,7 +378,7 @@ export const stepperForm = {
               "value": "Commodities",
               "fields": {
                 "fdAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "gold",
@@ -393,7 +393,7 @@ export const stepperForm = {
               "value": "Cryptocurrencies",
               "fields": {
                 "fdAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "gold",
@@ -408,7 +408,7 @@ export const stepperForm = {
               "value": "Others",
               "fields": {
                 "fdAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "gold",
@@ -428,13 +428,13 @@ export const stepperForm = {
       "fields": {
         
         "loans": {
-          "fieldtype": "checkbox",
+          "type": "checkbox",
           "datatype": "string",
           "col": "12",
           "name": "outstanding_debts",
           "label": "Do you have any outstanding debts? If yes, what type and amount?",
           "value": "",
-          "validations": "",
+          "validations": ["required"],
           "options": [
             {
               "key": "personal_loans",
@@ -499,13 +499,13 @@ export const stepperForm = {
           ]
         },
         "Insurance": {
-          "fieldtype": "checkbox",
+          "type": "checkbox",
           "datatype": "string",
           "col": "12",
           "name": "outstanding_debts",
           "label": "Do you have any outstanding debts? If yes, what type and amount?",
           "value": "",
-          "validations": "",
+          "validations": ["required"],
           "options": [
             {
               "key": "healthInsurance",
@@ -530,13 +530,13 @@ export const stepperForm = {
           ]
         },
         "regular": {
-          "fieldtype": "checkbox",
+          "type": "checkbox",
           "datatype": "string",
           "col": "12",
           "name": "outstanding_debts",
           "label": "Do you have any regular expense? If yes, what type and amount?",
           "value": "",
-          "validations": "",
+          "validations": ["required"],
           "options": _.chain(categories).mapValues('subcategory').values().flatten().map((category) => {
             return {
               key: category.title,
@@ -553,20 +553,20 @@ export const stepperForm = {
       "completed": false,
       "fields": {
         "goalLongTerm": {
-          "fieldtype": "checkbox",
+          "type": "checkbox",
           "datatype": "string",
           "col": "12",
           "name": "goalLongTerm",
           "label": "What are your long-term financial?",
           "value": "",
-          "validations": "",
+          "validations": ["required"],
           "options": [
             {
               "key": "Retirement",
               "value": "Retirement",
               "fields": {
                 "retirementAge": {
-                  "fieldtype": "select",
+                  "type": "select",
                   "datatype": "numeric",
                   "col": "12",
                   "name": "retirementAge",
@@ -597,7 +597,7 @@ export const stepperForm = {
                   ]
                 },
                 "retirementAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "retirementAmount",
@@ -612,7 +612,7 @@ export const stepperForm = {
               "value": "Self Marriage",
               "fields": {
                 "retirementAge": {
-                  "fieldtype": "select",
+                  "type": "select",
                   "datatype": "numeric",
                   "col": "12",
                   "name": "retirementAge",
@@ -643,7 +643,7 @@ export const stepperForm = {
                   ]
                 },
                 "retirementAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "retirementAmount",
@@ -658,7 +658,7 @@ export const stepperForm = {
               "value": "High Education",
               "fields": {
                 "retirementAge": {
-                  "fieldtype": "select",
+                  "type": "select",
                   "datatype": "numeric",
                   "col": "12",
                   "name": "retirementAge",
@@ -689,7 +689,7 @@ export const stepperForm = {
                   ]
                 },
                 "retirementAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "retirementAmount",
@@ -704,7 +704,7 @@ export const stepperForm = {
               "value": "Emergency Fund",
               "fields": {
                 "retirementAge": {
-                  "fieldtype": "select",
+                  "type": "select",
                   "datatype": "numeric",
                   "col": "12",
                   "name": "retirementAge",
@@ -735,7 +735,7 @@ export const stepperForm = {
                   ]
                 },
                 "retirementAmount": {
-                  "fieldtype": "text",
+                  "type": "text",
                   "datatype": "string",
                   "col": "12",
                   "name": "retirementAmount",
@@ -754,7 +754,7 @@ export const stepperForm = {
       "title": "Risk Appetite",
       "fields": {
         "risk_tolerance": {
-          "fieldtype": "select",
+          "type": "select",
           "datatype": "string",
           "col": "12",
           "name": "risk_tolerance",
@@ -777,7 +777,7 @@ export const stepperForm = {
           ]
         },
         "stock_market_experience": {
-          "fieldtype": "select",
+          "type": "select",
           "datatype": "string",
           "col": "12",
           "name": "stock_market_experience",
@@ -796,7 +796,7 @@ export const stepperForm = {
           ]
         },
         "market_volatility_reaction": {
-          "fieldtype": "select",
+          "type": "select",
           "datatype": "string",
           "col": "12",
           "name": "market_volatility_reaction",
@@ -819,7 +819,7 @@ export const stepperForm = {
           ]
         },
         "primary_investment_concern": {
-          "fieldtype": "select",
+          "type": "select",
           "datatype": "string",
           "col": "12",
           "name": "primary_investment_concern",
@@ -864,7 +864,7 @@ export const stepperForm = {
       "title": "Investment Preferences",
       "fields": {
         "investment_interest": {
-          "fieldtype": "select",
+          "type": "select",
           "datatype": "string",
           "col": 6,
           "name": "investment_interest",
@@ -903,7 +903,7 @@ export const stepperForm = {
           ]
         },
         "investment_holding_period": {
-          "fieldtype": "select",
+          "type": "select",
           "datatype": "numeric",
           "col": 6,
           "name": "investment_holding_period",
@@ -930,7 +930,7 @@ export const stepperForm = {
           ]
         },
         "preferred_investment_style": {
-          "fieldtype": "select",
+          "type": "select",
           "datatype": "string",
           "col": 6,
           "name": "preferred_investment_style",
@@ -949,7 +949,7 @@ export const stepperForm = {
           ]
         },
         "portfolio_review_frequency": {
-          "fieldtype": "select",
+          "type": "select",
           "datatype": "string",
           "col": 6,
           "name": "portfolio_review_frequency",
@@ -980,7 +980,7 @@ export const stepperForm = {
           ]
         },
         "estate_planning_interest": {
-          "fieldtype": "select",
+          "type": "select",
           "datatype": "string",
           "col": "12",
           "name": "estate_planning_interest",
@@ -1005,7 +1005,7 @@ export const stepperForm = {
       "title": "Financial Knowledge and Experience",
       "fields": {
         "investing_knowledge": {
-          "fieldtype": "select",
+          "type": "select",
           "datatype": "string",
           "col": "12",
           "name": "investing_knowledge",
@@ -1028,7 +1028,7 @@ export const stepperForm = {
           ]
         },
         "financial_news_following": {
-          "fieldtype": "select",
+          "type": "select",
           "datatype": "string",
           "col": "12",
           "name": "financial_news_following",
@@ -1047,7 +1047,7 @@ export const stepperForm = {
           ]
         },
         "financial_advisor_experience": {
-          "fieldtype": "select",
+          "type": "select",
           "datatype": "string",
           "col": "12",
           "name": "financial_advisor_experience",
@@ -1072,7 +1072,7 @@ export const stepperForm = {
       "title": "Miscellaneous",
       "fields": {
         "additional_Information": {
-          "fieldtype": "textarea",
+          "type": "textarea",
           "datatype": "string",
           "col": "12",
           "name": "additional_information",

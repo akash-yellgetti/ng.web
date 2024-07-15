@@ -16,6 +16,8 @@ import { FieldComponent } from './components/field/field.component';
 import { KeysPipe } from './pipe/keys/keys.pipe';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { StepperComponent } from './components/stepper/stepper.component';
+import { DynamicStepperComponent } from './components/dynamic-stepper/dynamic-stepper.component';
+import { DynamicFieldComponent } from './components/dynamic-field/dynamic-field.component';
 @NgModule({
   declarations: [
     BreadcrumbsComponent,
@@ -30,7 +32,9 @@ import { StepperComponent } from './components/stepper/stepper.component';
     FieldComponent,
     KeysPipe,
     SpinnerComponent,
-    StepperComponent
+    StepperComponent,
+    DynamicStepperComponent,
+    DynamicFieldComponent
   ],
   imports: [
     MaterialModule,
