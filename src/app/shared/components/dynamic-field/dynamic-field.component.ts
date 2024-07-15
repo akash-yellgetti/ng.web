@@ -1,12 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import * as _ from 'lodash';
 
 interface FieldConfig {
   name: string;
   label: string;
   type: string;
   col: string;
-  options?: { key: string, value: any }[]; // For select and radio buttons
+  options?: { key: string, value: any, checked?: any, fields?: any, form?: any }[]; // For select and radio buttons
   validations?: string[];
 }
 
@@ -19,11 +20,33 @@ export class DynamicFieldComponent implements OnInit {
   @Input() field!: FieldConfig;
   @Input() form!: FormGroup;
 
-  constructor() {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     const control = new FormControl('', this.getValidators(this.field.validations || []));
     this.form.addControl(this.field.name, control);
+    if (['checkbox', 'checkbox-form'].indexOf(this.field.type) > -1) {
+      this.initializeFormGroup(this.field);
+    }
+  }
+  
+  initializeFormGroup(field: any): any {
+    const formGroup: any = this.fb.group({});
+    const options: any = field.options || [];
+    for (const i in options) {
+      if (options[i]) {
+        const option = options[i];
+        option.form = _.cloneDeep(formGroup);
+      }
+    }
+  }
+
+  updateCheckboxValue = (event: any,  field: any, option: any) => {
+    const o = _.find(field.options, { option });
+    // option.checked = event.target.checked;
+    _.set(option, 'checked', event.checked);
+    _.set(o, 'checked', event.checked);
+    field.value = _.filter(field.options, { checked: true }) || [];
   }
 
   getValidators(validators: string[]): any[] {

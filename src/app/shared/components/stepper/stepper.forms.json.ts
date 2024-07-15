@@ -90,7 +90,7 @@ export const stepperForm = {
           "validations": ""
         },
         "incomes": {
-          "type": "checkbox",
+          "type": "checkbox-form",
           "datatype": "string",
           "col": "12",
           "name": "outstanding_debts",
@@ -864,9 +864,9 @@ export const stepperForm = {
       "title": "Investment Preferences",
       "fields": {
         "investment_interest": {
-          "type": "check",
+          "type": "checkbox",
           "datatype": "string",
-          "col": 6,
+          "col": 12,
           "name": "investment_interest",
           "label": "What type of investments are you interested in?",
           "value": "",
