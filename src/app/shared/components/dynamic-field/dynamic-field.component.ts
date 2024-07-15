@@ -5,6 +5,7 @@ interface FieldConfig {
   name: string;
   label: string;
   type: string;
+  col: string;
   options?: { key: string, value: any }[]; // For select and radio buttons
   validations?: string[];
 }

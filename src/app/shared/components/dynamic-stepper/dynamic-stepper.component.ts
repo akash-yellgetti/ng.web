@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatStepper, StepperOrientation } from '@angular/material/stepper';
 import { dynamicStepperJson } from './dynamic-stepper.json';
 import { stepperForm } from '../stepper/stepper.forms.json';
+import { LocalStorageService } from 'ngx-webstorage';
 
 interface Step {
   title: string;
@@ -23,7 +24,7 @@ export class DynamicStepperComponent implements OnInit {
   steps: any[] = [];
   formGroups: FormGroup[] = [];
 
-  constructor(private http: HttpClient, private fb: FormBuilder) {}
+  constructor(private http: HttpClient, private fb: FormBuilder, private storageService: LocalStorageService) {}
 
   ngOnInit(): void {
     // this.http.get<Step[]>('assets/stepper-config.json').subscribe(data => {
@@ -39,7 +40,10 @@ export class DynamicStepperComponent implements OnInit {
   }
 
   nextStep(): void {
+    const formData = this.formGroups.map(group => group.value);
+    this.storageService.store('formData', formData);
     if (this.formGroups[this.stepper.selectedIndex].valid) {
+      
       this.stepper.next();
     } else {
       this.formGroups[this.stepper.selectedIndex].markAllAsTouched();
@@ -52,5 +56,14 @@ export class DynamicStepperComponent implements OnInit {
 
   isLastStep(): boolean {
     return this.stepper?.selectedIndex === this.steps.length - 1;
+  }
+
+  finish(): void {
+    const formData = this.formGroups.map(group => group.value);
+    this.storageService.store('formData', formData);
+    console.log('formData', formData)
+    // this.dataService.saveFormData(formData).subscribe(response => {
+    //   console.log('Data saved successfully', response);
+    // });
   }
 }

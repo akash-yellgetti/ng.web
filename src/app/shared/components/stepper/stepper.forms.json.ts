@@ -864,7 +864,7 @@ export const stepperForm = {
       "title": "Investment Preferences",
       "fields": {
         "investment_interest": {
-          "type": "select",
+          "type": "check",
           "datatype": "string",
           "col": 6,
           "name": "investment_interest",

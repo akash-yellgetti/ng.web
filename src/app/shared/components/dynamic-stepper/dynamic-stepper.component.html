@@ -1,16 +1,26 @@
-<mat-stepper [orientation]="orientation" [linear]="isLinear" #stepper>
-  <ng-container *ngFor="let step of steps; let index = index">
-    <mat-step [label]="step.title" [stepControl]="formGroups[index]"  >
-      <form [formGroup]="formGroups[index]">
-        <div *ngFor="let f of step.fields | keys; index as i">
-          <app-dynamic-field [field]="f.value" [form]="formGroups[index]"></app-dynamic-field>
-        </div>
-      </form>
-      <div>
-        <button mat-button *ngIf="index > 0" (click)="prevStep()">Back</button>
-        <button mat-button *ngIf="!isLastStep()" (click)="nextStep()">Next</button>
-        <button mat-button *ngIf="isLastStep()" [disabled]="!formGroups[index].valid">Finish</button>
-      </div>
-    </mat-step>
-  </ng-container>
-</mat-stepper>
+<div class="card-container">
+  <mat-card class="stepper-card">
+    <mat-card-content>
+      <mat-stepper [orientation]="orientation" [linear]="isLinear" #stepper>
+
+        <ng-container *ngFor="let step of steps; let index = index" >
+          <mat-step [label]="step.title" [stepControl]="formGroups[index]">
+            <form [formGroup]="formGroups[index]" >
+              <div class="row">
+                <div *ngFor="let f of step.fields | keys; index as i" class="col-{{f.value.col}}">
+                  <app-dynamic-field [field]="f.value" [form]="formGroups[index]"></app-dynamic-field>
+                </div>
+              </div>
+              
+            </form>
+            <div>
+              <button mat-button *ngIf="index > 0" (click)="prevStep()">Back</button>
+              <button mat-button *ngIf="!isLastStep()" (click)="nextStep()">Next</button>
+              <button mat-button *ngIf="isLastStep()" [disabled]="!formGroups[index].valid" (click)="finish()">Finish</button>
+            </div>
+          </mat-step>
+        </ng-container>
+      </mat-stepper>
+    </mat-card-content>
+  </mat-card>
+</div>
