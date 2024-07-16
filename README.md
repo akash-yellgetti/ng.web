@@ -86,6 +86,8 @@ ng g c shared/components/chart-google/chart-google --module=shared
 
 ng g c shared/components/dynamic-stepper
 ng g c shared/components/dynamic-field
+ng g c shared/components/checkbox-group
+ng generate component checkbox-group
 
 
 dynamic-stepper.json.ts

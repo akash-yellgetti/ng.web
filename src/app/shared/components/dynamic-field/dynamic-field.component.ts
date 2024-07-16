@@ -23,22 +23,25 @@ export class DynamicFieldComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    const control = new FormControl('', this.getValidators(this.field.validations || []));
-    this.form.addControl(this.field.name, control);
+    
     if (['checkbox', 'checkbox-form'].indexOf(this.field.type) > -1) {
       this.initializeFormGroup(this.field);
+    } else {
+      const control = new FormControl('', this.getValidators(this.field.validations || []));
+      this.form.addControl(this.field.name, control);
     }
   }
   
   initializeFormGroup(field: any): any {
-    const formGroup: any = this.fb.group({});
-    const options: any = field.options || [];
-    for (const i in options) {
-      if (options[i]) {
-        const option = options[i];
-        option.form = _.cloneDeep(formGroup);
-      }
-    }
+    const formGroup: any = this.fb.array([]);
+    this.form.addControl(field.name, formGroup);
+    // const options: any = field.options || [];
+    // for (const i in options) {
+    //   if (options[i]) {
+    //     const option = options[i];
+    //     option.form = _.cloneDeep(formGroup);
+    //   }
+    // }
   }
 
   updateCheckboxValue = (event: any,  field: any, option: any) => {

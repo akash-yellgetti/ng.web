@@ -18,6 +18,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { DynamicStepperComponent } from './components/dynamic-stepper/dynamic-stepper.component';
 import { DynamicFieldComponent } from './components/dynamic-field/dynamic-field.component';
+import { CheckboxGroupComponent } from './components/checkbox-group/checkbox-group.component';
 @NgModule({
   declarations: [
     BreadcrumbsComponent,
@@ -34,7 +35,8 @@ import { DynamicFieldComponent } from './components/dynamic-field/dynamic-field.
     SpinnerComponent,
     StepperComponent,
     DynamicStepperComponent,
-    DynamicFieldComponent
+    DynamicFieldComponent,
+    CheckboxGroupComponent
   ],
   imports: [
     MaterialModule,

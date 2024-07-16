@@ -1,98 +1,65 @@
 
 <ng-container [ngSwitch]="field.type" [formGroup]="form"  >
-    <mat-form-field appearance="fill" *ngSwitchCase="'text'" class="custom-form-control">
-      <mat-label>{{ field.label }}</mat-label>
-      <input matInput [formControlName]="field.name">
-      <mat-error *ngIf="form.get(field.name)?.invalid">
-        {{ getErrorMessage() }}
-      </mat-error>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill" *ngSwitchCase="'email'" class="custom-form-control">
-      <mat-label>{{ field.label }}</mat-label>
-      <input matInput type="email" [formControlName]="field.name">
-      <mat-error *ngIf="form.get(field.name)?.invalid">
-        {{ getErrorMessage() }}
-      </mat-error>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill" *ngSwitchCase="'number'" class="custom-form-control">
-      <mat-label>{{ field.label }}</mat-label>
-      <input matInput type="number" [formControlName]="field.name">
-      <mat-error *ngIf="form.get(field.name)?.invalid">
-        {{ getErrorMessage() }}
-      </mat-error>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill" *ngSwitchCase="'textarea'" class="custom-form-control">
-      <mat-label>{{ field.label }}</mat-label>
-      <textarea matInput [formControlName]="field.name"></textarea>
-      <mat-error *ngIf="form.get(field.name)?.invalid">
-        {{ getErrorMessage() }}
-      </mat-error>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill" *ngSwitchCase="'select'" class="custom-form-control">
-      <mat-label>{{ field.label }}</mat-label>
-      <mat-select [formControlName]="field.name">
-        <mat-option *ngFor="let option of field.options" [value]="option.key">
-          {{ option.value }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="form.get(field.name)?.invalid">
-        {{ getErrorMessage() }}
-      </mat-error>
-    </mat-form-field>
-  
-    <div *ngSwitchCase="'checkbox'">
-      <label>{{ field.label }}</label>
-      <p *ngFor="let option of field.options"><mat-checkbox   [formControlName]="field.name" [value]="option.key" >{{ option.value }}</mat-checkbox></p>
-      <mat-error *ngIf="form.get(field.name)?.invalid">
-        {{ getErrorMessage() }}
-      </mat-error>
-    </div>
+  <mat-form-field appearance="fill" *ngSwitchCase="'text'" class="custom-form-control">
+    <mat-label>{{ field.label }}</mat-label>
+    <input matInput [formControlName]="field.name">
+    <mat-error *ngIf="form.get(field.name)?.invalid">
+      {{ getErrorMessage() }}
+    </mat-error>
+  </mat-form-field>
 
+  <mat-form-field appearance="fill" *ngSwitchCase="'email'" class="custom-form-control">
+    <mat-label>{{ field.label }}</mat-label>
+    <input matInput type="email" [formControlName]="field.name">
+    <mat-error *ngIf="form.get(field.name)?.invalid">
+      {{ getErrorMessage() }}
+    </mat-error>
+  </mat-form-field>
 
-    <div *ngSwitchCase="'checkbox-form'">
-      <label>{{ field.label }}</label>
-      <p *ngFor="let option of field.options">
-           
-        <mat-checkbox   [formControlName]="field.name" [checked]="option.checked" [value]="option.key" [checked]="option.checked"   (change)="updateCheckboxValue($event, field, option)" >{{ option.value }}{{ option?.checked }}</mat-checkbox>
-        <ng-container *ngIf="option.checked">
-          <div *ngIf="option.fields">
-            <form [formGroup]="option.form" >
-              <div class="row">
-                <div *ngFor="let f of option.fields | keys; index as i" class="col-{{f.value.col}}">
-                  <app-dynamic-field [field]="f.value" [form]="option.form"></app-dynamic-field>
-                </div>
-              </div>
-            </form>
-          </div>
-        </ng-container>
-        
-        
-      
-      
-      </p>
-      <mat-error *ngIf="form.get(field.name)?.invalid">
-        {{ getErrorMessage() }}
-      </mat-error>
-      
-    </div>
+  <mat-form-field appearance="fill" *ngSwitchCase="'number'" class="custom-form-control">
+    <mat-label>{{ field.label }}</mat-label>
+    <input matInput type="number" [formControlName]="field.name">
+    <mat-error *ngIf="form.get(field.name)?.invalid">
+      {{ getErrorMessage() }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngSwitchCase="'textarea'" class="custom-form-control">
+    <mat-label>{{ field.label }}</mat-label>
+    <textarea matInput [formControlName]="field.name"></textarea>
+    <mat-error *ngIf="form.get(field.name)?.invalid">
+      {{ getErrorMessage() }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngSwitchCase="'select'" class="custom-form-control">
+    <mat-label>{{ field.label }}</mat-label>
+    <mat-select [formControlName]="field.name">
+      <mat-option *ngFor="let option of field.options" [value]="option.key">
+        {{ option.value }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="form.get(field.name)?.invalid">
+      {{ getErrorMessage() }}
+    </mat-error>
+  </mat-form-field>
+
+  <app-checkbox-group *ngSwitchCase="'checkbox'" [label]="field.label" [options]="field.options" [form]="form" [controlName]="field.name"></app-checkbox-group>
   
-    <div *ngSwitchCase="'radio'">
-      <label>{{ field.label }}</label>
-      <mat-radio-group [formControlName]="field.name">
-        <div *ngFor="let option of field.options">
-            <mat-radio-button [value]="option.key" >
-              {{ option.value }}
-            </mat-radio-button>
-        </div>
-      </mat-radio-group>
-      
-      <mat-error *ngIf="form.get(field.name)?.invalid">
-        {{ getErrorMessage() }}
-      </mat-error>
-    </div>
-  </ng-container>
+  <app-checkbox-group *ngSwitchCase="'checkbox-form'" [label]="field.label" [options]="field.options" [form]="form" [controlName]="field.name"></app-checkbox-group>
   
+  <div *ngSwitchCase="'radio'">
+    <label>{{ field.label }}</label>
+    <mat-radio-group [formControlName]="field.name">
+      <div *ngFor="let option of field.options">
+          <mat-radio-button [value]="option.key" >
+            {{ option.value }}
+          </mat-radio-button>
+      </div>
+    </mat-radio-group>
+    
+    <mat-error *ngIf="form.get(field.name)?.invalid">
+      {{ getErrorMessage() }}
+    </mat-error>
+  </div>
+</ng-container>
