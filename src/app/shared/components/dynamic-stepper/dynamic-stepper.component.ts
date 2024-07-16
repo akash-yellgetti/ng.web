@@ -20,7 +20,7 @@ interface Step {
 export class DynamicStepperComponent implements OnInit {
   @ViewChild('stepper') private stepper!: MatStepper;
   public orientation: StepperOrientation = 'vertical';
-  isLinear = false
+  isLinear = true;
   steps: any[] = [];
   formGroups: FormGroup[] = [];
 

@@ -61,34 +61,6 @@ export const stepperForm = {
       "id": 2,
       "title": "Income",
       "fields": {
-        "employementType": {
-          "type": "select",
-          "datatype": "string",
-          "col": "6",
-          "name": "employementType",
-          "label": "What is your employement type?",
-          "value": "",
-          "validations": "",
-          "options": [
-            {
-              "key": "salaried",
-              "value": "Salaried"
-            },
-            {
-              "key": "self-employed",
-              "value": "Self-Employed (Business)"
-            }
-          ]
-        },
-        "montlyIncome": {
-          "type": "number",
-          "datatype": "numeric",
-          "col": "6",
-          "name": "montlyIncome",
-          "label": "What is your employement montly income?",
-          "value": "",
-          "validations": ""
-        },
         "incomes": {
           "type": "checkbox-form",
           "datatype": "string",
@@ -98,6 +70,35 @@ export const stepperForm = {
           "value": "",
           "validations": ["required"],
           "options": [
+            {
+              "key": "salary",
+              "value": "Salary",
+              "fields": {
+                "salaryAmount": {
+                  "type": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "salaryAmount",
+                  "label": "Salary Monthly Income Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
+            },{
+              "key": "business",
+              "value": "Business",
+              "fields": {
+                "businessAmount": {
+                  "type": "text",
+                  "datatype": "string",
+                  "col": "12",
+                  "name": "businessAmount",
+                  "label": "Business Monthly Income Amount?",
+                  "value": "",
+                  "validations": ""
+                }
+              }
+            },
             {
               "key": "dividend",
               "value": "Dividend",
