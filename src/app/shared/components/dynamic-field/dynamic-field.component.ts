@@ -35,13 +35,13 @@ export class DynamicFieldComponent implements OnInit {
   initializeFormGroup(field: any): any {
     const formGroup: any = this.fb.array([]);
     this.form.addControl(field.name, formGroup);
-    // const options: any = field.options || [];
-    // for (const i in options) {
-    //   if (options[i]) {
-    //     const option = options[i];
-    //     option.form = _.cloneDeep(formGroup);
-    //   }
-    // }
+    const options: any = field.options || [];
+    for (const i in options) {
+      if (options[i]) {
+        const option = options[i];
+        option.form = _.cloneDeep(this.fb.group({}));
+      }
+    }
   }
 
   updateCheckboxValue = (event: any,  field: any, option: any) => {

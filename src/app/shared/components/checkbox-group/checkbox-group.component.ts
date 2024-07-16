@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-checkbox-group',
@@ -29,10 +30,12 @@ export class CheckboxGroupComponent implements OnInit {
     console.log(e)
     const fieldControl: FormArray = this.form.get(this.controlName) as FormArray;
     if (e.checked) {
+      _.set(option, 'checked', true);
       fieldControl.push(new FormControl(option));
     } else {
-       const index = fieldControl.controls.findIndex((control: any) => control.value === option);
-       fieldControl.removeAt(index);
+      _.set(option, 'checked', false);
+      const index = fieldControl.controls.findIndex((control: any) => control.value === option);
+      fieldControl.removeAt(index);
     }
   }
 
