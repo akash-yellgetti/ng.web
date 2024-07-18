@@ -142,3 +142,53 @@ h2 {
 button {
   margin-left: 10px;
 }
+
+
+/* Define base styles for alerts */
+.alert {
+  padding: 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+/* Styles for info alerts */
+.alert-info {
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #31708f;
+}
+
+/* Styles for error alerts */
+.alert-error {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+}
+
+/* Styles for danger alerts */
+.alert-danger {
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  color: #8a6d3b;
+}
+
+/* Styles for dismissible alerts */
+.alert-dismissible {
+  padding-right: 35px;
+}
+
+/* Styles for the close button */
+.alert-dismissible .close {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  padding: 15px;
+  color: inherit;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
