@@ -87,6 +87,12 @@ ng g c shared/components/chart-google/chart-google --module=shared
 ng g c shared/components/dynamic-stepper
 ng g c shared/components/dynamic-field
 ng g c shared/components/checkbox-group
+ng g c shared/components/chips
+ng g c shared/components/chips-autocomplete
+ng g c shared/components/autocomplete
+
+
+
 ng generate component checkbox-group
 
 

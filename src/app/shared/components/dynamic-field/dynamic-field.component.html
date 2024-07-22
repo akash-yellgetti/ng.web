@@ -44,9 +44,17 @@
     </mat-error>
   </mat-form-field>
 
-  <app-checkbox-group *ngSwitchCase="'checkbox'" [label]="field.label" [options]="field.options" [form]="form" [controlName]="field.name"></app-checkbox-group>
   
-  <app-checkbox-group *ngSwitchCase="'checkbox-form'" [label]="field.label" [options]="field.options" [form]="form" [controlName]="field.name"></app-checkbox-group>
+  <!-- Autocomplete Field -->
+  <app-autocomplete *ngSwitchCase="'autocomplete'" [label]="field.label" [options]="field.options" [form]="form" [controlName]="field.name"></app-autocomplete>
+
+  <!-- Chips Autocomplete Field -->
+  <app-chips-autocomplete *ngSwitchCase="'chips-autocomplete'" [label]="field.label" [options]="field.options" [form]="form" [controlName]="field.name"></app-chips-autocomplete>
+  
+
+  <app-checkbox-group *ngSwitchCase="'checkbox'" [type]="field.type" [label]="field.label" [options]="field.options" [form]="form" [controlName]="field.name"></app-checkbox-group>
+  <app-checkbox-group *ngSwitchCase="'checkbox-input'" [type]="field.type" [label]="field.label" [options]="field.options" [form]="form" [controlName]="field.name"></app-checkbox-group>
+  <app-checkbox-group *ngSwitchCase="'checkbox-form'" [type]="field.type" [label]="field.label" [options]="field.options" [form]="form" [controlName]="field.name"></app-checkbox-group>
   
   <div *ngSwitchCase="'radio'">
     <label>{{ field.label }}</label>

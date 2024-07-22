@@ -17,6 +17,8 @@ import * as _ from 'lodash';
 export class CheckboxGroupComponent implements OnInit {
   @Input() label!: string;
   @Input() options!: any;
+  @Input() type!: any;
+  @Input() field!: any;
   @Input() form!: FormGroup;
   @Input() checkboxFormGroup: FormGroup = new FormGroup({});
   @Input() controlName!: string;
@@ -26,17 +28,26 @@ export class CheckboxGroupComponent implements OnInit {
   ngOnInit() {
   }
 
-  onCheckChange(e: any, option: any) {
+  onCheckboxChange(e: any, option: any) {
     console.log(e)
     const fieldControl: FormArray = this.form.get(this.controlName) as FormArray;
+
     if (e.checked) {
       _.set(option, 'checked', true);
-      fieldControl.push(new FormControl(option));
+      fieldControl.push(new FormControl({ key: option.key, value: '' }));
     } else {
       _.set(option, 'checked', false);
       const index = fieldControl.controls.findIndex((control: any) => control.value === option);
       fieldControl.removeAt(index);
     }
+  }
+
+  onCheckboxInputChange(value: any, option: any) {
+    const fieldControl: FormArray = this.form.get(this.controlName) as FormArray;
+    const index = fieldControl.controls.findIndex((control: any) => {
+      return control.value.key === option.key;
+    });
+    fieldControl.controls[index].setValue({ key: option.key, value });
   }
 
   isFieldValid(): any {

@@ -19,6 +19,9 @@ import { StepperComponent } from './components/stepper/stepper.component';
 import { DynamicStepperComponent } from './components/dynamic-stepper/dynamic-stepper.component';
 import { DynamicFieldComponent } from './components/dynamic-field/dynamic-field.component';
 import { CheckboxGroupComponent } from './components/checkbox-group/checkbox-group.component';
+import { ChipsAutocompleteComponent } from './components/chips-autocomplete/chips-autocomplete.component';
+import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
+
 @NgModule({
   declarations: [
     BreadcrumbsComponent,
@@ -36,7 +39,9 @@ import { CheckboxGroupComponent } from './components/checkbox-group/checkbox-gro
     StepperComponent,
     DynamicStepperComponent,
     DynamicFieldComponent,
-    CheckboxGroupComponent
+    CheckboxGroupComponent,
+    ChipsAutocompleteComponent,
+    AutocompleteComponent,
   ],
   imports: [
     MaterialModule,

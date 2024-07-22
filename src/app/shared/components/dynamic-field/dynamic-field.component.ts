@@ -24,7 +24,7 @@ export class DynamicFieldComponent implements OnInit {
 
   ngOnInit(): void {
     
-    if (['checkbox', 'checkbox-form'].indexOf(this.field.type) > -1) {
+    if (['checkbox', 'checkbox-input', 'checkbox-form', 'chips-autocomplete'].indexOf(this.field.type) > -1) {
       this.initializeFormGroup(this.field);
     } else {
       const control = new FormControl('', this.getValidators(this.field.validations || []));

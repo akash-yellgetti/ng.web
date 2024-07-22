@@ -1,20 +1,17 @@
-<div >
-    <label>{{ label }}</label>
-    <div *ngFor="let option of options; let i = index">
-        <mat-checkbox   (change)="onCheckChange($event, option)" [value]="option" >{{ option.value }}</mat-checkbox>
-        <ng-container *ngIf="option.checked">
-            <div *ngIf="option.fields">
-              <form [formGroup]="option.form" >
-                <div class="row">
-                  <div *ngFor="let f of option.fields | keys; index as i" class="col-{{f.value.col}}">
-                    <app-dynamic-field [field]="f.value" [form]="option.form"></app-dynamic-field>
-                  </div>
-                </div>
-              </form>
-            </div>
-        </ng-container>
-    </div>
-    <mat-error *ngIf="isFieldValid()">
+<div>
+  <label>{{ label }}</label>
+  <div *ngFor="let option of options; let i = index">
+    <mat-checkbox (change)="onCheckboxChange($event, option)" [value]="option.key">{{ option.value }}</mat-checkbox>
+    <br>
+    <mat-form-field appearance="fill" class="custom-form-control " *ngIf="option.checked">
+      <label>{{ option.value }} Amount</label>
+      <input matInput [(ngModel)]="option.input" (ngModelChange)="onCheckboxInputChange($event, option)">
+      <mat-error>
         {{ getErrorMessage() }}
-    </mat-error>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <mat-error *ngIf=" isFieldValid()">
+    {{ getErrorMessage() }}
+  </mat-error>
 </div>

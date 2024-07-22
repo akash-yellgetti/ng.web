@@ -10,7 +10,7 @@ export const stepperForm = {
       "fields": {
          
         "marital_status": {
-          "type": "select",
+          "type": "autocomplete",
           "datatype": "string",
           "col": "6",
           "name": "marital_status",
@@ -62,7 +62,7 @@ export const stepperForm = {
       "title": "Income",
       "fields": {
         "incomes": {
-          "type": "checkbox-form",
+          "type": "checkbox-input",
           "datatype": "string",
           "col": "12",
           "name": "incomes",

@@ -18,7 +18,7 @@ import { FieldService } from '../../services/field/field.service';
 export class StepperComponent implements OnInit {
   @ViewChild('stepper') stepper!: MatStepper;
   public orientation: StepperOrientation = 'horizontal';
-  isLinear = false;
+  isLinear = true;
   public form: any = stepperForm;
 
   constructor(private fieldService: FieldService) {}
