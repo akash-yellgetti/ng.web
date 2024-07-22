@@ -10,7 +10,7 @@ export const stepperForm = {
       "fields": {
          
         "marital_status": {
-          "type": "autocomplete",
+          "type": "chips-autocomplete",
           "datatype": "string",
           "col": "6",
           "name": "marital_status",

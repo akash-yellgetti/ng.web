@@ -8,7 +8,7 @@
             <form [formGroup]="formGroups[index]" >
               <div class="row">
                 <div *ngFor="let f of step.fields | keys; index as i" class="col-{{f.value.col}}">
-                  <app-dynamic-field [field]="f.value" [form]="formGroups[index]"></app-dynamic-field>
+                  <app-dynamic-field [field]="f.value" [form]="formGroups[index]"  ></app-dynamic-field>
                 </div>
               </div>
               

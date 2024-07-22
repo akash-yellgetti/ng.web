@@ -5,6 +5,7 @@ import { MatStepper, StepperOrientation } from '@angular/material/stepper';
 import { dynamicStepperJson } from './dynamic-stepper.json';
 import { stepperForm } from '../stepper/stepper.forms.json';
 import { LocalStorageService } from 'ngx-webstorage';
+import * as _ from 'lodash';
 
 interface Step {
   title: string;
@@ -34,8 +35,17 @@ export class DynamicStepperComponent implements OnInit {
   }
 
   initializeForms(): void {
-    this.steps.forEach(() => {
+    const formData = this.storageService.retrieve('formData');
+    this.steps.forEach((step, i) => {
+      
       this.formGroups.push(this.fb.group({}));
+      const fields = step.fields;
+      for (const j in fields) {
+        if (fields[j]) {
+          const field = fields[j];
+          _.set(field, 'value', _.get(formData[i], j))
+        }
+      }
     });
   }
 

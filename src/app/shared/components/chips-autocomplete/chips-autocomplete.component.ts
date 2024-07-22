@@ -29,6 +29,7 @@ export class ChipsAutocompleteComponent implements OnInit {
   @ViewChild('fruitInput') fruitInput!: ElementRef<HTMLInputElement>;
 
   constructor() {
+    
     this.filteredOptions = this.inputCtrl.valueChanges.pipe(
       startWith(null),
       map((option: string | null) =>
@@ -37,6 +38,11 @@ export class ChipsAutocompleteComponent implements OnInit {
     );
   }
   ngOnInit(): void {
+    if(this.field && this.field.value && this.field.value.length > 0) {
+      this.selectedOptions = this.field.value;
+      // console.log(this.selectedOptions)
+      this._filter('');
+    }
     // throw new Error('Method not implemented.');
   }
  
@@ -71,17 +77,19 @@ export class ChipsAutocompleteComponent implements OnInit {
 
   selected(event: MatAutocompleteSelectedEvent): void {
     const fieldControl: FormArray = this.form.get(this.controlName) as FormArray;
-    this.selectedOptions.push(event.option.value);
+    const option = event.option.value;
+  
+    this.selectedOptions.push({ key: option.key, value: option.value });
     // this.selectedOptions.push();
     this.fruitInput.nativeElement.value = '';
     this.inputCtrl.setValue(null);
-    const option = event.option.value;
+    
     fieldControl.push(new FormControl({ key: option.key, value: option.value }));
   }
 
   private _filter(filterValue: any): string[] {
     return this.options.filter((option: any) => {
-      return this.selectedOptions.indexOf(option) === -1 && option.value.toLowerCase().includes(filterValue)
+      return _.find(this.selectedOptions, { key: option.key, value: option.value }) === undefined  && option.value.toLowerCase().includes(filterValue)
     });
   }
 }
