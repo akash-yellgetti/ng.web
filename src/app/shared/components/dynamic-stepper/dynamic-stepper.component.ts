@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatStepper, StepperOrientation } from '@angular/material/stepper';
-import { stepperForm } from '../stepper/stepper.forms.json';
+import { stepperForm } from '../../json/stepper.forms.json';
 import { LocalStorageService } from 'ngx-webstorage';
 import * as _ from 'lodash';
 import { ProfileService } from 'src/app/modules/user/services/profile/profile.service';
@@ -34,10 +34,8 @@ export class DynamicStepperComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.http.get<Step[]>('assets/stepper-config.json').subscribe(data => {
     this.steps = stepperForm.steps;
     this.initializeForms();
-    // });
   }
 
   initializeForms(): void {

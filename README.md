@@ -109,6 +109,7 @@ ng g s shared/services/validation/validation
 ng g s shared/services/loader/loader
 ng g s shared/services/common/common
 ng g s shared/services/field/field
+ng g s shared/services/api/categories/categories
 ng g s shared/services/calculator/calculator
 ng g s shared/services/chart/chart
 ng g s shared/services/chart-js/chart-js
