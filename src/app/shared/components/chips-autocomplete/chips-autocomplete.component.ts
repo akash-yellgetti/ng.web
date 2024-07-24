@@ -89,7 +89,7 @@ export class ChipsAutocompleteComponent implements OnInit {
 
   private _filter(filterValue: any): string[] {
     return this.options.filter((option: any) => {
-      return _.find(this.selectedOptions, { key: option.key, value: option.value }) === undefined  && option.value.toLowerCase().includes(filterValue)
+      return this.selectedOptions.find((selectedOption: any) => selectedOption.key === option.key && selectedOption.value === option.value) === undefined && option.value.toLowerCase().includes(filterValue);
     });
   }
 }
