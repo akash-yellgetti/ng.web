@@ -1,23 +1,54 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  CanActivateChild,
+  Router,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 import { Observable } from 'rxjs';
-import { LocalStorageService } from 'ngx-webstorage'
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class EntryGuard implements CanActivate {
 
-constructor(private router: Router, private localStorageService: LocalStorageService) {}
+export class EntryGuard implements CanActivate, CanActivateChild {
+  constructor(
+    private router: Router,
+    private localStorageService: LocalStorageService
+  ) { }
 
-canActivate(
-  next: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-  const isBudgetCompleted = this.localStorageService.retrieve('isEntryCompleted') === 'true';
-  if (!isBudgetCompleted) {
-    this.router.navigate(['main/entry']);
-    return false;
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    return this.checkEntryPage();
   }
-  return true;
-}
+
+  canActivateChild(
+    childRoute: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ):
+    | boolean
+    | UrlTree
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree> {
+    return this.checkEntryPage();
+  }
+
+  checkEntryPage = () => {
+    const isBudgetCompleted =
+      this.localStorageService.retrieve('isEntryCompleted');
+    if (isBudgetCompleted === false) {
+      this.router.navigate(['main/entry']);
+      return false;
+    }
+    return true;
+  };
 }
