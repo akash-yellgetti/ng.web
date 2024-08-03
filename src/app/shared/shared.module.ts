@@ -15,7 +15,6 @@ import { GoogleChartsModule } from 'angular-google-charts';
 import { FieldComponent } from './components/field/field.component';
 import { KeysPipe } from './pipe/keys/keys.pipe';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-import { StepperComponent } from './components/stepper/stepper.component';
 import { DynamicStepperComponent } from './components/dynamic-stepper/dynamic-stepper.component';
 import { DynamicFieldComponent } from './components/dynamic-field/dynamic-field.component';
 import { CheckboxGroupComponent } from './components/checkbox-group/checkbox-group.component';
@@ -36,7 +35,6 @@ import { AutocompleteComponent } from './components/autocomplete/autocomplete.co
     FieldComponent,
     KeysPipe,
     SpinnerComponent,
-    StepperComponent,
     DynamicStepperComponent,
     DynamicFieldComponent,
     CheckboxGroupComponent,

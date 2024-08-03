@@ -1,27 +1,19 @@
-<mat-form-field appearance="fill"  class="chips-form-control">
-    <mat-label>{{ label }}</mat-label>
-    <mat-chip-list #chipList >
-      <mat-chip
-        *ngFor="let selectedOption of selectedOptions"
-        (removed)="remove(selectedOption)">
-        {{selectedOption.value}}
-        <button matChipRemove>
-          <mat-icon>cancel</mat-icon>
-        </button>
-      </mat-chip>
-      <input
-        placeholder="Type Here"
-        #fruitInput
-        [formControl]="inputCtrl"
-        [matAutocomplete]="auto"
-        [matChipInputFor]="chipList"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        (matChipInputTokenEnd)="add($event)">
-    </mat-chip-list>
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        {{option.value}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-  
+<mat-form-field appearance="fill" class="chips-form-control">
+  <mat-label>{{ label }}</mat-label>
+  <mat-chip-list #chipList>
+    <mat-chip *ngFor="let selectedOption of selectedOptions" (removed)="remove(selectedOption)">
+      {{selectedOption.value}}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+    <input placeholder="Type Here" #fruitInput [formControl]="inputCtrl" [matAutocomplete]="auto"
+      [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+      {{option.value}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

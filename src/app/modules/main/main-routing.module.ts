@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../auth/guards/auth/auth.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LayoutComponent } from './components/layout/layout.component';
-import { StepperComponent } from 'src/app/shared/components/stepper/stepper.component';
 import { EntryGuard } from 'src/app/shared/guards/entry/entry.guard';
 import { DynamicStepperComponent } from 'src/app/shared/components/dynamic-stepper/dynamic-stepper.component';
 
