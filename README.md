@@ -146,6 +146,28 @@ ng g c modules/calculator/components/future --module=calculator
 ng g s modules/calculator/services/calculator
 --------------------------------------------------------------------------------------------------
 
+ customEmailValidator(control: AbstractControl): ValidationErrors | null {
+    const emailPattern = /^[a-zA-Z]+ [a-zA-Z]+ <[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}>$/;
+    const value = control.value;
+    if (!value || emailPattern.test(value)) {
+      return null;
+    }
+    return { invalidEmail: true };
+  }
+
+
+    multipleEmailValidator(control: AbstractControl): ValidationErrors | null {
+    const emailPattern = /^[a-zA-Z]+ [a-zA-Z]+ <[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}>$/;
+    const emails = control.value.split(';').map(email => email.trim());
+    for (const email of emails) {
+      if (!emailPattern.test(email)) {
+        return { invalidEmail: true };
+      }
+    }
+    return null;
+  }
+--------------------------------------------------------------------------------------------------
+
 
 
 ng g m modules/finance --routing=true
