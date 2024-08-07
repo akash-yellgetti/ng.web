@@ -157,15 +157,15 @@ ng g s modules/calculator/services/calculator
 
 
     multipleEmailValidator(control: AbstractControl): ValidationErrors | null {
-    const emailPattern = /^[a-zA-Z]+ [a-zA-Z]+ <[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}>$/;
-    const emails = control.value.split(';').map(email => email.trim());
-    for (const email of emails) {
-      if (!emailPattern.test(email)) {
-        return { invalidEmail: true };
-      }
+        const emailPattern = /^[a-zA-Z]+ [a-zA-Z]+ <[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}>$/;
+        const emails = control.value.split(';').map(email => email.trim());
+        for (const email of emails) {
+            if (!emailPattern.test(email)) {
+                return { invalidEmail: true };
+            }
+        }
+        return null;
     }
-    return null;
-  }
 --------------------------------------------------------------------------------------------------
 
 
