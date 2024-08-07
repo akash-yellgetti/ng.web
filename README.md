@@ -150,7 +150,7 @@ ng g s modules/calculator/services/calculator
         const emailPattern = /^[a-zA-Z]+ [a-zA-Z]+ <[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}>$/;
         const value = control.value;
         if (!value || emailPattern.test(value)) {
-        return null;
+            return null;
         }
         return { invalidEmail: true };
     }
