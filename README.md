@@ -45,105 +45,107 @@ npx cap run android
 --------------------------------------------------------------------------------------------------
 
 
-ng g m modules/main --routing=true
-ng g c modules/main/components/layout --module=main
-ng g c modules/main/components/dashboard --module=main
-ng g c modules/main/components/home --module=main
-ng g c modules/main/components/setting --module=main
-ng g c modules/main/components/help --module=main
-ng g c modules/main/components/blank --module=main
+    ng g m modules/main --routing=true
+    ng g c modules/main/components/layout --module=main
+    ng g c modules/main/components/dashboard --module=main
+    ng g c modules/main/components/home --module=main
+    ng g c modules/main/components/setting --module=main
+    ng g c modules/main/components/help --module=main
+    ng g c modules/main/components/blank --module=main
 
-ng g s modules/main/core/services/module
-
-
-
---------------------------------------------------------------------------------------------------
-
-ng g c modules/user/components/chat-window --module=user
-ng g c modules/user/components/contact --module=user
-ng g c modules/user/components/setting --module=user
-
-ng g r modules/user/resolver/notifications/notifications
-ng g r modules/user/resolver/conversations/conversations
-ng g r modules/user/resolver/conversation-history/conversation-history
-
-ng g s modules/user/services/conversation/conversation
-ng g s modules/user/services/notification/notification
-ng g s modules/user/services/contact/contact
+    ng g s modules/main/core/services/module
 
 
 
 --------------------------------------------------------------------------------------------------
 
+    ng g c modules/user/components/chat-window --module=user
+    ng g c modules/user/components/contact --module=user
+    ng g c modules/user/components/setting --module=user
 
-ng g c shared/components/stepper --module=shared
-ng g c shared/components/spinner --module=shared
-ng g c shared/components/datatable --module=shared
-ng g c shared/components/field/field --module=shared
-ng g c shared/components/chart/chart --module=shared
-ng g c shared/components/chart-js/chart-js --module=shared
-ng g c shared/components/chart-google/chart-google --module=shared
+    ng g r modules/user/resolver/notifications/notifications
+    ng g r modules/user/resolver/conversations/conversations
+    ng g r modules/user/resolver/conversation-history/conversation-history
 
-ng g c shared/components/dynamic-stepper
-ng g c shared/components/dynamic-field
-ng g c shared/components/checkbox-group
-ng g c shared/components/chips
-ng g c shared/components/chips-autocomplete
-ng g c shared/components/autocomplete
+    ng g s modules/user/services/conversation/conversation
+    ng g s modules/user/services/notification/notification
+    ng g s modules/user/services/contact/contact
 
-
-
-ng generate component checkbox-group
-
-
-dynamic-stepper.json.ts
-
-ng g i shared/interceptors/loader/loader
-ng g i shared/interceptors/jwt/jwt
-
-ng g s shared/services/socket/socket
-ng g s shared/services/socket/socket
-ng g s shared/services/validation/validation
-
-
-ng g s shared/services/loader/loader
-ng g s shared/services/common/common
-ng g s shared/services/field/field
-ng g s shared/services/api/categories/categories
-ng g s shared/services/calculator/calculator
-ng g s shared/services/chart/chart
-ng g s shared/services/chart-js/chart-js
-ng g s shared/services/chart-google/chart-google
-
-ng g s shared/services/numbertowordsservice/numbertowordsservice
-
-ng generate pipe shared/pipe/indianNumberFormat/indianNumberFormat
-ng generate pipe shared/pipe/numberToWords/numberToWords
-ng generate pipe shared/pipe/monthsToYears/monthsToYears
-ng generate pipe shared/pipe/keys/keys
 
 
 --------------------------------------------------------------------------------------------------
 
-ng g m modules/school --routing=true
-ng g c modules/school/components/time-table --module=school
-ng g c modules/school/components/teacher --module=school
+
+    ng g c shared/components/stepper --module=shared
+    ng g c shared/components/spinner --module=shared
+    ng g c shared/components/datatable --module=shared
+    ng g c shared/components/field/field --module=shared
+    ng g c shared/components/chart/chart --module=shared
+    ng g c shared/components/chart-js/chart-js --module=shared
+    ng g c shared/components/chart-google/chart-google --module=shared
+
+    ng g c shared/components/dynamic-stepper
+    ng g c shared/components/dynamic-field
+    ng g c shared/components/checkbox-group
+    ng g c shared/components/chips
+    ng g c shared/components/chips-autocomplete
+    ng g c shared/components/autocomplete
+
+
+
+    ng generate component checkbox-group
+
+
+    dynamic-stepper.json.ts
+
+    ng g i shared/interceptors/loader/loader
+    ng g i shared/interceptors/jwt/jwt
+
+    ng g s shared/services/socket/socket
+    ng g s shared/services/socket/socket
+    ng g s shared/services/validation/validation
+
+
+    ng g s shared/services/loader/loader
+    ng g s shared/services/common/common
+    ng g s shared/services/field/field
+    ng g s shared/services/api/categories/categories
+    ng g s shared/services/calculator/calculator
+    ng g s shared/services/chart/chart
+    ng g s shared/services/chart-js/chart-js
+    ng g s shared/services/chart-google/chart-google
+
+    ng g s shared/services/numbertowordsservice/numbertowordsservice
+
+    ng generate pipe shared/pipe/indianNumberFormat/indianNumberFormat
+    ng generate pipe shared/pipe/numberToWords/numberToWords
+    ng generate pipe shared/pipe/monthsToYears/monthsToYears
+    ng generate pipe shared/pipe/keys/keys
+
 
 --------------------------------------------------------------------------------------------------
 
-ng g m modules/tradingview --routing=true
-ng g c modules/tradingview/components/alerts --module=tradingview
-ng g c modules/tradingview/components/trades --module=tradingview
+    ng g m modules/school --routing=true
+    ng g c modules/school/components/time-table --module=school
+    ng g c modules/school/components/teacher --module=school
+
 --------------------------------------------------------------------------------------------------
 
-ng g m modules/calculator --routing=true
-ng g c modules/calculator/components/loan --module=calculator
-ng g c modules/calculator/components/investment --module=calculator
-ng g c modules/calculator/components/fire --module=calculator
-ng g c modules/calculator/components/goal --module=calculator
-ng g c modules/calculator/components/future --module=calculator
+    ng g m modules/tradingview --routing=true
+    ng g c modules/tradingview/components/alerts --module=tradingview
+    ng g c modules/tradingview/components/trades --module=tradingview
 
-ng g s modules/calculator/services/calculator
+--------------------------------------------------------------------------------------------------
+
+    ng g m modules/calculator --routing=true
+    ng g c modules/calculator/components/loan --module=calculator
+    ng g c modules/calculator/components/investment --module=calculator
+    ng g c modules/calculator/components/fire --module=calculator
+    ng g c modules/calculator/components/goal --module=calculator
+    ng g c modules/calculator/components/future --module=calculator
+
+    ng g s modules/calculator/services/calculator
+
 --------------------------------------------------------------------------------------------------
 
     customEmailValidator(control: AbstractControl): ValidationErrors | null {
@@ -170,38 +172,36 @@ ng g s modules/calculator/services/calculator
 
 
 
-ng g m modules/finance --routing=true
-ng g c modules/finance/components/budget --module=finance
-ng g c modules/finance/components/planner --module=finance
-ng g c modules/finance/components/income-tax --module=finance
-ng g c modules/finance/components/transaction --module=finance
+    ng g m modules/finance --routing=true
+    ng g c modules/finance/components/budget --module=finance
+    ng g c modules/finance/components/planner --module=finance
+    ng g c modules/finance/components/income-tax --module=finance
+    ng g c modules/finance/components/transaction --module=finance
 
+    ng g s modules/finance/services/api/budget/budget
+    ng g s modules/finance/services/api/planner/planner
+    ng g s modules/finance/services/api/transaction/transaction
+    ng g s modules/finance/services/api/income-tax/income-tax
 
-ng g s modules/finance/services/api/budget/budget
-ng g s modules/finance/services/api/planner/planner
-ng g s modules/finance/services/api/transaction/transaction
-ng g s modules/finance/services/api/income-tax/income-tax
-
-ng g r modules/finance/resolver/budget/budget
-ng g r modules/finance/resolver/planner/planner 
-ng g r modules/finance/resolver/transaction/transaction 
+    ng g r modules/finance/resolver/budget/budget
+    ng g r modules/finance/resolver/planner/planner 
+    ng g r modules/finance/resolver/transaction/transaction 
 
 --------------------------------------------------------------------------------------------------
-ng g m modules/personal --routing=true
-ng g c modules/personal/components/budget --module=personal
-ng g c modules/personal/components/routine --module=personal
-ng g c modules/personal/components/goal --module=personal
-ng g c modules/personal/components/fire --module=personal
-ng g c modules/personal/components/transaction --module=personal
-ng g c modules/personal/components/investment --module=personal
-ng g c modules/personal/components/financial --module=personal
-ng g c modules/personal/components/routine-scheduler --module=personal
 
-ng generate component schedule-calculator
+    ng g m modules/personal --routing=true
+    ng g c modules/personal/components/budget --module=personal
+    ng g c modules/personal/components/routine --module=personal
+    ng g c modules/personal/components/goal --module=personal
+    ng g c modules/personal/components/fire --module=personal
+    ng g c modules/personal/components/transaction --module=personal
+    ng g c modules/personal/components/investment --module=personal
+    ng g c modules/personal/components/financial --module=personal
+    ng g c modules/personal/components/routine-scheduler --module=personal
 
+    ng generate component schedule-calculator
 
-
-ng g c modules/personal/components/goal --module=personal
+    ng g c modules/personal/components/goal --module=personal
 
 
 --------------------------------------------------------------------------------------------------
