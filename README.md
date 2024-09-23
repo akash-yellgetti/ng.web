@@ -90,6 +90,7 @@ npx cap run android
     ng g c shared/components/chips
     ng g c shared/components/chips-autocomplete
     ng g c shared/components/autocomplete
+    ng g c shared/components/file-upload
 
 
 

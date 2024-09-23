@@ -20,6 +20,7 @@ import { DynamicFieldComponent } from './components/dynamic-field/dynamic-field.
 import { CheckboxGroupComponent } from './components/checkbox-group/checkbox-group.component';
 import { ChipsAutocompleteComponent } from './components/chips-autocomplete/chips-autocomplete.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AutocompleteComponent } from './components/autocomplete/autocomplete.co
     CheckboxGroupComponent,
     ChipsAutocompleteComponent,
     AutocompleteComponent,
+    FileUploadComponent,
   ],
   imports: [
     MaterialModule,
