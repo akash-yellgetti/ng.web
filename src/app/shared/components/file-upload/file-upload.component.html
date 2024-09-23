@@ -2,11 +2,10 @@
   <label for="{{controlName}}" class="file-upload-label">Upload File</label>
   <input type="file" id="{{controlName}}" (change)="onFileChange($event)" accept=".jpg, .jpeg, .png, .pdf"
     class="file-input" />
-  <div class="file-upload-info" *ngIf="fileControl && fileControl.value">
+  <div class="file-upload-info" *ngIf="fileControl?.value">
     <span>File: {{ fileControl.value.name }}</span>
   </div>
-  <div *ngIf="fileControl && fileControl.invalid && (fileControl && (fileControl.touched || fileControl.dirty))"
-    class="error">
+  <div *ngIf="fileControl?.invalid && (fileControl?.touched || fileControl?.dirty)" class="error">
     File is required.
   </div>
 </div>
