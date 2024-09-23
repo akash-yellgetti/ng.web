@@ -170,6 +170,44 @@ npx cap run android
     }
 --------------------------------------------------------------------------------------------------
 
+    <div class="file-upload">
+        <label for="file-upload" class="upload-label">Upload File</label>
+        <input type="file" id="file-upload" class="file-input" multiple>
+        <div class="upload-area">
+            <p>Drag and drop files here or click to upload</p>
+        </div>
+        <div class="file-info">
+            <span class="file-name">No files chosen</span>
+            <span class="file-size"></span>
+        </div>
+    </div>
+
+
+    .file-upload {
+        border: 2px dashed #007bff;
+        padding: 20px;
+        text-align: center;
+        margin: 10px 0;
+        }
+
+    .upload-label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .upload-area {
+        height: 100px;
+        line-height: 100px;
+        color: #007bff;
+    }
+
+    .file-info {
+        margin-top: 10px;
+    }
+
+
+--------------------------------------------------------------------------------------------------
+
 
 
     ng g m modules/finance --routing=true
