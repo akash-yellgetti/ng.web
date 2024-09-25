@@ -207,6 +207,30 @@ npx cap run android
     }
 
 
+    body {
+        background-color: #f8f9fa; /* Light gray background */
+    }
+
+    .table {
+        border-radius: 0.25rem; /* Rounded corners for the table */
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    .table th {
+        background-color: #007bff; /* Bootstrap primary color */
+        color: white; /* Header text color */
+    }
+
+    .table tbody tr:hover {
+        background-color: rgba(0, 123, 255, 0.1); /* Light hover effect */
+    }
+
+    .table tbody tr:nth-child(odd) {
+        background-color: #f9f9f9; /* Light gray for odd rows */
+    }
+
+
+
 --------------------------------------------------------------------------------------------------
 
 

@@ -5,6 +5,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { EntryGuard } from 'src/app/shared/guards/entry/entry.guard';
 import { DynamicStepperComponent } from 'src/app/shared/components/dynamic-stepper/dynamic-stepper.component';
+import { SortableTreeComponent } from 'src/app/shared/components/sortable-tree/sortable-tree.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,11 @@ const routes: Routes = [
     component: DynamicStepperComponent,
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
+  },
+  {
+    path: 'new',
+    component: SortableTreeComponent,
+    
   },
   {
     path: 'layout',

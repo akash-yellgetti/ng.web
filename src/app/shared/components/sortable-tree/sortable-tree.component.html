@@ -1,0 +1,14 @@
+<mat-tree [dataSource]="treeDataSource" cdkDropList (cdkDropListDropped)="drop($event)">
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+    <div cdkDrag>{{node.name}}</div>
+  </mat-tree-node>
+
+  <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodeToggle>
+    <div cdkDrag>{{node.name}}</div>
+    <mat-tree [dataSource]="node.children" cdkDropList (cdkDropListDropped)="drop($event)">
+      <mat-tree-node *matTreeNodeDef="let child">
+        <div cdkDrag>{{child.name}}</div>
+      </mat-tree-node>
+    </mat-tree>
+  </mat-tree-node>
+</mat-tree>

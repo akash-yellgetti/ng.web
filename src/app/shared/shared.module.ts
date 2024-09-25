@@ -21,6 +21,7 @@ import { CheckboxGroupComponent } from './components/checkbox-group/checkbox-gro
 import { ChipsAutocompleteComponent } from './components/chips-autocomplete/chips-autocomplete.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { SortableTreeComponent } from './components/sortable-tree/sortable-tree.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     ChipsAutocompleteComponent,
     AutocompleteComponent,
     FileUploadComponent,
+    SortableTreeComponent,
   ],
   imports: [
     MaterialModule,

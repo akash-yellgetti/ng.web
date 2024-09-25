@@ -1,0 +1,25 @@
+/* src/app/sortable-tree/sortable-tree.component.css */
+mat-tree {
+    width: 300px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+cdk-drag {
+    display: block;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 4px 0;
+    background-color: #fff;
+    cursor: move;
+}
+
+cdk-drag-preview {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+.error {
+    color: red;
+}
