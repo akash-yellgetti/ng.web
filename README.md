@@ -259,6 +259,76 @@ Lodash
 
 --------------------------------------------------------------------------------------------------
 
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .custom-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+    .custom-table th, .custom-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .custom-table th {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .custom-table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 600px) {
+        .custom-table, .custom-table thead, .custom-table tbody, .custom-table th, .custom-table td, .custom-table tr {
+            display: block;
+        }
+
+        .custom-table tr {
+            margin-bottom: 15px;
+        }
+
+        .custom-table th {
+            display: none;
+        }
+
+        .custom-table td {
+            text-align: right;
+            position: relative;
+            padding-left: 50%;
+        }
+
+        .custom-table td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 10px;
+            width: 45%;
+            padding-left: 10px;
+            text-align: left;
+            font-weight: bold;
+        }
+    }
+
+--------------------------------------------------------------------------------------------------
+
 
 
     ng g m modules/finance --routing=true
